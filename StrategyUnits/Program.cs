@@ -3,10 +3,20 @@
 Footman footman = new Footman();
 Footman footman2 = new Footman();
 Peasant ps1 = new Peasant();
+Healer healer = new Healer(50);
 
-ps1.ShowInfo();
-footman2.ShowInfo();
-footman.InflictDamage(ps1);
-footman.InflictDamage(footman2);
-ps1.ShowInfo();
-footman2.ShowInfo();
+healer.ShowInfo();
+footman.ShowInfo();
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+footman.InflictDamage(healer);
+
+footman.InflictDamage(healer);
+healer.Healself();
+healer.ShowInfo();

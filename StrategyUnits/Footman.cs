@@ -17,7 +17,7 @@
 
         public void InflictDamage(Unit unit)
         {
-            unit.Health -= _damage;
+            unit.CurentHealth -= _damage;
         }
 
     }
