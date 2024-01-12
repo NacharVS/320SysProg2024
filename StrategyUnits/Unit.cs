@@ -24,7 +24,10 @@
             set
             {
                 if(value < 0)
+                {
                     _health = 0;
+                    Console.WriteLine("Dude is dead"); 
+                }
                 else
                     if(value > MaxHealth)
                         _health = MaxHealth;
