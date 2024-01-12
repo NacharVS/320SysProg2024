@@ -50,6 +50,5 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Unit: {Name} Health: {Health} Mana: {_mana}" );
         }
-
     }
 }
