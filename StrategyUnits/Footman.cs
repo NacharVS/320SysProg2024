@@ -10,14 +10,14 @@
             set { _damage = value; }
         }
 
-        public Footman() : base(60, "Footman")
+        public Footman() : base(10, "Footman")
         {
             _damage = 7;
         }
 
         public void InflictDamage(Unit unit)
         {
-            unit.Health -= _damage;
+            unit.CurrentHealth -= _damage;
         }
 
     }
