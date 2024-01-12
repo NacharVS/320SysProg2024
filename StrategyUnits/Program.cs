@@ -7,7 +7,7 @@ Cleric cleric = new Cleric();
 footman2.ShowInfo();
 footman.InflictDamage(footman2);
 footman2.ShowInfo();
-//footman.InflictDamage(footman2);
+footman.InflictDamage(footman2);
 footman2.ShowInfo();
 cleric.HealSomebody(footman2);
 footman2.ShowInfo();
