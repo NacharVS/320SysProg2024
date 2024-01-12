@@ -19,6 +19,5 @@
         {
             unit.Health -= _damage;
         }
-
     }
 }
