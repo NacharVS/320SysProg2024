@@ -35,10 +35,10 @@
 
         public void Move()
         {
-            Console.WriteLine("Is moving");
+            Console.WriteLine($"Unit {_name} is moving");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
             Console.WriteLine($"Unit: {_name} Health: {_health}");
         }

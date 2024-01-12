@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits
+﻿using System.Xml.Linq;
+
+namespace StrategyUnits
 {
     internal class Footman : Unit
     {
@@ -17,7 +19,23 @@
 
         public void InflictDamage(Unit unit)
         {
-            unit.Health -= _damage;
+            if (unit.Health > 0)
+            {
+                unit.Health = Math.Max(unit.Health - _damage, 0);
+                if (unit.Health == 0)
+                {
+                    Console.WriteLine($"Unit {unit.Name} died!");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Unit {unit.Name} already died!");
+            }
+        }
+
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {Name} / Health: {Health} / Damage: {Damage}");
         }
 
     }
