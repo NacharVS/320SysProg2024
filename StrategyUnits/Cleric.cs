@@ -8,30 +8,22 @@
         public int CurrentEnergy
         {
             get { return _currentEnergy; }
-            set 
-            { 
-                if(value < 0)
-                {
-                    _currentEnergy = 0;
-                }
+            set
+            {
+                if (value > MaxEnergy)
+                    _currentEnergy = MaxEnergy;
                 else
-                {
-                    if (value > MaxEnergy)
-                        _currentEnergy = MaxEnergy;
-                    else 
-                        _currentEnergy = value;
-                }
+                    _currentEnergy = value;
             }
         }
-
         public int MaxEnergy
         {
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
-        public Cleric() : base(10, "Cleric")
+        public Cleric() : base(15, "Cleric")
         {
-            _maxEnergy = 3;
+            _maxEnergy = 5;
             _currentEnergy = _maxEnergy;
         }
 
@@ -40,21 +32,24 @@
             var healthBeforeHealth = unit.CurrentHealth;
             if (unit.IsDied)
             {
-                Console.WriteLine($"{unit.Name} умер, восстановить здоровье нельзя") ;
+                Console.WriteLine($"{unit.Name} умер, восстановить здоровье нельзя");
                 return;
             }
             while (_currentEnergy > 0)
             {
-                if (unit.MaxHealth == unit.CurrentHealth)
+                if (unit.MaxHealth <= unit.CurrentHealth)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{unit.Name} исцелился с {healthBeforeHealth} до {unit.CurrentHealth}");
                     Console.ForegroundColor = ConsoleColor.White;
-                    break;
+                    return;
                 }
                 unit.CurrentHealth += 2;
                 _currentEnergy -= 1;
             }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{unit.Name} исцелился с {healthBeforeHealth} до {unit.CurrentHealth}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
         public void HealSomebody(Unit unit)
         {
@@ -68,17 +63,31 @@
             }
             while (_currentEnergy > 0)
             {
-                if (unit.MaxHealth == unit.CurrentHealth)
+                if (unit.MaxHealth <= unit.CurrentHealth)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{unit.Name} исцелился с {healthBeforeHealth} до {unit.CurrentHealth}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return;
+                }
+                if (_currentEnergy < 2)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"Недостаточно энергии для проведения лечения {unit.Name} не хватает 1 очка");
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 }
                 unit.CurrentHealth += 1;
                 _currentEnergy -= 2;
             }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{unit.Name} исцелился с {healthBeforeHealth} до {unit.CurrentHealth}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
-
+        public void RecoveryEnergy(Cleric cleric)
+        {
+            cleric.CurrentEnergy = MaxEnergy;
+            Console.WriteLine($"{cleric.Name} энергия восстановлена до {cleric.CurrentEnergy}");
+        }
     }
 }
