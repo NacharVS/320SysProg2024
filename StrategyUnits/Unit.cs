@@ -10,6 +10,14 @@
             _health = health;
             _name = name;
             MaxHealth = health;
+            _diedunit = false;
+        }
+        private bool _diedunit;
+
+        public bool DiedUnit
+        {
+            get { return _diedunit; }
+            set { _diedunit = value; }
         }
 
         public string Name
@@ -23,10 +31,12 @@
             get => _health;
             set
             {
-                if (value < 0) 
+                if (value < 0)
+                {
                     _health = 0;
-                else
-                    if (value > MaxHealth)
+                    _diedunit = true;
+                }   
+                else if (value > MaxHealth)
                     _health = MaxHealth;
                 else
                     _health = value;

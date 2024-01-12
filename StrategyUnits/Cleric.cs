@@ -8,48 +8,84 @@ namespace StrategyUnits
 {
     internal class Cleric : Unit
     {
-        private int _energy;
+        private int _maxEnergy;
+        private int _nowEnergy;
 
-        private int _selfheal;
-        public int SelfHeal
+        public int NowEnergy
         {
-            get { return _selfheal; }
-            set { _selfheal = value; }
+            get { return _nowEnergy; }
+            set
+            {
+                if (value > MaxEnergy)
+                    _nowEnergy = _maxEnergy;
+                else if (value < 0)
+                    _nowEnergy = 0;
+                else
+                    _nowEnergy = value;
+            }
         }
-        private int _healother;
-        public int Healother
+        public int MaxEnergy
         {
-            get { return _healother; }
-            set { _healother = value; }
+            get { return _maxEnergy; }
+            set { _maxEnergy = value; }
         }
 
         public Cleric() : base(60, "Cleric")
         {
-           _energy = 100;
-           _selfheal = 2;
-           _healother= 1;
+           _maxEnergy = 60;
+           _nowEnergy = _maxEnergy;
         }
 
-        public void InflictHeal (Unit unit)
+        public void HealYourself (Unit unit)
         {
-            while (_energy > 0)
+            if (unit.DiedUnit)
+            {
+                Console.WriteLine("Персонаж мертв! Лечить нельзя!");
+                return;
+            }
+            while (_nowEnergy > 0)
             {
                
-                if (unit.Health >= MaxHealth)
+                if (unit.MaxHealth <= unit.Health)
                 {
-                    unit.Health = MaxHealth;
+                    Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
+                    return;
                 }
-                else if (unit.Health <= 0) 
-                {
-                    Console.WriteLine("Персонаж мертв! Лечить нельзя!");
-                }
-                else
-                {
-                    _energy -= 2;
-                    unit.Health += _healother;
-                }
-                
+                _nowEnergy -= 1;
+                unit.Health += 2;
             }
+            Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
+        }
+
+        public void HealOther (Unit unit)
+        {
+            if (unit.DiedUnit)
+            {
+                Console.WriteLine("Персонаж мертв! Лечить нельзя!");
+                return;
+            }
+            while (_nowEnergy > 0)
+            {
+                if (unit.MaxHealth <= unit.Health)
+                {
+                    Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
+                    return;
+                }
+                if (_nowEnergy < 2)
+                {
+                    Console.WriteLine("Для восстановления жизни другого персонажа необходимо минимум 2 очка энергии!");
+                    break;
+                }
+                _nowEnergy -= 2;
+                unit.Health += 1;
+            }
+            Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
+        }
+
+        public void ReconstructionEnergy (Cleric cleric)
+        {
+            cleric.NowEnergy = MaxEnergy;
+            Console.WriteLine("Энергия восстановлена до максимума");
         }
     }
 }
