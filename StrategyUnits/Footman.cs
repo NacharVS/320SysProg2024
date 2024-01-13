@@ -17,8 +17,14 @@
 
         public void InflictDamage(Unit unit)
         {
-            unit.Health -= _damage;
+            if (unit.isAlive)
+            {
+                unit.Health -= _damage;
+            }
+            else
+            {
+                return;
+            }
         }
-
     }
 }
