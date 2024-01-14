@@ -35,6 +35,8 @@ Console.WriteLine("...");
 Console.WriteLine("\"Doing something))\"");
 ps1.Move();
 ps1.Build();
+
+Console.WriteLine("..."); 
 Console.WriteLine("\"True crime\"");
 ps1.ShowInfo();
 footman.InflictDamage(ps1);
