@@ -19,7 +19,7 @@
         {
             if (unit == this)
             {
-                while (Mana >= 1)
+                while (Mana >= 1 && unit.Health < unit._maxHealth)
                 {
                     Health += Heal * 2;
                     Mana -= 1;

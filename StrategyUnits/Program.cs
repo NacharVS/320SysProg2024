@@ -21,14 +21,12 @@ Console.WriteLine();
 
 ps2.ShowInfo();
 footman.InflictDamage(ps2);
-footman.InflictDamage(cl2);
+footman.InflictDamage(cl1);
 ps2.ShowInfo();
-cl2.ShowInfo();
-
+cl1.ShowInfo();
 cl1.InflictHeal(ps2);
-cl1.InflictHeal(cl2);
-
+cl1.InflictHeal(cl1);
 ps2.ShowInfo();
-cl2.ShowInfo();
+cl1.ShowInfo();
 Console.WriteLine("Клирик который лечил: ");
 cl1.ShowInfo();
