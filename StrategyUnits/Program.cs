@@ -60,104 +60,131 @@
 //cleric2.ShowInfo();
 //cleric2.GetInfoCleric();
 
-//Тестирование манны:
-Peasant ps1 = new Peasant();
-Footman footman = new Footman();
-Cleric cleric = new Cleric();
+////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+////Тестирование манны:
+//Peasant ps1 = new Peasant();
+//Footman footman = new Footman();
+//Cleric cleric = new Cleric();
 
-//Получение информации:
-ps1.ShowInfo();
-footman.ShowInfo();
-cleric.ShowInfo();
-cleric.GetInfoCleric();
+////Получение информации:
+//ps1.ShowInfo();
+//footman.ShowInfo();
+//cleric.ShowInfo();
+//cleric.GetInfoCleric();
 
-//Нанесение урона Крестьянину:
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-ps1.ShowInfo();
+////Нанесение урона Крестьянину:
+//footman.InflictDamage(ps1);
+//footman.InflictDamage(ps1);
+//footman.InflictDamage(ps1);
+//ps1.ShowInfo();
 
-cleric.HillOthers(ps1);
-ps1.ShowInfo();
-cleric.GetInfoCleric();
-cleric.HillOthers(ps1);
+//cleric.HillOthers(ps1);
+//ps1.ShowInfo();
+//cleric.GetInfoCleric();
+//cleric.HillOthers(ps1);
 
-Console.WriteLine("Создаем еще 2 хиллеров, чтобы проверить лечение других.");
-Cleric cleric2 = new Cleric();
-Cleric cleric3 = new Cleric();
+//Console.WriteLine("Создаем еще 2 хиллеров, чтобы проверить лечение других.");
+//Cleric cleric2 = new Cleric();
+//Cleric cleric3 = new Cleric();
 
-ps1.ShowInfo();
-cleric2.GetInfoCleric();
-cleric3.GetInfoCleric();
+//ps1.ShowInfo();
+//cleric2.GetInfoCleric();
+//cleric3.GetInfoCleric();
 
-Console.WriteLine("\ncleric2 лечит ps1 еще на 10 единиц. Здоровье ps1 = 29");
-//cleric2 лечит ps1 еще на 10 единиц. Здоровье ps1 = 29, манна клерика2 = 0
-cleric2.HillOthers(ps1);
-ps1.ShowInfo();
-cleric2.GetInfoCleric();
+//Console.WriteLine("\ncleric2 лечит ps1 еще на 10 единиц. Здоровье ps1 = 29");
+////cleric2 лечит ps1 еще на 10 единиц. Здоровье ps1 = 29, манна клерика2 = 0
+//cleric2.HillOthers(ps1);
+//ps1.ShowInfo();
+//cleric2.GetInfoCleric();
 
-//Проверка на хилл при 0 манны:
-Console.WriteLine("\nПроверка на хилл при 0 манны:");
-cleric2.HillOthers(ps1);
+////Проверка на хилл при 0 манны:
+//Console.WriteLine("\nПроверка на хилл при 0 манны:");
+//cleric2.HillOthers(ps1);
 
-//cleric3 лечит ps1 еще на 1 единиц. Здоровье ps1 = 30, манна cleric3 = 18
-Console.WriteLine("\ncleric3 лечит ps1 еще на 1 единиц. Здоровье ps1 = 30, манна cleric3 = 18");
-cleric3.HillOthers(ps1);
-ps1.ShowInfo();
-cleric3.GetInfoCleric();
+////cleric3 лечит ps1 еще на 1 единиц. Здоровье ps1 = 30, манна cleric3 = 18
+//Console.WriteLine("\ncleric3 лечит ps1 еще на 1 единиц. Здоровье ps1 = 30, манна cleric3 = 18");
+//cleric3.HillOthers(ps1);
+//ps1.ShowInfo();
+//cleric3.GetInfoCleric();
 
-//Тестирование хилла мертвого персонажа:
-Console.WriteLine("\nТестирование хилла мертвого персонажа.");
-Peasant ps2 = new Peasant(); //Создаем ps2
+////Тестирование хилла мертвого персонажа:
+//Console.WriteLine("\nТестирование хилла мертвого персонажа.");
+//Peasant ps2 = new Peasant(); //Создаем ps2
 
-//Убиваем ps2
-footman.InflictDamage(ps2);
-footman.InflictDamage(ps2);
-footman.InflictDamage(ps2);
-footman.InflictDamage(ps2);
-footman.InflictDamage(ps2);
-ps2.ShowInfo();
-cleric3.HillOthers(ps2);
-ps2.ShowInfo();
+////Убиваем ps2
+//footman.InflictDamage(ps2);
+//footman.InflictDamage(ps2);
+//footman.InflictDamage(ps2);
+//footman.InflictDamage(ps2);
+//footman.InflictDamage(ps2);
+//ps2.ShowInfo();
+//cleric3.HillOthers(ps2);
+//ps2.ShowInfo();
 
-//Проверка мертвого персонажа
-Console.WriteLine("\nПроверка мертвого персонажа");
+////Проверка мертвого персонажа
+//Console.WriteLine("\nПроверка мертвого персонажа");
+//Footman footman2 = new Footman();
+//footman2.ShowInfo();
+
+////Атака footman1 на footman2
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman.InflictDamage(footman2);
+//footman2.ShowInfo();
+
+////Проба атаки footman2
+//Console.WriteLine("\nПроба атаки footman2");
+//footman2.InflictDamage(ps1);
+
+////Проверка Мертвых Клериков
+//                                //НЕ РЕАЛИЗОВАНО ТО, ЧТО ПРИ МЕРТВОМ КЛЕРИКЕ МАННА = 0!!!
+//Console.WriteLine("\nПроверка Мертвых Клериков");
+//Cleric cleric4 = new Cleric(); //Жертва
+//cleric4.ShowInfo();
+
+////Нанесение урона клерику4
+//Console.WriteLine("\nНанесение урона клерику4");
+//footman.InflictDamage(cleric4);
+//footman.InflictDamage(cleric4);
+//footman.InflictDamage(cleric4);
+//footman.InflictDamage(cleric4);
+//footman.InflictDamage(cleric4);
+//footman.InflictDamage(cleric4);
+//cleric4.ShowInfo();
+//cleric4.GetInfoCleric();
+
+////cleric4.HillMyself(cleric4);
+//cleric4.HillOthers(footman2);
+//cleric4.GetInfoCleric();
+
+//Создание клерика5 для проверки манны
+Cleric cleric5 = new Cleric();
+cleric5.GetInfoCleric();
+
+//Создание футмена для нанесения урона, чтобы потом восстановить здоровье, тем самым потратив манну клерику 5
 Footman footman2 = new Footman();
-footman2.ShowInfo();
+Peasant ps1 = new Peasant();
 
-//Атака footman1 на footman2
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman.InflictDamage(footman2);
-footman2.ShowInfo();
-
-//Проба атаки footman2
-Console.WriteLine("\nПроба атаки footman2");
 footman2.InflictDamage(ps1);
+footman2.InflictDamage(ps1);
+footman2.InflictDamage(ps1);
+ps1.ShowInfo();
 
-//Проверка Мертвых Клериков
-                                //НЕ РЕАЛИЗОВАНО ТО, ЧТО ПРИ МЕРТВОМ КЛЕРИКЕ МАННА = 0!!!
-Console.WriteLine("\nПроверка Мертвых Клериков");
-Cleric cleric4 = new Cleric(); //Жертва
-cleric4.ShowInfo();
+//Хилл
+cleric5.HillOthers(ps1);
+ps1.ShowInfo();
+cleric5.GetInfoCleric();
 
-//Нанесение урона клерику4
-Console.WriteLine("\nНанесение урона клерику4");
-footman.InflictDamage(cleric4);
-footman.InflictDamage(cleric4);
-footman.InflictDamage(cleric4);
-footman.InflictDamage(cleric4);
-footman.InflictDamage(cleric4);
-footman.InflictDamage(cleric4);
-cleric4.ShowInfo();
-cleric4.GetInfoCleric();
-
-//cleric4.HillMyself(cleric4);
-cleric4.HillOthers(footman2);
-cleric4.GetInfoCleric();
+//Проверка восстановления через 5 секунд
+cleric5.RegenerationManna(cleric5);
+cleric5.GetInfoCleric();
+cleric5.GetInfoCleric();
+cleric5.GetInfoCleric();
+cleric5.GetInfoCleric();
+cleric5.GetInfoCleric();

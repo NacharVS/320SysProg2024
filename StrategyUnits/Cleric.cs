@@ -77,9 +77,28 @@ namespace StrategyUnits
             }
         }
 
+        public void RegenerationManna(Cleric cleric)
+        {
+            Console.WriteLine($"{Name} восстанавливает манну...");
+            DateTime fixDate = DateTime.Now;
+            DateTime nextMinute = fixDate.AddSeconds(5);
+            while (true)
+            {
+                DateTime now = DateTime.Now;
+                if (now >= nextMinute)
+                {
+                    Console.WriteLine($"{Name} восстановил манну с {_manna} до {MaxManna}");
+                    _manna = MaxManna;
+                    nextMinute = nextMinute.AddSeconds(5);
+                    break;
+                }
+            }
+
+        }
+
         public void GetInfoCleric()
         {
-            Console.WriteLine($"Manna: {_manna}");
+            Console.WriteLine($"{Name} мanna: {_manna}");
         }
     }
 }
