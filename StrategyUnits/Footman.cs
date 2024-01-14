@@ -17,7 +17,10 @@
 
         public void InflictDamage(Unit unit)
         {
+            Console.WriteLine($"{unit.Name} был атакован и получил {_damage} урона");
             unit.Health -= _damage;
+            if(unit.Health == 0)
+                Console.WriteLine($"{unit.Name} погиб");
         }
 
     }
