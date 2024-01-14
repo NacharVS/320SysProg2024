@@ -45,8 +45,15 @@ namespace StrategyUnits
 
         public void HillMyself(Cleric cleric) 
         {
-            cleric.Health += 2;
-            _manna -= 1;
+            if (cleric.Health == 0 || _manna == 0)
+            {
+                Console.WriteLine("You can't hill yourself, because character dead. Manna or Health is null.");
+            }
+            else
+            {
+                cleric.Health += 2;
+                _manna -= 1;
+            }
         }
 
         public void GetInfoCleric()
