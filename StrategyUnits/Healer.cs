@@ -38,7 +38,7 @@ namespace StrategyUnits
         public void ToHeal(Unit unit)
         {   Console.WriteLine("Hilling");
             if (unit.Dead)
-                { Console.WriteLine("Dude is dead"); return; }
+                { Console.WriteLine("Dude is dead, oh, no.. We can't heal him("); return; }
             
             while (_mana > 0)
             {
