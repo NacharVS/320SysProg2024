@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StrategyUnits
 {
@@ -82,10 +83,15 @@ namespace StrategyUnits
             Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
         }
 
-        public void ReconstructionEnergy (Cleric cleric)
+        public void ReconstructionEnergy()
         {
-            cleric.NowEnergy = MaxEnergy;
+            NowEnergy = MaxEnergy;
             Console.WriteLine("Энергия восстановлена до максимума");
+        }
+
+        public void ShowInfoEnergy()
+        {
+            Console.WriteLine($"Энергия персонажа = {NowEnergy}");
         }
     }
 }

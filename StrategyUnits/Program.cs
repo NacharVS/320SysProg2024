@@ -14,5 +14,15 @@ footman.InflictDamage(ps1);
 footman.InflictDamage(ps1);
 footman.InflictDamage(ps2);
 ps2.ShowInfo();
+
 cleric.HealOther(ps2);
+cleric.ShowInfo();
+cleric.ShowInfoEnergy();
+cleric.ReconstructionEnergy();
+cleric.ShowInfoEnergy();
 ps2.ShowInfo();
+
+ps2.Harvest();
+ps2.CleaningTheArea();
+ps2.EndOfWork();
+ps2.CleaningTheArea();
