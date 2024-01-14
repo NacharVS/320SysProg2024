@@ -41,6 +41,18 @@
             }
         }
 
+        public int Mana
+        {
+            get => _mana;
+            set
+            {
+                if (value < 0)
+                    _mana = 0;
+                else
+                    _mana = value;
+            }
+        }
+
         public void Move()
         {
             Console.WriteLine("Is moving");
@@ -53,7 +65,7 @@
                 Console.WriteLine($"{_name} Пчел мёртв");
             }
             else
-            Console.WriteLine($"Unit: {_name} Health: {_health}");
+            Console.WriteLine($"Unit: {_name} Health: {_health} and {_mana}");
         }
     }
 }

@@ -3,28 +3,44 @@
 
 namespace StrategyUnits
 {
-    internal class Cliric: Unit
+    internal class Cliric : Unit
     {
-            private int _healthValue;
-            public bool isCliric = true;
+        private int _healthValue;
+        public bool isCliric = true;
 
-            public int Heal
+        public int Heal
+        {
+            get { return _healthValue; }
+            set { _healthValue = value; }
+        }
+
+        public Cliric() : base(80, "Clirc", 60, true)
+        {
+            _healthValue = 1;
+            isCliric = true;
+        }
+
+        public void InflictHeal(Unit unit)
+        {
+            if (Mana >= 2)
             {
-                get { return _healthValue; }
-                set { _healthValue = value; }
+                if (unit == this)
+                {
+                    unit.Health += Heal * 2;
+                    unit.Mana -= 1;
+                    Console.WriteLine("Клирик вылечил себе здоровье");
+                }
+                else
+                {
+                    unit.Health += Heal;
+                    Mana -= 2;
+                    Console.WriteLine($"Клирик вылечил {unit.Name}");
+                }
             }
+            else
+                Console.WriteLine("Mana no");
+        }
 
-            public Cliric() : base(80, "Clirc", 60, true)
-            {
-                _healthValue = 1;
-            }
 
-            public void InflictHeal(Unit unit)
-            {
-                
-                unit.Health += _healthValue;
-            }
-
-        
     }
 }
