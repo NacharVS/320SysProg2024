@@ -10,10 +10,13 @@ namespace StrategyUnits
     internal class Healer : Unit
     {
         private int _mana;
-        public int MaxMana
+        public int maxMana;
+        public int MaxiMana
         {
-            get { return _mana; }
-            set { MaxMana = value; }
+            get { return maxMana; }
+            set { maxMana = value; }
+            //get { return _mana; }
+            //set { _mana = value; }
         }
         public int Mana
         {
@@ -22,34 +25,50 @@ namespace StrategyUnits
                 if (value < 0)
                     _mana = 0;
                 else 
-                    if (_mana > MaxMana)
-                        _mana = MaxMana; 
+                    if (value > maxMana)
+                        _mana = maxMana; 
                     else
                         _mana = value; }
         }
-        public Healer() : base(50, "Healer")
+        public Healer(int Mana) : base(50, "Healer")
         {
-            _mana = 50;
+            _mana = Mana;
+            maxMana = Mana;
         }
         public void ToHeal(Unit unit)
-        {
-            while (Mana > 0)
+        {   Console.WriteLine("Hilling");
+            if (unit.Dead)
+                { Console.WriteLine("Dude is dead"); return; }
+            
+            while (_mana > 0)
             {
-                if (unit.Name == "Healer")
+                if (unit.Health < unit.MaxHealth)
                 {
-                    unit.Health += 1;
-                    Mana -= 2;
+                    if (unit.Name == "Healer")
+                    {
+                        _mana -= 1;
+                        Console.WriteLine($"SelfHealing from {unit.Health} to {unit.Health + 1}; Mana: {_mana}");
+                        unit.Health += 2;
+                    }
+                    else
+                    {
+                        _mana -= 2;
+                        Console.WriteLine($"Healing from {unit.Health} to {unit.Health + 1}; Mana: {_mana}");
+                        unit.Health += 1;
+                    }
                 }
-                else
+                if (unit.Health >= unit.MaxHealth)
                 {
-                    unit.Health += 2;
-                    Mana -= 1;
+                    Console.WriteLine("Healed healthy dude");
+                    break;
                 }
             }
+            if (_mana == 0)
+                Console.WriteLine("no Mana :( grustno");
         }
         public void ShowMana()
         {
-            Console.WriteLine("Mana: " + Mana);
+            Console.WriteLine($"Healer's Mana: {_mana}/{maxMana}");
         }
     }
 }
