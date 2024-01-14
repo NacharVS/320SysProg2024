@@ -65,7 +65,7 @@
                 Console.WriteLine($"{_name} Пчел мёртв");
             }
             else
-            Console.WriteLine($"Unit: {_name} Health: {_health} and {_mana}");
+            Console.WriteLine($"Unit: {_name} Health: {_health} HP and {_mana} MN");
         }
     }
 }

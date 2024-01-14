@@ -1,12 +1,8 @@
-﻿using System;
-
-
-namespace StrategyUnits
+﻿namespace StrategyUnits
 {
     internal class Cliric : Unit
     {
         private int _healthValue;
-        public bool isCliric = true;
 
         public int Heal
         {
@@ -17,7 +13,6 @@ namespace StrategyUnits
         public Cliric() : base(80, "Clirc", 60, true)
         {
             _healthValue = 1;
-            isCliric = true;
         }
 
         public void InflictHeal(Unit unit)
