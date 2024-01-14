@@ -33,13 +33,13 @@ namespace StrategyUnits
         {
             if (IsDead == true)
             {
-                Console.WriteLine("Первонаж мертв");
+                Console.WriteLine("Cleric мёртв.");
             }
             else
             {
                 if (unit.Health == 0)
                 {
-                    Console.WriteLine("You can't hill dead characters.");
+                    Console.WriteLine($"Невозможно восстановить здоровье {unit.Name}. Он мёртв.");
                 }
                 else if (_manna < 2)
                 {
@@ -52,6 +52,7 @@ namespace StrategyUnits
                         unit.Health += 1;
                         _manna -= 2;
                     }
+                    Console.WriteLine($"{unit.Name} было восстановлено здоровье.");
                 }
             }
         }
@@ -60,7 +61,7 @@ namespace StrategyUnits
         {
             if (IsDead == true)
             {
-                Console.WriteLine("Первонаж мертв");
+                Console.WriteLine("Cleric мёртв.");
             }
             else
             {
@@ -73,6 +74,7 @@ namespace StrategyUnits
                         cleric.Health += 2;
                         _manna -= 1;
                     }
+                    Console.WriteLine($"{cleric.Name} было восстановлено здоровье.");
                 }
             }
         }
@@ -98,7 +100,7 @@ namespace StrategyUnits
 
         public void GetInfoCleric()
         {
-            Console.WriteLine($"{Name} мanna: {_manna}");
+            Console.WriteLine($"Текущая манна {Name}: {_manna}");
         }
     }
 }

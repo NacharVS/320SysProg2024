@@ -18,9 +18,12 @@
         public void InflictDamage(Unit unit)
         {
             if (IsDead == true)
-                Console.WriteLine("Юнит мертв");
+                Console.WriteLine("Footman мертв");
             else
+            {
                 unit.Health -= _damage;
+                Console.WriteLine($"Footman нанес {unit.Name} урон {_damage}");
+            }
         }
 
     }

@@ -30,7 +30,7 @@
                 {
                     _health = 0;
                     IsDead = true;
-                    Console.WriteLine("Character is dead.Stop damage.");
+                    Console.WriteLine($"{Name} мёртв. Нанесения урона невозможно.");
                 }
                 else
                    if (value > MaxHealth)
@@ -42,12 +42,12 @@
 
         public void Move()
         {
-            Console.WriteLine("Is moving");
+            Console.WriteLine("Передвижение.");
         }
 
         public void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_health} Мервт: {IsDead}");
+            Console.WriteLine($"Unit: {_name}\t Здоровье: {_health} Состоние жизни: {IsDead}");
         }
     }
 }
