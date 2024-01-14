@@ -11,7 +11,7 @@ namespace StrategyUnits
     {
         private int _manna;
         public int MaxManna { get; private set; }
-        public Cleric() : base(30, "Cleric")
+        public Cleric() : base(60, "Cleric")
         {
             _manna = 40;
             MaxManna = _manna;
@@ -37,12 +37,12 @@ namespace StrategyUnits
         }
 
         //Создал регенерацию маны у клирика взамен его здоровью (соотношение 1/3).
-        //Причем у него должно быть не меньше 15 здоровья, чтобы он не мог себя убить
-        public void MannaRegen ()
+        //Причем у него должно быть не меньше половины здоровья, чтобы он не мог себя убить
+        public void MannaRegen (Unit unit)
         {
-            if (Health >= 15)
+            if (Health >= unit.MaxHealth / 2)
             {
-                while (Manna < MaxManna && Health > 15)
+                while (Manna < MaxManna && Health > unit.MaxHealth / 2)
                 {
                     Health -= 3;
                     Manna += 1;
@@ -61,7 +61,7 @@ namespace StrategyUnits
             {
                 if (unit == this)
                 {
-                    while (Manna >= 1 && unit.Health < MaxHealth)
+                    while (Manna >= 1 && unit.Health < unit.MaxHealth)
                     {
                         unit.Health += 2;
                         Manna -= 1;
@@ -69,7 +69,7 @@ namespace StrategyUnits
                 }
                 else
                 {
-                    while (Manna >= 2 && unit.Health < MaxHealth)
+                    while (Manna >= 2 && unit.Health < unit.MaxHealth)
                     {
                         unit.Health += 1;
                         Manna -= 2;

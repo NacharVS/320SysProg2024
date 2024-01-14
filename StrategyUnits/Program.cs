@@ -30,7 +30,7 @@ cleric1.ShowInfo();
 
 Console.WriteLine();
 Console.WriteLine("After regen Manna");
-cleric1.MannaRegen();
+cleric1.MannaRegen(cleric1);
 cleric1.ShowInfo();
 
 Console.WriteLine();
@@ -39,7 +39,11 @@ cleric1.Heal(cleric1);
 cleric1.ShowInfo();
 
 Console.WriteLine();
-Console.WriteLine("After x4 damage");
+Console.WriteLine("After x8 damage");
+footman.InflictDamage(cleric1);
+footman.InflictDamage(cleric1);
+footman.InflictDamage(cleric1);
+footman.InflictDamage(cleric1);
 footman.InflictDamage(cleric1);
 footman.InflictDamage(cleric1);
 footman.InflictDamage(cleric1);
