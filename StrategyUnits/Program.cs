@@ -18,13 +18,16 @@ footman.InflictDamage(ps1);
 ps1.ShowInfo();
 Console.WriteLine();
 //Задание с лечением и маной
+
 ps2.ShowInfo();
 footman.InflictDamage(ps2);
 footman.InflictDamage(cl2);
 ps2.ShowInfo();
 cl2.ShowInfo();
+
 cl1.InflictHeal(ps2);
 cl1.InflictHeal(cl2);
+
 ps2.ShowInfo();
 cl2.ShowInfo();
 Console.WriteLine("Клирик который лечил: ");

@@ -49,6 +49,9 @@
                 if (value < 0)
                     _mana = 0;
                 else
+                    if (value > _maxMana)
+                    _mana = _maxMana;
+                else
                     _mana = value;
             }
         }
@@ -65,7 +68,7 @@
                 Console.WriteLine($"{_name} Пчел мёртв");
             }
             else
-            Console.WriteLine($"Unit: {_name} Health: {_health} HP and {_mana} MN");
+                Console.WriteLine($"Unit: {_name} Health: {_health} HP and {_mana} MN");
         }
     }
 }

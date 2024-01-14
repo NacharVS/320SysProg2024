@@ -17,25 +17,28 @@
 
         public void InflictHeal(Unit unit)
         {
-            if (Mana >= 2)
+            if (unit == this)
             {
-                if (unit == this)
+                while (Mana >= 1)
                 {
-                    unit.Health += Heal * 2;
-                    unit.Mana -= 1;
+                    Health += Heal * 2;
+                    Mana -= 1;
                     Console.WriteLine("Клирик вылечил себе здоровье");
                 }
-                else
+            }
+            else
+            {
+                while (Mana >= 2 && unit.Health < unit._maxHealth)
                 {
                     unit.Health += Heal;
                     Mana -= 2;
                     Console.WriteLine($"Клирик вылечил {unit.Name}");
                 }
             }
-            else
-                Console.WriteLine("Mana no");
         }
-
-
+       
     }
+
+
 }
+
