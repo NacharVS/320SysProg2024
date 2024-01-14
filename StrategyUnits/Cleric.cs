@@ -32,26 +32,39 @@ namespace StrategyUnits
 
         public void HillOthers(Unit unit)
         {
-            if (unit.Health == 0)
+            if (DeadPerson == true)
             {
-                Console.WriteLine("You can't hill dead characters.");
+                Console.WriteLine($"{unit.Name} died, You can't hill dead characters.");
+                return;
             }
-            else
+
+            while (_manna >= 2)
             {
-                unit.Health += 1;
-                _manna -= 2;
+                 if (unit.MaxHealth <= unit.Health)
+                 {
+                     Console.WriteLine($"{unit.Name} hill.");
+                     return;
+                 }                 
+                 unit.Health += 1;
+                 _manna -= 2; 
             }
         }
 
-        public void HillMyself(Cleric cleric) 
+        public void HillMyself(Unit unit) 
         {
-            if (cleric.Health == 0 || _manna == 0)
+            if (DeadPerson == true)
             {
-                Console.WriteLine("You can't hill yourself, because character dead. Manna or Health is null.");
+                Console.WriteLine($"{unit.Name} died, You can't hill dead characters.");
+                return;
             }
-            else
+            while (_manna > 0)
             {
-                cleric.Health += 2;
+                if (unit.MaxHealth <= unit.Health)
+                {
+                    Console.WriteLine($"{unit.Name} hill");
+                    return;
+                }
+                unit.Health += 2;
                 _manna -= 1;
             }
         }

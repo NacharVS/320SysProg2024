@@ -17,6 +17,9 @@
 
         public void InflictDamage(Unit unit)
         {
+            if (DeadPerson == true)
+                Console.WriteLine("Unit died");
+            else
             unit.Health -= _damage;
         }
 

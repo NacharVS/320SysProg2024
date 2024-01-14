@@ -6,58 +6,70 @@ Peasant ps1 = new Peasant();
 Cleric cleric = new Cleric();
 Cleric cleric2 = new Cleric();
 
-//ps1.ShowInfo();
-//footman2.ShowInfo();
-//footman.InflictDamage(ps1);
-//footman.InflictDamage(footman2);
-Console.WriteLine("Первоначальные данные");
+Console.WriteLine("Begin:");
 ps1.ShowInfo();
-footman2.ShowInfo();
+footman.ShowInfo();
+Console.WriteLine("First Cleric");
+cleric.ShowInfo();
+cleric.GetInfoCleric();
+Console.WriteLine("Second Cleric");
+cleric2.ShowInfo();
+cleric2.GetInfoCleric();
+
+Console.WriteLine("Attack first Cleric");
+footman.InflictDamage(cleric);
+Console.WriteLine("First Cleric after attack");
 cleric.ShowInfo();
 cleric.GetInfoCleric();
 
-Console.WriteLine("\nХилл пс1 Пеасант");
-cleric.HillOthers(ps1);
-ps1.ShowInfo();
 
-Console.WriteLine("\nПосле хилла:");
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+Console.WriteLine("First Cleric after attack");
 cleric.ShowInfo();
 cleric.GetInfoCleric();
 
+Console.WriteLine("Attack second cleric");
+footman.InflictDamage(cleric2);
+footman.InflictDamage(cleric2);
+cleric2.ShowInfo();
+cleric2.GetInfoCleric();
 
-Console.WriteLine("\nПосле хилла самого себя:");
+Console.WriteLine("First Cleric try to hill somebody");
+cleric.HillOthers(cleric2);
+Console.WriteLine("Information about first cleric");
+cleric.ShowInfo();
+cleric.GetInfoCleric();
+Console.WriteLine("Information about second cleric");
+cleric2.ShowInfo();
+cleric2.GetInfoCleric();
+
+
+Console.WriteLine("First Cleric hill himself");
+cleric.HillMyself(cleric);
+
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric); 
+footman.InflictDamage(cleric); 
+footman.InflictDamage(cleric);
+footman.InflictDamage(cleric);
+
 cleric.HillMyself(cleric);
 cleric.ShowInfo();
 cleric.GetInfoCleric();
 
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
-footman.InflictDamage(cleric2);
+Console.WriteLine("Attack on first died Cleric: ");
+footman.InflictDamage(cleric);
 
-Console.WriteLine("Первый клерик лечит второго");
-Console.WriteLine("Первый клерик");
-cleric.ShowInfo();
-cleric.GetInfoCleric();
-
-Console.WriteLine("Second клерик");
-cleric2.ShowInfo();
-cleric2.GetInfoCleric();
+Console.WriteLine("Died Cleric try to hill other: ");
 cleric.HillOthers(cleric2);
-
-Console.WriteLine("\nПосле хилла:");
-Console.WriteLine("Первый клерик");
-cleric.ShowInfo();
-cleric.GetInfoCleric();
-Console.WriteLine("Second клерик");
-cleric2.ShowInfo();
-cleric2.GetInfoCleric();
-
 

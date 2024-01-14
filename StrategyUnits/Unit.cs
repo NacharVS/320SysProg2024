@@ -5,18 +5,25 @@
         private int _health;
         private string? _name;
         public int MaxHealth { get; private set; }
+        private bool _deadperson;
 
         public Unit(int health, string? name)
         {
             _health = health;
             _name = name;
             MaxHealth = _health;
+            _deadperson = false;
         }
 
         public string Name
         {
             get { return _name; }
             set { _name = value; }
+        }
+        public bool DeadPerson
+        {
+            get { return _deadperson; }
+            set { _deadperson = value; }
         }
 
         public int Health 
@@ -27,6 +34,7 @@
                 if (value < 0)
                 {
                     _health = 0;
+                    _deadperson = true;
                     Console.WriteLine("Character is dead.Stop damage.");
                 }
                 else
