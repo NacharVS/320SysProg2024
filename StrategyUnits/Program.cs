@@ -72,3 +72,9 @@ footman.InflictDamage(ps1);
 ps1.ShowInfo();
 healer.ToHeal(ps1);
 ps1.ShowInfo();
+
+Console.WriteLine("...");
+Console.WriteLine("\"Peasant can collect something\"");
+ps1.Collecting();
+ps1.Collecting();
+ps1.Collecting();

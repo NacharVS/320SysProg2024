@@ -15,8 +15,6 @@ namespace StrategyUnits
         {
             get { return maxMana; }
             set { maxMana = value; }
-            //get { return _mana; }
-            //set { _mana = value; }
         }
         public int Mana
         {
