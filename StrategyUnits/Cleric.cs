@@ -15,7 +15,6 @@ namespace StrategyUnits
             {
                 if (value < 0)
                     _manna = 0;
-
                 else
                     if (value > MaxManna)
                     _manna = MaxManna;
@@ -24,29 +23,58 @@ namespace StrategyUnits
             }
         }
 
-        public Cleric() : base(70, "Cleric")
+        public Cleric() : base(40, "Cleric")
         {
-            _manna = 50;
+            _manna = 20;
             MaxManna = _manna;
         }
 
-        public void HillOthers(Unit unit)
+        public void HillOthers(Unit unit) //Метод ЛеченияДругого
         {
-            if (unit.Health == 0)
+            if (IsDead == true)
             {
-                Console.WriteLine("You can't hill dead characters.");
+                Console.WriteLine("Первонаж мертв");
             }
             else
             {
-                unit.Health += 1;
-                _manna -= 2;
+                if (unit.Health == 0)
+                {
+                    Console.WriteLine("You can't hill dead characters.");
+                }
+                else if (_manna < 2)
+                {
+                    Console.WriteLine("Недостаточно манны.");
+                }
+                else
+                {
+                    while (_manna >= 2 && unit.Health != unit.MaxHealth)
+                    {
+                        unit.Health += 1;
+                        _manna -= 2;
+                    }
+                }
             }
         }
 
-        public void HillMyself(Cleric cleric)
+        public void HillMyself(Cleric cleric) //Метод ЛеченияСебя
         {
-            cleric.Health += 2;
-            _manna -= 1;
+            if (IsDead == true)
+            {
+                Console.WriteLine("Первонаж мертв");
+            }
+            else
+            {
+                if (_manna == 0)
+                    Console.WriteLine("Недостаточно манны.");
+                else
+                {
+                    while (_manna >= 1 && cleric.Health != cleric.MaxHealth)
+                    {
+                        cleric.Health += 2;
+                        _manna -= 1;
+                    }
+                }
+            }
         }
 
         public void GetInfoCleric()
@@ -55,5 +83,3 @@ namespace StrategyUnits
         }
     }
 }
-//Лечить себя: 1 мана = 2 здоровья
-//Лечить ДРУГОГО : 2 маны = 1 здоровье

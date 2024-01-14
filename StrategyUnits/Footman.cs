@@ -17,7 +17,10 @@
 
         public void InflictDamage(Unit unit)
         {
-            unit.Health -= _damage;
+            if (IsDead == true)
+                Console.WriteLine("Юнит мертв");
+            else
+                unit.Health -= _damage;
         }
 
     }
