@@ -36,7 +36,7 @@ namespace StrategyUnits
         {
             if (unit.Dead == true)
             {
-                Console.WriteLine("Unit is dead.");
+                Console.WriteLine("Unit мертв.");
                 return;
             }
 
@@ -50,13 +50,13 @@ namespace StrategyUnits
                     }
                     if (unit.CurentHealth >= unit.MaxHealth)
                     {
-                        Console.WriteLine($"Healed successfully.");
+                        Console.WriteLine($"Исцелился.");
                         break;
                     }
             }
                 if (Mana == 0)
                 {
-                    Console.WriteLine("No mana left!");
+                    Console.WriteLine("Mana закончилась!");
                 }
 
             
@@ -66,7 +66,7 @@ namespace StrategyUnits
         {
             if (Dead == true)
             {
-                Console.WriteLine("Unit is dead.");
+                Console.WriteLine("Unit мертв");
                 return;
             }
             while (_mana > 0)
@@ -84,13 +84,13 @@ namespace StrategyUnits
                 }
                 if (Health >= MaxHealth)
                 {
-                    Console.WriteLine($"Healed successfully.");
+                    Console.WriteLine($"Исцелился.");
                     break;
                 }
             }
             if (Mana == 0)
             {
-                Console.WriteLine("No mana left!");
+                Console.WriteLine("Mana закончилась!");
             }
         }
         public void ShowInfo()

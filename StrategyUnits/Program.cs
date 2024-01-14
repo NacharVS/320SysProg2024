@@ -15,13 +15,7 @@ ps1.ShowInfo();
 healer.Heal(ps1);
 ps1.ShowInfo();
 
-healer.ShowInfo();
-footman.InflictDamage(healer);
-footman.InflictDamage(healer);
-footman.InflictDamage(healer);
-healer.ShowInfo();
-healer.Healself();
-healer.ShowInfo();
+
 
 
 
