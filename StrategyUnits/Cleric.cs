@@ -45,7 +45,7 @@ namespace StrategyUnits
             }
         }
 
-        public void ShowInfo()
+        new public void ShowInfo()
         {
             Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}" );
         }
