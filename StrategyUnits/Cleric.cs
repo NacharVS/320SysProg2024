@@ -22,6 +22,7 @@ namespace StrategyUnits
 
         public void selfHeal()
         {
+            Console.WriteLine($"{Name} selfheal");
             while (Manna >= 1)
             {
                 Health += 2;
@@ -33,21 +34,29 @@ namespace StrategyUnits
         {
             if (unit.isAlive)
             {
-                while (Manna >= 2)
+                if (unit.Health == unit.MaxHealth)
                 {
-                    unit.Health += 1;
-                    Manna -= 2;
+                    Console.WriteLine($"{Name} can't heal {unit.Name}, because health is full");
+                }
+                else
+                {
+                    Console.WriteLine($"{Name} heal {unit.Name}");
+                    while (Manna >= 2 && (unit.Health < unit.MaxHealth))
+                    {
+                        unit.Health += 1;
+                        Manna -= 2;
+                    }
                 }
             }
             else
             {
-                Console.WriteLine("Unit is dead");
+                Console.WriteLine($"{Name} can't heal {unit.Name}");
             }
         }
 
-        new public void ShowInfo()
+        public void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}" );
+            Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}");
         }
     }
 }
