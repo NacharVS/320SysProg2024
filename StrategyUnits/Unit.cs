@@ -4,14 +4,14 @@
     {
         private int _health;
         private string? _name;
-        public bool isAlive { get; private set; }
+        public bool Alive { get; private set; }
         public int MaxHealth { get; private set; }
         public Unit(int health, string? name)
         {
             _health = health;
             _name = name;
             MaxHealth = health;
-            isAlive = true;
+            Alive = true;
         }
 
         public string Name
@@ -29,13 +29,17 @@
                 if (value < 0)
                 {
                     _health = 0;
-                    isAlive = false;
+                    Alive = false;
+                }
+                else if (value > MaxHealth)
+                {
+                    _health = MaxHealth;
                 }
                 else
-                    if (value > MaxHealth)
-                    _health = MaxHealth;
-                else
+                {
                     _health = value;
+                }
+                   
             }
         }
 
