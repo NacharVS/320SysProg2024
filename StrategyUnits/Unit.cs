@@ -4,6 +4,7 @@
     {
         public delegate void HealthIncreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void HealthDecreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
+        public delegate void UnitDeadDelegate();
 
         private int _currentHealth;
         private int _maxHealth;
@@ -31,6 +32,7 @@
                 {
                     _currentHealth = 0;
                     IsDead = true;
+                    UnitDiedEvent.Invoke();
                 }
                 else
                     if (value > MaxHealth)
@@ -75,5 +77,6 @@
 
         public event HealthIncreasedDelegate HealthIncreasedEvent;
         public event HealthDecreasedDelegate HealthDecreasedEvent;
+        public event UnitDeadDelegate UnitDiedEvent;
     }
 }

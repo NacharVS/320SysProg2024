@@ -31,8 +31,26 @@ namespace StrategyUnits
 
         public virtual void Attack(Unit attackedUnit)
         {
-            Console.WriteLine("Unit was attacked with the damage of 0.");
-            
+            Random rnd = new Random();
+            int appliedDamage = rnd.Next(this.MinDamage, this.MaxDamage) - attackedUnit.Defense;
+            if (!attackedUnit.IsDead)
+            {
+                if (appliedDamage >= 0)
+                {
+                    Console.WriteLine(
+                        $">> Attack successful. You've applied {appliedDamage} DP.\n"
+                        );
+                    attackedUnit.CurrentHealth -= appliedDamage;
+                }
+                else
+                {
+                    Console.WriteLine(">> No damage applied.\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unit is already dead. Stop beating a dead body!\n");
+            }
         }
 
         public override void ShowInfo()
