@@ -4,43 +4,49 @@
     {
         private int _currentHealth;
         private int _maxHealth;
-        private string? _name;
+        private string? _nameOfClass;
         private bool _isDead = false;
-
-        public bool IsDead {get; set;}
-        public Unit(int currentHealth, string? name)
+        private int _defense;
+        public int Defense
         {
-            _currentHealth = currentHealth;
-            _name = name;
-            _maxHealth = currentHealth;
+            get { return _defense; }
+            set { _defense = value; }
+        }
+        public string NameOfClass
+        {
+            get { return _nameOfClass; }
+            set { _nameOfClass = value; }
         }
 
-        public string Name
+        public int CurrentHealth
         {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public int CurentHealth 
-        { 
             get => _currentHealth;
-            set { if (value <= 0)
-                    {
-                        _currentHealth = 0;
-                        IsDead = true;
-                    }
+            set
+            {
+                if (value <= 0)
+                {
+                    _currentHealth = 0;
+                    IsDead = true;
+                }
                 else
                     if (value > MaxHealth)
-                        _currentHealth = MaxHealth;
-                    else
-                        _currentHealth = value;
-            } 
+                    _currentHealth = MaxHealth;
+                else
+                    _currentHealth = value;
+            }
         }
-
         public int MaxHealth
         {
-            get => _maxHealth; 
+            get => _maxHealth;
             set => _maxHealth = value;
+        }
+        public bool IsDead {get; set;}
+        public Unit(int currentHealth, string? nameOfClass, int defense)
+        {
+            _currentHealth = currentHealth;
+            _nameOfClass = nameOfClass;
+            _maxHealth = currentHealth;
+            _defense = defense;
         }
 
         public void Move()
@@ -48,9 +54,9 @@
             Console.WriteLine("Is moving");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_currentHealth} MaxHealth: {_maxHealth}");
+            Console.WriteLine($"Unit: {_nameOfClass} Health: {_currentHealth} MaxHealth: {_maxHealth} Defense: {_defense}");
         }
     }
 }

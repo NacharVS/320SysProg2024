@@ -1,24 +1,27 @@
 ﻿namespace StrategyUnits
 {
-    internal class Footman : Unit
+    internal class Footman : MilitaryUnit
     {
-        private int _damage;
+        private String _nameOfUnit;
 
-        public int Damage
+        public Footman(int currentHealth, string? nameOfClass, int defense) : base(currentHealth, nameOfClass, defense)
         {
-            get { return _damage; }
-            set { _damage = value; }
         }
 
-        public Footman() : base(60, "Footman")
+        public String NameOfUnit
         {
-            _damage = 7;
+            get { return _nameOfUnit; }
+            set { _nameOfUnit = value; }
         }
-
-        public void InflictDamage(Unit unit)
+        public override void Attack(Unit attackedUnit)
         {
-            unit.CurentHealth -= _damage;
+            Random rnd = new Random();
+            int appliedDamage = rnd.Next(this.MinDamage, this.MaxDamage) - attackedUnit.Defense;
+            if (appliedDamage >= 0)
+            {
+                attackedUnit.CurrentHealth -= appliedDamage;
+                Console.WriteLine($"Attack successful. You've applied {appliedDamage} DP.");
+            }
         }
-
     }
 }

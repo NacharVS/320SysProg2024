@@ -3,19 +3,18 @@ using System.Runtime.CompilerServices;
 
 namespace StrategyUnits
 {
-    internal class Healer : Unit
+    internal class Healer : MagicUnit
     {
-        private int _manaPoints;
+        private String _nameOfUnit;
 
-        public int ManaPoints
+        public String NameOfUnit
         {
-            get { return _manaPoints; }
-            set { _manaPoints = value; }
+            get { return _nameOfUnit; }
+            set { _nameOfUnit = value; }
         }
 
-        public Healer(int manaValue) : base(50, "Healer")
+        public Healer(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints) : base(40, "Healer", 1, 0, 2, 100)
         {
-            ManaPoints = manaValue;
         }
 
         public void HealSomebody(Unit unit)
@@ -25,22 +24,22 @@ namespace StrategyUnits
                 Console.WriteLine("Unit is dead.");
                 return;
             }
-            while (_manaPoints > 0)
+            while (this.ManaPoints > 0)
             {
-                if(unit.CurentHealth < unit.MaxHealth)
+                if(unit.CurrentHealth < unit.MaxHealth)
                 {
-                    _manaPoints -= 2;
-                    Console.WriteLine($"Healed from {unit.CurentHealth} to {unit.CurentHealth+1}; Mana left: {_manaPoints}");
-                    unit.CurentHealth++;
+                    this.ManaPoints -= 2;
+                    Console.WriteLine($"Healed from {unit.CurrentHealth} to {unit.CurrentHealth + 1}; Mana left: {this.ManaPoints}");
+                    unit.CurrentHealth++;
                 }
-                if (unit.CurentHealth >= unit.MaxHealth)
+                if (unit.CurrentHealth >= unit.MaxHealth)
                 {
                     Console.WriteLine($"Healed successfully.");
                     break;
                 }
                     
             }
-            if (ManaPoints == 0)
+            if (this.ManaPoints == 0)
             {
                 Console.WriteLine("No mana left!");
             }   
@@ -53,16 +52,16 @@ namespace StrategyUnits
                 Console.WriteLine("Unit is dead.");
                 return;
             }
-            while (_manaPoints > 0)
+            while (this.ManaPoints > 0)
             {
-                if (CurentHealth < MaxHealth)
+                if (CurrentHealth < MaxHealth)
                 {
-                    _manaPoints--;
-                    int finalHealth = CurentHealth + 2 >= MaxHealth ? MaxHealth : CurentHealth+2;
-                    Console.WriteLine($"Healed from {CurentHealth} to {finalHealth}; Mana left: {_manaPoints}");
-                    CurentHealth += 2;
+                    this.ManaPoints--;
+                    int finalHealth = CurrentHealth + 2 >= MaxHealth ? MaxHealth : CurrentHealth + 2;
+                    Console.WriteLine($"Healed from {CurrentHealth} to {finalHealth}; Mana left: {this.ManaPoints}");
+                    CurrentHealth += 2;
                 }
-                if (CurentHealth >= MaxHealth)
+                if (CurrentHealth >= MaxHealth)
                 {
                     Console.WriteLine($"Healed successfully.");
                     break;
@@ -73,9 +72,9 @@ namespace StrategyUnits
                 Console.WriteLine("No mana left!");
             }
         }
-        public void ShowInfo()
+        public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {CurentHealth} MaxHealth: {MaxHealth} Mana: {ManaPoints}");
+            Console.WriteLine($"Name: {this.NameOfUnit}\nUnit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage} \nManaPoints: {this.ManaPoints}");
         }
     }
 }
