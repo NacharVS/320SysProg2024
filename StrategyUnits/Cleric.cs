@@ -1,30 +1,12 @@
-﻿namespace StrategyUnits
-{
-    internal class Cleric : Unit
-    {
-        private int _maxEnergy;
-        private int _currentEnergy;
+﻿using System.Xml.Linq;
 
-        public int CurrentEnergy
+namespace StrategyUnits
+{
+    internal class Cleric : MagicUnit
+    {
+        public Cleric() : base(15, "Cleric", 1, 15)
         {
-            get { return _currentEnergy; }
-            set
-            {
-                if (value > MaxEnergy)
-                    _currentEnergy = MaxEnergy;
-                else
-                    _currentEnergy = value;
-            }
-        }
-        public int MaxEnergy
-        {
-            get { return _maxEnergy; }
-            set { _maxEnergy = value; }
-        }
-        public Cleric() : base(15, "Cleric")
-        {
-            _maxEnergy = 5;
-            _currentEnergy = _maxEnergy;
+
         }
 
         public void HealSelf(Unit unit)
@@ -35,7 +17,7 @@
                 Console.WriteLine($"{unit.Name} умер, восстановить здоровье нельзя");
                 return;
             }
-            while (_currentEnergy > 0)
+            while (CurrentEnergy > 0)
             {
                 if (unit.MaxHealth <= unit.CurrentHealth)
                 {
@@ -45,7 +27,7 @@
                     return;
                 }
                 unit.CurrentHealth += 2;
-                _currentEnergy -= 1;
+                CurrentEnergy -= 1;
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"{unit.Name} исцелился с {healthBeforeHealth} до {unit.CurrentHealth}");
@@ -61,7 +43,7 @@
                 Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
-            while (_currentEnergy > 0)
+            while (CurrentEnergy > 0)
             {
                 if (unit.MaxHealth <= unit.CurrentHealth)
                 {
@@ -70,7 +52,7 @@
                     Console.ForegroundColor = ConsoleColor.White;
                     return;
                 }
-                if (_currentEnergy < 2)
+                if (CurrentEnergy < 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"Недостаточно энергии для проведения лечения {unit.Name} не хватает 1 очка");
@@ -78,7 +60,7 @@
                     break;
                 }
                 unit.CurrentHealth += 1;
-                _currentEnergy -= 2;
+                CurrentEnergy -= 2;
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"{unit.Name} исцелился с {healthBeforeHealth} до {unit.CurrentHealth}");
@@ -87,7 +69,13 @@
         public void RecoveryEnergy(Cleric cleric)
         {
             cleric.CurrentEnergy = MaxEnergy;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"{cleric.Name} энергия восстановлена до {cleric.CurrentEnergy}");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHealth} Energy: {this.CurrentEnergy}");
         }
     }
 }
