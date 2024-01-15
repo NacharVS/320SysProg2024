@@ -39,7 +39,7 @@
                     _health = MaxHealth;
                 else
                     _health = value;
-                HealthChangedEvent.Invoke(_health, Name);
+                //HealthChangedEvent.Invoke(_health, Name);
             }
         }
 

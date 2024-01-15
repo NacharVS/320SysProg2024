@@ -200,9 +200,9 @@ footman1.InflictDamageEvent += MethodYron;
 footman2.InflictDamageEvent += MethodYron;
 palladin1.InflictDamageEvent += MethodYron;
 
-footman1.HealthChangedEvent += Method;
-footman2.HealthChangedEvent += Method;
-palladin1.HealthChangedEvent += Method;
+//footman1.HealthChangedEvent += Method;
+//footman2.HealthChangedEvent += Method;
+//palladin1.HealthChangedEvent += Method;
 
 footman2.InflictDamage(palladin1);
 //footman1.ShowInfo();
@@ -222,7 +222,8 @@ static void Method(int number, string name)
     Console.WriteLine($"{name} получил урон. Текущее здоровье: {number}");
 }
 
-static void MethodYron(int damage)
+static void MethodYron(int damage, int health, string name)
 {
-    Console.WriteLine($"Получил урон {damage}");
+    Console.WriteLine($"{name} получил урон {damage}. Текущее здоровье: {health}");
+
 }
