@@ -8,16 +8,10 @@ using System.Xml.Linq;
 namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
-
-        public Cleric()
+    { 
+        public Cleric(): base(2, 10, "Cleric", 30)
         {
         }
-        public int Manna
-        {
-            get { return _manna; }
-            set { _manna = value; }
-        }
-
         public void selfHeal()
         {
             Console.WriteLine($"{Name} selfheal");

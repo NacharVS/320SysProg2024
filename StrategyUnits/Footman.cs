@@ -2,7 +2,7 @@
 {
     internal class Footman : MillitaryUnit
     {
-        public Footman() : base(2, 10, "Footman", 30)
+        public Footman() : base(2, 11, "Footman", 30)
         {
             
         }
