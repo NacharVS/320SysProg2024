@@ -2,10 +2,8 @@
 {
     internal class Peasant : Unit
     {
-
-        public Peasant() : base(30, "Peasant")
+        public Peasant(int currentHealth, string? nameOfClass, int defense) : base(currentHealth, nameOfClass, defense)
         {
-            
         }
 
         public void Build()

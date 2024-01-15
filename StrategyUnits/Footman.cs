@@ -4,7 +4,7 @@
     {
         private String _nameOfUnit;
 
-        public Footman(int currentHealth, string? nameOfClass, int defense) : base(currentHealth, nameOfClass, defense)
+        public Footman(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage) : base(60, "Footman", 2, 0, 7)
         {
         }
 

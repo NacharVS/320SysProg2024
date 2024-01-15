@@ -13,8 +13,9 @@ namespace StrategyUnits
             set { _nameOfUnit = value; }
         }
 
-        public Healer(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints) : base(40, "Healer", 1, 0, 2, 100)
+        public Healer(String nameOfUnit) : base(40, "Healer", 1, 0, 2, 100)
         {
+            nameOfUnit = _nameOfUnit;
         }
 
         public void HealSomebody(Unit unit)
@@ -74,7 +75,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($"Name: {this.NameOfUnit}\nUnit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage} \nManaPoints: {this.ManaPoints}");
+            Console.WriteLine($"Name: {NameOfUnit}\nUnit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage} \nManaPoints: {this.ManaPoints}");
         }
     }
 }
