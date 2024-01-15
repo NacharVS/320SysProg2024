@@ -1,7 +1,10 @@
-﻿namespace StrategyUnits
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
+        public delegate void InflictDamageDelegate(int damage);
         //Урон
         private int _damage;
 
@@ -19,7 +22,8 @@
             else
             {
                 unit.Health -= _damage;
-                Console.WriteLine($"Unit нанес {unit.Name} урон {_damage}");
+                //Console.WriteLine($"Unit нанес {unit.Name} урон {_damage}");
+                InflictDamageEvent.Invoke(_damage);
             }
         }
 
@@ -27,5 +31,7 @@
         {
             _damage = damage;
         }
+
+        public event InflictDamageDelegate InflictDamageEvent; //Ивет ИзмененияЗдоровья
     }
 }

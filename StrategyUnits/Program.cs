@@ -192,18 +192,37 @@
 Palladin palladin1 = new Palladin();
 palladin1.ShowInfo();
 palladin1.GetInfoManna();
+
 Footman footman1 = new Footman();
 Footman footman2 = new Footman();
-footman1.ShowInfo();
-palladin1.MagicAttack(footman1);
-footman1.ShowInfo();
-palladin1.MagicAttack(footman1);
-footman1.ShowInfo();
-palladin1.MagicAttack(footman1);
-footman1.ShowInfo();
-palladin1.MagicAttack(footman1);
-footman1.ShowInfo();
-palladin1.MagicAttack(footman1);
-palladin1.MagicAttack(footman2);
-palladin1.MagicAttack(footman2);
-palladin1.GetInfoManna();
+
+footman1.InflictDamageEvent += MethodYron;
+footman2.InflictDamageEvent += MethodYron;
+palladin1.InflictDamageEvent += MethodYron;
+
+footman1.HealthChangedEvent += Method;
+footman2.HealthChangedEvent += Method;
+palladin1.HealthChangedEvent += Method;
+
+footman2.InflictDamage(palladin1);
+//footman1.ShowInfo();
+//palladin1.MagicAttack(footman1);
+//footman1.ShowInfo();
+//palladin1.MagicAttack(footman1);
+//footman1.ShowInfo();
+//palladin1.MagicAttack(footman1);
+//footman1.ShowInfo();
+//palladin1.MagicAttack(footman1);
+//palladin1.MagicAttack(footman2);
+//palladin1.MagicAttack(footman2);
+//palladin1.GetInfoManna();
+
+static void Method(int number, string name)
+{
+    Console.WriteLine($"{name} получил урон. Текущее здоровье: {number}");
+}
+
+static void MethodYron(int damage)
+{
+    Console.WriteLine($"Получил урон {damage}");
+}
