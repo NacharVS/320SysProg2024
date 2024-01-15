@@ -64,8 +64,9 @@ namespace StrategyUnits
             if (_mana == 0)
                 Console.WriteLine("no Mana :( grustno");
         }
-        public void ShowMana()
+        public override void ShowInfo()
         {
+            base.ShowInfo();
             Console.WriteLine($"Healer's Mana: {_mana}/{maxMana}");
         }
     }

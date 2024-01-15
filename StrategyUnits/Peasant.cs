@@ -16,5 +16,10 @@
             quantityResources++;
             Console.WriteLine($"Quantity of resources is {quantityResources.ToString()}");
         }
+        public override void ShowInfo()
+        {
+            base.ShowInfo();
+            Console.WriteLine("");
+        }
     }
 }

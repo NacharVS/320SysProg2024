@@ -51,9 +51,9 @@
             Console.WriteLine("Is building something great");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_health}/{_maxHealth}");
+            Console.Write($"Unit: {_name} Health: {_health}/{_maxHealth} ");
         }
     }
 }
