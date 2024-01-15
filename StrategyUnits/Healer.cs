@@ -14,6 +14,7 @@ namespace StrategyUnits
 
         public void HealSomeone(Unit unit)
         {
+            Console.WriteLine($"{Name} начал лечить {unit.Name}");
             while (unit.MaxHealth - unit.Health > 0 && Mana > 1)
             {
                 unit.Health += 1;
@@ -22,7 +23,8 @@ namespace StrategyUnits
         }
 
         public void HealSelf()
-        {        
+        {
+            Console.WriteLine($"{Name} начал лечить сам себя");
             while (MaxHealth - Health > 0 && Mana > 0)
             {
                 Health += 2;
@@ -32,8 +34,8 @@ namespace StrategyUnits
 
         public override void InflictDamage(Unit unit)
         {
+            Console.WriteLine($"{Name} ударил топором {unit.Name}");
             base.InflictDamage(unit);
-            Console.WriteLine("Лекарь ударил топором");
         }
     }
 }

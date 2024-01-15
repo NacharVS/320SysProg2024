@@ -39,7 +39,7 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health} Mana: {Mana}");
+            Console.WriteLine($"Unit: {Name} Health: {Health}/{MaxHealth} Mana: {Mana}/{MaxMana}");
         }
     }
 }

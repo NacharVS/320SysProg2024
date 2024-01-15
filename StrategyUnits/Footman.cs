@@ -8,8 +8,8 @@
 
         public override void InflictDamage(Unit unit)
         {
+            Console.WriteLine($"{Name} ударил мечом {unit.Name}");
             base.InflictDamage(unit);
-            Console.WriteLine("Пехотинец ударил мечом");
         }
     }
 }

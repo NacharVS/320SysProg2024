@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StrategyUnits
 {
@@ -23,7 +24,14 @@ namespace StrategyUnits
 
         public virtual void InflictDamage(Unit unit)
         {
-            unit.Health -= _damage;
+            if (unit.Life)
+            {
+                unit.Health -= _damage;
+            }
+            else
+            {
+                Console.WriteLine($"Персонаж {unit.Name} мертв");
+            }
         }
     }
 }
