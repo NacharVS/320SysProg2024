@@ -4,17 +4,17 @@
     {
         public delegate void HealthchangedDelegate(string name, int oldHealth, int newHealth, int maxHealth);
 
-        private int _health;
         private string? _name;
+        private int _health;
         private int _maxHealth;
-        private bool _life;
+        private bool _alive;
 
-        public Unit(int maxHealth, string? name)
+        public Unit(string? name, int maxHealth)
         {
+            _name = name;
             _maxHealth = maxHealth;
             _health = _maxHealth;
-            _name = name;
-            _life = true;
+            _alive = true;
         }
 
         public string Name
@@ -23,10 +23,10 @@
             set { _name = value; }
         }
 
-        public bool Life
+        public bool Alive
         {
-            get { return _life; }
-            set { _life = value; }
+            get { return _alive; }
+            set { _alive = value; }
         }
 
         public int Health 
@@ -45,8 +45,8 @@
                 if (value <= 0)
                 {
                     _health = 0;
-                    _life = false;
-                    Console.WriteLine($"Персонаж {Name} умер");
+                    _alive = false;
+                    Console.WriteLine($"{Name} умер");
                 }
                 else if (value > _maxHealth)
                     _health = _maxHealth;
@@ -63,13 +63,13 @@
 
         public void Move()
         {
-            if (Life)
+            if (Alive)
             {
                 Console.WriteLine($"{Name} движется");
             }
             else
             {
-                Console.WriteLine($"Персонаж {Name} мертв");
+                Console.WriteLine($"{Name} мертв. Он не может передвигаться");
             }
         }
 

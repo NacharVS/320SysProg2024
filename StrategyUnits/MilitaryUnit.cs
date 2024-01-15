@@ -10,6 +10,7 @@ namespace StrategyUnits
     internal class MilitaryUnit : Unit
     {
         private int _damage;
+        private string _weapon;
 
         public int Damage
         {
@@ -17,20 +18,35 @@ namespace StrategyUnits
             set { _damage = value; }
         }
 
-        public MilitaryUnit(int maxHealth, string? name, int damage) : base(maxHealth, name)
+        public string Weapon
         {
-            _damage = damage;
+            get { return _weapon; }
+            set { _weapon = value; }
         }
 
-        public virtual void InflictDamage(Unit unit)
+        public MilitaryUnit(string? name, int maxHealth, int damage, string weapon) : base(name, maxHealth)
         {
-            if (unit.Life)
+            _damage = damage;
+            _weapon = weapon;
+        }
+
+        public void Attack(Unit unit)
+        {
+            if(Alive)
             {
-                unit.Health -= _damage;
+                if (unit.Alive)
+                {
+                    Console.WriteLine($"{Name} атаковал {Weapon} {unit.Name}");
+                    unit.Health -= _damage;
+                }
+                else
+                {
+                    Console.WriteLine($"{unit.Name} мертв. Его нельзя атаковать");
+                }
             }
             else
             {
-                Console.WriteLine($"Персонаж {unit.Name} мертв");
+                Console.WriteLine($"{Name} мертв. Он не может атаковать");
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StrategyUnits
 {
@@ -14,10 +15,26 @@ namespace StrategyUnits
         public int Energy
         {
             get { return _energy; }
-            set 
+            set
             {
-                if(value < 0)
+                if (value > Energy)
+                {
+                    //if (value > MaxEnergy)
+                    //    value = MaxEnergy;
+                    //Console.WriteLine($"Ал восстановил ману на {value - Mana}. Текущая мана {value}/{MaxMana}");
+                }
+                else
+                {
+                    int waste = Energy - value;
+                    if (value < 0)
+                        value = 0;
+                    Console.WriteLine($"В алтаре потратилась энергия {waste}. Текущая энергия алтаря {value}/{MaxEnergy}");
+                }
+                if (value <= 0)
+                {
                     _energy = 0;
+                    Console.WriteLine("В алтаре не осталось энергии");
+                }
                 else if(value > _maxEnergy)
                     _energy = _maxEnergy;
                 else
@@ -37,13 +54,39 @@ namespace StrategyUnits
             _maxEnergy = _energy;
         }
 
-        public void RestoreMana(MagicUnit magicUnit)
+        public void RestoreMana(MagicUnit unit)
         {
-            while (magicUnit.MaxMana - magicUnit.Mana > 0 && Energy > 0)
+            if (!unit.Alive)
             {
-                Energy -= 1;
-                magicUnit.Mana += 10;
-                Console.WriteLine($"{magicUnit.Name} восстановил ману");
+                Console.WriteLine($"{unit.Name} мертв. Он не может восстанавливать ману в алтаре");
+            }
+            else if (unit.Mana == unit.MaxMana)
+            {
+                Console.WriteLine($"{unit.Name} имеет полную ману. Не нужно восстанавливать в алтаре");
+            }
+            else if (Energy < 10)
+            {
+                Console.WriteLine($"Алтарь имеет энергию {Energy}/{MaxEnergy}. Для восстановаления маны нужно минимум 10 очков энергии алтаря");
+            }
+            else
+            {
+                Console.WriteLine($"{unit.Name} восстанавливает ману в алтаре");
+                int needRestore = unit.MaxMana - unit.Mana;
+                while(needRestore % 10 != 0)
+                {
+                    needRestore++;
+                }
+                int possibleRestore = Energy * 10;
+                if (needRestore <= possibleRestore)
+                {
+                    unit.Mana = unit.MaxMana;
+                    Energy -= needRestore / 10;
+                }
+                else
+                {
+                    unit.Mana += possibleRestore;
+                    Energy -= possibleRestore / 10;
+                }
             }
         }
 

@@ -2,14 +2,8 @@
 {
     internal class Footman : MilitaryUnit
     {
-        public Footman() : base(60, "Footman", 7)
+        public Footman() : base("Footman", 60, 7, "мечом")
         {
-        }
-
-        public override void InflictDamage(Unit unit)
-        {
-            Console.WriteLine($"{Name} ударил мечом {unit.Name}");
-            base.InflictDamage(unit);
         }
     }
 }
