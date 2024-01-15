@@ -2,11 +2,15 @@
 {
     internal class Unit
     {
+        public delegate void HealthIncreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
+        public delegate void HealthDecreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
+
         private int _currentHealth;
         private int _maxHealth;
         private string? _nameOfClass;
         private bool _isDead = false;
         private int _defense;
+
         public int Defense
         {
             get { return _defense; }
@@ -30,9 +34,19 @@
                 }
                 else
                     if (value > MaxHealth)
-                    _currentHealth = MaxHealth;
+                        _currentHealth = MaxHealth;
                 else
+                {
+                    if (_currentHealth < value)
+                    {
+                        HealthIncreasedEvent.Invoke(_currentHealth, value, _maxHealth);
+                    }
+                    else
+                    {
+                        HealthDecreasedEvent.Invoke(_currentHealth, value, _maxHealth);
+                    }
                     _currentHealth = value;
+                }
             }
         }
         public int MaxHealth
@@ -58,5 +72,8 @@
         {
             Console.WriteLine($"Unit: {_nameOfClass} Health: {_currentHealth} MaxHealth: {_maxHealth} Defense: {_defense}");
         }
+
+        public event HealthIncreasedDelegate HealthIncreasedEvent;
+        public event HealthDecreasedDelegate HealthDecreasedEvent;
     }
 }

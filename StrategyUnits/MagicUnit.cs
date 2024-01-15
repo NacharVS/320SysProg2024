@@ -12,7 +12,7 @@ namespace StrategyUnits
 
         public MagicUnit(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage)
         {
-            manaPoints = _manaPoints;
+            ManaPoints = manaPoints;
         }
 
         public int ManaPoints

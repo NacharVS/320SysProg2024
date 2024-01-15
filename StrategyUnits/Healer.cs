@@ -5,17 +5,17 @@ namespace StrategyUnits
 {
     internal class Healer : MagicUnit
     {
-        private String _nameOfUnit;
+        private string? _nameOfUnit;
 
-        public String NameOfUnit
+        public string NameOfUnit
         {
             get { return _nameOfUnit; }
             set { _nameOfUnit = value; }
         }
 
-        public Healer(String nameOfUnit) : base(40, "Healer", 1, 0, 2, 100)
+        public Healer(string? nameOfUnit) : base(40, "Healer", 1, 0, 2, 100)
         {
-            nameOfUnit = _nameOfUnit;
+            NameOfUnit = nameOfUnit;
         }
 
         public void HealSomebody(Unit unit)
@@ -59,12 +59,12 @@ namespace StrategyUnits
                 {
                     this.ManaPoints--;
                     int finalHealth = CurrentHealth + 2 >= MaxHealth ? MaxHealth : CurrentHealth + 2;
-                    Console.WriteLine($"Healed from {CurrentHealth} to {finalHealth}; Mana left: {this.ManaPoints}");
+                    Console.WriteLine($"Healed from {CurrentHealth} to {finalHealth}; Mana left: {this.ManaPoints}\n");
                     CurrentHealth += 2;
                 }
                 if (CurrentHealth >= MaxHealth)
                 {
-                    Console.WriteLine($"Healed successfully.");
+                    //Console.WriteLine($"Healed successfully.");
                     break;
                 }
             }
@@ -75,7 +75,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($"Name: {NameOfUnit}\nUnit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage} \nManaPoints: {this.ManaPoints}");
+            Console.WriteLine($"Name: {NameOfUnit}\nUnit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage} \nManaPoints: {this.ManaPoints}\n");
         }
     }
 }

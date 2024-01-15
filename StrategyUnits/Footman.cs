@@ -4,8 +4,9 @@
     {
         private String _nameOfUnit;
 
-        public Footman(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage) : base(60, "Footman", 2, 0, 7)
+        public Footman(String nameOfUnit) : base(60, "Footman", 2, 0, 7)
         {
+            nameOfUnit = _nameOfUnit;
         }
 
         public String NameOfUnit
@@ -19,9 +20,10 @@
             int appliedDamage = rnd.Next(this.MinDamage, this.MaxDamage) - attackedUnit.Defense;
             if (appliedDamage >= 0)
             {
+                Console.WriteLine($"Attack successful. You've applied {appliedDamage} DP.\n");
                 attackedUnit.CurrentHealth -= appliedDamage;
-                Console.WriteLine($"Attack successful. You've applied {appliedDamage} DP.");
             }
         }
+
     }
 }

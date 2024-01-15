@@ -32,11 +32,13 @@ namespace StrategyUnits
         public virtual void Attack(Unit attackedUnit)
         {
             Console.WriteLine("Unit was attacked with the damage of 0.");
+            
         }
 
         public override void ShowInfo()
         {
             Console.WriteLine($"Unit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage}");
         }
+
     }
 }
