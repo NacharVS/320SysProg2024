@@ -1,32 +1,12 @@
 ﻿namespace StrategyUnits
 {
-    internal class Footman : Unit
+    internal class Footman : MillitaryUnit
     {
-        private int _damage;
-
-        public int Damage
+        public Footman() : base(2, 10, "Footman", 30)
         {
-            get { return _damage; }
-            set { _damage = value; }
+            
         }
 
-        public Footman() : base(60, "Footman")
-        {
-            _damage = 7;
-        }
-
-        public void InflictDamage(Unit unit)
-        {
-            if (unit.isAlive)
-            {
-                unit.Health -= _damage;
-            }
-            else
-            {
-                Console.WriteLine("Unit is dead");
-            }
-
-        }
 
     }
 }

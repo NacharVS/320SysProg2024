@@ -7,12 +7,10 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Cleric : Unit
-    {
-        private int _manna;
-        public Cleric() : base(30, "Cleric")
+    internal class Cleric : MagicUnit
+
+        public Cleric()
         {
-            _manna = 40;
         }
         public int Manna
         {
@@ -54,7 +52,7 @@ namespace StrategyUnits
             }
         }
 
-        public void ShowInfo()
+        public override void ShowInfo()
         {
             Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}");
         }
