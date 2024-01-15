@@ -46,7 +46,8 @@
             Console.WriteLine("Is moving");
         }
 
-        public void ShowInfo()
+
+        public virtual void ShowInfo()
         {
             if (isAlive) 
             {

@@ -7,19 +7,12 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Cleric : Unit
+    internal class Cleric : MagicUnit
     {
-        private int _manna;
-        public Cleric() : base(30, "Cleric")
+        public Cleric() : base(70, 2, 15, 50, "Cleric")
         {
-            _manna = 40;
         }
-        public int Manna
-        {
-            get { return _manna; }
-            set { _manna = value; }
-        }
-
+        
         public void selfHeal()
         {
             Console.WriteLine($"{Name} selfheal");
@@ -54,7 +47,7 @@ namespace StrategyUnits
             }
         }
 
-        public void ShowInfo()
+        public override void ShowInfo()
         {
             Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}" );
         }
