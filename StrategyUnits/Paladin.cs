@@ -15,7 +15,7 @@ namespace StrategyUnits
 
         public void FireBall(Unit unit)
         {
-            Health -= 12;
+            unit.Health -= 12;
             Mana -= 3;
             Console.WriteLine("Атаковал огненным шаром");
         }
