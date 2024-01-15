@@ -31,7 +31,7 @@ namespace StrategyUnits
             set { _maxEnergy = value; }
         }
 
-        public Cleric() : base(60, "Cleric")
+        public Cleric() : base("Cleric", 60)
         {
            _maxEnergy = 60;
            _nowEnergy = _maxEnergy;

@@ -6,13 +6,13 @@ Peasant ps1 = new Peasant();
 Peasant ps2 = new Peasant();
 Cleric cleric = new Cleric();
 
-ps1.ShowInfo();
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps2);
+ps2.ShowInfo();
+//footman.Attack(ps1);
+//footman.InflictDamage(ps1);
+//footman.InflictDamage(ps1);
+//footman.InflictDamage(ps1);
+//footman.InflictDamage(ps1);
+footman.Attack(ps2);
 ps2.ShowInfo();
 
 cleric.HealOther(ps2);

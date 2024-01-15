@@ -5,7 +5,7 @@
         private int _health;
         private string? _name;
         public int MaxHealth { get; private set; }
-        public Unit(int health, string? name)
+        public Unit(string? name,int health)
         {
             _health = health;
             _name = name;
@@ -49,7 +49,7 @@
             Console.WriteLine("Is moving");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
             Console.WriteLine($"Unit: {_name} Health: {_health}");
         }
