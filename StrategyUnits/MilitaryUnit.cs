@@ -31,7 +31,7 @@ namespace StrategyUnits
         public virtual void Attack(Unit unit)
         {
             unit.Health -= _damage;
-            Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} дубинкой");
+            Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name}");
         }
     }
 }

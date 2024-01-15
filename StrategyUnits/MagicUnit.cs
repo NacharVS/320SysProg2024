@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StrategyUnits
 {
@@ -29,12 +30,17 @@ namespace StrategyUnits
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
-        public MagicUnit(string? name, int health, int damage, int maxEnergy, int nowEnergy) : base(name, health, damage) 
-        { 
+        public MagicUnit(string? name, int health, int damage, int maxEnergy, int nowEnergy) : base(name, health, damage)
+        {
             _maxEnergy = maxEnergy;
             _nowEnergy = nowEnergy;
         }
 
+        public override void Attack(Unit unit)
+        {
+            unit.Health -= Damage;
+            Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} ножом");
+        }
         //За одно очко энергии убавляется 3 очка жизни
         public virtual void MagicAttack(Unit unit)
         {
@@ -43,17 +49,20 @@ namespace StrategyUnits
                 Console.WriteLine($"Персонаж {unit.Name} мертв! Его нельзя атаковать!");
                 return;
             }
-            while (_nowEnergy > 0)
+            
+            while (unit.DiedUnit == false || _nowEnergy > 0)
             {
-                while (unit.Health > 0)
-                {
-                    Console.WriteLine($"");
-                    return;
-                }
-                _nowEnergy -= 1;
-                unit.Health -= 3;
+                 _nowEnergy -= 1;
+                 unit.Health -= 3;
             }
-            Console.WriteLine($"");
+            Console.WriteLine($"Персонажу {unit.Name} нанесено максимальное количество урона. Он мертв.");
         }
+
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {Name} Health: {Health} Energy: {_nowEnergy}");
+        }
+
     }
 }
+
