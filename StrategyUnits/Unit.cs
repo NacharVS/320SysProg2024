@@ -2,6 +2,8 @@
 {
     internal class Unit
     {
+        public delegate void HealthChangedDelegate(string name, int health, int newHealth);
+        
         private int _health;
         private string? _name;
 
@@ -22,7 +24,15 @@
         public int Health 
         { 
             get => _health;
-            set { 
+            set {
+                if (value > Health)
+                {
+                    HealthIncreasedEvent.Invoke(Name, Health, value);
+                }
+                else
+                {
+                    HealthDecreasedEvent.Invoke(Name, Health, value);
+                }
                 if (value < 0)
                 {
                     _health = 0;
@@ -46,5 +56,8 @@
         {
             Console.WriteLine($"Unit: {_name} Health: {_health}");
         }
+
+        public event HealthChangedDelegate HealthIncreasedEvent;
+        public event HealthChangedDelegate HealthDecreasedEvent;
     }
 }
