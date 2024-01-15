@@ -2,23 +2,23 @@
 
 Footman footman = new Footman();
 Footman footman2 = new Footman();
-Peasant peasant = new Peasant();
 Cleric cleric = new Cleric();
-footman2.ShowInfo();
+Altar altar = new Altar();
+Paladin paladin = new Paladin(2);
+
+footman2.HealthChangedEvent += ShowInfo;
+cleric.HealthChangedEvent += ShowInfo;
+paladin.HealthChangedEvent += ShowInfo;
 footman.Attack(footman2);
-footman2.ShowInfo();
-footman.Attack(footman2);
-footman2.ShowInfo();
 cleric.HealSomebody(footman2);
-footman2.ShowInfo();
 footman.Attack(cleric);
-cleric.ShowInfo();
-cleric.RecoveryEnergy(cleric);
 cleric.HealSelf(cleric);
-cleric.ShowInfo();
-peasant.PlowField();
-peasant.PlowField();
-peasant.FinishWork();
-peasant.FinishWork();
-footman.Attack(peasant);
-peasant.ShowInfo();
+altar.RestoreEP(cleric);
+cleric.HealSelf(cleric);
+paladin.MagicAttack(footman2);
+
+
+static void ShowInfo(string? name, int health)
+{
+    Console.WriteLine($"Health changed {name} to {health}");
+}
