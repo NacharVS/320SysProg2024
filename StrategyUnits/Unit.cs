@@ -2,6 +2,7 @@
 {
     internal class Unit
     {
+        public delegate void HealthChangedDelegate(string? name, int health);
         private int _currentHealth;
         private string? _name;
         private int _maxHealth;
@@ -34,8 +35,8 @@
                         _currentHealth = MaxHealth;
                     else
                         _currentHealth = value;
-
                 }
+                HealthChangedEvent.Invoke(_name, _currentHealth);
             }
         }
 
@@ -64,5 +65,9 @@
         {
             Console.WriteLine($"Unit: {_name} Health: {_currentHealth}");
         }
+
+        public event HealthChangedDelegate HealthIncreasedEvent;
+        public event HealthChangedDelegate HealthDecreasedEvent;
+        public event HealthChangedDelegate HealthChangedEvent;
     }
 }

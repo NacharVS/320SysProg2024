@@ -3,18 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StrategyUnits
 {
     internal class Altar
     {
 		private int _currentEnergy;
-
+        public Altar()
+        {
+            _currentEnergy = 100;
+        }
 		public int CurrentEnergy
 		{
 			get { return _currentEnergy; }
-			set { _currentEnergy = value; }
-		}
+            set
+            {
+                if (value < 0)
+                {
+                    _currentEnergy = 0;
+                }
+                else
+                {
+                    if (value > _maxEnergy)
+                        _currentEnergy = _maxEnergy;
+                    else
+                        _currentEnergy = value;
+                }
+            }
+        }
 		private int _maxEnergy;
 
 		public int MaxEnergy
@@ -37,9 +54,24 @@ namespace StrategyUnits
             }
 		}
 
-        private void RestoreEP(MagicUnit magicUnit)
+        public void RestoreEP(MagicUnit magicUnit)
         {
-
+            var currentEnergyBeforeRestore = magicUnit.CurrentEnergy;
+            while (_currentEnergy > 0)
+            {
+                if (magicUnit.MaxEnergy <= magicUnit.CurrentEnergy)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"{magicUnit.Name} увеличил ману с {currentEnergyBeforeRestore} до {magicUnit.CurrentEnergy}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return;
+                }
+                magicUnit.CurrentEnergy += 10;
+                _currentEnergy -= 1;
+            }
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"{magicUnit.Name} увеличил ману с {currentEnergyBeforeRestore} до {magicUnit.CurrentEnergy}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
 	}

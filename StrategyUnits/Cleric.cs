@@ -66,13 +66,6 @@ namespace StrategyUnits
             Console.WriteLine($"{unit.Name} исцелился с {healthBeforeHealth} до {unit.CurrentHealth}");
             Console.ForegroundColor = ConsoleColor.White;
         }
-        public void RecoveryEnergy(Cleric cleric)
-        {
-            cleric.CurrentEnergy = MaxEnergy;
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"{cleric.Name} энергия восстановлена до {cleric.CurrentEnergy}");
-            Console.ForegroundColor = ConsoleColor.White;
-        }
         public override void ShowInfo()
         {
             Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHealth} Energy: {this.CurrentEnergy}");
