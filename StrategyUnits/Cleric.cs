@@ -2,52 +2,92 @@
 {
     internal class Cleric : Unit
     {
-        private int _selfheal;
-        private int _otherheal;
         private int _mana;
-
-        public int SelfHeal
-        {
-            get { return _selfheal; }
-            set { _selfheal = value; }
-        }
-
-        public int OtherHeal
-        {
-            get { return _otherheal; }
-            set { _otherheal = value; }
-        }
-
+        public int MaximumMana { get; private set; }
         public int Mana
         {
             get { return _mana; }
-            set { _mana = value; }
-        }
-        
-        public Cleric() : base(50, 50, "Cleric")
-        {
-            _selfheal = 2;
-            _otherheal = 1;
-            _mana = 100;
-        }
-
-        public void InflictHeal(Unit unit)
-        {
-            while (_mana > 0)
+            set
             {
-                if (unit.CurrentHP < _maxHP && unit.CurrentHP > 0)
+                if (value < 0)
                 {
-                    unit.CurrentHP += _otherheal;
-                    _mana = _mana - 2;
+                    _mana = 0;
                 }
-
-                if (CurrentHP < _maxHP && unit.CurrentHP > 0)
+                else
                 {
-                    CurrentHP += _selfheal;
-                    _mana = _mana - 1;
-                } 
+                    if (value > MaximumMana)
+                    {
+                        _mana = MaximumMana;
+                    }
+                    else
+                    {
+                        _mana = value;
+                    }
+                }
             }
-            Console.WriteLine("You haven't mana.");
+        }
+
+        public Cleric() : base(50, "Cleric")
+        {
+            _mana = 3;
+        }
+        public void SelfHeal(Unit unit)
+        {
+            if (DeadUnit == false)
+            {
+                if (_mana > 0)
+                {
+                    if (unit.CurrentHP < unit.MaximumHP)
+                    {
+                        CurrentHP += 2;
+                        _mana--;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have enough HP.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You don't have mana.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("You are dead. You can't heal yourself.");
+                return;
+            }
+        }
+        public void OtherHeal(Unit unit)
+        {
+            if (unit.DeadUnit == false)
+            {
+                if (_mana > 0)
+                {
+                    if (unit.CurrentHP < unit.MaximumHP)
+                    {
+                        unit.CurrentHP++;
+                        _mana -= 2;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unit has enough HP.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You don't have mana.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unit is dead. You can't heal him.");
+                return;
+            }
+        }
+        public void ShowInfoCleric()
+        {
+            Console.WriteLine($"Mana: {_mana}");
         }
     }
 }

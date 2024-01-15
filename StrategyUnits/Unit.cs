@@ -3,14 +3,16 @@
     internal class Unit
     {
         private string? _name;
-        private int currentHP;
-        public int _maxHP { get; private set; }
+        private int _currentHP;
+        private bool _deadUnit;
+        public int MaximumHP { get; private set; }
 
-        public Unit(int maxHP, int hp, string? name)
+        public Unit(int maxHP, string? name)
         {
             _name = name;
-            _maxHP = maxHP;
-            currentHP = hp;
+            MaximumHP = maxHP;
+            _currentHP = MaximumHP;
+            _deadUnit = false;
         }
 
         public string Name
@@ -19,43 +21,44 @@
             set { _name = value; }
         }
 
-        public int MaxHP
-        {
-            get => _maxHP;
-            set => _maxHP = value;
-        }
-
         public int CurrentHP
         { 
-            get => currentHP; 
+            get => _currentHP; 
             set
             {
                 if (value < 0)
                 {
-                    currentHP = 0;
+                    _currentHP = 0;
+                    _deadUnit = true;
+                    Console.WriteLine($"Unit {Name} is dead.");
                 }
                 else
                 {
-                    if (value > MaxHP)
+                    if (value > MaximumHP)
                     {
-                        currentHP = MaxHP;
+                        _currentHP = MaximumHP;
+                        Console.WriteLine("Unit has MaxHP.");
                     }
                     else
                     {
-                        currentHP = value; 
+                        _currentHP = value;
                     }
                 }
             }
         }
-
+        public bool DeadUnit
+        {
+            get { return _deadUnit; }
+            set { _deadUnit = value; }
+        }
         public void Move()
         {
             Console.WriteLine("Is moving");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {currentHP} MaxHealth: {_maxHP}");
+            Console.WriteLine($"Unit: {_name} Health: {_currentHP} MaxHealth: {MaximumHP}");
         }
     }
 }

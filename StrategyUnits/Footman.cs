@@ -10,7 +10,7 @@
             set { _damage = value; }
         }
 
-        public Footman() : base(60, 60, "Footman")
+        public Footman() : base(60, "Footman")
         {
             _damage = 7;
         }
@@ -19,6 +19,5 @@
         {
             unit.CurrentHP -= _damage;
         }
-
     }
 }
