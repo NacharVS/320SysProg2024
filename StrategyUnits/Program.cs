@@ -163,28 +163,36 @@
 //cleric4.HillOthers(footman2);
 //cleric4.GetInfoCleric();
 
-//Создание клерика5 для проверки манны
-Cleric cleric5 = new Cleric();
-cleric5.GetInfoCleric();
+////Создание клерика5 для проверки манны
+//Cleric cleric5 = new Cleric();
+//cleric5.GetInfoCleric();
 
-//Создание футмена для нанесения урона, чтобы потом восстановить здоровье, тем самым потратив манну клерику 5
-Footman footman2 = new Footman();
-Peasant ps1 = new Peasant();
+////Создание футмена для нанесения урона, чтобы потом восстановить здоровье, тем самым потратив манну клерику 5
+//Footman footman2 = new Footman();
+//Peasant ps1 = new Peasant();
 
-footman2.InflictDamage(ps1);
-footman2.InflictDamage(ps1);
-footman2.InflictDamage(ps1);
-ps1.ShowInfo();
+//footman2.InflictDamage(ps1);
+//footman2.InflictDamage(ps1);
+//footman2.InflictDamage(ps1);
+//ps1.ShowInfo();
 
-//Хилл
-cleric5.HillOthers(ps1);
-ps1.ShowInfo();
-cleric5.GetInfoCleric();
+////Хилл
+//cleric5.HillOthers(ps1);
+//ps1.ShowInfo();
+//cleric5.GetInfoCleric();
 
-//Проверка восстановления через 5 секунд
-cleric5.RegenerationManna(cleric5);
-cleric5.GetInfoCleric();
-cleric5.GetInfoCleric();
-cleric5.GetInfoCleric();
-cleric5.GetInfoCleric();
-cleric5.GetInfoCleric();
+////Проверка восстановления через 5 секунд
+//cleric5.GetInfoCleric();
+//cleric5.GetInfoCleric();
+//cleric5.GetInfoCleric();
+//cleric5.GetInfoCleric();
+//cleric5.GetInfoCleric();
+
+//Создание паладдина
+Palladin palladin1 = new Palladin();
+palladin1.ShowInfo();
+palladin1.GetInfoManna();
+Footman footman1 = new Footman();
+footman1.ShowInfo();
+palladin1.MagicAttack(footman1);
+footman1.ShowInfo();
