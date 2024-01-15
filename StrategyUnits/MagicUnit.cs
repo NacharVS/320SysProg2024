@@ -3,7 +3,13 @@
     internal class MagicUnit : MilitaryUnit
     {
         private int _manna;
-        public int MaxManna { get; private set; }
+        private int _MaxManna;
+        
+        public int MaxManna
+        {
+            get { return _MaxManna; }
+            set { _MaxManna = value; }
+        }
 
 
         public int Manna
@@ -21,9 +27,10 @@
             }
         }
 
-        public MagicUnit(int health, string? name, int damage, int manna) : base (health, name, damage)
+        public MagicUnit(int health, string? name, int damage, int MaxManna) : base (health, name, damage)
         {
-            _manna = manna;
+            _MaxManna = MaxManna;
+            _manna = MaxManna;
         }
 
         public void GetInfoManna()

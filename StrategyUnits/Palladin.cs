@@ -13,18 +13,20 @@
             {
                 Console.WriteLine("Palladin мёртв.");
             }
+            else if (Manna < 5)
+            {
+                Console.WriteLine("Недостаточно манны.");
+            }
             else
             {
-                if (Manna < 5)
-                {
-                    Console.WriteLine("Недостаточно манны.");
-                }
-                else
-                {
-                    unit.Health -= 15;
-                    Manna -= 5;
-                    Console.WriteLine($"Palladin нанес урон 15 {unit.Name}");
-                }
+                    if(unit.Health == 0)
+                    { Console.WriteLine($"Урон невозможен. {unit.Name} мёртв."); }
+                    else
+                    {
+                        unit.Health -= 15;
+                        Manna -= 5;
+                        Console.WriteLine($"Palladin нанес Магический урон {unit.Name}");
+                    }
             }
         }
     }
