@@ -59,34 +59,34 @@ namespace StrategyUnits
             if (!unit.Alive)
             {
                 Console.WriteLine($"{unit.Name} мертв. Он не может восстанавливать ману в алтаре");
+                return;
             }
-            else if (unit.Mana == unit.MaxMana)
+            if (unit.Mana == unit.MaxMana)
             {
                 Console.WriteLine($"{unit.Name} имеет полную ману. Не нужно восстанавливать в алтаре");
+                return;
             }
-            else if (Energy < 10)
+            if (Energy < 1)
             {
-                Console.WriteLine($"Алтарь имеет энергию {Energy}/{MaxEnergy}. Для восстановаления маны нужно минимум 10 очков энергии алтаря");
+                Console.WriteLine($"Алтарь имеет энергию {Energy}/{MaxEnergy}. Для восстановаления маны нужно минимум 1 очко энергии алтаря");
+                return;
+            }
+            Console.WriteLine($"{unit.Name} восстанавливает ману в алтаре");
+            int needRestore = unit.MaxMana - unit.Mana;
+            while(needRestore % 10 != 0)
+            {
+                needRestore++;
+            }
+            int possibleRestore = Energy * 10;
+            if (needRestore <= possibleRestore)
+            {
+                unit.Mana = unit.MaxMana;
+                Energy -= needRestore / 10;
             }
             else
             {
-                Console.WriteLine($"{unit.Name} восстанавливает ману в алтаре");
-                int needRestore = unit.MaxMana - unit.Mana;
-                while(needRestore % 10 != 0)
-                {
-                    needRestore++;
-                }
-                int possibleRestore = Energy * 10;
-                if (needRestore <= possibleRestore)
-                {
-                    unit.Mana = unit.MaxMana;
-                    Energy -= needRestore / 10;
-                }
-                else
-                {
-                    unit.Mana += possibleRestore;
-                    Energy -= possibleRestore / 10;
-                }
+                unit.Mana += possibleRestore;
+                Energy -= possibleRestore / 10;
             }
         }
 

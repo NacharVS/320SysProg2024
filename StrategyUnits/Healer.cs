@@ -8,7 +8,7 @@ namespace StrategyUnits
 {
     internal class Healer : MagicUnit
     {
-        public Healer() : base("Healer", 40, 3, "топором", 60)
+        public Healer() : base("Healer", 40, 3, "посохом", 60)
         {
         }
 
@@ -17,68 +17,69 @@ namespace StrategyUnits
             if (!Alive)
             {
                 Console.WriteLine($"{Name} мертв. Он не может лечить");
+                return;
             }
-            else if (!unit.Alive)
+            if (!unit.Alive)
             {
                 Console.WriteLine($"{unit.Name} мертв. Его нельзя лечить");
+                return;
             }
-            else if(unit.Health == unit.MaxHealth)
+            if(unit.Health == unit.MaxHealth)
             {
-                Console.WriteLine($"{unit.Name} имеет полное здоровье. Его не нужно лечить");
+                Console.WriteLine($"{unit.Name} имеет полное здоровье. Лечение не нужно");
+                return;
             }
-            else if(Mana < 2)
+            if(Mana < 2)
             {
                 Console.WriteLine($"{Name} имеет ману {Mana}/{MaxMana}. Для лечения другого нужно минимум 2 очка маны");
+                return;
+            }
+            Console.WriteLine($"{Name} начал лечить {unit.Name}");
+            int needHeal = unit.MaxHealth - unit.Health;
+            int possibleHeal = Mana / 2;
+            if( needHeal <= possibleHeal)
+            {
+                unit.Health = unit.MaxHealth;
+                Mana -= needHeal * 2;
             }
             else
             {
-                Console.WriteLine($"{Name} начал лечить {unit.Name}");
-                int needHeal = unit.MaxHealth - unit.Health;
-                int possibleHeal = Mana / 2;
-                if( needHeal <= possibleHeal)
-                {
-                    unit.Health = unit.MaxHealth;
-                    Mana -= needHeal * 2;
-                }
-                else
-                {
-                    unit.Health += possibleHeal;
-                    Mana -= possibleHeal * 2;
-                }
+                unit.Health += possibleHeal;
+                Mana -= possibleHeal * 2;
             }
         }
 
         public void HealSelf()
         {
-            if (!Alive)
+            if(!Alive)
             {
                 Console.WriteLine($"{Name} мертв. Он не может лечить");
+                return;
             }
-            else if (Health == MaxHealth)
+            if (Health == MaxHealth)
             {
-                Console.WriteLine($"{Name} имеет полное здоровье. Не нужно лечить");
+                Console.WriteLine($"{Name} имеет полное здоровье. Лечение не нужно");
+                return;
             }
-            else if (Mana == 0)
+            if (Mana == 0)
             {
                 Console.WriteLine($"{Name} имеет ману 0/{MaxMana}. Для лечения себя нужно минимум 1 очко маны");
+                return;
+            }
+            Console.WriteLine($"{Name} начал лечить сам себя");
+            int needHeal = MaxHealth - Health;
+            if (needHeal % 2 != 0)
+                needHeal += 1;
+            int possibleHeal = Mana * 2;
+            if (needHeal <= possibleHeal)
+            {
+                Health = MaxHealth;
+                Mana -= needHeal / 2;
             }
             else
             {
-                Console.WriteLine($"{Name} начал лечить сам себя");
-                int needHeal = MaxHealth - Health;
-                if (needHeal % 2 != 0)
-                    needHeal += 1;
-                int possibleHeal = Mana * 2;
-                if (needHeal <= possibleHeal)
-                {
-                    Health = MaxHealth;
-                    Mana -= needHeal / 2;
-                }
-                else
-                {
-                    Health += possibleHeal;
-                    Mana -= possibleHeal / 2;
-                }
+                Health += possibleHeal;
+                Mana -= possibleHeal / 2;
             }
         }
     }

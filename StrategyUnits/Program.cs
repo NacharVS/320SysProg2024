@@ -1,11 +1,11 @@
 ﻿using StrategyUnits;
-
+using System.Net.Mail;
 
 static void IncreaseHealth(string name, int oldHealth, int newHealth, int maxHealth)
 {
     if(newHealth > maxHealth)
         newHealth = maxHealth;
-    Console.WriteLine($"{name} восстановил здоровье на {newHealth - oldHealth}. Текущее здоровье {newHealth}/{maxHealth}");
+    Console.WriteLine($"{name} восстановил здоровье на {newHealth - oldHealth}. Текущее здоровье:{newHealth}/{maxHealth}");
 }
 
 static void DecreaseHealth(string name, int oldHealth, int newHealth, int maxHealth)
@@ -13,7 +13,7 @@ static void DecreaseHealth(string name, int oldHealth, int newHealth, int maxHea
     int damage = oldHealth - newHealth;
     if (newHealth < 0)
         newHealth = 0;
-    Console.WriteLine($"{name} получил урон {damage}. Текущее здоровье {newHealth}/{maxHealth}");
+    Console.WriteLine($"{name} получил урон {damage}. Текущее здоровье: {newHealth}/{maxHealth}");
 }
 
 Peasant peasant = new Peasant();
@@ -35,28 +35,20 @@ peasant.ShowInfo();
 footman.ShowInfo();
 healer.ShowInfo();
 palladin.ShowInfo();
-footman.Attack(peasant);
-footman.Attack(peasant);
-footman.Attack(peasant);
-footman.Attack(peasant);
-healer.HealSomeone(peasant);
-footman.Attack(peasant);
-footman.Attack(peasant);
-footman.Attack(peasant);
-footman.Attack(peasant);
-footman.Attack(peasant);
-healer.HealSomeone(peasant);
-footman.Attack(peasant);
-healer.Attack(footman);
-healer.Attack(footman);
-altar.RestoreMana(healer);
-palladin.Attack(footman);
+palladin.Attack(peasant);
+palladin.FireAttack(peasant);
+palladin.FireAttack(peasant);
+palladin.FireAttack(peasant);
+palladin.FireAttack(peasant);
+palladin.FireAttack(peasant);
 palladin.FireAttack(footman);
 palladin.FireAttack(footman);
 palladin.FireAttack(footman);
 palladin.FireAttack(footman);
 altar.RestoreMana(palladin);
-altar.RestoreMana(palladin);
 palladin.FireAttack(footman);
-altar.RestoreMana(palladin);
-footman.Attack(palladin);
+palladin.FireAttack(footman);
+palladin.FireAttack(footman);
+palladin.FireAttack(footman);
+palladin.FireAttack(footman);
+palladin.FireAttack(footman);

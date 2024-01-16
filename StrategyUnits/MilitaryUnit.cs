@@ -32,22 +32,18 @@ namespace StrategyUnits
 
         public void Attack(Unit unit)
         {
-            if(Alive)
-            {
-                if (unit.Alive)
-                {
-                    Console.WriteLine($"{Name} атаковал {Weapon} {unit.Name}");
-                    unit.Health -= _damage;
-                }
-                else
-                {
-                    Console.WriteLine($"{unit.Name} мертв. Его нельзя атаковать");
-                }
-            }
-            else
+            if (!Alive)
             {
                 Console.WriteLine($"{Name} мертв. Он не может атаковать");
+                return;
             }
+            if (!unit.Alive)
+            {
+                Console.WriteLine($"{unit.Name} мертв. Не нужно больше его атаковать");
+                return;
+            }
+            Console.WriteLine($"{Name} атаковал {Weapon} {unit.Name}");
+            unit.Health -= Damage;
         }
     }
 }

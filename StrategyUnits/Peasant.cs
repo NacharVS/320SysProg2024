@@ -5,5 +5,6 @@
         public Peasant() : base("Peasant", 30)
         {
         }
+
     }
 }

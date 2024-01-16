@@ -63,19 +63,17 @@
 
         public void Move()
         {
-            if (Alive)
-            {
-                Console.WriteLine($"{Name} движется");
-            }
-            else
+            if (!Alive)
             {
                 Console.WriteLine($"{Name} мертв. Он не может передвигаться");
+                return;
             }
+            Console.WriteLine($"{Name} движется");
         }
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health}/{MaxHealth}");
+            Console.WriteLine($"Unit: {Name} Health: {Health}/{MaxHealth} ");
         }
 
         public event HealthchangedDelegate HealthIncreasedEvent;
