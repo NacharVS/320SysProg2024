@@ -4,7 +4,7 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
-        public delegate void InflictDamageDelegate(int damage, int health, string name);
+        public delegate void InflictDamageDelegate(int damage, int health, string name, string name_nap);
         //Урон
         private int _damage;
 
@@ -23,7 +23,7 @@ namespace StrategyUnits
             {
                 unit.Health -= _damage;
                 //Console.WriteLine($"Unit нанес {unit.Name} урон {_damage}");
-                InflictDamageEvent.Invoke(_damage, unit.Health, unit.Name);
+                InflictDamageEvent.Invoke(_damage, unit.Health, unit.Name, Name);
             }
         }
 
