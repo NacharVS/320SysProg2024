@@ -2,21 +2,20 @@
 {
     internal class Unit
     {
+        public delegate void HealthChangedDelegate(int health, string name, int action, int? mana);
+
+        public event HealthChangedDelegate HealthChangeEvent;
 
         private int _health;
         private string? _name;
-        private int _mana;
         public int _maxHealth {  get; set; }
-        public int _maxMana {  get; set; }
         public bool _active;
 
-        public Unit(int health, string? name, int mana, bool active)
+        public Unit(int health, string? name, bool active)
         {
             _health = health;
             _name = name;
-            _mana = mana;
             _maxHealth = _health;
-            _maxMana = _mana;
             _active = active;   
         }
 
@@ -40,35 +39,22 @@
                     _health = value;
             }
         }
-
-        public int Mana
-        {
-            get => _mana;
-            set
-            {
-                if (value < 0)
-                    _mana = 0;
-                else
-                    if (value > _maxMana)
-                    _mana = _maxMana;
-                else
-                    _mana = value;
-            }
-        }
-
         public void Move()
         {
             Console.WriteLine("Is moving");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
             if(!_active)
             {
-                Console.WriteLine($"{_name} Пчел мёртв");
+                HealthChangeEvent.Invoke(_health, _name, 1, null);
             }
             else
-                Console.WriteLine($"Unit: {_name} Health: {_health} HP and {_mana} MN");
+                HealthChangeEvent.Invoke(_health, _name, 0, null);
         }
+
+        
+
     }
 }
