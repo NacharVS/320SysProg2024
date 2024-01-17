@@ -4,7 +4,7 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric() : base(15, "Cleric", 1, 15)
+        public Cleric() : base(15, "Cleric", 1, 15, 0)
         {
 
         }

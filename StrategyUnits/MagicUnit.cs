@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace StrategyUnits
 {
@@ -43,10 +44,14 @@ namespace StrategyUnits
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
-        public MagicUnit(int health, string? name, int damage, int maxEnergy): base (health, name, damage)
+        public MagicUnit(int health, string? name, int damage, int maxEnergy, int protection): base (health, name, damage, protection)
         {
             _maxEnergy = maxEnergy;
             _currentEnergy = maxEnergy;
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHealth} Energy: {this.CurrentEnergy}");
         }
         public event EnergyChangedDelegate EnergyDecreasedEvent;
         public event EnergyChangedDelegate EnergyIncreasedEvent;

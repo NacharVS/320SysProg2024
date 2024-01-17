@@ -27,17 +27,15 @@ cleric.HealSelf(cleric);
 paladin.MagicAttack(footman2);
 
 
-static void ShowInformationAfterLossOfHealth(string? name, int health, int difference)
+static void ShowInformationAfterLossOfHealth(string? name, int health, int difference, int protection)
 {
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine($"{name} was stick, health reduced by {difference}, current health: {health}");
-    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine($"\u001b[31m{name} was stick, health reduced by {difference}\u001b[0m \u001b[36m(absorbed shield damage: {protection}\u001b[0m),\u001b[31m current health: {health}\u001b[0m");
 
 }
-static void ShowInformationAfterHealthIsRestored(string? name, int health, int difference)
+static void ShowInformationAfterHealthIsRestored(string? name, int health, int difference, int protection)
 {
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine($"{name} has been cured, health increased by {difference}, current health: {health}");
+    Console.WriteLine($"{name} has been cured, health increased by {difference}, current health: {health}, current protection: {protection}");
     Console.ForegroundColor = ConsoleColor.White;
 
 }

@@ -10,9 +10,11 @@ namespace StrategyUnits
     internal class Altar
     {
 		private int _currentEnergy;
+		private int _maxEnergy;
         public Altar()
         {
             _currentEnergy = 100;
+            _maxEnergy = 100;
         }
 		public int CurrentEnergy
 		{
@@ -32,7 +34,6 @@ namespace StrategyUnits
                 }
             }
         }
-		private int _maxEnergy;
 
 		public int MaxEnergy
 		{

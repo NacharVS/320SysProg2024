@@ -15,7 +15,7 @@ namespace StrategyUnits
             set { _magicDamage = value; }
         }
 
-        public Paladin() : base(15, "Paladin", 10, 15)
+        public Paladin() : base(15, "Paladin", 10, 15, 4)
         {
             _magicDamage = 10;
         }
@@ -24,7 +24,7 @@ namespace StrategyUnits
         {
             if (this.CurrentEnergy > 0)
             {
-                unit.CurrentHealth -= _magicDamage;
+                unit.CurrentHealth -= (Damage - this.Protection);
                 CurrentEnergy -= 1;
             }
             else
@@ -38,7 +38,7 @@ namespace StrategyUnits
 
         public void Attack(Unit unit)
         {
-            unit.CurrentHealth -= Damage;
+            unit.CurrentHealth -= (Damage - this.Protection);
         }
     }
 }

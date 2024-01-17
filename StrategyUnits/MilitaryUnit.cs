@@ -17,7 +17,7 @@ namespace StrategyUnits
             set { _damage = value; }
         }
 
-        public MilitaryUnit(int health, string? name, int damage) : base(health, name)
+        public MilitaryUnit(int health, string? name, int damage, int protection) : base(health, name, protection)
         {
             _damage = damage;
         }
