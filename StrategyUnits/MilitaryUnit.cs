@@ -10,14 +10,14 @@ namespace StrategyUnits
     internal class MilitaryUnit : Unit
     {
         
-        public MilitaryUnit(string? name, int health, int damage) : base(name, health) 
+        public MilitaryUnit(string? name, int health, int damage, int defence) : base(name, health, defence) 
         {
             _damage = damage;
         }
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health} Damage: {Damage}");
+            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Урон: {Damage}");
         }
 
         private int _damage;
@@ -30,8 +30,14 @@ namespace StrategyUnits
 
         public virtual void Attack(Unit unit)
         {
-            unit.Health -= _damage;
-            Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name}");
+            if (unit.DiedUnit == false)
+            {
+                unit.Health -= (_damage - unit.Defence);
+                Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} ножом");
+            }
+            else
+                Console.WriteLine($"Нельзя нанести урон персонажу {unit.Name}. Он уже мертв");
+            
         }
     }
 }

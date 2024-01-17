@@ -11,18 +11,32 @@ namespace StrategyUnits
     {
         private int _maxEnergy;
         private int _nowEnergy;
+        private int _damageMagic;
 
+        public delegate void EnergyChangedDelegate(string name, int energy, int difference);
+        public event EnergyChangedDelegate EnergyDecreasedEvent;
+        public event EnergyChangedDelegate EnergyIncreasedEvent;
         public int NowEnergy
         {
             get { return _nowEnergy; }
             set
             {
+                int previousEnergy = _nowEnergy;
                 if (value > MaxEnergy)
                     _nowEnergy = _maxEnergy;
-                else if (value < 0)
+                else if (value <= 0)
                     _nowEnergy = 0;
                 else
                     _nowEnergy = value;
+
+                if (value < previousEnergy)
+                {
+                    EnergyDecreasedEvent.Invoke(this.Name, NowEnergy, previousEnergy - value);
+                }
+                else if (value > previousEnergy)
+                {
+                    EnergyIncreasedEvent.Invoke(this.Name, NowEnergy, value - previousEnergy);
+                }
             }
         }
         public int MaxEnergy
@@ -30,37 +44,48 @@ namespace StrategyUnits
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
-        public MagicUnit(string? name, int health, int damage, int maxEnergy, int nowEnergy) : base(name, health, damage)
+
+        public int DamageMagic
+        {
+            get { return _damageMagic; }
+            set { _damageMagic = value; }
+        }
+        public MagicUnit(string? name, int health, int damage, int maxEnergy, int defence, int damagemagic) : base(name, health, damage, defence)
         {
             _maxEnergy = maxEnergy;
-            _nowEnergy = nowEnergy;
+            _nowEnergy = maxEnergy;
+            _damageMagic = damagemagic;
         }
 
         public override void Attack(Unit unit)
         {
-            unit.Health -= Damage;
-            Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} ножом");
+            if (unit.DiedUnit == false)
+            {
+                unit.Health -= (Damage - unit.Defence);
+                Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} мечом");
+            }
+            else
+                Console.WriteLine($"Нельзя нанести урон персонажу {unit.Name}. Он уже мертв");
         }
         //За одно очко энергии убавляется 3 очка жизни
-        public virtual void MagicAttack(Unit unit)
+        public void MagicAttack(Unit unit)
         {
-            if (unit.DiedUnit)
+            if (unit.DiedUnit == false && NowEnergy > 0)
             {
-                Console.WriteLine($"Персонаж {unit.Name} мертв! Его нельзя атаковать!");
-                return;
+                 NowEnergy -= 1;
+                 unit.Health -= (Damage - unit.Defence);
+                Console.WriteLine($"Персонажу {unit.Name} нанесен урон с помощью магического удара.");
+            }
+            else
+            {
+                Console.WriteLine($"Невозможно использовать магический удар. Персонаж {unit.Name} уже мертв.");
             }
             
-            while (unit.DiedUnit == false || _nowEnergy > 0)
-            {
-                 _nowEnergy -= 1;
-                 unit.Health -= 3;
-            }
-            Console.WriteLine($"Персонажу {unit.Name} нанесено максимальное количество урона. Он мертв.");
         }
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health} Energy: {_nowEnergy}");
+            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Энергия: {_nowEnergy}");
         }
 
     }

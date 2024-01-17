@@ -8,25 +8,13 @@ namespace StrategyUnits
 {
     internal class Paladin : MagicUnit
     {
-        public Paladin() : base("Paladin", 60, 5, 60, 60)
+        public Paladin() : base("Paladin", 60, 8, 60, 10, 14)
         {
 
         }
 
-        public override void MagicAttack(Unit unit)
-        {
-            if (unit.DiedUnit)
-            {
-                Console.WriteLine($"Персонаж {unit.Name} мертв! Его нельзя атаковать!");
-                return;
-            }
+        
 
-            while (unit.DiedUnit == false || NowEnergy > 0)
-            {
-                NowEnergy -= 1;
-                unit.Health -= 5;
-            }
-            Console.WriteLine($"Персонажу {unit.Name} нанесено максимальное количество урона с помощью магического удара. Он мертв.");
-        }
+       
     }
 }

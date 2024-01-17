@@ -10,7 +10,7 @@ namespace StrategyUnits
     internal class Cleric : MagicUnit
     {
         
-        public Cleric() : base("Cleric", 60, 5, 60, 60)
+        public Cleric() : base("Cleric", 60, 7, 60, 5, 10)
         {
            
         }
@@ -62,21 +62,5 @@ namespace StrategyUnits
         }
 
         
-
-        public override void MagicAttack(Unit unit)
-        {
-            if (unit.DiedUnit)
-            {
-                Console.WriteLine($"Персонаж {unit.Name} мертв! Его нельзя атаковать!");
-                return;
-            }
-
-            while (unit.DiedUnit == false || NowEnergy > 0)
-            {
-                NowEnergy -= 1;
-                unit.Health -= 3;
-            }
-            Console.WriteLine($"Персонажу {unit.Name} нанесено максимальное количество урона с помощью магической атаки. Он мертв.");
-        }
     }
 }

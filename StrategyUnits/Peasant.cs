@@ -9,7 +9,7 @@
             get { return working; }
             set { working = value; }
         }
-        public Peasant() : base("Peasant", 30)
+        public Peasant() : base("Peasant", 30, 4)
         {
             working = false;
         }
