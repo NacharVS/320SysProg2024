@@ -18,7 +18,7 @@ namespace StrategyUnits
             set
             {
                 int previousEnergy = _currentEnergy;
-                if (value < 0)
+                if (value <= 0)
                 {
                     _currentEnergy = 0;
                 }
