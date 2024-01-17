@@ -24,7 +24,7 @@ namespace StrategyUnits
         {
             if (this.CurrentEnergy > 0)
             {
-                unit.CurrentHealth -= (Damage - this.Protection);
+                unit.CurrentHealth -= (_magicDamage - unit.Protection);
                 CurrentEnergy -= 1;
             }
             else

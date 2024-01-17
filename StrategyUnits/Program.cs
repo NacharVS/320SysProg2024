@@ -30,7 +30,6 @@ paladin.MagicAttack(footman2);
 static void ShowInformationAfterLossOfHealth(string? name, int health, int difference, int protection)
 {
     Console.WriteLine($"\u001b[31m{name} was stick, health reduced by {difference}\u001b[0m \u001b[36m(absorbed shield damage: {protection}\u001b[0m),\u001b[31m current health: {health}\u001b[0m");
-
 }
 static void ShowInformationAfterHealthIsRestored(string? name, int health, int difference, int protection)
 {
