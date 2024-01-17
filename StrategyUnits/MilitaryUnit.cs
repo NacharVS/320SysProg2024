@@ -10,20 +10,29 @@ namespace StrategyUnits
     {
         private int _damage;
 
+        public delegate void InflictAttackDelegate(int damage, int health, string name, string name_nap);
         public int Damage
         {
             get { return _damage; }
             set { _damage = value; }
         }
-        public virtual void InflictDamage(Unit unit)
+        public void InflictDamage(Unit unit)
         {
-            unit.Health -= _damage;
-            Console.WriteLine("You attaked.");
+            if (DeadPerson == true)
+                Console.WriteLine("Unit died");
+            else
+            {
+                unit.Health -= _damage;
+                //Console.WriteLine($"Unit нанес {unit.Name} урон {_damage}");
+                InflictAttackEvent.Invoke(_damage, unit.Health, unit.Name, Name);
+            }
         }
 
         public MilitaryUnit(int health, string? name, int damage) : base(health, name)
         {
             _damage = damage;
         }
+
+        public event InflictAttackDelegate InflictAttackEvent;
     }
 }
