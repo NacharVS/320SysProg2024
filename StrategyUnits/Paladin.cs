@@ -15,9 +15,9 @@ namespace StrategyUnits
             set { _magicDamage = value; }
         }
 
-        public Paladin(int magicDamage) : base(15, "Paladin", 10, 15)
+        public Paladin() : base(15, "Paladin", 10, 15)
         {
-            _magicDamage = magicDamage;
+            _magicDamage = 10;
         }
 
         public void MagicAttack(Unit unit)
@@ -26,6 +26,13 @@ namespace StrategyUnits
             {
                 unit.CurrentHealth -= _magicDamage;
                 CurrentEnergy -= 1;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"{this.Name} not enough energy. Current energy {this.CurrentEnergy}");
+                Console.ForegroundColor = ConsoleColor.White;
+
             }
         }
 

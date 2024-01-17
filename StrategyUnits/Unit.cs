@@ -2,7 +2,7 @@
 {
     internal class Unit
     {
-        public delegate void HealthChangedDelegate(string? name, int health);
+        public delegate void HealthChangedDelegate(string? name, int health, int difference);
         private int _currentHealth;
         private string? _name;
         private int _maxHealth;
@@ -24,6 +24,8 @@
             get => _currentHealth;
             set
             {
+                int previousHealth = _currentHealth;
+
                 if (value < 0)
                 {
                     _currentHealth = 0;
@@ -31,12 +33,20 @@
                 }
                 else
                 {
-                    if (value > MaxHealth) 
+                    if (value > MaxHealth)
                         _currentHealth = MaxHealth;
                     else
                         _currentHealth = value;
                 }
-                HealthChangedEvent.Invoke(_name, _currentHealth);
+                if (value < previousHealth)
+                {
+                    HealthDecreasedEvent.Invoke(_name, _currentHealth, previousHealth - value);
+                }
+                else if (value > previousHealth)
+                {
+                    HealthIncreasedEvent.Invoke(_name, _currentHealth, value - previousHealth);
+                }
+
             }
         }
 
@@ -68,6 +78,5 @@
 
         public event HealthChangedDelegate HealthIncreasedEvent;
         public event HealthChangedDelegate HealthDecreasedEvent;
-        public event HealthChangedDelegate HealthChangedEvent;
     }
 }

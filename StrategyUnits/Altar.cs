@@ -61,17 +61,11 @@ namespace StrategyUnits
             {
                 if (magicUnit.MaxEnergy <= magicUnit.CurrentEnergy)
                 {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"{magicUnit.Name} увеличил ману с {currentEnergyBeforeRestore} до {magicUnit.CurrentEnergy}");
-                    Console.ForegroundColor = ConsoleColor.White;
                     return;
                 }
                 magicUnit.CurrentEnergy += 10;
                 _currentEnergy -= 1;
             }
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"{magicUnit.Name} увеличил ману с {currentEnergyBeforeRestore} до {magicUnit.CurrentEnergy}");
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
 	}
