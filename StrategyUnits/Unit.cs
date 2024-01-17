@@ -32,7 +32,7 @@
             {
                 int previousHealth = _currentHealth;
 
-                if (value =< 0)
+                if (value <= 0)
                 {
                     _currentHealth = 0;
                     _isDied = true;
