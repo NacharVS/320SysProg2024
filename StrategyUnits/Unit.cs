@@ -1,53 +1,81 @@
-﻿namespace StrategyUnits
+﻿using static StrategyUnits.Unit;
+
+namespace StrategyUnits
 {
     internal class Unit
     {
+        public delegate void HealthChangedDelegate(int health);
+        public delegate void HealthIncreasedDelegate(int helth);
+        public delegate void HealthDecreasedDelegate(int helth);
+
         private int _health;
         private int _maxHealth;
-        private bool _dead = false;
+        private bool _dead;
         private string? _name;
-        public bool Dead { get; set; }
+        public int _pravHealth;
+
+        public int PravHealth
+        {
+            get { return _pravHealth; }
+            set { _pravHealth = value; }
+        }
+        public bool Dead
+        {
+            get { return _dead; }
+            set { _dead = value; }
+        }
+        
+        public int CurentHealth
+        {
+            get => _health;
+            set
+            {
+                if (value <= 0)
+                {
+                    _health = 0;
+                    _dead = true;
+                    
+                }
+                else
+                {
+                    if (value > MaxHealth)
+                    {
+                        _health = MaxHealth;
+             
+                    }
+                    else
+                    {
+                        _health = value;
+                        if (_pravHealth < _health)
+                        {
+                            int v = _health - _pravHealth;
+                            HealthDecreasedEvent.Invoke(v);
+                        }
+                        else
+                        {
+                            if(_pravHealth > _health)
+                            { 
+                                int n = _pravHealth - _health;
+                                HealthIncreasedEvent.Invoke(n);
+                            }
+                        }
+                    }
+                }
+                HealthChangedEvent.Invoke(_health);
+            }
+        }
         public Unit(int health, string? name)
         {
             _health = health;
             _name = name;
             _maxHealth = health;
+            _dead = false;
         }
 
         public string Name
         {
             get { return _name; }
             set { _name = value; }
-        }
-        public int CurentHealth 
-        { 
-            get => _health;
-            set { if (value <= 0)
-                    {
-                        _health = 0;
-                        Dead = true;
-                    }
-                else
-                    if (value > MaxHealth)
-                        _health = MaxHealth;
-                    else
-                        _health = value;
-            } 
-        }
-
-        public int Health 
-        { 
-            get => _health; 
-            set
-            {
-                if(value < 0)
-                    _health = 0;
-                else
-                    if(value > _maxHealth)
-                        _health = _maxHealth;
-                    else
-                        _health = value;             
-            } 
         }
 
         public int MaxHealth
@@ -58,12 +86,16 @@
 
         public void Move()
         {
-            Console.WriteLine("Is moving");
+            Console.WriteLine("Двигается");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} MaxHealth: {_maxHealth} Health: {_health}");
+            Console.WriteLine($"Персонаж: {_name} Максимальное здоровье: {_maxHealth} Здоровье: {_health}");
         }
+
+        public event HealthIncreasedDelegate HealthIncreasedEvent;
+        public event HealthDecreasedDelegate HealthDecreasedEvent;
+        public event HealthChangedDelegate HealthChangedEvent;
     }
 }
