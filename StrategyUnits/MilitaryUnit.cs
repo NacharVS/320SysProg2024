@@ -10,7 +10,7 @@ namespace StrategyUnits
     {
         private int _damage;
 
-        public delegate void InflictAttackDelegate(int damage, int health, string name, string name_nap);
+        public delegate void InflictAttackDelegate(int damage, int health, string name);
         public int Damage
         {
             get { return _damage; }
@@ -24,7 +24,7 @@ namespace StrategyUnits
             {
                 unit.Health -= _damage;
                 //Console.WriteLine($"Unit нанес {unit.Name} урон {_damage}");
-                InflictAttackEvent.Invoke(_damage, unit.Health, unit.Name, Name);
+                InflictAttackEvent.Invoke(_damage, unit.Health, unit.Name);
             }
         }
 
