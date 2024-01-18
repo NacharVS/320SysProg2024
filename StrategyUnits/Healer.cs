@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Healer : Unit
+    internal class Healer : MagicUnit
     {
         private int _mana;
         public int maxMana;
@@ -28,8 +28,9 @@ namespace StrategyUnits
                     else
                         _mana = value; }
         }
-        public Healer(int Mana) : base(50, "Healer")
+        public Healer(int Mana, int Health) : base(5, "Healer", Health, Mana)
         {
+            _maxHealth = Health;
             _mana = Mana;
             maxMana = Mana;
         }
@@ -44,12 +45,14 @@ namespace StrategyUnits
                 {
                     if (unit.Name == "Healer")
                     {
+                        unit.PrevHealth = unit.Health;
                         _mana -= 1;
-                        Console.WriteLine($"SelfHealing from {unit.Health} to {unit.Health + 1}; Mana: {_mana}");
+                        Console.WriteLine($"SelfHealing from {unit.PrevHealth} to {unit.Health}; Mana: {_mana}");
                         unit.Health += 2;
                     }
                     else
                     {
+                        unit.PrevHealth = unit.Health;
                         _mana -= 2;
                         Console.WriteLine($"Healing from {unit.Health} to {unit.Health + 1}; Mana: {_mana}");
                         unit.Health += 1;
@@ -63,6 +66,10 @@ namespace StrategyUnits
             }
             if (_mana == 0)
                 Console.WriteLine("no Mana :( grustno");
+        }
+        public override void InflictDamage(Unit unit)
+        {
+            base.InflictDamage(unit);
         }
         public override void ShowInfo()
         {

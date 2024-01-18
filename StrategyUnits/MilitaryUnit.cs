@@ -21,8 +21,9 @@ namespace StrategyUnits
             _name = Name;
             _health = health;
         }
-        public void InflictDamage(Unit unit)
+        virtual public void InflictDamage(Unit unit)
         {
+            unit.PrevHealth = unit.Health;
             unit.Health -= _attack;
         }
     }

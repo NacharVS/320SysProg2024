@@ -4,6 +4,7 @@
     {
         private int _health;
         private string? _name;
+        public int _prevHealth;
         public bool Dead { get; set; }
         private bool _dead = false;
         public int _maxHealth;
@@ -13,7 +14,15 @@
             _name = name;
             _maxHealth = health;
         }
-
+        public int PrevHealth
+        {
+            get => _prevHealth;
+            set
+            {
+                _prevHealth = value;
+            }
+        }
+        public delegate void HealthChangeDelegate(int health, int n); 
         public string Name
         {
             get { return _name; }
@@ -29,17 +38,36 @@
             get => _health; 
             set
             {
-                if(value <= 0)
+                if (value <= 0)
                 {
                     _health = 0;
                     Dead = true;
-                    Console.WriteLine("Dude is dead"); 
+                    Console.WriteLine("Dude is dead");
                 }
                 else
-                    if(value > _maxHealth)
+                {
+                    if (value > _maxHealth)
                         _health = _maxHealth;
                     else
-                        _health = value;             
+                    {
+                        _health = value;
+                       
+                        if (_health < _prevHealth)
+                        {
+                            int n = _prevHealth - _health;
+                            HealthLowEvent.Invoke(_health, n);
+                        }
+                        else
+                        {
+                            if (_health > _prevHealth)
+                            {
+                                int n = _health - _prevHealth;
+                                HealthHighEvent.Invoke(_health, n);
+                            }
+                        }
+                    }
+                    //HealthChangeEvent.Invoke(value);
+                }
             } 
         }
         public void Move()
@@ -55,5 +83,8 @@
         {
             Console.Write($"Unit: {_name} Health: {_health}/{_maxHealth} ");
         }
+        //public event HealthChangeDelegate HealthChangeEvent;
+        public event HealthChangeDelegate HealthLowEvent;
+        public event HealthChangeDelegate HealthHighEvent;
     }
 }
