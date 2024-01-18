@@ -24,6 +24,19 @@ namespace StrategyUnits
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
+        public int Energy
+        {    get => _energy;
+            set
+            {
+                if (value < 0)
+                    _energy = 0;
+                else
+                    if (value > _maxEnergy)
+                        _energy = _maxEnergy;
+                    else
+                        _energy = value;
+            }
+        }
         public void RecoverMana(MagicUnit unit)
         {
             if (unit.Dead)
