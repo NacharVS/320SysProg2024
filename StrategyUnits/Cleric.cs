@@ -6,30 +6,11 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Cleric : Unit
+    internal class Cleric : MagicUnit
     {
-        private int _Current_Mana;
-        public int Max_Mana { get; private set; }
-
-        public int Mana
-        {
-            get => _Current_Mana;
-            set
-            {
-                if (value < 0)
-                    _Current_Mana = 0;
-                else
-                    if (value > Max_Mana)
-                    _Current_Mana = Max_Mana;
-                else
-                    _Current_Mana = value;
-            }
-        }
-
         public Cleric() : base(50, "Safin")
         {
-            _Current_Mana = 60;
-            Max_Mana = _Current_Mana;
+            Mana = 50;
         }
 
         public void CureSomebody(Unit unit)
@@ -37,7 +18,16 @@ namespace StrategyUnits
             if (unit.Alive)
             {
                 if (unit.Health == MaxHealth)
-                    Console.WriteLine($"{Name} is completely healthy");
+                {
+                    Console.WriteLine($"{Name} полностью здоров");
+                    return;
+                }
+
+                else if (Mana < 2)
+                {
+                    Console.WriteLine($"{Name} имеет недостаточно маны для лечения {unit.Name}");
+                    return;
+                }
                 else
                 {
                     while (Mana > 0 && unit.Health < unit.MaxHealth)
@@ -45,44 +35,61 @@ namespace StrategyUnits
                         unit.Health += 1;
                         Mana -= 2;
                     }
+                    Console.WriteLine($"{Name} вылечил {unit.Name} на 1 HP.");
+                    // Дописать с помощью делегатов
                 }
             }
             else
-                Console.WriteLine($"You can't cure {unit.Name}, because he died");
+                Console.WriteLine($"Вы не можете вылечить {unit.Name}, его с нами больше нет (╥_╥)");
 
         }
 
-        public void CureYourself(Unit cleric)
+        public void CureYourself(Cleric cleric)
         {
             if (cleric.Alive)
             {
                 if (cleric.Health == cleric.MaxHealth)
-                    Console.WriteLine($"You are completely healthy");
-                else
                 {
-                    while (Mana > 0 && cleric.Health < cleric.MaxHealth)
-                    {
-                        cleric.Health += 2;
-                        Mana -= 1;
-                    }
+                    Console.WriteLine($"Вы полностью здоровы!");
+                    return;
                 }
+                else if(Mana < 1)
+                {
+                    Console.WriteLine("У вас недостаточно маны,чтобы вылечить себя");
+                    return;
+                }
+                else
+                        {
+                            while (Mana > 0 && cleric.Health < cleric.MaxHealth)
+                            {
+                                cleric.Health += 2;
+                                Mana -= 1;
+                            }
+                            Console.WriteLine("Вы вылечили себя на 2 HP. Ваше состояние здоровья...");
+                            //Дописать с помощью делегатов
+                        }
             }
             else
-                Console.WriteLine($"You can't cure yourself, because you died");
+                Console.WriteLine($"Вы не можете вылечить себя, вы уже мертвы");
         }
 
         public void RegenerationMana()
         {
-            Mana += 10;
-            Console.WriteLine($"You have restored Mana. Now, your Mana: {Mana}");
+            if(Alive) 
+            {
+                Mana += 10;
+                Console.WriteLine($"Вы восстановили ману. Ваша мана равна {Mana}");
+            }
+            else
+                Console.WriteLine($"{Name} не может восстановить ману,он мертв");
         }
 
-        public void ShowInfo()
+        public override void ShowInfo()
         {
             if (Alive)
-                Console.WriteLine($"Unit: {Name} Health: {Health} Mana: {Mana}");
+                Console.WriteLine($"Персонаж: {Name} Здоровья: {Health} Маны: {Mana}");
             else
-                Console.WriteLine($"{Name} is dead");
+                Console.WriteLine($"{Name} мертв ");
         }
     }
 }

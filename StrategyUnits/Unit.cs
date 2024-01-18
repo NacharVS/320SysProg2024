@@ -41,15 +41,15 @@
 
         public void Move()
         {
-            Console.WriteLine("Is moving");
+            Console.WriteLine("Идёт");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
             if (Alive)
-                Console.WriteLine($"Unit: {_name} Health: {_health}");
+                Console.WriteLine($"Персонаж: {_name} Здоровье: {_health}");
             else
-                Console.WriteLine($"{Name} is dead");
+                Console.WriteLine($"{Name} мертв");
         }
     }
 }

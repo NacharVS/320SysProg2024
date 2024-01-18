@@ -7,7 +7,7 @@
         }
         public void GoFishing()
         {
-            Console.WriteLine($"{Name} went fishing");
+            Console.WriteLine($"{Name} идет на рыбалку");
         }
 
     }
