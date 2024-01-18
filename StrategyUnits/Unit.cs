@@ -6,6 +6,8 @@
         private string? _name;
         public bool Alive { get; private set; }
         public int MaxHealth { get; private set; }
+        public delegate void HealthChangedDelegate(int health, string name, int? manna, int? damage);
+        public event HealthChangedDelegate HealthChangedEvent;
         public Unit(int health, string? name)
         {
             _health = health;
@@ -48,9 +50,9 @@
             Console.WriteLine("Is moving");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_health}");
+            HealthChangedEvent.Invoke(Health,Name, null, null);
         }
     }
 }

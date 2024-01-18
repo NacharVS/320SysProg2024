@@ -7,54 +7,30 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Cleric : Unit
+    internal class Cleric : MagicUnit
     {
         private int _manna;
         public int MaxManna { get; private set; }
+        private int _damage;
+        public event HealthChangedDelegate ClericHeal;
         public Cleric() : base(60, "Cleric")
         {
             _manna = 40;
             MaxManna = _manna;
         }
-        public int Manna
+        public override void Attack(Unit unit)
         {
-            get { return _manna; }
-            set 
-            { 
-                if (value < 0)
-                {
-                    _manna = 0;
-                }
-                else if (value > MaxManna)
-                {
-                    _manna = MaxManna;
-                }
-                else
-                {
-                    _manna = value;
-                }
-            }
-        }
-
-        //Создал регенерацию маны у клирика взамен его здоровью (соотношение 1/3).
-        //Причем у него должно быть не меньше половины здоровья, чтобы он не мог себя убить
-        public void MannaRegen (Unit unit)
-        {
-            if (Health >= unit.MaxHealth / 2)
+            if (unit.Alive)
             {
-                while (Manna < MaxManna && Health > unit.MaxHealth / 2)
-                {
-                    Health -= 3;
-                    Manna += 1;
-                }
+                Random random = new Random();
+                _damage = random.Next(5, 8);
+                unit.Health -= _damage;
             }
             else
             {
-                Console.WriteLine("Low Health for regeneration Manna");
+                Console.WriteLine("Unit is dead");
             }
-            
         }
-
         public void Heal(Unit unit)
         {
             if (unit.Alive)
@@ -82,9 +58,9 @@ namespace StrategyUnits
             }
         }
 
-        public void ShowInfo()
+        public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}" );
+            ClericHeal.Invoke(Health, Name, Manna, _damage);
         }
     }
 }
