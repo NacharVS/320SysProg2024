@@ -18,7 +18,7 @@
         public override void ShowInfo()
         {
             base.ShowInfo();
-            Console.WriteLine($"Damage: {_damage}");
+            Console.WriteLine();
         }
     } 
 }

@@ -14,6 +14,7 @@
             _name = name;
             _maxHealth = health;
         }
+        
         public int PrevHealth
         {
             get => _prevHealth;
@@ -25,8 +26,8 @@
         public delegate void HealthChangeDelegate(int health, int n); 
         public string Name
         {
-            get { return _name; }
             set { _name = value; }
+            get { return _name; }
         }
         public int MaxHealth
         { 
@@ -81,7 +82,7 @@
 
         public virtual void ShowInfo()
         {
-            Console.Write($"Unit: {_name} Health: {_health}/{_maxHealth} ");
+            Console.Write($"Unit: {_name} | Health: {_health}/{_maxHealth} ");
         }
         //public event HealthChangeDelegate HealthChangeEvent;
         public event HealthChangeDelegate HealthLowEvent;

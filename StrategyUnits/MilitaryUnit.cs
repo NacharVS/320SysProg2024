@@ -26,5 +26,10 @@ namespace StrategyUnits
             unit.PrevHealth = unit.Health;
             unit.Health -= _attack;
         }
+        public override void ShowInfo()
+        {
+            base.ShowInfo();
+            Console.Write($"| Damage: {_attack} ");
+        }
     }
 }
