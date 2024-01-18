@@ -222,8 +222,8 @@ static void Method(int number, string name)
     Console.WriteLine($"{name} получил урон. Текущее здоровье: {number}");
 }
 
-static void MethodYron(int damage, int health, string name, string name_nap)
+static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)
 {
-    Console.WriteLine($"{name_nap} совершил атаку на {name}.\n{name} получил урон {damage}. Текущее здоровье {name}: {health}.");
+    Console.WriteLine($"{nameDealtDamage} совершил атаку на {nameReceivedDamage}.\n{nameReceivedDamage} получил урон {damage}. Текущее здоровье {nameReceivedDamage}: {health}.");
 
 }
