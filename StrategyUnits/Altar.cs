@@ -35,7 +35,8 @@ namespace StrategyUnits
                     unit.PrevMana = unit.Mana;
                     unit.Mana += 5;
                     _energy -= 10;
-                    Console.WriteLine($"Recover energy for {unit.Name}. Quantity of recovered mana: {unit.Mana-unit.PrevMana}. Current mana {unit.Mana}/{unit.maxMana}");
+                    Console.WriteLine($"Recover energy for {unit.Name}. Quantity of recovered mana: {unit.Mana-unit.PrevMana}. " +
+                        $"Current mana from {unit.PrevMana} to {unit.Mana}/{unit.maxMana}");
                 }
                if (unit.Mana >= unit.MaxiMana)
                {
