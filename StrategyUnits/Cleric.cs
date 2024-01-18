@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,9 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric() : base(70, 2, 15, 50, "Cleric")
+        public Cleric() : base(2, 10, "Cleric", 30)
         {
         }
-        
         public void selfHeal()
         {
             Console.WriteLine($"{Name} selfheal");
@@ -49,7 +49,7 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}" );
+            Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}");
         }
     }
 }
