@@ -1,31 +1,49 @@
 ﻿using StrategyUnits;
 
 Footman footman = new Footman();
-Footman footman2 = new Footman();
-Peasant ps1 = new Peasant();
+Paladin paladin = new Paladin();
+Altar altar = new Altar();
 Cleric cleric = new Cleric();
 
-ps1.ShowInfo();
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-ps1.ShowInfo();
-cleric.CureSomebody(ps1);
-ps1.ShowInfo();
+footman.DecreasedHealthChangeEvent += Footman_DecreasedHealthChangeEvent;
+footman.RegenerateHealthChangeEvent += Footman_RegenerateHealthChangeEvent;
+paladin.DecreasedHealthChangeEvent += Paladin_DecreasedHealthChangeEvent;
+paladin.RegenerateHealthChangeEvent += Paladin_RegenerateHealthChangeEvent;
+cleric.DecreasedHealthChangeEvent += Cleric_DecreasedHealthChangeEvent;
+cleric.RegenerateHealthChangeEvent += Cleric_RegenerateHealthChangeEvent;
+
+paladin.FireAttack(footman);
+paladin.FireAttack(cleric);
+cleric.CureSomebody(footman);
+
+altar.RestoreMana(cleric);
 cleric.ShowInfo();
-cleric.RegenerationMana();
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-footman.InflictDamage(ps1);
-cleric.CureSomebody(ps1);
-cleric.ShowInfo();
-footman.InflictDamage(cleric);
-footman.InflictDamage(cleric);
-footman.InflictDamage(cleric);
-cleric.ShowInfo();
-cleric.CureYourself(cleric);
-cleric.ShowInfo();
+void Cleric_RegenerateHealthChangeEvent(int _health,int _current_health, int MaxHealth)
+{
+    Console.WriteLine($"Здоровье восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+}
+
+void Cleric_DecreasedHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+{
+    Console.WriteLine($"Здоровье упало на {_health-_current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+}
+
+void Paladin_RegenerateHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+{
+    Console.WriteLine($"Здоровье восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+}
+
+void Paladin_DecreasedHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+{
+    Console.WriteLine($"Здоровье упало на {_health - _current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+}
+
+void Footman_RegenerateHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+{
+    Console.WriteLine($"Здоровье восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+}
+
+void Footman_DecreasedHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+{
+    Console.WriteLine($"Здоровье упало на {_health - _current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+}

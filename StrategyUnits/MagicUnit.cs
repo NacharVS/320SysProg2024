@@ -33,7 +33,7 @@ namespace StrategyUnits
                     _current_mana = value;
             }
         }
-        public MagicUnit(int health, string? name) : base(health, name)
+        public MagicUnit(int health, string? name, int defense) : base(health, name,defense)
         {
             _current_mana = 50;
             _max_mana = _current_mana;

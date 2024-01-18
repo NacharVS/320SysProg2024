@@ -8,11 +8,12 @@ namespace StrategyUnits
 {
     internal class Paladin : MagicUnit
     {
-        public Paladin(int health, string? name) : base(health, name)
+        public Paladin() : base(60, "Paladin", 6)
         {
             Mana = 30;
-            Damage = 5;
+            Damage = 14;
             MagicDamage = 8;
+            Defense = 6;
         }
 
         public void FireAttack(Unit unit)
@@ -33,9 +34,9 @@ namespace StrategyUnits
                 Console.WriteLine($"У {Name} недостаточно маны для использования заклинания");
                 return;
             }
+            Console.WriteLine($"{Name} атаковал огненным шаром {unit.Name}");
             unit.Health -= MagicDamage;
             Mana -= 8;
-            Console.WriteLine($"{Name} атаковал огненным шаром {unit.Name}");
         }
 
     }

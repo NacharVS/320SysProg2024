@@ -8,7 +8,7 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric() : base(50, "Safin")
+        public Cleric() : base(50, "Safin", 4)
         {
             Mana = 50;
         }
@@ -32,11 +32,10 @@ namespace StrategyUnits
                 {
                     while (Mana > 0 && unit.Health < unit.MaxHealth)
                     {
+                        Console.WriteLine($"{Name} вылечил {unit.Name} на 1 HP.");
                         unit.Health += 1;
                         Mana -= 2;
                     }
-                    Console.WriteLine($"{Name} вылечил {unit.Name} на 1 HP.");
-                    // Дописать с помощью делегатов
                 }
             }
             else
@@ -53,21 +52,20 @@ namespace StrategyUnits
                     Console.WriteLine($"Вы полностью здоровы!");
                     return;
                 }
-                else if(Mana < 1)
+                else if (Mana < 1)
                 {
                     Console.WriteLine("У вас недостаточно маны,чтобы вылечить себя");
                     return;
                 }
                 else
-                        {
-                            while (Mana > 0 && cleric.Health < cleric.MaxHealth)
-                            {
-                                cleric.Health += 2;
-                                Mana -= 1;
-                            }
-                            Console.WriteLine("Вы вылечили себя на 2 HP. Ваше состояние здоровья...");
-                            //Дописать с помощью делегатов
-                        }
+                {
+                    while (Mana > 0 && cleric.Health < cleric.MaxHealth)
+                    {
+                        Console.WriteLine("Вы вылечили себя на 2 HP. Ваше состояние здоровья...");
+                        cleric.Health += 2;
+                        Mana -= 1;
+                    }
+                }
             }
             else
                 Console.WriteLine($"Вы не можете вылечить себя, вы уже мертвы");
@@ -75,10 +73,10 @@ namespace StrategyUnits
 
         public void RegenerationMana()
         {
-            if(Alive) 
+            if (Alive)
             {
-                Mana += 10;
                 Console.WriteLine($"Вы восстановили ману. Ваша мана равна {Mana}");
+                Mana += 10;          
             }
             else
                 Console.WriteLine($"{Name} не может восстановить ману,он мертв");

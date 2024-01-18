@@ -12,6 +12,15 @@ namespace StrategyUnits
         private int _current_energy;
         public int _max_energy { get; private set; }
 
+        private string? _name_altar;
+
+        public string NameAltar
+        {
+            get { return _name_altar; }
+            set { _name_altar = value; }
+        }
+
+
         public int Energy
         {
             get => _current_energy;
@@ -29,6 +38,7 @@ namespace StrategyUnits
 
         public Altar()
         {
+            _name_altar = "Altar";
             _current_energy = 5000;
             _max_energy = _current_energy;
         }
@@ -56,10 +66,10 @@ namespace StrategyUnits
                 {
                     while (Energy > 0 && MagicUnit.Mana < MagicUnit._max_mana)
                     {
-                        MagicUnit.Mana *= 10;
+                        MagicUnit.Mana += 10;
                         Energy -= 1;
                     }
-                    Console.WriteLine($"Алтарь восстановил ману {MagicUnit.Name}");
+                    Console.WriteLine($"{NameAltar} восстановил ману {MagicUnit.Name}");
                 } 
             }
             else
