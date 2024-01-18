@@ -208,6 +208,9 @@ cleric.HillEvent += MethodHill;
 //palladin1.HealthChangedEvent += Method;
 
 footman2.InflictDamage(palladin1);
+footman2.InflictDamage(palladin1);
+footman2.InflictDamage(palladin1);
+footman2.InflictDamage(palladin1);
 cleric.HillOthers(palladin1);
 //footman1.ShowInfo();
 //palladin1.MagicAttack(footman1);
@@ -220,11 +223,6 @@ cleric.HillOthers(palladin1);
 //palladin1.MagicAttack(footman2);
 //palladin1.MagicAttack(footman2);
 //palladin1.GetInfoManna();
-
-static void Method(int number, string name)
-{
-    Console.WriteLine($"{name} получил урон. Текущее здоровье: {number}");
-}
 
 static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)
 {
