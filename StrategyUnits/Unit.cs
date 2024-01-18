@@ -35,7 +35,7 @@
                 {
                     _health = 0;
                     _deadperson = true;
-                    Console.WriteLine("Character is dead.Stop damage.");
+                    Console.WriteLine("Character is dead.You can't damage.");
                 }
                 else
                    if (value > MaxHealth)
@@ -52,7 +52,12 @@
 
         public void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_health}");
+            Console.WriteLine($"Unit: {_name} Health: {_health} Person live? {_deadperson}");
         }
+
+        public delegate void HealthChangeDelegate(int health, string name);
+
+        public event HealthChangeDelegate HealthDecreasedEvent;
+
     }
 }

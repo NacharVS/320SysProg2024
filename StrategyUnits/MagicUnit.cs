@@ -31,6 +31,11 @@ namespace StrategyUnits
                     _manna = value;
             }
         }
+
+        public void GetInfoManna()
+        {
+            Console.WriteLine($"Character: {Name}, Manna: {Manna}");
+        }
         public MagicUnit(int health, string? name, int damage, int MaxManna) : base(health, name, damage)
         {
             _manna = MaxManna;

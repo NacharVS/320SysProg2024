@@ -2,32 +2,12 @@
 
 namespace StrategyUnits
 {
-    internal class Cleric : Unit
+    internal class Cleric : MagicUnit
     {
-        private int _manna;
-        public int MaxManna { get; private set; }
-
-
-        public int Manna
+      
+        public Cleric() : base(70, "Cleric", 5, 30)
         {
-            get { return _manna; }
-            set 
-            {
-                if (value < 0)
-                    _manna = 0;
-                
-                else 
-                    if (value > MaxManna)
-                    _manna = MaxManna;
-                else 
-                    _manna = value;
-            }
-        }
 
-        public Cleric() : base(70, "Cleric")
-        {
-            _manna = 50;
-            MaxManna = _manna;
         }
 
         public void HillOthers(Unit unit)
@@ -38,15 +18,26 @@ namespace StrategyUnits
                 return;
             }
 
-            while (_manna >= 2)
+            while (Manna >= 2)
             {
-                 if (unit.MaxHealth <= unit.Health)
-                 {
-                     Console.WriteLine($"{unit.Name} hill.");
-                     return;
-                 }                 
-                 unit.Health += 1;
-                 _manna -= 2; 
+                if (unit.MaxHealth <= unit.Health)
+                {
+                    Console.WriteLine($"{unit.Name} hill.");
+                    return;
+                }
+                else if (Manna < 2)
+                {
+                    Console.WriteLine("Not enough manna.");
+                }
+                else
+                {
+                    while (Manna >= 2)
+                    {
+                        unit.Health += 1;
+                        Manna -= 2;
+                    }
+                    Hill_event.Invoke(Manna, unit.Health, Name, unit.Name);
+                }
             }
         }
 
@@ -57,22 +48,37 @@ namespace StrategyUnits
                 Console.WriteLine($"{unit.Name} died, You can't hill dead characters.");
                 return;
             }
-            while (_manna > 0)
+            while (Manna > 0)
             {
                 if (unit.MaxHealth <= unit.Health)
                 {
                     Console.WriteLine($"{unit.Name} hill");
                     return;
                 }
-                unit.Health += 2;
-                _manna -= 1;
+                else if (Manna < 1)
+                {
+                    Console.WriteLine("Not enough manna.");
+                }
+                else
+                    while (Manna >= 1)
+                    {
+                        unit.Health += 2;
+                        Manna -= 1;
+                    }
+                Console.WriteLine($"Character {unit.Name} hill himself");
             }
         }
 
-        public void GetInfoCleric()
-        {
-            Console.WriteLine($"Manna: {_manna}");
-        }
+        public delegate void HillDelegate (int manna, int health, string nameHiller_p, string nameHill_n);
+
+        public event HillDelegate Hill_event;
+
+        // манна, здоровье, пострадавший, нанесший
+        //public void GetInfoCleric()
+        //{
+        //    Console.WriteLine($"Manna: {Manna}");
+        //}
+        //create event
     }
 }
 //Лечить себя: 1 мана = 2 здоровья
