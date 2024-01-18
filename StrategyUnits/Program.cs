@@ -208,9 +208,6 @@ cleric.HillEvent += MethodHill;
 //palladin1.HealthChangedEvent += Method;
 
 footman2.InflictDamage(palladin1);
-footman2.InflictDamage(palladin1);
-footman2.InflictDamage(palladin1);
-footman2.InflictDamage(palladin1);
 cleric.HillOthers(palladin1);
 //footman1.ShowInfo();
 //palladin1.MagicAttack(footman1);
@@ -223,6 +220,15 @@ cleric.HillOthers(palladin1);
 //palladin1.MagicAttack(footman2);
 //palladin1.MagicAttack(footman2);
 //palladin1.GetInfoManna();
+
+//Создание Алтаря
+Console.WriteLine("\n\tALTAR");
+Altar altar1 = new Altar();
+altar1.ShowInfoAltar();
+
+altar1.RegenerationManna(cleric);
+cleric.GetInfoManna();
+altar1.ShowInfoAltar();
 
 static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)
 {
