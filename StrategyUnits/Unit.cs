@@ -30,16 +30,19 @@
             set
             {
                 if (value < _health)
-                    HealthDecreasedEvent.Invoke(this, _health);
-                if (value < 0)
+                    HealthDecreasedEvent.Invoke(this, value);
+                if (value > _health)
+                    HealthIncreasedEvent.Invoke(this, value);
+                if (value <= 0)
                 {
-                    _health = 0;
                     isAlive = false;
+                    _health = 0;
                 }
                 else if (value > MaxHealth)
                     _health = MaxHealth;
                 else
                     _health = value;
+                
             }
         }
 
@@ -55,6 +58,5 @@
 
         public event HealthChangedDelegate HealthIncreasedEvent;
         public event HealthChangedDelegate HealthDecreasedEvent;
-        public event HealthChangedDelegate HealthChangedEvent;
     }
 }

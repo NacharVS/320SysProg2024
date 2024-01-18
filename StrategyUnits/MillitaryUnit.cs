@@ -29,7 +29,7 @@ namespace StrategyUnits
             _minDamage = minDamage;
             _maxDamage = maxDamage;
         }
-        public virtual void InflictDamage(Unit unit)
+        public void InflictDamage(Unit unit)
         {
             Random rnd = new Random();
             if (unit.isAlive)
