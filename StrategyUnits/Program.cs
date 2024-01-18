@@ -195,16 +195,20 @@ palladin1.GetInfoManna();
 
 Footman footman1 = new Footman();
 Footman footman2 = new Footman();
+Cleric cleric = new Cleric();
 
 footman1.InflictDamageEvent += MethodYron;
 footman2.InflictDamageEvent += MethodYron;
 palladin1.InflictDamageEvent += MethodYron;
+
+cleric.HillEvent += MethodHill;
 
 //footman1.HealthChangedEvent += Method;
 //footman2.HealthChangedEvent += Method;
 //palladin1.HealthChangedEvent += Method;
 
 footman2.InflictDamage(palladin1);
+cleric.HillOthers(palladin1);
 //footman1.ShowInfo();
 //palladin1.MagicAttack(footman1);
 //footman1.ShowInfo();
@@ -225,5 +229,11 @@ static void Method(int number, string name)
 static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)
 {
     Console.WriteLine($"{nameDealtDamage} совершил атаку на {nameReceivedDamage}.\n{nameReceivedDamage} получил урон {damage}. Текущее здоровье {nameReceivedDamage}: {health}.");
+
+}
+
+static void MethodHill(int manna, int health, string nameHiller, string nameHill)
+{
+    Console.WriteLine($"{nameHiller} восстановил здоровье {nameHill} до {health}.\nТекущая манна {nameHiller}: {manna}");
 
 }

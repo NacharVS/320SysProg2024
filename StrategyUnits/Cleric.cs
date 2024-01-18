@@ -6,6 +6,8 @@
         {
         }
 
+        public delegate void HillDelegate(int manna, int health, string nameHiller, string nameHill); //Делегат Хилла -- ПолучилУрон, НанесУрон
+
         public void HillOthers(Unit unit) //Метод ЛеченияДругого
         {
             if (IsDead == true)
@@ -28,8 +30,9 @@
                     {
                         unit.Health += 1;
                         Manna -= 2;
+                        
                     }
-                    Console.WriteLine($"{unit.Name} было восстановлено здоровье.");
+                    HillEvent.Invoke(Manna, unit.Health, Name, unit.Name);
                 }
             }
         }
@@ -55,6 +58,8 @@
                 }
             }
         }
+
+        public event HillDelegate HillEvent; //Ивет Хилла
 
         // Метод регенарции манны
         //public void RegenerationManna(Cleric cleric)
