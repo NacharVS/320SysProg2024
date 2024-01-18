@@ -5,7 +5,7 @@ static void IncreaseHealth(string name, int oldHealth, int newHealth, int maxHea
 {
     if(newHealth > maxHealth)
         newHealth = maxHealth;
-    Console.WriteLine($"{name} восстановил здоровье на {newHealth - oldHealth}. Текущее здоровье:{newHealth}/{maxHealth}");
+    Console.WriteLine($"{name} восстановил здоровье на {newHealth - oldHealth}. Текущее здоровье {newHealth}/{maxHealth}");
 }
 
 static void DecreaseHealth(string name, int oldHealth, int newHealth, int maxHealth)
@@ -13,7 +13,7 @@ static void DecreaseHealth(string name, int oldHealth, int newHealth, int maxHea
     int damage = oldHealth - newHealth;
     if (newHealth < 0)
         newHealth = 0;
-    Console.WriteLine($"{name} получил урон {damage}. Текущее здоровье: {newHealth}/{maxHealth}");
+    Console.WriteLine($"{name} получил урон {damage}. Текущее здоровье {newHealth}/{maxHealth}");
 }
 
 Peasant peasant = new Peasant();
@@ -35,20 +35,4 @@ peasant.ShowInfo();
 footman.ShowInfo();
 healer.ShowInfo();
 palladin.ShowInfo();
-palladin.Attack(peasant);
-palladin.FireAttack(peasant);
-palladin.FireAttack(peasant);
-palladin.FireAttack(peasant);
-palladin.FireAttack(peasant);
-palladin.FireAttack(peasant);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
-altar.RestoreMana(palladin);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
-palladin.FireAttack(footman);
+

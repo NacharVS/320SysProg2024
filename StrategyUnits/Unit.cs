@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace StrategyUnits
 {
     internal class Unit
     {
@@ -32,8 +34,12 @@
         public int Health 
         { 
             get => _health;
-            set 
+            set
             {
+                if (!Alive)
+                {
+                    return;
+                }
                 if (value > Health)
                 {
                     HealthIncreasedEvent.Invoke(Name, Health, value, MaxHealth);

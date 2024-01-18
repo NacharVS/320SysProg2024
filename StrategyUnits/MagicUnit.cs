@@ -49,7 +49,8 @@ namespace StrategyUnits
             set { _maxMana = value; }
         }
 
-        public MagicUnit(string? name, int maxHealth, int damage, string weapon, int maxMana) : base(name, maxHealth, damage, weapon)
+        public MagicUnit(string? name, int maxHealth, int minDamage, int maxDamage, string weapon, int shield, int maxMana) 
+            : base(name, maxHealth, minDamage, maxDamage, weapon, shield)
         {
             _maxMana = maxMana;
             _mana = maxMana;

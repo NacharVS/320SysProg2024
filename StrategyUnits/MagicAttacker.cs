@@ -8,14 +8,20 @@ namespace StrategyUnits
 {
     internal class MagicAttacker : MagicUnit
     {
-        private int _magicDamage;
+        private int _minMagicDamage;
+        private int _maxMagicDamage;
         private string _spell;
         private int _manaWaste;
 
-        public int MagicDamage
+        public int MinMagicDamage
         {
-            get { return _magicDamage; }
-            set { _magicDamage = value; }
+            get { return _minMagicDamage; }
+            set { _minMagicDamage = value; }
+        }
+        public int MaxMagicDamage
+        {
+            get { return _maxMagicDamage; }
+            set { _maxMagicDamage = value; }
         }
 
         public string Spell
@@ -30,23 +36,28 @@ namespace StrategyUnits
             set { _manaWaste = value; }
         }
 
-        public MagicAttacker(string? name, int maxHealth, int damage, string weapon, 
-            int maxMana, int magicDamage, string spell, int manaWaste) : base(name, maxHealth, damage, weapon, maxMana)
+        public MagicAttacker(string? name, int maxHealth, int minDamage, int maxDamage, string weapon, int shield,
+            int maxMana, int minMagicDamage, int maxMagicDamage, string spell, int manaWaste) 
+            : base(name, maxHealth, minDamage, maxDamage, weapon, shield, maxMana)
         {
-            _magicDamage = magicDamage;
+            _minMagicDamage = minMagicDamage;
+            _maxMagicDamage = maxMagicDamage;
             _spell = spell;
             _manaWaste = manaWaste;
         }
 
         public void MagicAttack(Unit unit)
         {
-            int baseDamage = Damage;
+            int baseMinDamage = MinDamage;
+            int baseMaxDamage = MaxDamage;
             string baseWeapon = Weapon;
-            Damage = MagicDamage;
+            MinDamage = MinMagicDamage;
+            MaxDamage = MaxMagicDamage;
             Weapon = Spell;
-            Attack(unit);
-            Mana -= ManaWaste;
-            Damage = baseDamage;
+            if (Attack(unit))
+                Mana -= ManaWaste;
+            MinDamage = baseMinDamage;
+            MaxDamage = baseMaxDamage;
             Weapon = baseWeapon;
         }
     }

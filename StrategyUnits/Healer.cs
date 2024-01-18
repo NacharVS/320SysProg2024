@@ -8,7 +8,7 @@ namespace StrategyUnits
 {
     internal class Healer : MagicUnit
     {
-        public Healer() : base("Healer", 40, 3, "посохом", 60)
+        public Healer() : base("Healer", 45, 1, 4, "посохом", 1, 50)
         {
         }
 
