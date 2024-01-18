@@ -5,7 +5,6 @@ namespace StrategyUnits
     internal class Cliric : MagicUnit
     {
         public event HealthChangedDelegate HealUnit;
-        public event HealthChangedDelegate StickCliricAttack;
 
         private int _healthValue;
         public int Heal
@@ -48,18 +47,7 @@ namespace StrategyUnits
                 }
             }
         }
-        public override void Attack(Unit unit)
-        {
-            Random random = new Random();
-            Damage = random.Next(_damage, MaxDamage);
-            unit.Health -= Damage;
-            if (unit.Health == 0)
-            {
-                unit._active = false;
-            }
-            Console.WriteLine($"{Name} замахнулся своей ПАЛЧИЩЕЙ");
-            StickCliricAttack.Invoke(unit.Health, unit.Name, Damage,null);
-        }
+        
     }
 
 }

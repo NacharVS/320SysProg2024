@@ -15,9 +15,9 @@ cl1.ShowInfoCliric += ShowInfoCliric;
 footman.AttackUnit += damageInfo;
 cl1.HealUnit += healInfo;
 pl1.MagicFireBollAttack += damageInfo;
-cl1.StickCliricAttack += damageInfo;
+//cl1.StickCliricAttack += damageInfo;
 altar.altarHealMP += AltarHealMP;
-
+cl1.AttackUnit += damageInfo;
 //Задание просмотр работы убийства
 cl1.ShowInfo();
 ps1.ShowInfo();
