@@ -9,7 +9,7 @@ namespace StrategyUnits
 {
     internal class ZealotKnight : MagicUnit
     {
-        public ZealotKnight(int health, string? name, int damage, int maxEnergy, int protection) : base(health, name, damage, maxEnergy, protection)
+        public ZealotKnight(double health, string? name, double damage, double maxEnergy, double protection) : base(health, name, damage, maxEnergy, protection)
         {
 
         }
@@ -20,6 +20,12 @@ namespace StrategyUnits
             {
                 CurrentHealth += 20;
                 CurrentEnergy -= 10;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Недостаточно очков энергии для регенерации здоровья");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
         public override void ShowInfo()

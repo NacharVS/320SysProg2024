@@ -4,7 +4,7 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric(int health, string? name, int damage, int maxEnergy, int protection) : base(health, name, damage, maxEnergy, protection)
+        public Cleric(double health, string? name, double damage, double maxEnergy, double protection) : base(health, name, damage, maxEnergy, protection)
         {
         }
 

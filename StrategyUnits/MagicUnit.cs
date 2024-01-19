@@ -9,15 +9,15 @@ namespace StrategyUnits
 {
     internal class MagicUnit : MilitaryUnit
     {
-        private int _maxEnergy;
-        private int _currentEnergy;
-        public delegate void EnergyChangedDelegate(string name, int mana, int difference, int maxEnergy);
-        public int CurrentEnergy
+        private double _maxEnergy;
+        private double _currentEnergy;
+        public delegate void EnergyChangedDelegate(string name, double mana, double difference, double maxEnergy);
+        public double CurrentEnergy
         {
             get { return _currentEnergy; }
             set
             {
-                int previousEnergy = _currentEnergy;
+                double previousEnergy = _currentEnergy;
                 if (value <= 0)
                 {
                     _currentEnergy = 0;
@@ -39,12 +39,12 @@ namespace StrategyUnits
                 }
             }
         }
-        public int MaxEnergy
+        public double MaxEnergy
         {
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
-        public MagicUnit(int health, string? name, int damage, int maxEnergy, int protection): base (health, name, damage, protection)
+        public MagicUnit(double health, string? name, double damage, double maxEnergy, double protection): base (health, name, damage, protection)
         {
             _maxEnergy = maxEnergy;
             _currentEnergy = maxEnergy;

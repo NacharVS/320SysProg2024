@@ -9,41 +9,30 @@ namespace StrategyUnits
 {
     internal class Paladin : ZealotKnight
     {
-        private int _magicDamage;
+        private double _magicDamage;
 
-        public int MagicDamage
+        public double MagicDamage
         {
             get { return _magicDamage; }
             set { _magicDamage = value; }
         }
-        private bool isHolyArmor;
+        //private bool _isHolyArmor;
 
-        public bool IsHolyArmor
-        {
-            get { return isHolyArmor; }
-            set { isHolyArmor = value; }
-        }
-        //public override int Protection
+        //public bool IsHolyArmor
         //{
-        //    get 
-        //    {
-        //        if (isHolyArmor)
-        //        {
-        //            return Protection * 2;
-        //        }
-        //        else
-        //        {
-        //            return Protection;
-        //        }
-        //    }
+        //    get { return _isHolyArmor; }
         //    set 
-        //    {
-        //        Protection = value; 
+        //    { 
+        //        if(CurrentHealth <= MaxHealth / 2)
+        //            _isHolyArmor = true;
+        //        else
+        //            _isHolyArmor = false;
         //    }
         //}
-        public Paladin(int health, string? name, int damage, int maxEnergy, int protection, int magicDamage) : base(health, name, damage, maxEnergy, protection)
+        public Paladin(double health, string? name, double damage, double maxEnergy, double protection, double magicDamage) : base(health, name, damage, maxEnergy, protection)
         {
             _magicDamage = magicDamage;
+            //_isHolyArmor = false;
         }
 
         public void HolyFire(Unit unit)
@@ -56,7 +45,7 @@ namespace StrategyUnits
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"{this.Name} not enough energy. Current energy {this.CurrentEnergy}");
+                Console.WriteLine($"{this.Name} нет энергии. Текущая энергия {this.CurrentEnergy}");
                 Console.ForegroundColor = ConsoleColor.White;
 
             }

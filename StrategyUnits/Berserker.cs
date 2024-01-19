@@ -13,10 +13,18 @@ namespace StrategyUnits
         public bool IsRage
         {
             get { return isRage; }
-            set { isRage = value; }
+            set
+            {
+                if(isRage == false && CurrentHealth == CurrentHealth / 2)
+                {
+                    Damage *= 1.5;
+                    isRage = true;
+                }
+            }
         }
-        public Berserker(int health, string? name, int damage, int protection) : base(health, name, damage, protection)
+        public Berserker(double health, string? name, double damage, double protection) : base(health, name, damage, protection)
         {
+
         }
     }
 }
