@@ -7,7 +7,7 @@
 
         }
 
-        public void MagicAttack(Unit unit) //Метод НанесенияМагическогоУрона (5 манны = 15)
+        public void FireAttack(Unit unit)
         {
             if (DeadUnit == false)
             {

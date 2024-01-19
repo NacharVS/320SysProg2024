@@ -31,7 +31,6 @@
                         _currentMana = value;
                     }
                 }
-                
             }
         }
         public MagicUnit(int maxHP, string? name, int damage, int MaximumMana) : base(maxHP, name, damage)

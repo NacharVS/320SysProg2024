@@ -3,34 +3,7 @@
     internal class Cleric : MagicUnit
     {
         public Cleric() : base(50, "Cleric", 5, 90) { }
-        public void SelfHeal(Unit unit)
-        {
-            if (DeadUnit == false)
-            {
-                if (Mana > 0)
-                {
-                    if (unit.CurrentHP < unit.MaximumHP)
-                    {
-                        CurrentHP += 2;
-                        Mana--;
-                    }
-                    else
-                    {
-                        Console.WriteLine("You have enough HP.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("You don't have mana.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("You are dead. You can't heal yourself.");
-                return;
-            }
-        }
-        public void OtherHeal(Unit unit)
+        public void Heal(Unit unit)
         {
             if (unit.DeadUnit == false)
             {

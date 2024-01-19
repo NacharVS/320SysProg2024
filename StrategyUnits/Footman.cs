@@ -4,6 +4,11 @@
     {
         private int _damage;
 
-        public Footman() : base(60, "Footman", 7) { }
+        public Footman(int maxHP, string? name, int damage) : base(maxHP, name, damage) { }
+
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"{Name} Damage: {Damage} HP: {CurrentHP}/{MaximumHP}");
+        }
     }
 }

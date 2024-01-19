@@ -27,7 +27,6 @@ namespace StrategyUnits
                 Console.WriteLine("Unit is dead.");
             }
         }
-
         public event InflictDamageDelegate InflictDamageEvent;
     }
 }
