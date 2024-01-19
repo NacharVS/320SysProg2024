@@ -16,23 +16,37 @@ static void DecreaseHealth(string name, int oldHealth, int newHealth, int maxHea
     Console.WriteLine($"{name} получил урон {damage}. Текущее здоровье {newHealth}/{maxHealth}");
 }
 
+
+Barracs barracs = new Barracs();
+Altar altar = new Altar(); 
 Peasant peasant = new Peasant();
-Footman footman = new Footman();
-Healer healer = new Healer();
-Palladin palladin = new Palladin();
-Altar altar = new Altar();
+Footman recruit = barracs.CreateRecruit();
+Footman footman = barracs.CreateFootman();
+Berserker berserker = barracs.CreateBerserker();
+Healer healer = altar.CreateHealer();
+ZealotKnight zealotKnight = altar.CreateZealotKnight();
+Palladin palladin = altar.CreatePalladin();
 
 peasant.HealthIncreasedEvent += IncreaseHealth;
 peasant.HealthDecreasedEvent += DecreaseHealth;
+recruit.HealthIncreasedEvent += IncreaseHealth;
+recruit.HealthDecreasedEvent += DecreaseHealth;
 footman.HealthIncreasedEvent += IncreaseHealth;
 footman.HealthDecreasedEvent += DecreaseHealth;
+berserker.HealthIncreasedEvent += IncreaseHealth;
+berserker.HealthDecreasedEvent += DecreaseHealth;
 healer.HealthIncreasedEvent += IncreaseHealth;
 healer.HealthDecreasedEvent += DecreaseHealth;
+zealotKnight.HealthIncreasedEvent += IncreaseHealth;
+zealotKnight.HealthDecreasedEvent += DecreaseHealth;
 palladin.HealthIncreasedEvent += IncreaseHealth;
 palladin.HealthDecreasedEvent += DecreaseHealth;
 
 peasant.ShowInfo();
+recruit.ShowInfo();
 footman.ShowInfo();
+berserker.ShowInfo();
 healer.ShowInfo();
+zealotKnight.ShowInfo();
 palladin.ShowInfo();
 

@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Palladin : MagicUnit
+    internal class Palladin : ZealotKnight
     {
         private int _minMagicDamage;
         private int _maxMagicDamage;
-        private string _spell;
+        private string? _spell;
         private int _manaWaste;
+        private bool _holyArmorActive = false;
+
+        public Palladin(string? name, int maxHealth, int minDamage, int maxDamage, string weapon, int shield, int maxMana,
+            int minMagicDamage, int maxMagicDamage, string spell, int manaWaste) 
+            : base(name, maxHealth, minDamage, maxDamage, weapon, shield, maxMana)
+        {
+            _minMagicDamage = minMagicDamage;
+            _maxMagicDamage = maxMagicDamage;
+            _spell = spell;
+            _manaWaste = manaWaste;
+        }
 
         public int MinMagicDamage
         {
@@ -35,20 +46,15 @@ namespace StrategyUnits
             get { return _manaWaste; }
             set { _manaWaste = value; }
         }
-        public Palladin() : base("Palladin", 65, 4, 6, "мечом", 2, 30)
-        {
-            _minMagicDamage = 7;
-            _maxMagicDamage = 13;
-            //Атаковал чем? В родительнои падеже
-            _spell = "огненным заклинанием";
-            _manaWaste = 10;
-        }
+
+
+
         
-        public void FireAttack(Unit unit)
+        public void MagicAttack(Unit unit)
         {
             if(Mana < ManaWaste && Alive)
             {
-                Console.WriteLine($"{Name} имеет ману {Mana}/{MaxMana}. Чтобы атаковать {Spell} нужно минимум {ManaWaste} очков маны");
+                Console.WriteLine($"{Name} имеет ману {Mana}/{MaxMana}. Чтобы атаковать {Spell} нужно минимум маны {ManaWaste}");
                 return;
             }
             int baseMinDamage = MinDamage;
@@ -62,6 +68,28 @@ namespace StrategyUnits
             MinDamage = baseMinDamage;
             MaxDamage = baseMaxDamage;
             Weapon = baseWeapon;
+        }
+
+        public void HolyArmor()
+        {
+            if (!Alive)
+            {
+                Console.WriteLine($"{Name} мертв. Он не может активировать святую защиту");
+                return;
+            }
+            if (_holyArmorActive)
+            {
+                Console.WriteLine($"{Name} уже активировал святую защиту");
+                return;
+            }
+            if (Mana < 12)
+            {
+                Console.WriteLine($"{Name} имеет ману {Mana}/{MaxMana}. Для святой защиты нужно минимум 12 очков маны");
+                return;
+            }
+            Shield += 2;
+            Console.WriteLine($"{Name} активировал святую защиту. Текущая защита {Shield}");
+            Mana -= 12;            
         }
     }
 }

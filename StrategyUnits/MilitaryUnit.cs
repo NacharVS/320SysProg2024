@@ -9,17 +9,17 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
-        private int _minDamage;
-        private int _maxDamage;
+        private protected int _minDamage;
+        private protected int _maxDamage;
         private string _weapon;
         private int _shield;
 
-        public int MinDamage
+        public virtual int MinDamage
         {
             get { return _minDamage; }
             set { _minDamage = value; }
         }
-        public int MaxDamage
+        public virtual int MaxDamage
         {
             get { return _maxDamage; }
             set { _maxDamage = value; }
@@ -58,11 +58,11 @@ namespace StrategyUnits
             }
             Random random = new Random();
             int damage = random.Next( MinDamage, MaxDamage + 1 );
-            Console.Write($"{Name} атаковал {Weapon} {unit.Name}");
+            Console.Write($"{Name} атаковал {Weapon} {unit.Name} на {damage}. ");
             if(unit is MilitaryUnit)
             {
                 MilitaryUnit militaryUnit = (MilitaryUnit)unit;
-                Console.Write($" на {damage}. {militaryUnit.Name} имеет защиту {militaryUnit.Shield}. ");
+                Console.Write($"{militaryUnit.Name} имеет защиту {militaryUnit.Shield}. ");
                 damage -= militaryUnit.Shield;
             }
             else

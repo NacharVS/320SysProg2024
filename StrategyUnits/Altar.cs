@@ -90,5 +90,19 @@ namespace StrategyUnits
             }
         }
 
+        public Healer CreateHealer()
+        {
+            return new Healer("Healer", 45, 1, 4, "посохом", 1, 50);
+        }
+
+        public Palladin CreatePalladin()
+        {
+            return new Palladin("Palladin", 65, 4, 6, "мечом", 2, 30, 7, 15, "огненным заклинанием", 10);
+        }
+
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight("ZealotKnight", 50, 4, 7, "клинком", 4, 40);
+        }
     }
 }
