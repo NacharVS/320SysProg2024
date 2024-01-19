@@ -7,7 +7,7 @@
 
         }
 
-        public void Rage (Unit unit)
+        public void Rage (Unit unit) //Ярость
         {
             if (Health > (Health * 0.5))
             {
