@@ -46,5 +46,14 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Altar energy: {Energy}");
         }
+
+        public Cleric CreateCleric()
+        {
+            return new Cleric(2, 10, "Cleric", 30, 2);
+        }
+        public Paladin CreatePaladin()
+        {
+            return new Paladin(10, 20, "Palladin", 50, 4);
+        }
     }
 }

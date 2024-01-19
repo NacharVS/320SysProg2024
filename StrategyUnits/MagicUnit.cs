@@ -9,12 +9,15 @@ namespace StrategyUnits
     internal class MagicUnit : MillitaryUnit
     {
         private int _manna;
-        public int MaxManna { get; private set; }
-        public MagicUnit(int minDamage, int maxDamage, string? name, int Health) : base(minDamage, maxDamage, name, Health)
+
+        public MagicUnit(int minDamage, int maxDamage, string? name, int Health, int protection) : base(minDamage, maxDamage, name, Health, protection)
         {
             _manna = 40;
             MaxManna = _manna;
         }
+
+        public int MaxManna { get; private set; }
+
         public int Manna
         {
             get { return _manna; }

@@ -11,35 +11,47 @@ namespace StrategyUnits
     {
         private int _minDamage;
 
-        private int _maxDamage;
+        private protected int _maxDamage;
 
         public int MinDamage
         {
             get { return _minDamage; }
             set { _minDamage = value; }
         }
-        public int MaxDamage
+        public virtual int MaxDamage
         {
             get { return _maxDamage; }
             set { _maxDamage = value; }
         }
 
-        public MillitaryUnit(int minDamage, int maxDamage, string? name, int Health) : base(Health, name)
+        public MillitaryUnit(int minDamage, int maxDamage, string? name, int Health, int protection) : base(Health, name, protection)
         {
             _minDamage = minDamage;
             _maxDamage = maxDamage;
         }
         public void InflictDamage(Unit unit)
         {
+            if (!isAlive)
+            {
+                Console.WriteLine($"{Name} is dead");
+                return;
+            }
             Random rnd = new Random();
             if (unit.isAlive)
             {
-                unit.Health -= rnd.Next(_minDamage, _maxDamage);
+                int damage = rnd.Next(_minDamage, _maxDamage);
+                if (damage>unit.Protection)
+                    unit.Health -= (damage-unit.Protection);
             }
             else
             {
                 Console.WriteLine("Unit is dead");
             }
+
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"{Name} Damage: {_minDamage}-{MaxDamage} HP:{Health}/{MaxHealth}");
         }
     }
 }

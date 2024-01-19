@@ -1,9 +1,21 @@
 ﻿using StrategyUnits;
 
-Footman footman = new Footman();
+Barracks barracks1 = new Barracks();
+
+Footman footman = barracks1.CreateFootman();
+
+Berserker berserker1 = barracks1.CreateBerserker();
+berserker1.HealthDecreasedEvent += MethodOfDamage;
+berserker1.HealthIncreasedEvent += MethodOfHeal;
+berserker1.Health = 1;
+
+berserker1.ShowInfo();
+
 Peasant ps1 = new Peasant();
-Cleric cleric1 = new Cleric();
 Altar altar1 = new Altar();
+Cleric cleric1 = altar1.CreateCleric();
+
+
 
 ps1.HealthDecreasedEvent += MethodOfDamage;
 ps1.HealthIncreasedEvent += MethodOfHeal;

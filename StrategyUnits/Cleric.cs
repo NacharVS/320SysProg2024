@@ -8,18 +8,9 @@ using System.Xml.Linq;
 namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
-    { 
-        public Cleric(): base(2, 10, "Cleric", 30)
+    {
+        public Cleric(int minDamage, int maxDamage, string? name, int Health, int protection) : base(minDamage, maxDamage, name, Health, protection)
         {
-        }
-        public void selfHeal()
-        {
-            Console.WriteLine($"{Name} selfheal");
-            while (Manna >= 1)
-            {
-                Health += 2;
-                Manna -= 1;
-            }
         }
 
         public void Heal(Unit unit)
