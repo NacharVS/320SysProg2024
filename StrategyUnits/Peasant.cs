@@ -4,7 +4,7 @@
     {
         public bool IsWorking { get; set; }
 
-        public Peasant() : base(30, "Peasant")
+        public Peasant() : base(30, "Peasant", 2)
         {
             IsWorking = false;
         }

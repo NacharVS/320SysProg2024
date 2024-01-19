@@ -9,12 +9,14 @@ namespace StrategyUnits
 {
     internal class Altar
     {
-		private int _currentEnergy;
+		private double _currentEnergy;
+		private double _maxEnergy;
         public Altar()
         {
             _currentEnergy = 100;
+            _maxEnergy = 100;
         }
-		public int CurrentEnergy
+		public double CurrentEnergy
 		{
 			get { return _currentEnergy; }
             set
@@ -32,9 +34,8 @@ namespace StrategyUnits
                 }
             }
         }
-		private int _maxEnergy;
 
-		public int MaxEnergy
+		public double MaxEnergy
 		{
 			get { return _maxEnergy; }
 			set
@@ -61,18 +62,24 @@ namespace StrategyUnits
             {
                 if (magicUnit.MaxEnergy <= magicUnit.CurrentEnergy)
                 {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"{magicUnit.Name} увеличил ману с {currentEnergyBeforeRestore} до {magicUnit.CurrentEnergy}");
-                    Console.ForegroundColor = ConsoleColor.White;
                     return;
                 }
                 magicUnit.CurrentEnergy += 10;
                 _currentEnergy -= 1;
             }
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"{magicUnit.Name} увеличил ману с {currentEnergyBeforeRestore} до {magicUnit.CurrentEnergy}");
-            Console.ForegroundColor = ConsoleColor.White;
         }
-
-	}
+        //Magic units
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight(15, "Zealot knight", 6, 10, 3);
+        }
+        public Paladin CreatePaladin()
+        {
+            return new Paladin(10, "Paladin", 10, 30, 6, 15);
+        }
+        public Cleric CreateCleric()
+        {
+            return new Cleric(15, "Cleric", 1, 15, 0);
+        }
+    }
 }

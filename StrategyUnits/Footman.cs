@@ -2,16 +2,15 @@
 {
     internal class Footman : MilitaryUnit
     {
-
-        public Footman() : base(10, "Footman", 7)
+        public Footman(double health, string? name, double damage, double protection) : base(health, name, damage, protection)
         {
 
         }
 
         public void Attack(Unit unit)
         {
-            unit.CurrentHealth -= Damage;
+            unit.CurrentHealth -= (this.Damage - unit.Protection);
         }
-
+       
     }
 }

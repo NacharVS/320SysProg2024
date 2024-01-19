@@ -9,17 +9,21 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
-        private int _damage;
+        private double _damage;
 
-        public virtual int Damage
+        public virtual double Damage
         {
             get { return _damage; }
             set { _damage = value; }
         }
 
-        public MilitaryUnit(int health, string? name, int damage) : base(health, name)
+        public MilitaryUnit(double health, string? name, double damage, double protection) : base(health, name, protection)
         {
             _damage = damage;
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {Name} Health: {CurrentHealth} Damage: {Damage}");
         }
     }
 }
