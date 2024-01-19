@@ -38,9 +38,9 @@
         {
             _currentMana = MaximumMana;
             _maximumMana = MaximumMana;
-    }
-        //Метод нанесения урона
-        public void GetInfoManna()
+        }
+        
+        public void GetInfoMana()
         {
             Console.WriteLine($"Current mana of {Name}: {Mana}");
         }

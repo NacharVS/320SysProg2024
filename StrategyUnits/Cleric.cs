@@ -1,46 +1,18 @@
 ﻿namespace StrategyUnits
 {
-    internal class Cleric : Unit
+    internal class Cleric : MagicUnit
     {
-        private int _mana;
-        public int MaximumMana { get; private set; }
-        public int Mana
-        {
-            get { return _mana; }
-            set
-            {
-                if (value < 0)
-                {
-                    _mana = 0;
-                }
-                else
-                {
-                    if (value > MaximumMana)
-                    {
-                        _mana = MaximumMana;
-                    }
-                    else
-                    {
-                        _mana = value;
-                    }
-                }
-            }
-        }
-
-        public Cleric() : base(50, "Cleric")
-        {
-            _mana = 3;
-        }
+        public Cleric() : base(50, "Cleric", 5, 90) { }
         public void SelfHeal(Unit unit)
         {
             if (DeadUnit == false)
             {
-                if (_mana > 0)
+                if (Mana > 0)
                 {
                     if (unit.CurrentHP < unit.MaximumHP)
                     {
                         CurrentHP += 2;
-                        _mana--;
+                        Mana--;
                     }
                     else
                     {
@@ -62,17 +34,14 @@
         {
             if (unit.DeadUnit == false)
             {
-                if (_mana > 0)
+                if (Mana > 2)
                 {
-                    if (unit.CurrentHP < unit.MaximumHP)
+                    while (unit.CurrentHP < unit.MaximumHP)
                     {
                         unit.CurrentHP++;
-                        _mana -= 2;
+                        Mana -= 2;
                     }
-                    else
-                    {
-                        Console.WriteLine("Unit has enough HP.");
-                    }
+                    HealEvent.Invoke(Mana, unit.CurrentHP, Name, unit.Name);
                 }
                 else
                 {
@@ -87,7 +56,11 @@
         }
         public void ShowInfoCleric()
         {
-            Console.WriteLine($"Mana: {_mana}");
+            Console.WriteLine($"Mana: {Mana}");
         }
+
+        public delegate void HealDelegate(int mana, int maxHP, string nameHealer, string nameHealing);
+
+        public event HealDelegate HealEvent;
     }
 }

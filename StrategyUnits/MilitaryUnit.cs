@@ -1,7 +1,9 @@
-﻿namespace StrategyUnits
+﻿using static System.Net.Mime.MediaTypeNames;
+namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
+        public delegate void InflictDamageDelegate(int damage, int maxHP, string nameDamaging, string nameDamaged);
         private int _damage;
         public int Damage
         {
@@ -12,18 +14,20 @@
         {
             _damage = damage;
         }
-        //Метод нанесения урона
+
         public void InflictDamage(Unit unit) 
         {
             if (DeadUnit == false)
             {
                 unit.CurrentHP -= _damage;
-                Console.WriteLine($"Unit damaged {unit.Name} on {_damage}.");
+                InflictDamageEvent.Invoke(_damage, unit.CurrentHP, Name, unit.Name);
             }
             else
             { 
                 Console.WriteLine("Unit is dead.");
             }
         }
+
+        public event InflictDamageDelegate InflictDamageEvent;
     }
 }

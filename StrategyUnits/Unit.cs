@@ -58,7 +58,11 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_currentHP} MaxHealth: {MaximumHP}");
+            Console.WriteLine($"Unit: {_name} Health: {_currentHP} MaxHealth: {MaximumHP} Unit is dead: {DeadUnit}");
         }
+
+        public delegate void HPChangeDelegate(int maxHP, string name);
+
+        public event HPChangeDelegate HealthDecreasedEvent;
     }
 }

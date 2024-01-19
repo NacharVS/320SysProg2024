@@ -2,7 +2,7 @@
 {
     internal class Paladin : MagicUnit
     {
-        public Paladin() : base(95, "Palladin", 10, 35)
+        public Paladin() : base(80, "Paladin", 10, 150)
         {
 
         }
