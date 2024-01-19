@@ -58,6 +58,19 @@ namespace StrategyUnits
                     _health = _maxHealth;
                 else
                     _health = value;
+                if (this is Berserker b)
+                {
+                    if (Health < MaxHealth / 2 && !b._rageActive)
+                    {
+                        b._rageActive = true;
+                        Console.WriteLine($"Здоровье {Name} стало меньше половины. Урон увеличился и стал {b.MinDamage}-{b.MaxDamage}");
+                    }
+                    if (Health >= MaxHealth / 2 && b._rageActive)
+                    {
+                        b._rageActive = false;
+                        Console.WriteLine($"Здоровье {Name} дошло до половины или больше. Урон стал обычным {b.MinDamage}-{b.MaxDamage}");
+                    }
+                }
             }
         }
 
@@ -79,10 +92,10 @@ namespace StrategyUnits
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health}/{MaxHealth} ");
+            Console.WriteLine($"Unit: {Name} Здоровье: {Health}/{MaxHealth}");
         }
 
-        public event HealthchangedDelegate HealthIncreasedEvent;
-        public event HealthchangedDelegate HealthDecreasedEvent;
+        public static event HealthchangedDelegate? HealthIncreasedEvent;
+        public static event HealthchangedDelegate? HealthDecreasedEvent;
     }
 }

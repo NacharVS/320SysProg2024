@@ -13,7 +13,8 @@ namespace StrategyUnits
         private protected int _maxDamage;
         private string _weapon;
         private int _shield;
-
+        internal int _levelDamage = 0;
+        internal int _levelShield = 0;
         public virtual int MinDamage
         {
             get { return _minDamage; }
@@ -77,6 +78,12 @@ namespace StrategyUnits
                 Console.WriteLine("Защита не пробита");
             }
             return true;
+        }
+
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {Name} Здоровье: {Health}/{MaxHealth} " +
+                $"Атака {Weapon}: {MinDamage}-{MaxDamage} Защита: {Shield}");
         }
     }
 }

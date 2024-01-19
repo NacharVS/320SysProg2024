@@ -13,7 +13,7 @@ namespace StrategyUnits
         {
         }
 
-        public void HealSomeone(Unit unit)
+        public void Heal(Unit unit)
         {
             if (!Alive)
             {

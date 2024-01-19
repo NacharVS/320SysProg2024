@@ -89,6 +89,7 @@ namespace StrategyUnits
             }
             Shield += 2;
             Console.WriteLine($"{Name} активировал святую защиту. Текущая защита {Shield}");
+            _holyArmorActive = true;
             Mana -= 12;            
         }
     }
