@@ -189,46 +189,56 @@
 //cleric5.GetInfoCleric();
 
 //Создание паладдина
-Palladin palladin1 = new Palladin();
-palladin1.ShowInfo();
-palladin1.GetInfoManna();
-
-Footman footman1 = new Footman();
-Footman footman2 = new Footman();
-Cleric cleric = new Cleric();
-
-footman1.InflictDamageEvent += MethodYron;
-footman2.InflictDamageEvent += MethodYron;
-palladin1.InflictDamageEvent += MethodYron;
-
-cleric.HillEvent += MethodHill;
-
-//footman1.HealthChangedEvent += Method;
-//footman2.HealthChangedEvent += Method;
-//palladin1.HealthChangedEvent += Method;
-
-footman2.InflictDamage(palladin1);
-cleric.HillOthers(palladin1);
-//footman1.ShowInfo();
-//palladin1.MagicAttack(footman1);
-//footman1.ShowInfo();
-//palladin1.MagicAttack(footman1);
-//footman1.ShowInfo();
-//palladin1.MagicAttack(footman1);
-//footman1.ShowInfo();
-//palladin1.MagicAttack(footman1);
-//palladin1.MagicAttack(footman2);
-//palladin1.MagicAttack(footman2);
+//Palladin palladin1 = new Palladin();
+//palladin1.ShowInfo();
 //palladin1.GetInfoManna();
 
-//Создание Алтаря
-Console.WriteLine("\n\tALTAR");
-Altar altar1 = new Altar();
-altar1.ShowInfoAltar();
+//Footman footman1 = new Footman();
+//Footman footman2 = new Footman();
+//Cleric cleric = new Cleric();
 
-altar1.RegenerationManna(cleric);
-cleric.GetInfoManna();
-altar1.ShowInfoAltar();
+//footman1.InflictDamageEvent += MethodYron;
+//footman2.InflictDamageEvent += MethodYron;
+//palladin1.InflictDamageEvent += MethodYron;
+
+//cleric.HillEvent += MethodHill;
+
+////footman1.HealthChangedEvent += Method;
+////footman2.HealthChangedEvent += Method;
+////palladin1.HealthChangedEvent += Method;
+
+//footman2.InflictDamage(palladin1);
+//cleric.HillOthers(palladin1);
+////footman1.ShowInfo();
+////palladin1.MagicAttack(footman1);
+////footman1.ShowInfo();
+////palladin1.MagicAttack(footman1);
+////footman1.ShowInfo();
+////palladin1.MagicAttack(footman1);
+////footman1.ShowInfo();
+////palladin1.MagicAttack(footman1);
+////palladin1.MagicAttack(footman2);
+////palladin1.MagicAttack(footman2);
+////palladin1.GetInfoManna();
+
+////Создание Алтаря
+//Console.WriteLine("\n\tALTAR");
+//Altar altar1 = new Altar();
+//altar1.ShowInfoAltar();
+
+//altar1.RegenerationManna(cleric);
+//cleric.GetInfoManna();
+//altar1.ShowInfoAltar();
+
+Barracs barracs = new Barracs();
+Footman footman = barracs.CreateFootman();
+Berserker berserker = barracs.CreateBerserker();
+berserker.InflictDamageEvent += MethodYron;
+
+berserker.InflictDamage(footman);
+berserker.Rage(footman);
+
+
 
 static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)
 {
