@@ -5,6 +5,8 @@
         public delegate void HealthIncreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void HealthDecreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void UnitDeadDelegate();
+        public delegate void RageOnDelegate();
+        public delegate void RageOffDelegate();
 
         private int _currentHealth;
         private int _maxHealth;
@@ -23,7 +25,7 @@
             set { _nameOfClass = value; }
         }
 
-        public int CurrentHealth
+        public virtual int CurrentHealth
         {
             get => _currentHealth;
             set
@@ -48,6 +50,14 @@
                         HealthDecreasedEvent.Invoke(_currentHealth, value, _maxHealth);
                     }
                     _currentHealth = value;
+                    if (value <= _maxHealth / 2 && GetType() == typeof(Berserk))
+                    {
+                        RagedEvent.Invoke();
+                    }
+                    else if (value > _maxHealth / 2 && GetType() == typeof(Berserk))
+                    {
+                        UnragedEvent.Invoke();
+                    }
                 }
             }
         }
@@ -78,5 +88,7 @@
         public event HealthIncreasedDelegate HealthIncreasedEvent;
         public event HealthDecreasedDelegate HealthDecreasedEvent;
         public event UnitDeadDelegate UnitDiedEvent;
+        public event RageOnDelegate RagedEvent;
+        public event RageOffDelegate UnragedEvent;
     }
 }

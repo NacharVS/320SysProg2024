@@ -1,51 +1,29 @@
 ﻿using StrategyUnits;
 
-Healer healer = new("Almir");
-Footman footman = new("Insaf");
-Paladin paladin = new("Kirill");
-Altar altar = new("The Great Altar");
-healer.HealthIncreasedEvent += HealthIncreased;
-healer.HealthDecreasedEvent += HealthDecreased;
-healer.UnitDiedEvent += UnitDied;
-footman.HealthIncreasedEvent += HealthIncreased;
-footman.HealthDecreasedEvent += HealthDecreased;
-footman.UnitDiedEvent += UnitDied;
-paladin.HealthIncreasedEvent += HealthIncreased;
-paladin.HealthDecreasedEvent += HealthDecreased;
-paladin.UnitDiedEvent += UnitDied;
-healer.ShowInfo();
+Barracks barracks = new();
+Footman footman = barracks.CreateFootman("Hugo");
+Berserk berserk = barracks.CreateBerserk("Ivan");
+Healer healer = new Healer("Insaf");
 footman.ShowInfo();
-paladin.ShowInfo();
+berserk.ShowInfo();
 
-paladin.AttackMagically(footman);
-paladin.AttackMagically(footman);
+footman.Attack(berserk);
 
-healer.HealSomebody(footman);
+berserk.ShowInfo();
 
-footman.ShowInfo();
-healer.ShowInfo();
-paladin.ShowInfo();
+berserk.Attack(footman);
 
-altar.RestoreMana(healer);
-altar.RestoreMana(paladin);
+berserk.Attack(footman);
+
+healer.HealSomebody(berserk);
+
+berserk.ShowInfo();
+
+footman.Attack(berserk);
+
+berserk.ShowInfo();
 
 
-static void HealthIncreased(int previousHealth, int currentHealth, int maxHealth)
-{
-    Console.WriteLine($"--------- INFO ---------\n" +
-        $"Health was increased by {currentHealth-previousHealth} HP\n" +
-        $"CURRENT HEALTH: {currentHealth}/{maxHealth}\n" +
-        $"--------- ---- ---------\n");
 
-}
-static void HealthDecreased(int previousHealth, int currentHealth, int maxHealth)
-{
-    Console.WriteLine($"--------- INFO ---------\n" +
-        $"Health was decreased by {previousHealth - currentHealth} HP\n" +
-        $"CURRENT HEALTH: {currentHealth}/{maxHealth}\n" +
-        $"--------- ---- ---------\n");
-}
-static void UnitDied()
-{
-    Console.WriteLine("Unit has died.\n");
-}
+
+

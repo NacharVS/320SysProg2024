@@ -33,7 +33,9 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Unit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage} \nManaPoints: {this.ManaPoints}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public virtual void AttackMagically(Unit unit)

@@ -20,6 +20,7 @@ namespace StrategyUnits
 
         public void HealSomebody(Unit unit)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             if (unit.IsDead)
             {
                 Console.WriteLine("You can't heal a dead unit.\n");
@@ -44,10 +45,12 @@ namespace StrategyUnits
             {
                 Console.WriteLine("!!: No mana left!\n");
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void Healself()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             if (IsDead)
             {
                 Console.WriteLine("You can't heal a dead unit.");
@@ -74,10 +77,12 @@ namespace StrategyUnits
             {
                 Console.WriteLine("!!:  No mana left!\n");
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
         
         public override void ShowInfo()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"====== CHARACTER ========\n" +
                 $"{NameOfUnit} - a unit of {this.NameOfClass} class\n" +
                $"Health: {this.CurrentHealth}/{MaxHealth}\n" +
@@ -85,6 +90,7 @@ namespace StrategyUnits
                $"Damage (min - max): {this.MinDamage} - {this.MaxDamage}\n" +
                $"ManaPoints: {ManaPoints}\n" +
                $"====== ========= ========\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

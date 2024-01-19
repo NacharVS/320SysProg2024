@@ -31,6 +31,7 @@ namespace StrategyUnits
 
         public virtual void Attack(Unit attackedUnit)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Random rnd = new Random();
             int appliedDamage = rnd.Next(this.MinDamage, this.MaxDamage) - attackedUnit.Defense;
             if (!attackedUnit.IsDead)
@@ -51,11 +52,14 @@ namespace StrategyUnits
             {
                 Console.WriteLine("Unit is already dead. Stop beating a dead body!\n");
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public override void ShowInfo()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Unit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
     }

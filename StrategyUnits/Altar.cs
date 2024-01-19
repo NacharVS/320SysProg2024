@@ -44,10 +44,12 @@ namespace StrategyUnits
 
 		public void ShowInfo()
 		{
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"====== BUILDING ========\n" +
                 $"{AltarName} - an altar\n" +
 				$"Its' capability is {Capability} EP\n" +
                $"====== ========= ========\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 	}
 }

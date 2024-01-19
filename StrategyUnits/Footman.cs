@@ -4,7 +4,7 @@
     {
         private String _nameOfUnit;
 
-        public Footman(String nameOfUnit) : base(60, "Footman", 2, 0, 7)
+        public Footman(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage)
         {
             _nameOfUnit = nameOfUnit;
         }
@@ -17,12 +17,14 @@
         
         public override void ShowInfo()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"====== CHARACTER ========\n" +
                 $"{NameOfUnit} - a unit of {this.NameOfClass} class\n" +
                $"Health: {this.CurrentHealth}/{MaxHealth}\n" +
                $"Defense: {this.Defense}\n" +
                $"Damage (min - max): {this.MinDamage} - {this.MaxDamage}\n" +
                $"====== ========= ========\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
