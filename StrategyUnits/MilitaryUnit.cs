@@ -10,7 +10,11 @@ namespace StrategyUnits
     {
         private int _damage;
         private int _maxDamage;
+<<<<<<< Updated upstream
         public MilitaryUnit(int damage,int maxDamage,int Health, string? name) : base(Health, name)
+=======
+        public MilitaryUnit(int damage,int maxDamage,int Health, string? name, int protection) : base(Health, name, protection)
+>>>>>>> Stashed changes
         {
             _damage = damage;
             _maxDamage = maxDamage;

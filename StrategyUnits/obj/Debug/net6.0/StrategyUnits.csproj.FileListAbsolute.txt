@@ -1,0 +1,15 @@
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.csproj.AssemblyReference.cache
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.AssemblyInfoInputs.cache
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.AssemblyInfo.cs
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.csproj.CoreCompileInputs.cache
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\bin\Debug\net6.0\StrategyUnits.exe
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\bin\Debug\net6.0\StrategyUnits.deps.json
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\bin\Debug\net6.0\StrategyUnits.runtimeconfig.json
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\bin\Debug\net6.0\StrategyUnits.dll
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\bin\Debug\net6.0\StrategyUnits.pdb
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.dll
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\refint\StrategyUnits.dll
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.pdb
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\StrategyUnits.genruntimeconfig.cache
+C:\Users\202124\Source\Repos\320SysProg2024\StrategyUnits\obj\Debug\net6.0\ref\StrategyUnits.dll

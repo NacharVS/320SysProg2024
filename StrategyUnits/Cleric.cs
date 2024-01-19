@@ -10,6 +10,7 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
+<<<<<<< Updated upstream
         public Cleric() : base(2, 10, "Cleric", 30)
         {
         }
@@ -21,6 +22,10 @@ namespace StrategyUnits
                 Health += 2;
                 Manna -= 1;
             }
+=======
+        public Cleric(int minDamage, int maxDamage, string? name, int Health, int protection) : base(minDamage, maxDamage, name, Health, protection)
+        {
+>>>>>>> Stashed changes
         }
 
         public void Heal(Unit unit)
