@@ -2,8 +2,10 @@
 
 Console.WriteLine("...");
 Console.WriteLine("\"Create some persons\"");
-Footman footman = new Footman(13, 60);
-Footman footman2 = new Footman(15, 50);
+Barracks barracks = new Barracks();
+Footman recruit = barracks.CreateRecruit();
+Footman footman = barracks.CreateFootman();
+Footman berserker = barracks.CreateBerserker();
 Peasant ps1 = new Peasant();
 Healer healer = new Healer(50, 40);
 Paladin paladin = new Paladin(50, 14);
@@ -12,7 +14,9 @@ Altar altar = new Altar(2000);
 altar.ShowInf();
 ps1.ShowInfo();
 healer.ShowInfo();
+recruit.ShowInfo();
 footman.ShowInfo();
+berserker.ShowInfo();
 paladin.ShowInfo();
 
 altar.RecoverMana(healer);

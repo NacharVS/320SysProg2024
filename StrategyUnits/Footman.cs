@@ -10,10 +10,8 @@
             set { _damage = value; }
         }
 
-        public Footman(int Damage, int Health) : base (Damage, "Footman",Health)
+        public Footman( int Health, string?  Name, int Damage) : base (Damage, Name, Health)
         {
-            _damage = Damage;
-            _health = Health;
         }
         public override void ShowInfo()
         {

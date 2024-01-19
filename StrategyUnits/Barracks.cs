@@ -10,11 +10,15 @@ namespace StrategyUnits
     {
         public Footman CreateRecruit()
         {
-            return new Footman(90, 45);
+            return new Footman(60, "Recruit", 10);
         }
-        //public Footman CreateRecruit()
-        //{
-        //    return new Footman(90, 45);
-        //}
+        public Footman CreateFootman()
+        {
+            return new Footman(90, "Footman", 12);
+        }
+        public Footman CreateBerserker()
+        {
+            return new Footman(120, "Berserker", 15);
+        }
     }
 }
