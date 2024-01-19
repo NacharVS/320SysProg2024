@@ -4,16 +4,18 @@
     {
         private int _damage;
 
+        public Footman(int health, string? name, int damage) : base(health, name)
+        {
+            _damage = damage;
+        }
+
         public int Damage
         {
             get { return _damage; }
             set { _damage = value; }
         }
 
-        public Footman() : base(60, "Footman")
-        {
-            _damage = 7;
-        }
+
 
         public void InflictDamage(Unit unit)
         {
@@ -26,6 +28,11 @@
                 Console.WriteLine("Unit is dead");
             }
 
+        }
+
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"{Name} Damage: { _damage} HP:{Health}/{MaxHealth}");
         }
 
     }
