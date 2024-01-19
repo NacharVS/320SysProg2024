@@ -8,18 +8,29 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class ZeelotKnight : MilitaryUnit
+    internal class ZeelotKnight : MagicUnit
     {
+        private int _defense;
+
         public ZeelotKnight(int maxHP, string? name, int damage) : base(maxHP, name, damage) { }
 
-        public void Rage(Unit unit)
+        public int Defense
         {
-            if (CurrentHP < MaximumHP / 2)
+            get { return _defense; }
+            set { _defense = value; }
+        }
+
+        public void Prayer(Unit unit)
+        {
+            if (DeadUnit == false)
             {
-                Damage += Damage / 2;
-                Console.WriteLine($"{Name} has less than half health: {CurrentHP}/{MaximumHP} ");
+                CurrentHP += 20;
+                Mana -= 10;
             }
-            Console.WriteLine();
+            else
+            {
+                Console.WriteLine("Unit is dead.");
+            }
         }
     }
 }
