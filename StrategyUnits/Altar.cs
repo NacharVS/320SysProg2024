@@ -68,6 +68,14 @@ namespace StrategyUnits
                 _currentEnergy -= 1;
             }
         }
-
-	}
+        //Magic units
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight(15, "Zealot knight", 6, 10, 3);
+        }
+        public Paladin CreatePaladin()
+        {
+            return new Paladin(25, "Paladin", 10, 30, 6, 15);
+        }
+    }
 }

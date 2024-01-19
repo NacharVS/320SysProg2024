@@ -21,5 +21,9 @@ namespace StrategyUnits
         {
             _damage = damage;
         }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {Name} Health: {CurrentHealth} Damage: {Damage}");
+        }
     }
 }

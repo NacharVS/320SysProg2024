@@ -4,29 +4,10 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric() : base(15, "Cleric", 1, 15, 0)
+        public Cleric(int health, string? name, int damage, int maxEnergy, int protection) : base(health, name, damage, maxEnergy, protection)
         {
-
         }
 
-        public void HealSelf(Unit unit)
-        {
-            var healthBeforeHealth = unit.CurrentHealth;
-            if (unit.IsDied)
-            {
-                Console.WriteLine($"{unit.Name} умер, восстановить здоровье нельзя");
-                return;
-            }
-            while (CurrentEnergy > 0)
-            {
-                if (unit.MaxHealth <= unit.CurrentHealth)
-                {
-                    return;
-                }
-                unit.CurrentHealth += 2;
-                CurrentEnergy -= 1;
-            }
-        }
         public void HealSomebody(Unit unit)
         {
             var healthBeforeHealth = unit.CurrentHealth;
@@ -52,5 +33,24 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHealth} Energy: {this.CurrentEnergy}");
         }
+
+        //public void HealSelf(Unit unit)
+        //{
+        //    var healthBeforeHealth = unit.CurrentHealth;
+        //    if (unit.IsDied)
+        //    {
+        //        Console.WriteLine($"{unit.Name} умер, восстановить здоровье нельзя");
+        //        return;
+        //    }
+        //    while (CurrentEnergy > 0)
+        //    {
+        //        if (unit.MaxHealth <= unit.CurrentHealth)
+        //        {
+        //            return;
+        //        }
+        //        unit.CurrentHealth += 2;
+        //        CurrentEnergy -= 1;
+        //    }
+        //}
     }
 }

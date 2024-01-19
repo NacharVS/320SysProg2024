@@ -11,7 +11,7 @@ namespace StrategyUnits
     {
         private int _maxEnergy;
         private int _currentEnergy;
-        public delegate void EnergyChangedDelegate(string name, int mana, int difference);
+        public delegate void EnergyChangedDelegate(string name, int mana, int difference, int maxEnergy);
         public int CurrentEnergy
         {
             get { return _currentEnergy; }
@@ -31,11 +31,11 @@ namespace StrategyUnits
                 }
                 if(value < previousEnergy)
                 {
-                    EnergyDecreasedEvent.Invoke(this.Name, CurrentEnergy, previousEnergy - value);
+                    EnergyDecreasedEvent.Invoke(this.Name, CurrentEnergy, previousEnergy - value, _maxEnergy);
                 }
                 else if(value > previousEnergy)
                 {
-                    EnergyIncreasedEvent.Invoke(this.Name, CurrentEnergy, value - previousEnergy);
+                    EnergyIncreasedEvent.Invoke(this.Name, CurrentEnergy, value - previousEnergy, _maxEnergy);
                 }
             }
         }

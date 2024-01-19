@@ -2,8 +2,7 @@
 {
     internal class Footman : MilitaryUnit
     {
-
-        public Footman() : base(10, "Footman", 7, 2)
+        public Footman(int health, string? name, int damage, int protection) : base(health, name, damage, protection)
         {
 
         }
@@ -12,6 +11,6 @@
         {
             unit.CurrentHealth -= (Damage - this.Protection);
         }
-
+       
     }
 }
