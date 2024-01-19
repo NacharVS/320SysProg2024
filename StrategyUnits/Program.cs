@@ -14,6 +14,8 @@ ps1.ShowInfo();
 healer.ShowInfo();
 footman.ShowInfo();
 paladin.ShowInfo();
+
+altar.RecoverMana(healer);
 //footman.ShowInfo();
 //footman2.ShowInfo();
 //Console.WriteLine("...");

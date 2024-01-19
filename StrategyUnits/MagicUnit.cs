@@ -52,22 +52,10 @@ namespace StrategyUnits
             {
                 if (unit.Health < unit.MaxHealth)
                 {
-                    if (unit.Name == "Healer")
-                    {
-                        unit.PrevHealth = unit.Health;
-                        _mana -= 1;
-                        unit.Health += 2;
-                        Console.WriteLine($"SelfHealing from {unit.PrevHealth} to {unit.Health}; Mana: {_mana}");
-                        
-                    }
-                    else
-                    {
-                        unit.PrevHealth = unit.Health;
-                        _mana -= 2;
-                        unit.Health += 1;
-                        Console.WriteLine($"Healing from {unit.PrevHealth} to {unit.Health}; Mana: {_mana}");
-                       
-                    }
+                    unit.PrevHealth = unit.Health;
+                    _mana -= 2;
+                    unit.Health += 1;
+                    Console.WriteLine($"Healing from {unit.PrevHealth} to {unit.Health}; Mana: {_mana}");
                 }
                 if (unit.Health >= unit.MaxHealth)
                 {

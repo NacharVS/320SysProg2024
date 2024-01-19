@@ -40,7 +40,7 @@ namespace StrategyUnits
         public void RecoverMana(MagicUnit unit)
         {
             if (unit.Dead)
-            { Console.WriteLine("Dude is dead, oh, no.. We can't heal him("); return; }
+            { Console.WriteLine("Dude is dead, oh, no.. We can't recover his mana("); return; }
             while (_energy > 0) 
             {
                 if (unit.Mana < unit.MaxiMana) 
