@@ -1,12 +1,15 @@
 ﻿using StrategyUnits;
 
-Footman footman = new Footman();
-Footman footman2 = new Footman();
+//Footman footman = new Footman();
+//Footman footman2 = new Footman();
 Peasant ps1 = new Peasant();
 Cleric cleric = new Cleric();
 Cleric cleric2 = new Cleric();
 Palladin palladin = new Palladin();
 Altar altar = new Altar();
+
+Barracks barracks = new Barracks();
+Footman footman = barracks.CreateFootman();
 
 Console.WriteLine("About Altar: ");
 altar.ShowInfoAboutAltar();
@@ -90,3 +93,5 @@ static void HillVoid(int manna, int health, string nameHiller, string nameHill)
 Console.WriteLine("Begin:");
 
 footman.InflictAttackEvent += AttackVoid;
+
+footman.InflictAttackEvent += HillVoid;

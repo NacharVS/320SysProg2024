@@ -12,7 +12,7 @@ namespace StrategyUnits
         {
             
         }
-        public void MagicAttack(Unit unit)
+        public void HollyFireAttack(Unit unit)
         {
             if (DeadPerson == true)
             {
@@ -32,6 +32,14 @@ namespace StrategyUnits
                     Manna -= 4;
                     Console.WriteLine($"Palladin take magic attack: {unit.Name}");
                 }
+            }
+        }
+
+        public void HollyArmorAttack(Unit unit)
+        {
+            if (DeadPerson == true)
+            {
+                Console.WriteLine("Palladin died.");
             }
         }
     }

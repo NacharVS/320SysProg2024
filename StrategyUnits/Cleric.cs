@@ -41,7 +41,7 @@ namespace StrategyUnits
             }
         }
 
-        public void HillMyself(Unit unit) 
+        public void HillMyself(Unit unit)
         {
             if (DeadPerson == true)
             {
