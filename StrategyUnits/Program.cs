@@ -1,10 +1,13 @@
 ﻿using StrategyUnits;
 
-Footman footman = new Footman();
+Barracs barracs = new Barracs();
+
 Peasant peasant = new Peasant();
-Healer healer = new Healer();
 Paladin paladin = new Paladin();
 Altar altar = new Altar();
+
+Footman footman = barracs.CreateFootman();
+Healer healer = altar.CreateHealer();
 
 footman.HealthIncreasedEvent += HealthIncrease;
 footman.HealthDecreasedEvent += HealthDecrease;
@@ -23,7 +26,7 @@ healer.HealSomebody(peasant);
 
 void HealthIncrease(string name, int health, int newHealth)
 {
-    Console.WriteLine($"Здоровье {name} увеличилось на {newHealth - health}. Текущее здоровье - {newHealth}");
+    Console.WriteLine($" Здоровье{name} увеличилось на {newHealth - health}. Текущее здоровье - {newHealth}");
 }
 void HealthDecrease(string name, int health, int newHealth)
 {

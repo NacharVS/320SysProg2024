@@ -8,7 +8,7 @@
         private string? _name;
 
         public int MaxHealth { get; private set; }
-        public Unit(int health, string? name)
+        public Unit(string? name, int health)
         {
             _health = health;
             _name = name;

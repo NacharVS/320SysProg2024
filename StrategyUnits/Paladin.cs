@@ -8,7 +8,7 @@ namespace StrategyUnits
 {
     internal class Paladin : MagicUnit
     {
-        public Paladin() : base(50, "Paladin", 5, 50)
+        public Paladin() : base("Paladin", 50, 3, 5, 10, 50)
         {
 
         }

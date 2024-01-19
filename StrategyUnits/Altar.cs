@@ -45,5 +45,10 @@ namespace StrategyUnits
                 Console.WriteLine($"{magicUnit.Name} восстановил ману");
             }
         }
+
+        public Healer CreateHealer()
+        {
+            return new Healer("Healer", 50, 1, 3, 0, 60);
+        }
     }
 }
