@@ -1,24 +1,27 @@
 ﻿namespace StrategyUnits
 {
-    internal class Footman : Unit
+    internal class Footman : MilitaryUnit
     {
-        private int _damage;
-
-        public int Damage
+        private String _nameOfUnit;
+        public Footman(int currentHealth, string? nameOfClass, int defense) : base(currentHealth, nameOfClass, defense)
         {
-            get { return _damage; }
-            set { _damage = value; }
+            _nameOfUnit = NameOfUnit;
         }
-
-        public Footman() : base(60, "Footman")
+        public String NameOfUnit
         {
-            _damage = 7;
+            get { return _nameOfUnit; }
+            set { _nameOfUnit = value; }
         }
-
-        public void InflictDamage(Unit unit)
+        public override void ShowInfo()
         {
-            unit.Health -= _damage;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"====== CHARACTER ========\n" +
+                $"{NameOfUnit} - a unit of {this.NameOfClass} class\n" +
+               $"Health: {this.CurrentHealth}/{MaxHealth}\n" +
+               $"Defense: {this.Defense}\n" +
+               $"Damage (min - max): {this.MinDamage} - {this.MaxDamage}\n" +
+               $"====== ========= ========\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
-
     }
 }
