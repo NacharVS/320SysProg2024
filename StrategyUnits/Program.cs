@@ -1,59 +1,53 @@
 ﻿using StrategyUnits;
 using System.Xml.Linq;
 
-Footman footman = new Footman();
 Peasant ps1 = new Peasant();
 Cliric cl1 = new Cliric();
-//Peasant ps2 = new Peasant();
-//Cliric cl2 = new Cliric();
-Paladin pl1 = new Paladin();
+Paladin unit2 = new Paladin();
 Altar altar = new Altar();
-
-ps1.HealthChangeEvent += ShowInfo;
-footman.HealthChangeEvent += ShowInfo;
-cl1.ShowInfoCliric += ShowInfoCliric;
-footman.AttackUnit += damageInfo;
-cl1.HealUnit += healInfo;
-pl1.MagicFireBollAttack += damageInfo;
-//cl1.StickCliricAttack += damageInfo;
-altar.altarHealMP += AltarHealMP;
-cl1.AttackUnit += damageInfo;
-//Задание просмотр работы убийства
-cl1.ShowInfo();
-ps1.ShowInfo();
-cl1.Attack(pl1);
-footman.ShowInfo();
-footman.Attack(ps1);
-footman.Attack(ps1);
-pl1.Attack(ps1);
-footman.Attack(cl1);
-cl1.HealHealthunit(ps1);
-cl1.HealHealthunit(cl1);
-cl1.ShowInfo();
-altar.RestoreMP(cl1);
+Battle battle = new Battle();
+//ps1.HealthChangeEvent += ShowInfo;
+//footman.HealthChangeEvent += ShowInfo;
+//cl1.ShowInfoCliric += ShowInfoCliric;
+//footman.AttackUnit += damageInfo;
+//cl1.HealUnit += healInfo;
+unit2.MagicFireBollAttack += damageInfo;
+//altar.altarHealMP += AltarHealMP;
+//cl1.AttackUnit += damageInfo;
+unit2.ShowInfoCliric += ShowInfoCliric; 
+//cl1.ShowInfo();
+//ps1.ShowInfo();
+//cl1.Attack(pl1);
+//footman.ShowInfo();
 //footman.Attack(ps1);
 //footman.Attack(ps1);
+//pl1.Attack(ps1);
+//footman.Attack(cl1);
+//cl1.HealHealthunit(ps1);
+//cl1.HealHealthunit(cl1);
+//cl1.ShowInfo();
+//altar.RestoreMP(cl1);
 
-//footman.InflictDamage(ps1);
-//footman.InflictDamage(ps1);
-//ps1.ShowInfo();
-//footman.InflictDamage(ps1);
-//footman.InflictDamage(ps1);
-//ps1.ShowInfo();
-//Console.WriteLine();
-////Задание с лечением и маной
 
-//ps2.ShowInfo();
-//footman.InflictDamage(ps2);
-//footman.InflictDamage(cl1);
-//ps2.ShowInfo();
-//cl1.ShowInfo();
-//cl1.InflictHeal(ps2);
-//cl1.InflictHeal(cl1);
-//ps2.ShowInfo();
-//cl1.ShowInfo();
-//Console.WriteLine("Клирик который лечил: ");
-//cl1.ShowInfo();
+Barracs bar = new Barracs();
+MilitaryUnit unit = bar.CreateBerserker();
+unit.HealthChangeEvent += ShowInfo;
+unit.InfoSolderChangeEvent += InfoBattleUnit;
+unit.AttackUnit += damageInfo;
+unit2.InfoSolderChangeEvent += InfoBattleUnit;
+
+
+
+//бой между 2 персонжами
+unit.ShowInfo();
+unit2.ShowInfo();
+battle.Battles(unit, unit2);
+
+//это улучшение урона до 2 уровня, броня тоже также работает
+Forge forge = new Forge();
+forge.AppGradeOneAttack(cl1);
+forge.AppGradeOneAttack(cl1);
+forge.AppGradeOneAttack(cl1);
 
 void damageInfo(int health, string name, int action, int? mana)
 {
@@ -71,6 +65,11 @@ void damageInfo(int health, string name, int action, int? mana)
             Console.WriteLine($"{name} получил {action} поинтов дамага и у него осталось {health} HP");
     }
 }
+void InfoBattleUnit(int health, string name, int action, int? mana)
+{
+    Console.WriteLine($"У {name} есть HP = {health} и урон равный {mana}");
+}
+
 void healInfo(int health, string name, int action, int? mana)
 {
     Console.WriteLine($"{name} (a) изличили за {action} HP и у него стало {health} HP.");

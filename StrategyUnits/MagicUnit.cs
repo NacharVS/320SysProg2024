@@ -5,7 +5,7 @@
         public event HealthChangedDelegate ShowInfoCliric;
         private int _mana;
         public int MaxMana { get; set; }
-        public MagicUnit(int health, string? name, bool active, int damage, int maxDamage, int mana) : base(health, name, active, damage, maxDamage)
+        public MagicUnit(int health, string? name, bool active, int damage, int maxDamage, int mana,int armors, int lvlappArmor, int lvlappAttack) : base(health, name, active, damage, maxDamage,armors, lvlappArmor,lvlappAttack)
         {
             _mana = mana;
             MaxMana = _mana;

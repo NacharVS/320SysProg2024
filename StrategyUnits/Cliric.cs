@@ -18,7 +18,7 @@ namespace StrategyUnits
             get => base.Mana;
             set => base.Mana = value;
         }
-        public Cliric() : base(80, "Clirc", true, 1, 3, 60)
+        public Cliric() : base(80, "Clirc", true, 1, 3, 60,5,0,0)
         {
             _healthValue = 1;
         }
