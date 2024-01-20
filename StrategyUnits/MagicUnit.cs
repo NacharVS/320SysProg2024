@@ -49,9 +49,11 @@ namespace StrategyUnits
             _maxEnergy = maxEnergy;
             _currentEnergy = maxEnergy;
         }
+
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHealth} Energy: {this.CurrentEnergy}");
+            Console.WriteLine($" Unit: {this.Name}\n Health: {this.CurrentHealth}/{this.MaxHealth}\n Energy: {this.CurrentEnergy}/{this.MaxEnergy}\n Damage: {this.Damage}\n Protection: {Protection}\n LvlWeapon: {LvlWeapon}\n LvlArmor: {LvlArmor}");
+            Console.WriteLine();
         }
         public event EnergyChangedDelegate EnergyDecreasedEvent;
         public event EnergyChangedDelegate EnergyIncreasedEvent;

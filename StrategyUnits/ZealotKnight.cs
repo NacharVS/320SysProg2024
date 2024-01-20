@@ -28,9 +28,5 @@ namespace StrategyUnits
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
-        public override void ShowInfo()
-        {
-            Console.WriteLine($"Unit: {Name} Health: {CurrentHealth}/{MaxHealth} Damage: {Damage} Protection {Protection}");
-        }
     }
 }

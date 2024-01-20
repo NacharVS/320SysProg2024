@@ -16,23 +16,54 @@ namespace StrategyUnits
             get { return _magicDamage; }
             set { _magicDamage = value; }
         }
-        //private bool _isHolyArmor;
+        private bool _holyArmor;
 
-        //public bool IsHolyArmor
-        //{
-        //    get { return _isHolyArmor; }
-        //    set 
-        //    { 
-        //        if(CurrentHealth <= MaxHealth / 2)
-        //            _isHolyArmor = true;
-        //        else
-        //            _isHolyArmor = false;
-        //    }
-        //}
+        public bool HolyArmor
+        {
+            get { return _holyArmor; }
+            set { _holyArmor = value; }
+        }
+        public override double CurrentHealth
+        {
+            get => base.CurrentHealth;
+            set
+            {
+                double previousHealth = base.CurrentHealth;
+
+                if (value <= 0)
+                {
+                    base.CurrentHealth = 0;
+                    IsDied = true;
+                }
+                else
+                {
+                    if (value > MaxHealth)
+                        base.CurrentHealth = MaxHealth;
+                    else
+                        base.CurrentHealth = value;
+                }
+
+                if (base.CurrentHealth < MaxHealth * 0.5 && !_holyArmor)
+                {
+                    _holyArmor = true;
+                    Protection *= 1.5;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"{Name} активировал Святой щит!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else if (base.CurrentHealth >= MaxHealth * 0.5 && _holyArmor)
+                {
+                    _holyArmor = false;
+                    Protection /= 1.5;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"{Name} деактивировал Святой щит!");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                }
+            }
+        }
         public Paladin(double health, string? name, double damage, double maxEnergy, double protection, double magicDamage) : base(health, name, damage, maxEnergy, protection)
         {
             _magicDamage = magicDamage;
-            //_isHolyArmor = false;
         }
 
         public void HolyFire(Unit unit)
@@ -50,13 +81,12 @@ namespace StrategyUnits
 
             }
         }
-        public void Attack(Unit unit)
-        {
-            unit.CurrentHealth -= (Damage - this.Protection);
-        }
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {CurrentHealth}/{MaxHealth} Damage: {Damage} Protection: {Protection} MagicDamage:{MagicDamage}");
+            Console.WriteLine($" Unit: {Name}\n Health: {CurrentHealth}/{MaxHealth}\n Damage: {Damage}\n Protection: {Protection}\n Energy: {this.CurrentEnergy}/{this.MaxEnergy}\n MagicDamage:{MagicDamage}\n HolyArmor: {HolyArmor}\n LvlWeapon: {LvlWeapon}\n LvlArmor: {LvlArmor}");
+            Console.WriteLine();
         }
+        
+
     }
 }

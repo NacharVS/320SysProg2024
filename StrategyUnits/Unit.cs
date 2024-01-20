@@ -8,6 +8,20 @@
         private double _maxHealth;
         private bool _isDied;
         private double _protection;
+        private int _lvlWeapon;
+
+        public int LvlWeapon
+        {
+            get { return _lvlWeapon; }
+            set { _lvlWeapon = value; }
+        }
+        private int _lvlArmor;
+
+        public int LvlArmor
+        {
+            get { return _lvlArmor; }
+            set { _lvlArmor = value; }
+        }
 
         public virtual double Protection
         {
@@ -44,7 +58,7 @@
                     else
                         _currentHealth = value;
                 }
-                if (value < previousHealth)
+                if (value <= previousHealth)
                 {
                     HealthDecreasedEvent.Invoke(_name, _currentHealth, (previousHealth - value), _protection, _maxHealth);
                 }
@@ -62,6 +76,8 @@
             _maxHealth = health;
             _protection = protection;
             _isDied = false;
+            _lvlArmor = 0;
+            _lvlWeapon = 0;
         }
 
         public string Name
@@ -79,10 +95,12 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_currentHealth}");
+            Console.WriteLine($" Unit: {_name}\n Health: {_currentHealth}\n LvlWeapon: {_lvlWeapon}\n LvlArmor: {_lvlArmor}");
+            Console.WriteLine();
         }
 
         public event HealthChangedDelegate HealthIncreasedEvent;
         public event HealthChangedDelegate HealthDecreasedEvent;
+        public event HealthChangedDelegate HealthNotChangedEvent;
     }
 }

@@ -13,6 +13,9 @@ namespace StrategyUnits
             var healthBeforeHealth = unit.CurrentHealth;
             if (unit.IsDied)
             {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine($"{unit.Name} умер. Его нельзя вылечить");
+                Console.ForegroundColor = ConsoleColor.White;
                 return;
             }
             while (CurrentEnergy > 0)
@@ -28,10 +31,6 @@ namespace StrategyUnits
                 unit.CurrentHealth += 1;
                 CurrentEnergy -= 2;
             }
-        }
-        public override void ShowInfo()
-        {
-            Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHealth} Energy: {this.CurrentEnergy}");
         }
 
         //public void HealSelf(Unit unit)
