@@ -11,15 +11,17 @@ namespace StrategyUnits
         public int _nameMagic;
         public int _mana;
         public int _maxMana;
+        public int _damage;
+        public int _currentEnerg;
         public int MaxMana
         {
             get { return _maxMana; }
             set { _maxMana = value; }
         }
 
-        public MagicUnit(int atackValue, string Name) : base(atackValue, Name)
+        public MagicUnit(int atackValue, string Name, int damage) : base(atackValue, Name, damage)
         {
-
+            _damage = damage;
         }
 
         public void Heal(Unit unit)
@@ -51,9 +53,7 @@ namespace StrategyUnits
                 {
                     Console.WriteLine("Мана закончилась!");
                 }
-
             }
-
         }
 
         public void Healself()

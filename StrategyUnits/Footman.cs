@@ -2,9 +2,19 @@
 {
     internal class Footman : MilitaryUnit
     {
-        public Footman() : base(10, "Footman")
+        
+        public int _damage;
+        public int Damage
         {
-            Damage = 10;
+            get => _damage;
+            set { _damage = value; }
         }
+        
+        public Footman(int health, string? name, int damage) : base(health, name, damage)
+        {
+            Damage = damage;
+        }
+
+       
     }
 }
