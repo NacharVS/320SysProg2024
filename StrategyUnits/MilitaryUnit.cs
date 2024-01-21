@@ -29,12 +29,11 @@ namespace StrategyUnits
             { 
                 base.CurentHealth = value;
                 double procent = Math.Round(((double)PravHealth) /((double) _maxHealth), 4);
-                Console.WriteLine($"Procent suka {procent}");
-                Console.WriteLine(procent);
                 if ((Rage==true) && (Name == "Recruit") && (procent > 0.5))
                 {
+                    Console.WriteLine($"Ульта включена.Предыдущий урон: {_damage}");
                     Damage *= 2;
-                    Console.WriteLine("damage "+_damage);
+                    Console.WriteLine($"Урон в данный момент {_damage}");
                     Rage = false;
                 }
             }

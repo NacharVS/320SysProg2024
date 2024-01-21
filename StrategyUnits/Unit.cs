@@ -17,7 +17,7 @@ namespace StrategyUnits
         public int _pravHealth;
         public int _weapon;
         public int _armor;
-        private bool _rage=false;
+        
         public bool Rage { get; set; }
         
         public int Armor
@@ -65,9 +65,6 @@ namespace StrategyUnits
             get { return _dead; }
             set { _dead = value; }
         }
-
-
-        
         public virtual int CurentHealth
         {
             get => _health;
@@ -91,8 +88,7 @@ namespace StrategyUnits
                     {
                         _health = value;
                         double procent = Math.Round((double)CurentHealth / (double)_maxHealth, 4);
-                        Console.WriteLine("aaaaaaaaaaaaaaaaaaaa");
-                        Console.WriteLine(procent);
+                        
                         if (_pravHealth < _health)
                         {
                             int v = _health - _pravHealth;

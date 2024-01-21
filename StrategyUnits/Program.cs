@@ -7,8 +7,9 @@ Forge forge = new Forge();
 Footman footman = barracs.CreateRecruit();
 Footman footman2 = barracs.CreateFootman();
 Footman footman3 = barracs.CreateBerserker();
+
 footman.ShowInfo();
-footman2.ShowInfo();
+footman2.ShowInfo();    
 footman3.ShowInfo();
 
 Church church = new Church();
@@ -29,6 +30,8 @@ footman3.InflictDamage(footman);
 footman3.InflictDamage(footman);
 footman3.InflictDamage(footman);
 footman.ShowInfo();
+
+
 
 //Footman footman = new Footman();
 //Footman footman2 = new Footman();
