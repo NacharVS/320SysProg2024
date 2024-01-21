@@ -9,20 +9,27 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
+        private int _lvlWeapon;
         
-        public MilitaryUnit(string? name, int health, int damage, int defence) : base(name, health, defence) 
+        public int LvlWeapon
+        {
+            get { return _lvlWeapon; }
+            set { _lvlWeapon = value; }
+        }
+        public MilitaryUnit(string? name, double health, double damage, double defence) : base(name, health, defence) 
         {
             _damage = damage;
+            _lvlWeapon = 0;
         }
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Урон: {Damage}");
+            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Урон: {Damage} Уровень защиты: {LvlWeapon} Уровень оружия: {LvlArmor}");
         }
 
-        private int _damage;
+        private double _damage;
 
-        public int Damage
+        public double Damage
         {
             get { return _damage; }
             set { _damage = value; }
@@ -33,11 +40,13 @@ namespace StrategyUnits
             if (unit.DiedUnit == false)
             {
                 unit.Health -= (_damage - unit.Defence);
-                Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} ножом");
+                Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} палкой");
             }
             else
                 Console.WriteLine($"Нельзя нанести урон персонажу {unit.Name}. Он уже мертв");
-            
         }
+
+        
+
     }
 }

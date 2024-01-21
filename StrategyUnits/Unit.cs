@@ -2,23 +2,37 @@
 {
     internal class Unit
     {
-        public delegate void HealthChangedDelegate(string? name, int health, int difference, int defence);
-        private int _health;
+        public delegate void HealthChangedDelegate(string? name, double health, double difference, double defence);
+        private double _health;
         private string? _name;
-        public int MaxHealth { get; private set; }
-        private int _defence; //защита
-        public int Defence 
+        private double _maxHealth;
+        public double MaxHealth
+        {
+            get { return _maxHealth; }
+            set { _maxHealth = value; }
+        }
+        private double _defence; //защита
+        public virtual double Defence 
         {
             get { return _defence; }
             set { _defence = value; }
         }
-        public Unit(string? name,int health, int defence)
+
+        private int _lvlArmor;
+        public int LvlArmor
+        {
+            get { return _lvlArmor; }
+            set { _lvlArmor = value; }
+        }
+        
+        public Unit(string? name, double health, double defence)
         {
             _health = health;
             _name = name;
-            MaxHealth = health;
+            _maxHealth = health;
             _diedunit = false;
             _defence = defence;
+            _lvlArmor = 0;
         }
         private bool _diedunit;
 
@@ -34,12 +48,12 @@
             set { _name = value; }
         }
 
-        public int Health 
+        public virtual double Health 
         { 
             get => _health;
             set
             {
-                int previousHealth = _health;
+                double previousHealth = _health;
                 if (value <= 0)
                 {
                     _health = 0;
@@ -68,7 +82,7 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {_name} Жизни: {_health}");
+            Console.WriteLine($"Персонаж: {_name} Жизни: {_health} Уровень защиты: {_lvlArmor}");
         }
 
         public event HealthChangedDelegate HealthIncreasedEvent;

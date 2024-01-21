@@ -10,31 +10,31 @@ namespace StrategyUnits
     internal class Cleric : MagicUnit
     {
         
-        public Cleric() : base("Cleric", 60, 7, 60, 5, 10)
+        public Cleric(string? name, double health, double damage, double defence, double maxEnergy) : base(name, health, damage, defence, maxEnergy)
         {
            
         }
 
-        public void HealYourself (Unit unit)
-        {
-            if (unit.DiedUnit)
-            {
-                Console.WriteLine("Персонаж мертв! Лечить нельзя!");
-                return;
-            }
-            while (NowEnergy > 0)
-            {
+        //public void HealYourself (Unit unit)
+        //{
+        //    if (unit.DiedUnit)
+        //    {
+        //        Console.WriteLine("Персонаж мертв! Лечить нельзя!");
+        //        return;
+        //    }
+        //    while (NowEnergy > 0)
+        //    {
                
-                if (unit.MaxHealth <= unit.Health)
-                {
-                    Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
-                    return;
-                }
-                NowEnergy -= 1;
-                unit.Health += 2;
-            }
-            Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
-        }
+        //        if (unit.MaxHealth <= unit.Health)
+        //        {
+        //            Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
+        //            return;
+        //        }
+        //        NowEnergy -= 1;
+        //        unit.Health += 2;
+        //    }
+        //    Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
+        //}
 
         public void HealOther (Unit unit)
         {
@@ -47,7 +47,6 @@ namespace StrategyUnits
             {
                 if (unit.MaxHealth <= unit.Health)
                 {
-                    Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
                     return;
                 }
                 if (NowEnergy < 2)
@@ -58,7 +57,7 @@ namespace StrategyUnits
                 NowEnergy -= 2;
                 unit.Health += 1;
             }
-            Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
+            
         }
 
         

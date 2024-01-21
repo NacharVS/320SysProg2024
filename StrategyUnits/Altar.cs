@@ -9,14 +9,14 @@ namespace StrategyUnits
     internal class Altar
     {
 
-        private int _nowEnergy;
-        private int _maxEnergy;
+        private double _nowEnergy;
+        private double _maxEnergy;
         public Altar()
         {
             _nowEnergy = 100;
             _maxEnergy = 100;
         }
-        public int CurrentEnergy
+        public double NowEnergy
         {
             get { return _nowEnergy; }
             set
@@ -35,7 +35,7 @@ namespace StrategyUnits
             }
         }
 
-        public int MaxEnergy
+        public double MaxEnergy
         {
             get { return _maxEnergy; }
             set
@@ -67,6 +67,19 @@ namespace StrategyUnits
                 magicUnit.NowEnergy += 10;
                 _nowEnergy -= 1;
             }
+        }
+
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight("Zealot knight", 60, 10, 50, 3);
+        }
+        public Paladin CreatePaladin()
+        {
+            return new Paladin("Paladin", 60, 8, 60, 5, 10);
+        }
+        public Cleric CreateCleric()
+        {
+            return new Cleric("Cleric", 60, 7, 3, 50);
         }
     }
 }

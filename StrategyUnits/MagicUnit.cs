@@ -9,19 +9,18 @@ namespace StrategyUnits
 {
     internal class MagicUnit : MilitaryUnit
     {
-        private int _maxEnergy;
-        private int _nowEnergy;
-        private int _damageMagic;
+        private double _maxEnergy;
+        private double _nowEnergy;
 
-        public delegate void EnergyChangedDelegate(string name, int energy, int difference);
+        public delegate void EnergyChangedDelegate(string name, double energy, double difference);
         public event EnergyChangedDelegate EnergyDecreasedEvent;
         public event EnergyChangedDelegate EnergyIncreasedEvent;
-        public int NowEnergy
+        public double NowEnergy
         {
             get { return _nowEnergy; }
             set
             {
-                int previousEnergy = _nowEnergy;
+                double previousEnergy = _nowEnergy;
                 if (value > MaxEnergy)
                     _nowEnergy = _maxEnergy;
                 else if (value <= 0)
@@ -39,22 +38,16 @@ namespace StrategyUnits
                 }
             }
         }
-        public int MaxEnergy
+        public double MaxEnergy
         {
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
 
-        public int DamageMagic
-        {
-            get { return _damageMagic; }
-            set { _damageMagic = value; }
-        }
-        public MagicUnit(string? name, int health, int damage, int maxEnergy, int defence, int damagemagic) : base(name, health, damage, defence)
+        public MagicUnit(string? name, double health, double damage, double maxEnergy, double defence) : base(name, health, damage, defence)
         {
             _maxEnergy = maxEnergy;
             _nowEnergy = maxEnergy;
-            _damageMagic = damagemagic;
         }
 
         public override void Attack(Unit unit)
@@ -62,30 +55,15 @@ namespace StrategyUnits
             if (unit.DiedUnit == false)
             {
                 unit.Health -= (Damage - unit.Defence);
-                Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} мечом");
+                Console.WriteLine($"Персонаж {Name} нанес урон персонажу {unit.Name} ножом");
             }
             else
                 Console.WriteLine($"Нельзя нанести урон персонажу {unit.Name}. Он уже мертв");
         }
-        //За одно очко энергии убавляется 3 очка жизни
-        public void MagicAttack(Unit unit)
-        {
-            if (unit.DiedUnit == false && NowEnergy > 0)
-            {
-                 NowEnergy -= 1;
-                 unit.Health -= (Damage - unit.Defence);
-                Console.WriteLine($"Персонажу {unit.Name} нанесен урон с помощью магического удара.");
-            }
-            else
-            {
-                Console.WriteLine($"Невозможно использовать магический удар. Персонаж {unit.Name} уже мертв.");
-            }
-            
-        }
-
+        
         public override void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Энергия: {_nowEnergy}");
+            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Энергия: {_nowEnergy} Урон: {Damage} Уровень защиты: {LvlWeapon} Уровень оружия: {LvlArmor}");
         }
 
     }
