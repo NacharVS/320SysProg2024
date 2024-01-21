@@ -41,6 +41,7 @@ namespace StrategyUnits
             _name = Name;
             _health = Health;
             _mana = Mana;
+            maxMana = _mana;
         }
         virtual public void ToHeal(Unit unit)
         {

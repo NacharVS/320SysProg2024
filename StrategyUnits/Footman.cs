@@ -2,16 +2,9 @@
 {
     internal class Footman : MilitaryUnit 
     {
-        private int _damage;
-        private int _health;
-        public int Damage
+        public Footman( int health, string?  Name, int Damage) : base (Damage, Name, health)
         {
-            get { return _damage; }
-            set { _damage = value; }
-        }
-
-        public Footman( int Health, string?  Name, int Damage) : base (Damage, Name, Health)
-        {
+            
         }
         public override void ShowInfo()
         {

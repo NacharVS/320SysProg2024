@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Paladin : MagicUnit
+    internal class Paladin : ZealotKnight
     {
-        private int _damage;
-        public Paladin(int mana, int Damage) : base (Damage, "Paladin", 55, mana)
+        public Paladin() : base("Paladin", 11, 50, 50)
         {
-            _damage = Damage;
-            _mana = mana;
-            maxMana = mana;
+            maxMana = _mana;
         }
     }
 }

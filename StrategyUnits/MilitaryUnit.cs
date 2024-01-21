@@ -13,13 +13,27 @@ namespace StrategyUnits
         private int _health;
         public int Attack
         {  get => _attack; set { _attack = value; } }
-        public int Health
-        {  get => _health; set { _health = value; } }
         public MilitaryUnit(int Damage, string Name, int health) : base(health, Name)
         {
             _attack = Damage;
             _name = Name;
             _health = health;
+        }
+        public override int Health
+        {
+            get => base.Health;
+            set 
+            { 
+                base.Health = value;
+                double percent = Math.Round(((double)PrevHealth / (double)_maxHealth), 4);
+                if ((Rrage) && (Name=="Berserker") && (percent >= 0.5))
+                {
+                    Console.Write("Rage's ON | Previous damage: " + _attack);
+                    _attack *= 2;
+                    Console.WriteLine("| Current damage: " + _attack);
+                    Rrage = false;
+                }
+            }
         }
         virtual public void InflictDamage(Unit unit)
         {

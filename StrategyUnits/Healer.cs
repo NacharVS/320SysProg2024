@@ -9,11 +9,10 @@ namespace StrategyUnits
 {
     internal class Healer : MagicUnit
     {
-        public Healer(int Mana, int Health) : base(5, "Healer", Health, Mana)
+        public Healer() : base(5, "Healer", 40, 55)
         {
             _maxHealth = Health;
-            _mana = Mana;
-            maxMana = Mana;
+            maxMana = MaxiMana;
         }
     }
 }

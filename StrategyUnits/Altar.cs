@@ -11,11 +11,11 @@ namespace StrategyUnits
         private int _energy;
         private int _maxEnergy;
         private string? _name;
-        public Altar (int energy)
+        public Altar ()
         {
             _name = "Altar";
-            _energy = energy;
-            _maxEnergy = energy;
+            _energy = 200;
+            _maxEnergy = _energy;
         }
         public string Name
         { get => _name; set => _name = value; }

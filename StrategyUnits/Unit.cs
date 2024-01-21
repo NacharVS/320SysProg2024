@@ -5,6 +5,8 @@
         private int _health;
         private string? _name;
         public int _prevHealth;
+        public bool Rrage { get; set; }
+        private bool _rage = false;
         public bool Dead { get; set; }
         private bool _dead = false;
         public int _maxHealth;
@@ -23,7 +25,8 @@
                 _prevHealth = value;
             }
         }
-        public delegate void HealthChangeDelegate(int health, int n); 
+        public delegate void HealthChangeDelegate(int health, int n, string? name);
+        public delegate void Rage(int health);
         public string Name
         {
             set { _name = value; }
@@ -34,7 +37,7 @@
             get { return _maxHealth; }
             set { _maxHealth = value; }
         }
-        public int Health 
+        public virtual int Health
         { 
             get => _health; 
             set
@@ -52,19 +55,25 @@
                     else
                     {
                         _health = value;
-                       
+                        double percent = Math.Round(((double)_health / (double)_maxHealth),4);
+                        Console.WriteLine("% HP: " + percent.ToString());
                         if (_health < _prevHealth)
                         {
                             int n = _prevHealth - _health;
-                            HealthLowEvent.Invoke(_health, n);
+                            HealthLowEvent.Invoke(_health, n, _name);
                         }
                         else
                         {
                             if (_health > _prevHealth)
                             {
                                 int n = _health - _prevHealth;
-                                HealthHighEvent.Invoke(_health, n);
+                                HealthHighEvent.Invoke(_health, n, _name);
                             }
+                        }
+                        if ((percent < 0.5) && Name == "Berserker")
+                        {
+                            StartRageEvent.Invoke(_health);
+                            Rrage = true;
                         }
                     }
                     //HealthChangeEvent.Invoke(value);
@@ -84,7 +93,9 @@
         {
             Console.Write($"Unit: {_name} | Health: {_health}/{_maxHealth} ");
         }
-        //public event HealthChangeDelegate HealthChangeEvent;
+        public event HealthChangeDelegate HealthChangeEvent;
+
+        public event Rage StartRageEvent;
         public event HealthChangeDelegate HealthLowEvent;
         public event HealthChangeDelegate HealthHighEvent;
     }

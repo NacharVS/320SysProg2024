@@ -8,6 +8,8 @@ namespace StrategyUnits
 {
     internal class Barracks
     {
+        private int _damage;
+        
         public Footman CreateRecruit()
         {
             return new Footman(60, "Recruit", 10);
