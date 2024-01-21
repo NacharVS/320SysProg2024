@@ -38,7 +38,7 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} - Health: {Health}, Mana: {Mana}, Damage: {MinDamage} - {MaxDamage}");
+            Console.WriteLine($"Unit: {Name} - Health: {Health}, Shield: {Shield}, Mana: {Mana}, Damage: {MinDamage}-{MaxDamage}");
         }
 
     }

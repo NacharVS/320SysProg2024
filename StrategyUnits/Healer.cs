@@ -10,7 +10,7 @@ namespace StrategyUnits
 
         }
 
-        public void HealSomebody(Unit unit)
+        public void Heal(Unit unit)
         {
             while(Mana > 0 && unit.MaxHealth - unit.Health > 0)
             {
@@ -19,13 +19,13 @@ namespace StrategyUnits
             }
         }
 
-        public void HealSelf (Unit unit)
+        /*public void HealSelf (Unit unit)
         {
             while (Mana > 0 && MaxHealth - Health > 0)
             {
                 Health += 2;
                 Mana -= 1;
             }
-        }
+        }*/
     }
 }

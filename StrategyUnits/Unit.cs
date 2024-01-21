@@ -44,6 +44,19 @@
                     else
                         _health = value;
                 }
+                if (this is Berserker bersk)
+                {
+                    if (Health < MaxHealth / 2 && !bersk._rage)
+                    {
+                        bersk._rage = true;
+                        Console.WriteLine($"{Name} активировал ярость. Урон увеличился - {bersk.MinDamage}-{bersk.MaxDamage}");
+                    }
+                    if (Health > MaxHealth / 2 && bersk._rage)
+                    {
+                        bersk._rage = false;
+                        Console.WriteLine($"{Name} деактивировал ярость. Урон снова обычный - {bersk.MinDamage}-{bersk.MaxDamage}");
+                    }
+                }
             } 
         }
 

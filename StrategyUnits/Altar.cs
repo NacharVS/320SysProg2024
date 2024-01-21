@@ -50,5 +50,15 @@ namespace StrategyUnits
         {
             return new Healer("Healer", 50, 1, 3, 0, 60);
         }
+
+        public Paladin CreatePaladin()
+        {
+            return new Paladin("Paladin", 50, 3, 5, 10, 50);
+        }
+
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight("Zealot knight", 50, 5, 7, 4, 55);
+        }
     }
 }

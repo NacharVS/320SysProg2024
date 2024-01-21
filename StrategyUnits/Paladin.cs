@@ -6,18 +6,42 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Paladin : MagicUnit
+    internal class Paladin : ZealotKnight
     {
-        public Paladin() : base("Paladin", 50, 3, 5, 10, 50)
+        private bool _holyArmorActive = false;
+
+        public Paladin(string? name, int health, int minDamage, int maxDamage, int shield, int maxMana) : base(name, health, minDamage, maxDamage, shield, maxMana)
         {
 
         }
 
-        public void FireBall(Unit unit)
+        public void HolyFire(Unit unit)
         {
-            unit.Health -= 12;
-            Mana -= 3;
-            Console.WriteLine("Атаковал огненным шаром");
+            if (Mana >= 3)
+            {
+                Mana -= 3;
+                unit.Health -= 12;
+                Console.WriteLine($"{Name} атаковал {unit.Name} магическим ударом");
+            }
+            else
+            {
+                Console.WriteLine($"{Name} имеет недостаточно маны. Текущий уровень маны - {Mana}");
+            }
+        }
+
+        public void HolyArmor()
+        {
+            if (_holyArmorActive)
+            {
+                Console.WriteLine($"{Name} уже активировал магическую защиту");
+            }
+            else
+            {
+                Shield += Shield / 2;
+                Console.WriteLine($"{Name} активировал магическую защиту. Текущая броня - {Shield}");
+                _holyArmorActive = true;
+                Mana -= 3;
+            }
         }
     }
 }
