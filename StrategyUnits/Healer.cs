@@ -7,17 +7,16 @@ namespace StrategyUnits
     {
         private string _nameOfUnit;
 
+        public Healer(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, manaPoints)
+        {
+            _nameOfUnit = nameOfUnit;
+        }
+
         public string NameOfUnit
         {
             get { return _nameOfUnit; }
             set { _nameOfUnit = value; }
         }
-
-        public Healer(string nameOfUnit) : base(40, "Healer", 1, 0, 4, 100)
-        {
-            _nameOfUnit = nameOfUnit;
-        }
-
         public void HealSomebody(Unit unit)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -26,31 +25,48 @@ namespace StrategyUnits
                 Console.WriteLine("You can't heal a dead unit.\n");
                 return;
             }
-            while (this.ManaPoints > 0)
+            int healthBeforeHeal = unit.CurrentHealth;
+            int healthToHeal = unit.MaxHealth - unit.CurrentHealth;
+            int manaToSpend = healthToHeal * 2;
+
+            if (this.ManaPoints > 0 && unit.CurrentHealth < unit.MaxHealth)
             {
-                if(unit.CurrentHealth < unit.MaxHealth)
+                if (manaToSpend <= ManaPoints)
                 {
-                    this.ManaPoints -= 2;
-                    Console.WriteLine($">> Healed from {unit.CurrentHealth} to {unit.CurrentHealth + 1}. Mana left: {this.ManaPoints} MP.\n");
-                    unit.CurrentHealth++;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($">> Healed from {healthBeforeHeal} to {unit.CurrentHealth + healthToHeal}. Mana left: {this.ManaPoints - manaToSpend} MP.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    unit.CurrentHealth += healthToHeal;
+                    ManaPoints -= manaToSpend;
                 }
-                if (unit.CurrentHealth >= unit.MaxHealth)
+                else
                 {
-                    Console.WriteLine($">> Healed successfully.\n");
-                    break;
-                }
-                    
+                    int lackOfMana = manaToSpend - ManaPoints;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($">> Healed from {healthBeforeHeal} to {unit.CurrentHealth + (manaToSpend - lackOfMana) / 2}. Mana left: {0} MP.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    unit.CurrentHealth += (manaToSpend - lackOfMana) / 2;
+                    ManaPoints = 0;
+                }  
             }
-            if (this.ManaPoints == 0)
+            else if (this.ManaPoints == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("!!: No mana left!\n");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (CurrentHealth == MaxHealth)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("!!: You don't need any heal!\n");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void Healself()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             if (IsDead)
             {
                 Console.WriteLine("You can't heal a dead unit.");
@@ -69,7 +85,9 @@ namespace StrategyUnits
                 }
                 if (CurrentHealth >= MaxHealth)
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine($">> Healed successfully.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
                     break;
                 }
             }

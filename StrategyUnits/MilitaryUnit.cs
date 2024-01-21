@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class MilitaryUnit : Unit
+    public class MilitaryUnit : Unit
     {
         private int _minDamage;
         public int MinDamage
@@ -39,7 +39,7 @@ namespace StrategyUnits
                 if (appliedDamage >= 0)
                 {
                     Console.WriteLine(
-                        $">> Attack successful. You've applied {appliedDamage} DP.\n"
+                        $">> Attack successful. You've applied {appliedDamage} ({appliedDamage+attackedUnit.Defense}-{attackedUnit.Defense}) DP.\n"
                         );
                     attackedUnit.CurrentHealth -= appliedDamage;
                 }

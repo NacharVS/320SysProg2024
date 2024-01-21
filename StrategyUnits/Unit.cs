@@ -1,12 +1,14 @@
 ﻿namespace StrategyUnits
 {
-    internal class Unit
+    public class Unit
     {
         public delegate void HealthIncreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void HealthDecreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void UnitDeadDelegate();
         public delegate void RageOnDelegate();
         public delegate void RageOffDelegate();
+        public delegate void HolyArmorOnDelegate();
+        public delegate void HolyArmorOffDelegate();
 
         private int _currentHealth;
         private int _maxHealth;
@@ -50,13 +52,19 @@
                         HealthDecreasedEvent.Invoke(_currentHealth, value, _maxHealth);
                     }
                     _currentHealth = value;
-                    if (value <= _maxHealth / 2 && GetType() == typeof(Berserk))
+                    if (value <= _maxHealth / 2)
                     {
-                        RagedEvent.Invoke();
+                        if (GetType() == typeof(Paladin))
+                            HolyArmorOnEvent.Invoke();
+                        else if (GetType() == typeof(Berserk))
+                            RagedEvent.Invoke();
                     }
-                    else if (value > _maxHealth / 2 && GetType() == typeof(Berserk))
+                    else if (value > _maxHealth / 2)
                     {
-                        UnragedEvent.Invoke();
+                        if (GetType() == typeof(Paladin))
+                            HolyArmorOffEvent.Invoke();
+                        else if (GetType() == typeof(Berserk))
+                            UnragedEvent.Invoke();
                     }
                 }
             }
@@ -90,5 +98,7 @@
         public event UnitDeadDelegate UnitDiedEvent;
         public event RageOnDelegate RagedEvent;
         public event RageOffDelegate UnragedEvent;
+        public event HolyArmorOnDelegate HolyArmorOnEvent;
+        public event HolyArmorOffDelegate HolyArmorOffEvent;
     }
 }

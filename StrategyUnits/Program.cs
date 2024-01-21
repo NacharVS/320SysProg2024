@@ -3,27 +3,27 @@
 Barracks barracks = new();
 Footman footman = barracks.CreateFootman("Hugo");
 Berserk berserk = barracks.CreateBerserk("Ivan");
-Healer healer = new Healer("Insaf");
-footman.ShowInfo();
-berserk.ShowInfo();
+Healer healer = barracks.CreateHealer("Insaf");
+ZealotKnight zknight = barracks.CreateZKnight("Kirill");
+Paladin paladin = barracks.CreatePaladin("Almir");
+Forge forge = new Forge();
 
-footman.Attack(berserk);
-
-berserk.ShowInfo();
-
-berserk.Attack(footman);
-
-berserk.Attack(footman);
-
-healer.HealSomebody(berserk);
+List<MilitaryUnit> warriors = barracks.warriors;
 
 berserk.ShowInfo();
+paladin.ShowInfo();
 
-footman.Attack(berserk);
+forge.UpgradeWeapons(warriors);
+
+forge.UpgradeWeapons(warriors);
+
+forge.UpgradeWeapons(warriors);
+
+forge.UpgradeArmor(warriors);
+forge.UpgradeArmor(warriors);
+forge.UpgradeArmor(warriors);
 
 berserk.ShowInfo();
-
-
-
+paladin.ShowInfo();
 
 

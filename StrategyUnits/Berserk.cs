@@ -16,9 +16,18 @@ namespace StrategyUnits
                 return _rage;
             }
         }
+
+        private string _nameOfUnit;
+
+        public string NameOfUnit
+        {
+            get { return _nameOfUnit; }
+            set { _nameOfUnit = value; }
+        }
+
         public Berserk(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, nameOfUnit)
         {
-
+            _nameOfUnit = nameOfUnit;
         }
 
         public override void ShowInfo()
@@ -37,10 +46,10 @@ namespace StrategyUnits
 
         public void RageOn()
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine($">> Berserk {this.NameOfUnit} is now raging!\n");
             if (CurrentHealth <= MaxHealth / 2 && _rage == false)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($">> Berserk {this.NameOfUnit} is now raging!\n");
                 MinDamage *= 2;
                 MaxDamage *= 2;
                 _rage = true;

@@ -3,7 +3,6 @@
     internal class Footman : MilitaryUnit
     {
         private String _nameOfUnit;
-
         public Footman(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage)
         {
             _nameOfUnit = nameOfUnit;

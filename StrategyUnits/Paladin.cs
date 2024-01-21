@@ -6,19 +6,28 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Paladin : MagicUnit
+    internal class Paladin : ZealotKnight
     {
+        private bool _holyArmor;
+        public bool HolyArmor
+        {
+            get
+            {
+
+                return _holyArmor;
+            }
+        }
         private string _nameOfUnit;
+
+        public Paladin(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, manaPoints, nameOfUnit)
+        {
+            NameOfUnit = nameOfUnit;
+        }
 
         public string NameOfUnit
         {
             get { return _nameOfUnit; }
             set { _nameOfUnit = value; }
-        }
-
-        public Paladin(string nameOfUnit) : base(80, "Paladin", 5, 2, 12, 50)
-        {
-            NameOfUnit = nameOfUnit;
         }
 
          public override void AttackMagically(Unit attackedUnit)
@@ -49,6 +58,26 @@ namespace StrategyUnits
             else
             {
                 Console.WriteLine("Unit is already dead. Stop beating a dead body!\n");
+            }
+        }
+
+        public void HolyArmorOn()
+        {
+            if (CurrentHealth <= MaxHealth / 2 && _holyArmor == false)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($">> Paladin {this.NameOfUnit} was blessed with holy armor!\n");
+                Defense *= 2;
+                _holyArmor = true;
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public void HolyArmorOff()
+        {
+            if (CurrentHealth > MaxHealth / 2 && _holyArmor == true)
+            {
+                Defense /= 2;
+                _holyArmor = false;
             }
         }
 
