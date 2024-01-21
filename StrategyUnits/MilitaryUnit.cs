@@ -18,15 +18,29 @@ namespace StrategyUnits
         public void InflictDamage(Unit unit)
         {
             if (IsDead == true)
-                Console.WriteLine("Unit мертв");
+                Console.WriteLine($"{Name} мёртв.");
+            else if (unit.IsDead == true)
+                Console.WriteLine($"{unit.Name} мёртв.");
             else
             {
-                unit.Health -= _damage;
+                if (unit.Armor > 0 )
+                {
+                    if (_damage >= unit.MaxArmor)
+                    {
+                        unit.Armor = 0;
+                        unit.Health -= (_damage - unit.MaxArmor);
+                    }
+
+                }
+                else
+                {
+                    unit.Health -= _damage;
+                }
                 InflictDamageEvent.Invoke(_damage, unit.Health, Name, unit.Name); //При нанесении урона вызывается событие
             }
         }
 
-        public MilitaryUnit(int health, string? name, int damage) : base(health, name)
+        public MilitaryUnit(int health, string? name, int armor, int damage) : base(health, name, armor)
         {
             _damage = damage;
         }

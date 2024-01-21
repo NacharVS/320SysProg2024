@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits
+﻿using System.Xml.Linq;
+
+namespace StrategyUnits
 {
     internal class MagicUnit : MilitaryUnit
     {
@@ -27,15 +29,15 @@
             }
         }
 
-        public MagicUnit(int health, string? name, int damage, int MaxManna) : base (health, name, damage)
+        public MagicUnit(int health, string? name, int armor, int damage, int MaxManna) : base (health, name, armor, damage)
         {
             _MaxManna = MaxManna;
             _manna = MaxManna;
         }
 
-        public void GetInfoManna()
+        public override void ShowInfo()
         {
-            Console.WriteLine($"Текущая манна {Name}: {Manna}");
+            Console.WriteLine($"Unit: {Name}\t Здоровье: {Health} Защита: {Armor} Манна: {Manna} Состоние жизни: {IsDead}");
         }
     }
 }

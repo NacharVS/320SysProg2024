@@ -2,7 +2,7 @@
 {
     internal class Berserker : MilitaryUnit
     {
-        public Berserker(int health, string? name, int damage) : base (health, name, damage)
+        public Berserker(int health, string? name, int armor, int damage) : base (health, name, armor, damage)
         {
 
         }

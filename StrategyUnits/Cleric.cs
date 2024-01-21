@@ -2,11 +2,11 @@
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric(int health, string? name, int damage, int manna) : base(health, name, damage, manna)
+        public Cleric(int health, string? name, int armor, int damage, int manna) : base(health, name, armor, damage, manna)
         {
         }
 
-        public delegate void HillDelegate(int manna, int health, string nameHiller, string nameHill); //Делегат Хилла -- ПолучилУрон, НанесУрон
+        public delegate void HillDelegate(int manna, int health, string nameHiller, string nameHill); //Делегат Хилла -- Хиллер, КогоХиллет
 
         public void HillOthers(Unit unit) //Метод ЛеченияДругого
         {
@@ -56,6 +56,7 @@
                     }
                     Console.WriteLine($"{cleric.Name} было восстановлено здоровье.");
                 }
+                HillEvent.Invoke(Manna, cleric.Health, Name, cleric.Name);
             }
         }
 

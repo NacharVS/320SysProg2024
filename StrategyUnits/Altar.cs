@@ -62,7 +62,7 @@
 
         public Cleric CreateCleric() //Рекрут
         {
-            return new Cleric(45, "Recruit", 5, 9);
+            return new Cleric(45, "Cleric", 1, 5, 9);
         }
 
     }

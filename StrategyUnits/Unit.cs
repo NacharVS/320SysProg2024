@@ -2,25 +2,48 @@
 {
     internal class Unit
     {
-        public delegate void HealthChangedDelegate(int health, string name); //Делегат ИзмененияЗдоровья
 
-        private int _health;
-        private string? _name;
-        public bool? IsDead { get; private set; }
-        public int MaxHealth { get; private set; }
+        private int _health;                                              //Здоровье
+        private string? _name;                                            //Наименование
+        private int _armor;                                               //Защита (броня).
+        public bool? IsDead { get; private set; }                         //Мертв == true
+        public int MaxHealth { get; private set; }                        //Максимальное здоровье
+        public int MaxArmor { get; private set; }                         //Максимальная защита
 
-        public Unit(int health, string? name)
+
+        public Unit(int health, string? name, int armor)
         {
             _health = health;
             _name = name;
+            _armor = armor;
             MaxHealth = _health;
+            MaxArmor = _armor;
             IsDead = false;
+
         }
 
         public string Name
         {
             get { return _name; }
             set { _name = value; }
+        }
+
+        public int Armor
+        {
+            get => _armor;
+            set
+            {
+                if (value < 0)
+                {
+                    _armor = 0;
+                    Console.WriteLine($"Защита {Name} пробита.");
+                }
+                else
+                   if (value > MaxArmor)
+                    _armor = MaxArmor;
+                else
+                    _armor = value;
+            }
         }
 
         public int Health
@@ -47,12 +70,10 @@
             Console.WriteLine("Передвижение.");
         }
 
-        public void ShowInfo()
+        public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name}\t Здоровье: {_health} Состоние жизни: {IsDead}");
+            Console.WriteLine($"Unit: {Name}\t Здоровье: {Health} Защита: {Armor} Состоние жизни: {IsDead}");
         }
 
-
-        public event HealthChangedDelegate HealthDecreasedEvent; //Ивент -Здоровья
     }
 }

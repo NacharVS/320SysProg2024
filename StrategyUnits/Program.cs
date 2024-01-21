@@ -238,7 +238,18 @@ Footman footman = barracs.CreateFootman();
 Berserker berserker = barracs.CreateBerserker();
 berserker.InflictDamageEvent += MethodYron;
 
+cleric.ShowInfo();
+footman.ShowInfo();
+berserker.ShowInfo();
+
+//Атака берсерка на футмена
+Console.WriteLine("\n");
 berserker.InflictDamage(footman);
+berserker.InflictDamage(footman);
+berserker.InflictDamage(footman);
+
+//Метод Ярость на футмена
+Console.WriteLine("\n");
 berserker.Rage(footman);
 
 
