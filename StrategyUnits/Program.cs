@@ -107,10 +107,11 @@ berserker.StartRageEvent += StRage;
 //paladin.ShowInfo();
 //altar.ShowInf();
 
+berserker.ProtectSuit();
+footman.InflictDamage(berserker);
+footman.InflictDamage(berserker);
+footman.InflictDamage(berserker);
 
-footman.InflictDamage(berserker);
-footman.InflictDamage(berserker);
-footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);

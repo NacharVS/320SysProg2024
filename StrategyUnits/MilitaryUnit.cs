@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,22 @@ namespace StrategyUnits
         virtual public void InflictDamage(Unit unit)
         {
             unit.PrevHealth = unit.Health;
-            unit.Health -= _attack;
+            if (unit.Suit)
+            {
+                unit.SuitHP -= _attack;
+                if (SuitHP <= 0)
+                {
+                    unit.SuitHP -= _attack;
+                    unit.Health += unit.SuitHP;
+                    Console.Write("Suit is broken");
+                    Console.Write(" | Attack was " + unit.SuitHP);
+                    Console.WriteLine(" | Current Health: " + unit.Health);
+                    unit.Suit = false;
+
+                }
+            }
+            else
+                unit.Health -= _attack;
         }
         public override void ShowInfo()
         {

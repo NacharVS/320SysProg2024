@@ -10,6 +10,14 @@
         public bool Dead { get; set; }
         private bool _dead = false;
         public int _maxHealth;
+        private int _suitHP;
+        private bool _suit = false;
+        public bool Suit {  get => _suit; set => _suit = value ; }
+        public int SuitHP
+        {
+            get => _suitHP;
+            set => _suitHP = value;
+        }
         public Unit(int health, string? name)
         {
             _health = health;
@@ -55,9 +63,10 @@
                     else
                     {
                         _health = value;
-                        double percent = Math.Round(((double)_health / (double)_maxHealth),4);
-                        Console.WriteLine("% HP: " + percent.ToString());
-                        if (_health < _prevHealth)
+                        double percent = Math.Round(((double)_health / (double)_maxHealth), 3);
+                        Console.WriteLine("HP: " + (percent * 100).ToString() + " %");
+                        if (Suit == false) {
+                            if (_health < _prevHealth)
                         {
                             int n = _prevHealth - _health;
                             HealthLowEvent.Invoke(_health, n, _name);
@@ -74,7 +83,8 @@
                         {
                             StartRageEvent.Invoke(_health);
                             Rrage = true;
-                        }
+                        } }
+                        
                     }
                     //HealthChangeEvent.Invoke(value);
                 }
@@ -93,8 +103,13 @@
         {
             Console.Write($"Unit: {_name} | Health: {_health}/{_maxHealth} ");
         }
+        public void ProtectSuit()
+        {
+            Console.WriteLine("Protective suit is putting on");
+            _suit = true;
+            _suitHP = 20;
+        }
         public event HealthChangeDelegate HealthChangeEvent;
-
         public event Rage StartRageEvent;
         public event HealthChangeDelegate HealthLowEvent;
         public event HealthChangeDelegate HealthHighEvent;
