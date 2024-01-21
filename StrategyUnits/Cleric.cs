@@ -2,7 +2,7 @@
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric() : base(40, "Cleric", 3, 20)
+        public Cleric(int health, string? name, int damage, int manna) : base(health, name, damage, manna)
         {
         }
 

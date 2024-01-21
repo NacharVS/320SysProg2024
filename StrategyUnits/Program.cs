@@ -231,6 +231,9 @@
 //altar1.ShowInfoAltar();
 
 Barracs barracs = new Barracs();
+Altar alt = new Altar();
+
+Cleric cleric = alt.CreateCleric();
 Footman footman = barracs.CreateFootman();
 Berserker berserker = barracs.CreateBerserker();
 berserker.InflictDamageEvent += MethodYron;

@@ -60,5 +60,10 @@
             Console.WriteLine($"Текущее количество энергии {NameA}: {Energy}.");
         }
 
+        public Cleric CreateCleric() //Рекрут
+        {
+            return new Cleric(45, "Recruit", 5, 9);
+        }
+
     }
 }
