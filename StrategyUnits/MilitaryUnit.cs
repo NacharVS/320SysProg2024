@@ -12,6 +12,12 @@ namespace StrategyUnits
         private int _attack;
         private string _name;
         private int _health;
+        private int _weaponlvl;
+        public int WeaponLvl 
+        {
+            get { return _weaponlvl; }
+            set { _weaponlvl = value; }
+        }
         public int Attack
         {  get => _attack; set { _attack = value; } }
         public MilitaryUnit(int Damage, string Name, int health) : base(health, Name)
@@ -19,6 +25,7 @@ namespace StrategyUnits
             _attack = Damage;
             _name = Name;
             _health = health;
+            _weaponlvl = 0;
         }
         public override int Health
         {

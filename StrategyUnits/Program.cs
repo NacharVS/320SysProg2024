@@ -128,6 +128,11 @@ footman.InflictDamage(paladin);
 footman.InflictDamage(paladin);
 footman.InflictDamage(paladin);
 paladin.Pray();
+
+Weapon weapon = new Weapon();
+weapon.WeaponUpgrade(paladin);
+weapon.WeaponUpgrade(paladin);
+weapon.WeaponUpgrade(paladin);
 Console.WriteLine("...");
 paladin.HollyFire(footman);
 //Delegates
