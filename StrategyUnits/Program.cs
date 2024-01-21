@@ -1,20 +1,40 @@
 ﻿using StrategyUnits;
 
-Footman footman = new Footman();
+void DamageInfo(int health, string name, int? manna, int? damage)
+{
+    Console.WriteLine($"{name} нанес {damage} урона");
+}
+void HealthInfo(int health, string name, int? manna, int? damage)
+{
+    Console.WriteLine($"{name} имеет {health} здоровья");
+}
+//Footman footman = new Footman();
+//footman.HealthChangedFootman += DamageInfo;
+//Paladin paladin = new Paladin();
+//paladin.AttackPaladin += DamageInfo;
+Berserker berserker = new Berserker();
+berserker.AttackBerserker += DamageInfo;
+Berserker berserker2 = new Berserker();
+berserker2.AttackBerserker += DamageInfo;
+berserker2.HealthChangedEvent += HealthInfo;
 Peasant ps1 = new Peasant();
 Cleric cleric1 = new Cleric();
 
 
-////проверка для лечения крестьянина клириком
-//Console.WriteLine("Peasant");
-//ps1.ShowInfo();
+//проверка для лечения крестьянина клириком
+Console.WriteLine("Peasant");
 
-//Console.WriteLine();
-//Console.WriteLine("After damage");
-//footman.InflictDamage(ps1);
-//ps1.ShowInfo();
-//footman.InflictDamage(ps1);
-//ps1.ShowInfo();
+Console.WriteLine();
+Console.WriteLine("After damage");
+berserker.Attack(berserker2);
+berserker.Attack(berserker2);
+berserker.Attack(berserker2);
+berserker.Attack(berserker2);
+berserker.Attack(berserker2);
+berserker.Attack(berserker2);
+berserker2.ShowInfo();
+berserker2.Attack(berserker);
+
 
 //Console.WriteLine();
 //Console.WriteLine("After heal");
