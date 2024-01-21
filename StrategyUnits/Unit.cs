@@ -64,7 +64,7 @@
                     {
                         _health = value;
                         double percent = Math.Round(((double)_health / (double)_maxHealth), 3);
-                        Console.WriteLine("HP: " + (percent * 100).ToString() + " %");
+                        Console.WriteLine("HP: " + (percent * 100).ToString() + "%");
                         if (Suit == false) {
                             if (_health < _prevHealth)
                         {

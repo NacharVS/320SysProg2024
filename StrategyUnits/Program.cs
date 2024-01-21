@@ -20,7 +20,7 @@ healer.ShowInfo();
 //recruit.ShowInfo();
 footman.ShowInfo();
 berserker.ShowInfo();
-//paladin.ShowInfo();
+paladin.ShowInfo();
 
 //altar.RecoverMana(healer);
 ////footman.ShowInfo();
@@ -128,6 +128,8 @@ footman.InflictDamage(paladin);
 footman.InflictDamage(paladin);
 footman.InflictDamage(paladin);
 paladin.Pray();
+Console.WriteLine("...");
+paladin.HollyFire(footman);
 //Delegates
 
 //static void Method(int number)
