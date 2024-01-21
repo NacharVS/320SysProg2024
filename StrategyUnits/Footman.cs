@@ -14,14 +14,7 @@
         }
         public override void ShowInfo()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"====== CHARACTER ========\n" +
-                $"{NameOfUnit} - a unit of {this.NameOfClass} class\n" +
-               $"Health: {this.CurrentHealth}/{MaxHealth}\n" +
-               $"Defense: {this.Defense}\n" +
-               $"Damage (min - max): {this.MinDamage} - {this.MaxDamage}\n" +
-               $"====== ========= ========\n");
-            Console.ForegroundColor = ConsoleColor.White;
+            
         }
     }
 }
