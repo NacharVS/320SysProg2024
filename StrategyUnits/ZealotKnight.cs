@@ -19,5 +19,12 @@ namespace StrategyUnits
             _health = health;
             _mana = mana;
         }
+        public void Pray()
+        {
+            Console.WriteLine("Is praying....");
+            Mana -= 10;
+            Health += 20;
+            Console.WriteLine($"Current mana: {Mana} | Current Health: {Health}");
+        }
     }
 }

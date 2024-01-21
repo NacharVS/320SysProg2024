@@ -10,13 +10,13 @@ Barracks barracks = new Barracks();
 Footman footman = barracks.CreateFootman();
 Footman berserker = barracks.CreateBerserker();
 //Peasant ps1 = new Peasant();
-//Healer healer = new Healer();
-//Paladin paladin = new Paladin();
+Healer healer = new Healer();
+Paladin paladin = new Paladin();
 //Altar altar = new Altar();
 
 //altar.ShowInf();
 //ps1.ShowInfo();
-//healer.ShowInfo();
+healer.ShowInfo();
 //recruit.ShowInfo();
 footman.ShowInfo();
 berserker.ShowInfo();
@@ -83,6 +83,10 @@ footman.HealthHighEvent += HighHealth;
 berserker.HealthLowEvent += LowHealth;
 berserker.HealthHighEvent += HighHealth;
 berserker.StartRageEvent += StRage;
+
+paladin.HealthLowEvent += LowHealth;
+paladin.HealthHighEvent += HighHealth;
+paladin.StartRageEvent += StRage;
 ////footman.InflictDamage(ps1);
 //paladin.InflictDamage(ps1);
 //paladin.InflictDamage(healer);
@@ -112,11 +116,18 @@ footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 
+
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 berserker.ShowInfo();
+
+Console.WriteLine("...");
+footman.InflictDamage(paladin);
+footman.InflictDamage(paladin);
+footman.InflictDamage(paladin);
+paladin.Pray();
 //Delegates
 
 //static void Method(int number)
