@@ -25,21 +25,40 @@ namespace StrategyUnits
                     _manna = 0;
 
                 else
+                {
                     if (value > MaxManna)
-                    _manna = MaxManna;
-                else
-                    _manna = value;
-            }
+                        _manna = MaxManna;
+                    else
+                        _manna = value;
+                }
+
+                if (value < _manna)
+                {
+                    MannaDecreasedEvent.Invoke(this.Health, this.Name, _MaxManna - value);
+                }
+                else if (value > _manna)
+                {
+                    MannaIncreasedEvent.Invoke(this.Health, this.Name, value - _MaxManna);
+                }
+            } 
+
+
         }
 
         public void GetInfoManna()
         {
             Console.WriteLine($"Character: {Name}, Manna: {Manna}");
         }
-        public MagicUnit(int health, string? name, int damage, int MaxManna) : base(health, name, damage)
+        public MagicUnit(int health, string? name, int damage, int MaxManna, int guard) : base(health, name, damage, guard)
         {
             _manna = MaxManna;
             _MaxManna = MaxManna;
         }
+
+
+        public delegate void MannaChangedDelegate(int health, string? name, int manna);
+
+        public event MannaChangedDelegate MannaIncreasedEvent;
+        public event MannaChangedDelegate MannaDecreasedEvent;
     }
 }

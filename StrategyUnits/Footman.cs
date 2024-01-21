@@ -2,7 +2,7 @@
 {
     internal class Footman : MilitaryUnit
     {
-        public Footman(int health, string? name, int damage) : base(health, name, damage)
+        public Footman(int health, string? name, int damage, int guard) : base(health, name, damage, guard)
         {
   
         }

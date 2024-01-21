@@ -6,15 +6,35 @@
         private string? _name;
         public int MaxHealth { get; private set; }
         private bool _deadperson;
-
-        public Unit(int health, string? name)
+        private int _levelArmor;
+        private int _levelWeapon;
+        private int _guard;
+        public Unit(int health, string? name, int guard)
         {
             _health = health;
             _name = name;
             MaxHealth = _health;
             _deadperson = false;
+            _levelArmor = 0;
+            _levelWeapon = 0;
+            _guard = guard;
+        }
+        public virtual int Guard
+        {
+            get { return _guard; }
+            set { _guard = value; }
+        }
+        public int LevelWeapon
+        {
+            get { return _levelWeapon; }
+            set { _levelWeapon = value; }
         }
 
+        public int LevellArmor
+        {
+            get { return _levelArmor; }
+            set { _levelArmor = value; }
+        }
         public string Name
         {
             get { return _name; }
@@ -42,6 +62,15 @@
                     _health = MaxHealth;
                 else
                     _health = value;
+
+                if (value <= _health)
+                {
+                    HealthDecreasedEvent.Invoke(_health, _name, (_health - value), _guard);
+                }
+                else if (value > _health)
+                {
+                    HealthIncreasedEvent.Invoke(_health, _name, value - _health, _guard);
+                }
             }
         }
 
@@ -50,14 +79,15 @@
             Console.WriteLine("Is moving");
         }
 
-        public void ShowInfo()
+        public delegate void HealthChangeDelegate(int health, string name, int maxManna, int guard);
+        public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_health} Person live? {_deadperson}");
+            Console.WriteLine($" Unit: {Name} Health: {Health} Level Weapon: {_levelWeapon} Level Armor: {_levelArmor}");
+            Console.WriteLine();
         }
-
-        public delegate void HealthChangeDelegate(int health, string name);
-
         public event HealthChangeDelegate HealthDecreasedEvent;
+        public event HealthChangeDelegate HealthIncreasedEvent;
+        public event HealthChangeDelegate HealthNotChangeDelegate;
 
     }
 }

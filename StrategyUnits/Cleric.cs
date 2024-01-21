@@ -5,7 +5,7 @@ namespace StrategyUnits
     internal class Cleric : MagicUnit
     {
       
-        public Cleric() : base(70, "Cleric", 5, 30)
+        public Cleric(int health, string? name, int damage, int manna, int guard) : base(health, name, damage, manna, guard)
         {
 
         }
@@ -14,7 +14,9 @@ namespace StrategyUnits
         {
             if (DeadPerson == true)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{unit.Name} died, You can't hill dead characters.");
+                Console.ResetColor();
                 return;
             }
 
@@ -22,12 +24,16 @@ namespace StrategyUnits
             {
                 if (unit.MaxHealth <= unit.Health)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{unit.Name} hill.");
+                    Console.ResetColor();
                     return;
                 }
                 else if (Manna < 2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Not enough manna.");
+                    Console.ResetColor();
                 }
                 else
                 {
@@ -36,28 +42,32 @@ namespace StrategyUnits
                         unit.Health += 1;
                         Manna -= 2;
                     }
-                    Hill_event.Invoke(Manna, unit.Health, Name, unit.Name);
                 }
             }
         }
-
         public void HillMyself(Unit unit)
         {
             if (DeadPerson == true)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{unit.Name} died, You can't hill dead characters.");
+                Console.ResetColor();
                 return;
             }
             while (Manna > 0)
             {
                 if (unit.MaxHealth <= unit.Health)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{unit.Name} hill");
+                    Console.ResetColor();
                     return;
                 }
                 else if (Manna < 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Not enough manna.");
+                    Console.ResetColor();
                 }
                 else
                     while (Manna >= 1)
@@ -69,9 +79,9 @@ namespace StrategyUnits
             }
         }
 
-        public delegate void HillDelegate (int manna, int health, string nameHiller_p, string nameHill_n);
+     
 
-        public event HillDelegate Hill_event;
+        //public event HillDelegate Hill_event;
 
         // манна, здоровье, пострадавший, нанесший
         //public void GetInfoCleric()

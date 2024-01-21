@@ -10,7 +10,7 @@ namespace StrategyUnits
     {
 
         public int Shield { get; private set; }
-        public ZeelotKnight(int health, string? name, int damage, int manna) : base(health, name, damage, manna)
+        public ZeelotKnight(int health, string? name, int damage, int manna, int guard) : base(health, name, damage, manna, guard)
         {
             
         }

@@ -39,6 +39,23 @@ namespace StrategyUnits
             }
         }
 
+        //
+        public void RegenerationManna(MagicUnit magicUnit)
+        {
+
+        }
+        public ZeelotKnight CreateZeelotKnight()
+        {
+            return new ZeelotKnight(55, "Zealot knight", 6, 10, 3);
+        }
+        public Palladin CreatePalladin()
+        {
+            return new Palladin(65, "Paladin", 10, 30, 5, 8);
+        }
+        public Cleric CreateCleric()
+        {
+            return new Cleric(75, "Cleric", 1, 15, 0);
+        }
         public void ShowInfoAboutAltar()
         {
             Console.WriteLine($"Energy right now: {Energy}.");

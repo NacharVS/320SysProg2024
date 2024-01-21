@@ -9,7 +9,7 @@ namespace StrategyUnits
     internal class Berserker: MilitaryUnit
     {
 
-        public Berserker(int health, string? name, int damage) : base(health, name, damage) 
+        public Berserker(int health, string? name, int damage, int guard) : base(health, name, damage, guard) 
         {
             
         }
@@ -25,6 +25,10 @@ namespace StrategyUnits
             {
                 Console.WriteLine("");
             }
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($" Unit: {Name} Health: {Health} Damage: {Damage} Guard: {Guard} Level Weapon: {LevelWeapon} Level Armor: {LevellArmor}");
         }
 
     }

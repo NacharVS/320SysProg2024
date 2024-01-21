@@ -10,16 +10,16 @@ namespace StrategyUnits
     {
         public Footman CreateRecruit()
         {
-            return new Footman(60, "Recruit", 7);
+            return new Footman(60, "Recruit", 7, 1);
         }
 
         public Footman CreateFootman()
         {
-            return new Footman(90, "Footman", 10);
+            return new Footman(90, "Footman", 10, 2);
         }
         public Berserker CreateBerserker()
         {
-            return new Berserker(120, "Berserker", 13);
+            return new Berserker(120, "Berserker", 13, 3);
         }
     }
 }
