@@ -37,7 +37,7 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name}\t Здоровье: {Health} Защита: {Armor} Манна: {Manna} Состоние жизни: {IsDead}");
+            Console.WriteLine($"Unit: {Name}\t Здоровье: {Health} Атака: {Damage} Защита: {Armor} Манна: {Manna} Состоние жизни: {IsDead}");
         }
     }
 }

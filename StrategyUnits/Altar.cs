@@ -37,21 +37,27 @@
         //Метод регенарции манны
         public void RegenerationManna(MagicUnit magicUnit)
         {
-            Console.WriteLine($"{NameA} восстанавливает манну...");
-            DateTime fixDate = DateTime.Now;
-            DateTime nextMinute = fixDate.AddSeconds(5);
-            while (true)
+            if (magicUnit.Manna == magicUnit.MaxManna)
+                Console.WriteLine($"У {magicUnit.Name} максимальное значение манны.");
+            else
             {
-                DateTime now = DateTime.Now;
-                if (now >= nextMinute)
+                Console.WriteLine($"{NameA} восстанавливает манну...");
+                DateTime fixDate = DateTime.Now;
+                DateTime nextMinute = fixDate.AddSeconds(5);
+                while (true)
                 {
-                    Console.WriteLine($"{NameA} восстановил манну с {magicUnit.Manna} до {magicUnit.MaxManna}");
-                    Energy -= (magicUnit.MaxManna - magicUnit.Manna) / 10; // 1 Энергия = 10 Манны
-                    magicUnit.Manna = magicUnit.MaxManna;
-                    nextMinute = nextMinute.AddSeconds(5);
-                    break;
+                    DateTime now = DateTime.Now;
+                    if (now >= nextMinute)
+                    {
+                        Console.WriteLine($"{NameA} восстановил манну с {magicUnit.Manna} до {magicUnit.MaxManna}");
+                        Energy -= (magicUnit.MaxManna - magicUnit.Manna) / 10; // 1 Энергия = 10 Манны
+                        magicUnit.Manna = magicUnit.MaxManna;
+                        nextMinute = nextMinute.AddSeconds(5);
+                        break;
+                    }
                 }
             }
+
 
         }
 

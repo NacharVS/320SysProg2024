@@ -260,6 +260,7 @@
 Console.WriteLine("Создание всех игровых юнитов. Вывод информации о них.\n");  //Успешно
 Barracs barracs = new Barracs();
 Altar altar = new Altar();
+Forge forge = new Forge();
 
 Peasant peasant_1 = new Peasant(); //Нет метода
 Peasant peasant_2 = new Peasant(); //Нет метода
@@ -335,6 +336,27 @@ palladin_1.InflictDamage(berserker_1);
 
 berserker_1.Rage(cleric_1);
 
+////Проверка восстановления манны.
+//Console.WriteLine("\nПроверка восстановления манны через Алтарь.\n");
+//altar.RegenerationManna(cleric_1);
+//cleric_1.ShowInfo();
+
+//Console.WriteLine("\nПроверка восстановления манны через Алтарь (манна макисмальная).\n");
+//altar.RegenerationManna(cleric_2);
+
+
+//Проверка кузницы.
+Console.WriteLine("\nПроверка Кузницы. ОРУЖИЕ.\n");
+footman_1.ShowInfo();
+forge.UpgradeDamage(footman_1);
+forge.UpgradeDamage(footman_1);
+forge.UpgradeDamage(footman_1);
+
+Console.WriteLine("\nПроверка Кузницы. ЗАЩИТА.\n");
+footman_1.ShowInfo();
+forge.UpgradeArmor(footman_1);
+forge.UpgradeArmor(footman_1);
+forge.UpgradeArmor(footman_1);
 
 //zeelotKnight_1.ShowInfo();
 //palladin_1.ShowInfo();

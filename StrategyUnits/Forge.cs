@@ -1,4 +1,8 @@
-﻿namespace StrategyUnits
+﻿using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics.Metrics;
+using System.Xml.Linq;
+
+namespace StrategyUnits
 {
     internal class Forge //Кузница - увеличивает показатели урона и защиты на 2 с каждым уровнем. Максимальный уровень: 2.
     {
@@ -12,17 +16,19 @@
                 {
                     unit.Damage += 2;
                     unit.LeverDamage = 1;
+                    Console.WriteLine($"{unit.Name} улучшил уровень атаки. \tТекущая атака: {unit.Damage} уровня {unit.LeverDamage}");
 
                 }
                 else if (unit.LeverDamage == 1) //Второе
                 {
                     unit.Damage += 2;
                     unit.LeverDamage = 2;
+                    Console.WriteLine($"{unit.Name} улучшил уровень атаки. \tТекущая атака: {unit.Damage} уровня {unit.LeverDamage}");
                 }
                 else
                     Console.WriteLine($"Повышения уровня атаки невозможно. {unit.Name} имеет максимальный уровень атаки.");
 
-                UpgradeDamageEvent.Invoke(unit.Name, unit.LeverDamage, unit.Damage);
+                //UpgradeDamageEvent.Invoke(unit.Name, unit.LeverDamage, unit.Damage);
             }
             else
                 Console.WriteLine($"Улучшение невозможно. {unit.Name} мёртв.");
@@ -37,17 +43,19 @@
                 {
                     unit.MaxArmor += 2;
                     unit.LeverArmor = 1;
+                    Console.WriteLine($"{unit.Name} улучшил уровень защиты. \tТекущая защита: {unit.Armor} уровня {unit.LeverArmor}");
 
                 }
                 else if (unit.LeverArmor == 1) //Второе
                 {
                     unit.MaxArmor += 2;
                     unit.LeverArmor = 2;
+                    Console.WriteLine($"{unit.Name} улучшил уровень защиты. \tТекущая защита: {unit.Armor} уровня {unit.LeverArmor}");
                 }
                 else
-                    Console.WriteLine($"Повышения уровня атаки невозможно. {unit.Name} имеет максимальный уровень атаки.");
+                    Console.WriteLine($"Повышения уровня защиты невозможно. {unit.Name} имеет максимальный уровень защиты.");
 
-                UpgradeArmorEvent.Invoke(unit.Name, unit.LeverArmor, unit.MaxArmor);
+                //UpgradeArmorEvent.Invoke(unit.Name, unit.LeverArmor, unit.MaxArmor);
             }
             else
                 Console.WriteLine($"Улучшение невозможно. {unit.Name} мёртв.");

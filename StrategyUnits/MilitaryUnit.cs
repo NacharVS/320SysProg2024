@@ -25,10 +25,17 @@ namespace StrategyUnits
             {
                 if (unit.Armor > 0 )
                 {
-                    if (_damage >= unit.MaxArmor)
+                    if (_damage == unit.MaxArmor) //Если (10 == 10)
                     {
                         unit.Armor = 0;
-                        unit.Health -= (_damage - unit.MaxArmor);
+                        Console.WriteLine($"Текущая защита: {unit.Armor}.");
+                    }
+                    else if (_damage > unit.Armor) //Если (10 > 5) То 
+                    {
+                        int probitie = -1 * (unit.Armor - (_damage));
+                        unit.Health -= probitie;
+                        Console.WriteLine($"Текущая защита: {unit.Armor}.");
+                        unit.Armor = 0;
                     }
 
                 }
