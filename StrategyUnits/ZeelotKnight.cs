@@ -29,19 +29,19 @@
             }
         }
 
-        public void Prayer(ZeelotKnight zeelotKnight)  // Заклинание Молитва
+        public void Prayer()  // Заклинание Молитва
         {
 
             if (IsDead == true)
             {
-                Console.WriteLine($"{zeelotKnight.Name} мёртв.");
+                Console.WriteLine($"{Name} мёртв.");
                 return;
             }
-            else if (zeelotKnight.Manna >= 10)
+            else if (Manna >= 10)
             {
-                zeelotKnight.Health += 20;
+                Health += 20;
                 Manna -= 10;
-                Console.WriteLine($"{zeelotKnight.Name} использовал заклинание 'Молитва'. Его текущее здоровье: {zeelotKnight.Health}");
+                Console.WriteLine($"{Name} использовал заклинание 'Молитва'. Его текущее здоровье: {Health}");
             }
             else
             {

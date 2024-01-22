@@ -317,7 +317,7 @@ cleric_1.HillOthers(peasant_4);
 Console.WriteLine("\n");
 palladin_1.InflictDamage(cleric_2);
 Console.WriteLine("\n");
-cleric_2.HillMyself(cleric_2);
+cleric_2.HillMyself();
 
 Console.WriteLine("\nПроверка методов и ивентов Клерика, Рыцаря, Палладина, Берсерка.\n");
 Console.WriteLine("\nБерсерка: при здоровье меньше 50% - не совершает метод Ярость\n"); //Успешно
@@ -340,7 +340,7 @@ Console.WriteLine("\nПроверка Рыцаря на моливу.\n");
 berserker_1.InflictDamage(zeelotKnight_1);
 berserker_1.InflictDamage(zeelotKnight_1);
 berserker_1.InflictDamage(zeelotKnight_1);
-zeelotKnight_1.Prayer(zeelotKnight_1);
+zeelotKnight_1.Prayer();
 ////Проверка восстановления манны.
 //Console.WriteLine("\nПроверка восстановления манны через Алтарь.\n");
 //altar.RegenerationManna(cleric_1);

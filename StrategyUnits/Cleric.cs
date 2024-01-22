@@ -37,7 +37,7 @@
             }
         }
 
-        public void HillMyself(Cleric cleric) //Метод ЛеченияСебя
+        public void HillMyself() //Метод ЛеченияСебя
         {
             if (IsDead == true)
             {
@@ -49,12 +49,12 @@
                     Console.WriteLine("Недостаточно манны.");
                 else
                 {
-                    while (Manna >= 1 && cleric.Health != cleric.MaxHealth)
+                    while (Manna >= 1 && Health != MaxHealth)
                     {
-                        cleric.Health += 2;
+                        Health += 2;
                         Manna -= 1;
                     }
-                    HillEvent.Invoke(Manna, cleric.Health, Name, cleric.Name);
+                    HillEvent.Invoke(Manna, Health, Name, Name);
                 }
 
             }
