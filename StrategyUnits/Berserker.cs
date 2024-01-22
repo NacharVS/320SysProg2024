@@ -13,7 +13,7 @@
                 Console.WriteLine($"{Name} мёртв.");
             else
             {
-                if (Health >= (MaxHealth / 2)) //(120 > 60)
+                if (Health <= (MaxHealth / 2)) //(120 > 60)
                 {
                     if (unit.IsDead == true || unit.Health <= 0)
                         Console.WriteLine($"{unit.Name} мёртв. Атака невозможна.");
