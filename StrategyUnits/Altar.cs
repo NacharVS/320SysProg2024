@@ -47,31 +47,30 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Energy right now {_currentEnergy}/{MaxEnergy}.");
         }
-
         public void RecoverMP(MagicUnit magicUnit)
         {
-            var currentEnergyBeforeRestore = magicUnit.Mana;
             while (_currentEnergy > 0)
             {
                 while (magicUnit.Mana < magicUnit.MaximumMana)
                 {
                     magicUnit.Mana += 10;
-                    _currentEnergy--;
+                    _currentEnergy-=2;
                 }
                 return;
             }
+            return;
         }
         public ZealotKnight CreateZealotKnight()
         {
-            return new ZealotKnight("Zealot knight", 15, 6, 10, 3);
+            return new ZealotKnight("Zealot knight", 120, 50, 10, 70);
         }
         public Paladin CreatePaladin()
         {
-            return new Paladin("Paladin", 10, 10, 30, 6, 15);
+            return new Paladin("Paladin", 100, 40, 10, 60, 15);
         }
         public Cleric CreateCleric()
         {
-            return new Cleric("Cleric", 15, 1, 15, 0);
+            return new Cleric("Cleric", 55, 30, 6, 40);
         }
     }
 }

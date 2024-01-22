@@ -1,4 +1,5 @@
 ﻿using StrategyUnits;
+using System.Xml.Linq;
 
 //Footman footman1 = new Footman();
 //Footman footman2 = new Footman();
@@ -15,7 +16,6 @@
 //footman2.InflictDamageEvent += MethodDamage;
 //paladin1.InflictDamageEvent += MethodDamage;
 
-//cleric1.HealEvent += MethodHeal;
 //footman1.HealthChangedEvent += Method;
 //footman2.HealthChangedEvent += Method;
 //palladin1.HealthChangedEvent += Method;
@@ -50,15 +50,7 @@
 //cl1.ShowInfo();
 //cl1.ShowInfoCleric();
 
-//static void MethodDamage(int damage, int maxHP, string nameDamaging, string nameDamaged)
-//{
-//    Console.WriteLine($"{nameDamaging} attacked {nameDamaged}.\n{nameDamaged} took damage {damage}. Current HP {nameDamaged}: {maxHP}.");
-//}
 
-//static void MethodHeal(int mana, int maxHP, string nameHealer, string nameHealing)
-//{
-//    Console.WriteLine($"{nameHealer} healed the {nameHealing}'s HP to {maxHP}.\nCurrent mana {nameHealer}: {mana}");
-//}
 
 //Barracks barracks = new Barracks();
 //Footman footman = barracks.CreateRecruit();
@@ -80,68 +72,77 @@ Footman footman = barrack.CreateFootman();
 Cleric cleric = altar.CreateCleric();
 Paladin paladin = altar.CreatePaladin();
 ZealotKnight zealotKnight = altar.CreateZealotKnight();
-zealotKnight.ShowInfo();
-forge.WeaponUpgrade(paladin);
-forge.WeaponUpgrade(zealotKnight);
-forge.WeaponUpgrade(zealotKnight);
-forge.ArmorUpgrade(zealotKnight);
-forge.ArmorUpgrade(paladin);
-forge.ArmorUpgrade(paladin);
-forge.ArmorUpgrade(paladin);
-zealotKnight.ShowInfo();
-paladin.ShowInfo();
-footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+//zealotKnight.ShowInfo();
+//forge.WeaponUpgrade(paladin);
+//forge.WeaponUpgrade(zealotKnight);
+//forge.WeaponUpgrade(zealotKnight);
+//forge.ArmorUpgrade(zealotKnight);
+//forge.ArmorUpgrade(paladin);
+//forge.ArmorUpgrade(paladin);
+//forge.ArmorUpgrade(paladin);
+//zealotKnight.ShowInfo();
+//paladin.ShowInfo();
+//footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+//footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
-cleric.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-cleric.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
-cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
-cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+//cleric.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+//cleric.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+//cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+//cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
 
-paladin.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-paladin.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
-paladin.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
-paladin.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+//paladin.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+//paladin.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+//paladin.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+//paladin.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
 
-berserker.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-berserker.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
-footman.InflictDamage(berserker);
-footman.InflictDamage(berserker);
-footman.InflictDamage(paladin);
-footman.InflictDamage(paladin);
-footman.InflictDamage(paladin);
-footman.InflictDamage(paladin);
-berserker.InflictDamage(footman);
-footman.InflictDamage(berserker);
-berserker.InflictDamage(footman);
-cleric.Heal(paladin);
-footman.InflictDamage(berserker);
-footman.InflictDamage(cleric);
-cleric.Heal(cleric);
-altar.RecoverMP(cleric);
-cleric.Heal(cleric);
-cleric.InflictDamage(footman);
-cleric.Heal(footman);
-
-static void ShowInformationAfterLossOfHealth(string? name, double health, double difference, double protection, double maxHealth)
+//berserker.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+//berserker.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+//footman.InflictDamage(berserker);
+//footman.InflictDamage(berserker);
+//footman.InflictDamage(paladin);
+//footman.InflictDamage(paladin);
+//footman.InflictDamage(paladin);
+//footman.InflictDamage(paladin);
+//berserker.InflictDamage(footman);
+//footman.InflictDamage(berserker);
+//berserker.InflictDamage(footman);
+//cleric.Heal(paladin);
+//footman.InflictDamage(berserker);
+//footman.InflictDamage(cleric);
+//cleric.Heal(cleric);
+//altar.RecoverMP(cleric);
+//cleric.Heal(cleric);
+//cleric.InflictDamage(footman);
+//cleric.Heal(footman);
+static void MethodDamage(int damage, int maxHP, int maxProtect, string nameDamaging, string nameDamaged)
 {
-    Console.WriteLine($"\u001b[31m{name} получил урон, здоровье уменьшилось на {difference}\u001b[0m \u001b[36m(поглащено урона: {protection}\u001b[0m),\u001b[31m текущее здоровье: {health}/{maxHealth}\u001b[0m");
+    Console.WriteLine($"{nameDamaging} attacked {nameDamaged}.\n{nameDamaged} took damage {damage}. Current HP {nameDamaged}: {maxHP}. Current Protection {maxProtect}.");
 }
-static void ShowInformationAfterHealthIsRestored(string? name, double health, double difference, double protection, double maxHealth)
+
+static void MethodHeal(int mana, int maxHP, string nameHealer, string nameHealing)
 {
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine($"{name} был излечён, здоровье увеличилось на {difference}, текущее здоровье: {health}/{maxHealth}, защита: {protection}");
-    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine($"{nameHealer} healed the {nameHealing}'s HP to {maxHP}.\nCurrent mana {nameHealer}: {mana}\n" +
+        $"{nameHealing} treated. Current HP: {maxHP}");
 }
-void ShowInformationAfterLossOfEnergy(string name, double energy, double difference, double maxEnergy)
+void MethodLossMana(string name, int maxMana)
 {
-    Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine($"{name} энергия уменьшена на {difference}, текущая энергия: {energy}/{maxEnergy}");
-    Console.ForegroundColor = ConsoleColor.White;
 }
-void ShowInformationAfterEnergyIsRestored(string name, double energy, double difference, double maxEnergy)
+void MethodGetMana(string name, int maxMana)
 {
-    Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine($"{name} энергия увеличена на {difference}, текущая энергия: {energy}/{maxEnergy}");
-    Console.ForegroundColor = ConsoleColor.White;
 }
+berserker.ShowInfo();
+footman.ShowInfo();
+berserker.inflictDamageEvent += MethodDamage;
+berserker.inflictDamageToProtectEvent += MethodDamage;
+cleric.HealEvent += MethodHeal;
+zealotKnight.ManaLossEvent += MethodLossMana;
+berserker.InflictDamage(footman);
+footman.ShowInfo();
+cleric.ShowInfo();
+berserker.InflictDamage(footman);
+footman.ShowInfo();
+cleric.Heal(footman);
+cleric.ShowInfo();
+

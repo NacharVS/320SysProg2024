@@ -3,14 +3,16 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
-        public delegate void InflictDamageDelegate(int damage, int maxHP, string nameDamaging, string nameDamaged);
+        public delegate void InflictDamageDelegate(int damage, int maxHP, int maxProtect, string nameDamaging, string nameDamaged);
+        public event InflictDamageDelegate inflictDamageEvent;
+        public event InflictDamageDelegate inflictDamageToProtectEvent;
         private int _damage;
         public int Damage
         {
             get { return _damage; }
             set { _damage = value; }
         }
-        public MilitaryUnit(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection)
+        public MilitaryUnit(string? name, int maxHP, int maxProtect, int damage) : base(name, maxHP, maxProtect)
         {
             _damage = damage;
         }
@@ -27,12 +29,13 @@ namespace StrategyUnits
                 {
                     unit.Protection -= _damage;
                     unit.Protection = 0;
+                    inflictDamageToProtectEvent.Invoke(_damage, unit.CurrentHP, unit.Protection, Name, unit.Name);
                 }
                 else
                 {
                     Console.WriteLine("Защита пробита.");
                     unit.CurrentHP -= _damage;
-                    InflictDamageEvent.Invoke(_damage, unit.CurrentHP, Name, unit.Name);
+                    inflictDamageEvent.Invoke(_damage, unit.CurrentHP, unit.Protection, Name, unit.Name);
                 }
             }
             else
@@ -40,6 +43,5 @@ namespace StrategyUnits
                 Console.WriteLine("Unit is dead.");
             }
         }
-        public event InflictDamageDelegate InflictDamageEvent;
     }
 }

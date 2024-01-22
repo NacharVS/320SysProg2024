@@ -18,7 +18,7 @@
                 }
                 else
                 {
-                    Console.WriteLine("You don't have mana.");
+                    Console.WriteLine($"{this.Name} doesn't have mana.");
                 }
             }
             else
@@ -26,10 +26,6 @@
                 Console.WriteLine("Unit is dead. You can't heal him.");
                 return;
             }
-        }
-        public void ShowInfoCleric()
-        {
-            Console.WriteLine($"Mana: {Mana}");
         }
 
         public delegate void HealDelegate(int mana, int maxHP, string nameHealer, string nameHealing);

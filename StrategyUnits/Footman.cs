@@ -2,8 +2,6 @@
 {
     internal class Footman : MilitaryUnit
     {
-        private int _damage;
-
         public Footman(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection, damage) { }
 
         public override void ShowInfo()

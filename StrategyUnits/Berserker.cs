@@ -14,7 +14,7 @@ namespace StrategyUnits
             get { return _rage; }
             set { _rage = value; }
         }
-        public Berserker(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection, damage) { }
+        public Berserker(string? name, int maxHP, int maxProtect, int damage) : base(name, maxHP, maxProtect, damage) { }
 
         public void ActivateRage(Unit unit)
         {

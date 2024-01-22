@@ -2,6 +2,9 @@
 {
     internal class MagicUnit : MilitaryUnit
     {
+        public delegate void ManaChangedDelegate(string name, int maxMana);
+        ManaChangedDelegate ManaLossEvent;
+        ManaChangedDelegate ManaGetEvent;
         private int _currentMana;
         public int MaximumMana { get; private set; }
         public int Mana
@@ -24,16 +27,24 @@
                         _currentMana = value;
                     }
                 }
+                if ( value < _currentMana)
+                {
+                    ManaLossEvent.Invoke(this.Name, Mana);
+                }
+                else if (value < _currentMana)
+                {
+                    ManaGetEvent.Invoke(this.Name, Mana);
+                }
             }
         }
-        public MagicUnit(string? name, int maxHP, int protection, int damage, int maxMana) : base(name, maxHP, protection, damage)
+        public MagicUnit(string? name, int maxHP, int maxProtect, int damage, int maxMana) : base(name, maxHP, maxProtect, damage)
         {
             MaximumMana = maxMana;
             _currentMana = MaximumMana;
         }
-        public void GetInfoMana()
+        public override void ShowInfo()
         {
-            Console.WriteLine($"Current mana of {Name}: {Mana}");
+            Console.WriteLine($" Unit: {this.Name} Health: {this.CurrentHP}/{this.MaximumHP} Mana: {this.Mana}/{this.MaximumMana} Damage: {this.Damage} Protection: {Protection}/{MaximumProtect} LvlWeapon: {WeaponLvl} LvlArmor: {ArmorLvl}");
         }
     }
 }

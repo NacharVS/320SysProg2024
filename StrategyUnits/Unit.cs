@@ -12,11 +12,12 @@
         public int MaximumHP { get; private set; }
         public int MaximumProtect { get; private set; }
 
-        public Unit(string? name, int maxHP, int protection)
+        public Unit(string? name, int maxHP, int maxProtect)
         {
             _name = name;
+            MaximumProtect = maxProtect;
             MaximumHP = maxHP;
-            _protection = protection;
+            _protection = MaximumProtect;
             _currentHP = MaximumHP;
             _deadUnit = false;
         }
@@ -67,14 +68,14 @@
                 {
                     _currentHP = 0;
                     _deadUnit = true;
-                    Console.WriteLine($"Unit {Name} is dead.");
+                    Console.WriteLine($"{this.Name} is dead.");
                 }
                 else
                 {
                     if (value > MaximumHP)
                     {
                         _currentHP = MaximumHP;
-                        Console.WriteLine("Unit has MaxHP.");
+                        Console.WriteLine($"{this.Name} has MaxHP.");;
                     }
                     else
                     {
