@@ -127,6 +127,10 @@ Console.WriteLine("...");
 footman.InflictDamage(paladin);
 footman.InflictDamage(paladin);
 footman.InflictDamage(paladin);
+footman.InflictDamage(paladin);
+paladin.Pray();
+paladin.Pray();
+paladin.Pray();
 paladin.Pray();
 
 Weapon weapon = new Weapon();

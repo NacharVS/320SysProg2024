@@ -17,7 +17,7 @@ namespace StrategyUnits
             }
             else
             {
-                Console.WriteLine($"{militaryUnit.Name}, weapon achieved maximal level: {militaryUnit.WeaponLvl}");
+                Console.WriteLine($"{militaryUnit.Name}'s weapon achieved maximal level: {militaryUnit.WeaponLvl}");
             }
         }
     }

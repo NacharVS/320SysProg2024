@@ -77,6 +77,10 @@
                             {
                                 int n = _health - _prevHealth;
                                 HealthHighEvent.Invoke(_health, n, _name);
+                                //if ((double)_prevHealth / (double)_maxHealth < 0.5)
+                                //    {
+                                //        Rrage = false;
+                                //    }
                             }
                         }
                         if ((percent < 0.5) && Name == "Berserker")

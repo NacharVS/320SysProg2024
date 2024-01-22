@@ -41,6 +41,7 @@ namespace StrategyUnits
                     Console.WriteLine("| Current damage: " + _attack);
                     Rrage = false;
                 }
+
             }
         }
         virtual public void InflictDamage(Unit unit)

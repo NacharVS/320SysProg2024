@@ -21,10 +21,33 @@ namespace StrategyUnits
         }
         public void Pray()
         {
-            Console.WriteLine("Is praying....");
-            Mana -= 10;
-            Health += 20;
-            Console.WriteLine($"Current mana: {Mana} | Current Health: {Health}");
+            
+            if (Dead)
+            { Console.WriteLine("He can't Pray, because he's dead("); }
+            else 
+            { 
+                if (Mana < 10)
+                {
+                    Console.WriteLine("No enough mana");
+                }
+                else 
+                { 
+                    if (Health >= MaxHealth)
+                    {
+                        Console.WriteLine("He is healthy. So he doesn't need Prayer");
+                    }
+                    else 
+                    { 
+                        Console.WriteLine("Is praying....");
+                        Mana -= 10;
+                        Health += 20;
+                        Console.WriteLine($"Current mana: {Mana} | Current Health: {Health}");
+                    }
+                    
+                }
+            }
+            
+            
         }
     }
 }
