@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestWeaponInterfaces
+namespace TestWeaponInterfaces.Heroes
 {
-    internal class Bazooka : 
+    internal class Repairman
     {
-       
     }
 }

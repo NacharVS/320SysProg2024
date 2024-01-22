@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestWeaponInterfaces.Interfaces;
 
-namespace TestWeaponInterfaces
+namespace TestWeaponInterfaces.Heroes
 {
     internal static class Gunslinger
     {
@@ -23,12 +23,22 @@ namespace TestWeaponInterfaces
         }
         public static void AimedShot(IEnergyWeapon weapon)
         {
-            weapon.PulseShoot();
+            weapon.PulseShot();
         }
+        public static void PulseShot(IEnergyWeapon weapon)
+        {
+            weapon.PulseShot();
+        }
+        public static void ExplosionShot(IExplosiveWeapon weapon)
+        {
+            weapon.Explosion();
+        }
+
         public static void ShowGun(IWeapon weapon)
         {
             weapon.ShowGun();
         }
-        
+
+
     }
 }

@@ -8,7 +8,7 @@ namespace TestWeaponInterfaces.Interfaces
 {
     internal interface IWeapon
     {
-        public int Damage { get; }
+        public int PhysicalDamage { get; }
         public void ShowGun();
     }
 }

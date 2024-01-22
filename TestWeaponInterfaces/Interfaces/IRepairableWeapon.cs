@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TestWeaponInterfaces.Interfaces
 {
-    internal interface IEnergyWeapon
+    internal interface IRepairableWeapon
     {
-        public int EnergyDamage { get; }
-        public void PulseShot();
+        public double Durability { get; set; }
+        public bool IsBroken { get; set; }
 
     }
 }
