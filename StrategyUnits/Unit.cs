@@ -101,6 +101,5 @@
 
         public event HealthChangedDelegate HealthIncreasedEvent;
         public event HealthChangedDelegate HealthDecreasedEvent;
-        public event HealthChangedDelegate HealthNotChangedEvent;
     }
 }
