@@ -8,6 +8,7 @@ namespace Weapons
 {
     internal interface IMeleeWeapon
     {
+        public int Durability { get; set; }
         public int MeleeDamage { get; }
         public void MeleeAttack();
     }
