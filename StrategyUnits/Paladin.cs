@@ -6,15 +6,6 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-<<<<<<< Updated upstream
-    internal class Paladin : MagicUnit
-    {
-        public Paladin() : base(2, 15, "Paladin", 50)
-        {
-        }
-    }
-}
-=======
     internal class Paladin : ZeelotKnights
     {
         public Paladin(int minDamage, int maxDamage, string? name, int Health, int protection) : base(minDamage, maxDamage, name, Health, protection)
@@ -56,4 +47,3 @@ namespace StrategyUnits
         }
     }
 }
->>>>>>> Stashed changes

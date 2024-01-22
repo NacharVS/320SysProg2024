@@ -3,11 +3,7 @@
     internal class Unit
     {
 
-<<<<<<< Updated upstream
-        public delegate void HealthChangedDelegate(Unit unit, int health);
-=======
         public delegate void HealthChangedDelegate(Unit unit,int health);
->>>>>>> Stashed changes
 
         private int _health;
         private string? _name;
@@ -24,15 +20,12 @@
             _protection = protection;
         }
 
-<<<<<<< Updated upstream
-=======
         public int Protection
         {
             get { return _protection; }
             set { _protection = value; }
         }
 
->>>>>>> Stashed changes
         public string? Name
         {
             get { return _name; }
@@ -57,11 +50,7 @@
                     _health = MaxHealth;
                 else
                     _health = value;
-<<<<<<< Updated upstream
-
-=======
                 
->>>>>>> Stashed changes
             }
         }
 

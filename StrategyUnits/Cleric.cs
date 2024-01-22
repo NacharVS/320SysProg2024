@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,22 +9,8 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
-<<<<<<< Updated upstream
-        public Cleric() : base(2, 10, "Cleric", 30)
-        {
-        }
-        public void selfHeal()
-        {
-            Console.WriteLine($"{Name} selfheal");
-            while (Manna >= 1)
-            {
-                Health += 2;
-                Manna -= 1;
-            }
-=======
         public Cleric(int minDamage, int maxDamage, string? name, int Health, int protection) : base(minDamage, maxDamage, name, Health, protection)
         {
->>>>>>> Stashed changes
         }
 
         public void Heal(Unit unit)

@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-﻿
-
-
-
-using StrategyUnits;
-
-Footman footman = new Footman();
-Peasant ps1 = new Peasant();
-Cleric cleric1 = new Cleric();
-Altar altar1 = new Altar();
-
-=======
 ﻿using StrategyUnits;
 
 Barracks barracks1 = new Barracks();
@@ -30,7 +17,6 @@ Cleric cleric1 = altar1.CreateCleric();
 
 
 
->>>>>>> Stashed changes
 ps1.HealthDecreasedEvent += MethodOfDamage;
 ps1.HealthIncreasedEvent += MethodOfHeal;
 ps1.ShowInfo();
@@ -61,18 +47,6 @@ static void MethodOfDamage(Unit target, int beforeHP)
         beforeHP = 0;
     }
     Console.WriteLine($"Health has decreased to {target.Name} on {target.Health - beforeHP} CurrentHealth {beforeHP}");
-<<<<<<< Updated upstream
-=======
-}
-
-static void MethodOfHeal(Unit target, int healHP)
-{
-    if (healHP > target.MaxHealth)
-    {
-        healHP = target.MaxHealth;
-    }
-    Console.WriteLine($"Health has increased to {target.Name} on {healHP - target.Health} CurrentHealth {healHP}");
->>>>>>> Stashed changes
 }
 
 static void MethodOfHeal(Unit target, int healHP)
@@ -83,3 +57,4 @@ static void MethodOfHeal(Unit target, int healHP)
     }
     Console.WriteLine($"Health has increased to {target.Name} on {healHP - target.Health} CurrentHealth {healHP}");
 }
+
