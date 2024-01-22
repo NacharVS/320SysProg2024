@@ -3,14 +3,7 @@
     internal class MagicUnit : MilitaryUnit
     {
         private int _currentMana;
-        private int _maximumMana;
-
-        public int MaximumMana
-        {
-            get { return _maximumMana; }
-            set { _maximumMana = value; }
-        }
-
+        public int MaximumMana { get; private set; }
         public int Mana
         {
             get { return _currentMana; }
@@ -33,12 +26,11 @@
                 }
             }
         }
-        public MagicUnit(string? name, int maxHP, int protection, int damage, int MaximumMana) : base(name, maxHP, protection, damage)
+        public MagicUnit(string? name, int maxHP, int protection, int damage, int maxMana) : base(name, maxHP, protection, damage)
         {
+            MaximumMana = maxMana;
             _currentMana = MaximumMana;
-            _maximumMana = MaximumMana;
         }
-        
         public void GetInfoMana()
         {
             Console.WriteLine($"Current mana of {Name}: {Mana}");

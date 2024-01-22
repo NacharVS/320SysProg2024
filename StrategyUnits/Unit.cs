@@ -7,6 +7,8 @@
         private bool _deadUnit;
         private int _weaponLvl;
         private int _protection;
+        private int _armorLvl;
+
         public int MaximumHP { get; private set; }
         public int MaximumProtect { get; private set; }
 
@@ -18,13 +20,16 @@
             _currentHP = MaximumHP;
             _deadUnit = false;
         }
-
         public int WeaponLvl
         {
             get { return _weaponLvl; }
             set { _weaponLvl = value; }
         }
-
+        public int ArmorLvl
+        {
+            get { return _armorLvl; }
+            set { _armorLvl = value; }
+        }
         public string Name
         {
             get { return _name; }

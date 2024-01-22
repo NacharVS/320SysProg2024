@@ -8,17 +8,32 @@ namespace StrategyUnits
 {
     internal class Berserker : MilitaryUnit
     {
-        public Berserker(int maxHP, string? name, int damage) : base(maxHP, name, damage) { }
-
-        public void Rage(Unit unit)
+        private bool _rage;
+        public bool Rage
         {
-            if (CurrentHP < MaximumHP / 2)
+            get { return _rage; }
+            set { _rage = value; }
+        }
+        public Berserker(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection, damage) { }
+
+        public void ActivateRage(Unit unit)
+        {
+            if (CurrentHP > MaximumHP / 2)
             {
+                _rage = true;
                 Damage += Damage / 2;
-                Console.WriteLine($"{Name} has less than half health: {CurrentHP}/{MaximumHP} ");
+                Console.WriteLine($"{Name} activated rage.");
             }
-            Console.WriteLine();
+            else
+            {
+                _rage = false;
+                Damage = Damage;
+                Console.WriteLine();
+            }
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($" Unit: {Name} Current health: {CurrentHP}/{MaximumHP} Damage: {Damage} Protection: {Protection}/{MaximumProtect} Weapon Level: {WeaponLvl} Armor Level : {ArmorLvl}");
         }
     }
-    
 }

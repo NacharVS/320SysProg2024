@@ -2,7 +2,7 @@
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric() : base("Cleric", 50, 20, 5, 90) { }
+        public Cleric(string? name, int maxHP, int damage,  int protection, int maxMana) : base(name, maxHP, damage, protection, maxMana) { }
         public void Heal(Unit unit)
         {
             if (unit.DeadUnit == false)

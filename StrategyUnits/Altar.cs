@@ -8,6 +8,10 @@ namespace StrategyUnits
 {
     internal class Altar
     {
+        public Altar() 
+        {
+            MaxEnergy = 100;
+        }
         private int _currentEnergy;
         public int MaxEnergy { get; private set; }
 
@@ -56,6 +60,18 @@ namespace StrategyUnits
                 }
                 return;
             }
+        }
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight("Zealot knight", 15, 6, 10, 3);
+        }
+        public Paladin CreatePaladin()
+        {
+            return new Paladin("Paladin", 10, 10, 30, 6, 15);
+        }
+        public Cleric CreateCleric()
+        {
+            return new Cleric("Cleric", 15, 1, 15, 0);
         }
     }
 }

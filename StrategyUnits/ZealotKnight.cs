@@ -9,22 +9,25 @@ namespace StrategyUnits
     internal class ZealotKnight : MagicUnit
     {
         private int _defense;
-        public ZealotKnight(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection, damage) { }
-        public int Defense
-        {
-            get { return _defense; }
-            set { _defense = value; }
-        }
-        public void Prayer(Unit unit)
+        public ZealotKnight(string? name, int maxHP, int protection, int damage, int maxMana) : base(name, maxHP, protection, damage, maxMana) { }
+        public void Prayer(ZealotKnight zealotKnight)
         {
             if (DeadUnit == false)
             {
-                CurrentHP += 20;
-                Mana -= 10;
+                if (zealotKnight.Mana >= 10)
+                {
+                    CurrentHP += 20;
+                    Mana -= 10;
+                    Console.WriteLine("Zealot Knight prayed.");
+                }
+                else
+                {
+                    Console.WriteLine("Zealot Knight doesn't have mana.");
+                }
             }
             else
             {
-                Console.WriteLine("Unit is dead.");
+                Console.WriteLine("Zealot Knight is dead.");
             }
         }
     }
