@@ -43,7 +43,7 @@
             {
                 Console.WriteLine($"{NameA} восстанавливает манну...");
                 DateTime fixDate = DateTime.Now;
-                DateTime nextMinute = fixDate.AddSeconds(5);
+                DateTime nextMinute = fixDate.AddSeconds(2);
                 while (true)
                 {
                     DateTime now = DateTime.Now;
@@ -52,7 +52,7 @@
                         Console.WriteLine($"{NameA} восстановил манну с {magicUnit.Manna} до {magicUnit.MaxManna}");
                         Energy -= (magicUnit.MaxManna - magicUnit.Manna) / 10; // 1 Энергия = 10 Манны
                         magicUnit.Manna = magicUnit.MaxManna;
-                        nextMinute = nextMinute.AddSeconds(5);
+                        nextMinute = nextMinute.AddSeconds(2);
                         break;
                     }
                 }

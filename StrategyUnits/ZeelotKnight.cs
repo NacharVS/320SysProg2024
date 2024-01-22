@@ -29,7 +29,7 @@
             }
         }
 
-        public void Prayer(ZeelotKnight zeelotKnight)
+        public void Prayer(ZeelotKnight zeelotKnight)  // Заклинание Молитва
         {
 
             if (IsDead == true)

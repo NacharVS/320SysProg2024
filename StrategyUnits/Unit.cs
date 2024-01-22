@@ -8,9 +8,9 @@
         private int _armor;                                               //Защита (броня).
         public bool? IsDead { get; private set; }                         //Мертв == true
         public int MaxHealth { get; private set; }                        //Максимальное здоровье
-        private int _MaxArmor;                    //Максимальная защита
-        public int LeverDamage { get; set; } = 0;                 //Уровень Атаки
-        internal int LeverArmor { get; set; } = 0;                  //Уровень Защиты
+        private int _MaxArmor;                                            //Максимальная защита
+        internal int LeverDamage { get; set; } = 0;                         //Уровень Атаки
+        internal int LeverArmor { get; set; } = 0;                        //Уровень Защиты
 
         public int MaxArmor
         {
