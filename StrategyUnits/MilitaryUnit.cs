@@ -8,6 +8,8 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
+
+
         private int _minDamage;
         public int MinDamage
         {
@@ -16,11 +18,13 @@ namespace StrategyUnits
         }
 
         private int _maxDamage;
-        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense) : base(currentHealth, nameOfClass, defense)
+
+        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage) : base(currentHealth, nameOfClass, defense)
         {
-            MinDamage = _minDamage;
-            MaxDamage = _maxDamage;
+            MinDamage = minDamage;
+            MaxDamage = maxDamage;
         }
+
         public int MaxDamage
         {
             get { return _maxDamage; }
@@ -29,35 +33,35 @@ namespace StrategyUnits
 
         public virtual void Attack(Unit attackedUnit)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
             Random rnd = new Random();
-            int appliedDamage = rnd.Next(MinDamage, MaxDamage) - attackedUnit.Defense;
+            int appliedDamage = rnd.Next(this.MinDamage, this.MaxDamage) - attackedUnit.Defense;
             if (!attackedUnit.IsDead)
             {
                 if (appliedDamage >= 0)
                 {
                     Console.WriteLine(
-                        $">> Attack successful. You've applied {appliedDamage} DP.\n"
+                        $" Атака была успешна проведена. Вы нанесли {appliedDamage} ({appliedDamage + attackedUnit.Defense}-{attackedUnit.Defense}) DP.\n"
                         );
                     attackedUnit.CurrentHealth -= appliedDamage;
                 }
                 else
                 {
-                    Console.WriteLine(">> No damage applied.\n");
+                    Console.WriteLine(" Атака была провалена!! \n");
                 }
             }
             else
             {
-                Console.WriteLine("Unit is already dead. Stop beating a dead body!\n");
+                Console.WriteLine("Юнита больше нет в живых. Остановитесь!\n");
             }
-            Console.ForegroundColor = ConsoleColor.White;
+
         }
 
         public override void ShowInfo()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Unit: {NameOfClass} Health: {CurrentHealth} MaxHealth: {MaxHealth} \nDefense: {Defense} MinDamage: {MinDamage} MaxDamage: {MaxDamage}");
-            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine($"Юнит: {NameOfClass} Здоровье: {CurrentHealth} Максимальное здоровье: {MaxHealth} \n" +
+                $"Броня: {Defense} Минимальный урон: {MinDamage} Максимальный урон: {MaxDamage}");
         }
     }
 }
+

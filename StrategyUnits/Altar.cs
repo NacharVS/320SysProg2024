@@ -16,10 +16,9 @@ namespace StrategyUnits
             set { _altarName = value; }
         }
 
-
         private int _capability;
 
-        public int Capability
+        public int Capacity
         {
             get { return _capability; }
             set { _capability = value; }
@@ -28,7 +27,7 @@ namespace StrategyUnits
         public Altar(string altarName)
         {
             AltarName = altarName;
-            Capability = 5000;
+            Capacity = 5000;
         }
 
         public void RestoreMana(MagicUnit restorableUnit)
@@ -37,19 +36,17 @@ namespace StrategyUnits
             {
                 int manaDifference = restorableUnit.MaxManaPoints - restorableUnit.ManaPoints;
                 restorableUnit.ManaPoints += manaDifference;
-                this.Capability -= manaDifference * 5;
-                Console.WriteLine($">> Altar has restored {manaDifference} MP, losing {manaDifference * 5} EP of its' capability.\n");
+                this.Capacity -= manaDifference * 5;
+                Console.WriteLine($" Altar has restored {manaDifference} MP, losing {manaDifference * 5} EP of its' capability.\n");
             }
         }
 
         public void ShowInfo()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"====== BUILDING ========\n" +
-                $"{AltarName} - an altar\n" +
-          $"Its' capability is {Capability} EP\n" +
+
+            Console.WriteLine($"{AltarName} - an altar\n" +
+                $"Its' capability is {Capacity} EP\n" +
                $"====== ========= ========\n");
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
     }

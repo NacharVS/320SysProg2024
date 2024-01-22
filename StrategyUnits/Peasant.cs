@@ -9,22 +9,12 @@
 
         public void Build()
         {
-            Console.WriteLine("Is building");
+            Console.WriteLine("Строит");
         }
 
         public void Dig()
         {
-            Console.WriteLine("Is digging");
-        }
-
-        public void Chop()
-        {
-            Console.WriteLine("Is chopping");
-        }
-
-        public void CollectFood()
-        {
-            Console.WriteLine("Is collecting food");
+            Console.WriteLine("Копает");
         }
     }
 }
