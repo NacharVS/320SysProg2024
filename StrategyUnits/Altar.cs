@@ -49,16 +49,23 @@ namespace StrategyUnits
         }
         public void RecoverMP(MagicUnit magicUnit)
         {
-            while (_currentEnergy > 0)
+            if (_currentEnergy > 0)
             {
-                while (magicUnit.Mana < magicUnit.MaximumMana)
+                if (magicUnit.Mana < magicUnit.MaximumMana)
                 {
                     magicUnit.Mana += 10;
-                    _currentEnergy-=2;
+                    _currentEnergy -= 10;
+                    ManaGetEvent.Invoke(magicUnit.Name, magicUnit.Mana);
                 }
-                return;
+                else
+                {
+                    Console.WriteLine("Максимальное количество маны.");
+                };
             }
-            return;
+            else
+            {
+                Console.WriteLine("Нет энергии в алтаре.");
+            }
         }
         public ZealotKnight CreateZealotKnight()
         {
@@ -72,5 +79,7 @@ namespace StrategyUnits
         {
             return new Cleric("Cleric", 55, 30, 6, 40);
         }
+        public delegate void ManaChangedDelegate(string name, int maxMana);
+        public event ManaChangedDelegate ManaGetEvent;
     }
 }

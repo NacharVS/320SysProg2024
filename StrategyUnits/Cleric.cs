@@ -15,6 +15,7 @@
                         Mana -= 2;
                     }
                     HealEvent.Invoke(Mana, unit.CurrentHP, Name, unit.Name);
+                    ManaLossEvent.Invoke(Name, Mana);
                 }
                 else
                 {
@@ -31,5 +32,7 @@
         public delegate void HealDelegate(int mana, int maxHP, string nameHealer, string nameHealing);
 
         public event HealDelegate HealEvent;
+        public delegate void ManaChangedDelegate(string name, int maxMana);
+        public event ManaChangedDelegate ManaLossEvent;
     }
 }

@@ -18,7 +18,7 @@ namespace StrategyUnits
 
         public void ActivateRage()
         {
-            if (CurrentHP > MaximumHP / 2)
+            if (CurrentHP < MaximumHP / 2)
             {
                 _rage = true;
                 Damage += Damage / 2;

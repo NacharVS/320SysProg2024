@@ -46,7 +46,7 @@
                 Console.WriteLine($"{this.Name} мертв.\n");
             }
         }
-        public void ActivateHolyArmor(Unit unit)
+        public void ActivateHolyArmor()
         {
             if (CurrentHP < MaximumHP / 2)
             {
