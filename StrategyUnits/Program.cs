@@ -180,7 +180,25 @@ paladin.ShowInfo();
 forge_v.UpdateLevelArmor(paladin);
 forge_v.UpdateLevelArmor(paladin);
 
+cleric_v.GetInfoManna();
+cleric_v.ShowInfo();
 
+cleric_v.HillMyself(cleric_v);
+cleric_v.GetInfoManna();
+cleric_v.ShowInfo();
+
+berserker_v.ShowInfo();
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+
+berserker_v.Rage(footman_v);
+berserker_v.ShowInfo();
 static void InfoMannaLess (int health, string name, int manna)
 {
     Console.WriteLine($"Health: {health} Name: {name} Manna: {manna}");

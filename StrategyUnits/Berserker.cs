@@ -16,7 +16,14 @@ namespace StrategyUnits
 
         public void Rage(Unit unit)
         {
-            if (Health < (Health / 2))
+            if (DeadPerson == true)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{unit.Name} died, You can't rage dead characters.");
+                Console.ResetColor();
+                return;
+            }
+            if (Health < (MaxHealth / 2))
             {
                 Damage += Damage / 2;
                 Console.WriteLine($"{Name} has less than half health: {Health}/{MaxHealth}, damage: {Damage}");
