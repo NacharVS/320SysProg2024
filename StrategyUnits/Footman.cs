@@ -14,7 +14,5 @@
         {
             Damage = damage;
         }
-
-       
     }
 }

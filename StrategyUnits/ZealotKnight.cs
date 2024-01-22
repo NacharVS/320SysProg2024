@@ -12,7 +12,7 @@ namespace StrategyUnits
         public int _damage;
         public int _health;
         public int _mana;
-        public ZealotKnight(string? name, int damage, int health, int mana) : base(damage, name, health)
+        public ZealotKnight(string? name, int damage, int health, int mana) : base(damage, name, health, mana)
         {
             _Name = name;
             _damage = damage;
@@ -21,11 +21,11 @@ namespace StrategyUnits
         }
         public void Prayer()
         {
-            if(Mana >= 10)
+            if(_mana >= 10)
             {
                 Console.WriteLine("Помолимся)");
                 CurentHealth += 20;
-                Mana -= 10;
+                _mana -= 10;
                 Console.WriteLine($"Текущее количество маны: {Mana}. Текущее здоровье: {CurentHealth}");
             }
             else

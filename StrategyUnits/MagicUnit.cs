@@ -19,7 +19,7 @@ namespace StrategyUnits
             set { _maxMana = value; }
         }
 
-        public MagicUnit(int atackValue, string Name, int damage) : base(atackValue, Name, damage)
+        public MagicUnit(int atackValue, string Name, int damage, int mana) : base(atackValue, Name, damage)
         {
             _damage = damage;
         }

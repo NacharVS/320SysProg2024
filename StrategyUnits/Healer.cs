@@ -8,11 +8,11 @@ namespace StrategyUnits
 {
     internal class Healer : MagicUnit
     {
-        public Healer(int health, string? name, int mana) : base(health, name, mana)
+        public Healer(int health, string? name,int damage, int mana) : base(health, name, damage, mana)
         {
             _mana = mana;       
         }
-        public Healer(): base(60, "Healer", 60)
+        public Healer(): base(60, "Healer", 60, 6)
         {
             _mana = 60;
             _maxMana = 60;

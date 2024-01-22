@@ -7,16 +7,15 @@ Forge forge = new Forge();
 Footman footman = barracs.CreateRecruit();
 Footman footman2 = barracs.CreateFootman();
 Footman footman3 = barracs.CreateBerserker();
-
 footman.ShowInfo();
 footman2.ShowInfo();    
 footman3.ShowInfo();
 
 Church church = new Church();
 Healer healer = church.CreateHealer();
-Healer healer2 = church.CreateSoulHealer();
+Paladin paladin = church.CreateSoulHealer();
 healer.ShowInfo();
-healer2.ShowInfo();
+paladin.ShowInfo();
 
 //forge.WeaponUpgreat(footman2);
 
@@ -31,6 +30,10 @@ footman3.InflictDamage(footman);
 footman3.InflictDamage(footman);
 footman.ShowInfo();
 
+footman3.InflictDamage(paladin);
+paladin.ShowInfo();
+paladin.Prayer();
+paladin.ShowInfo();
 
 
 //Footman footman = new Footman();

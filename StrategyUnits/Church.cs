@@ -10,11 +10,11 @@ namespace StrategyUnits
     {
         public Healer CreateHealer()
         {
-            return new Healer(50 ,"Healer", 10);
+            return new Healer(50 ,"Healer", 10, 60);
         }
-        public Healer CreateSoulHealer()
+        public Paladin CreateSoulHealer()
         {
-            return new Healer(100, "Healer", 20);
+            return new Paladin("Paladin2", 10, 60, 100);
         }
     }
 }

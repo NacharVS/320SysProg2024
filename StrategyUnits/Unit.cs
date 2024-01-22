@@ -17,7 +17,16 @@ namespace StrategyUnits
         public int _pravHealth;
         public int _weapon;
         public int _armor;
-        
+        private int _suitHP;
+        private bool _suit = false;
+        public bool Suit { get => _suit; set => _suit = value; }
+        public int SuitHP
+        {
+            get => _suitHP;
+            set => _suitHP = value;
+        }
+
+
         public bool Rage { get; set; }
         
         public int Armor
@@ -25,7 +34,6 @@ namespace StrategyUnits
             get { return _armor; }
             set { _armor = value; }
         }
-
 
         public int Weapon
         {
@@ -82,13 +90,13 @@ namespace StrategyUnits
                     if (value > MaxHealth)
                     {
                         _health = MaxHealth;
-
+                        
                     }
                     else
                     {
                         _health = value;
                         double procent = Math.Round((double)CurentHealth / (double)_maxHealth, 4);
-                        
+
                         if (_pravHealth < _health)
                         {
                             int v = _health - _pravHealth;
@@ -99,19 +107,23 @@ namespace StrategyUnits
                             int n = _pravHealth - _health;
                             HealthIncreasedEvent.Invoke(n);
                         }
-
-                        if ((procent <= 0.5) && (Name == "Recruit"))
+                        if((procent< 0.5) && Name == "Recruit")
                         {
                             FootmanRageEvent.Invoke(_health);
                             Rage = true;
                         }
                     }
+                   
                 }
-                HealthChangedEvent.Invoke(_health);
+                //HealthChangedEvent.Invoke(_health);
             }
         }
-        
-        
+        public void ProtectSuit()
+        {
+            Console.WriteLine("Надевается защитный костюм");
+            _suit = true;
+            _suitHP = 50;
+        }
 
         public void Move()
         {
