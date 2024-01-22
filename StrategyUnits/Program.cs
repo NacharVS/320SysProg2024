@@ -2,8 +2,11 @@
 using System.Xml.Linq;
 
 Peasant ps1 = new Peasant();
-Cliric cl1 = new Cliric();
-Paladin unit2 = new Paladin();
+
+HogwartsBarracs hgBara = new HogwartsBarracs();
+MagicUnit cl1 = hgBara.CreateCliric();
+Paladin unit2 = hgBara.CreatePaladin();
+
 Altar altar = new Altar();
 Battle battle = new Battle();
 //ps1.HealthChangeEvent += ShowInfo;

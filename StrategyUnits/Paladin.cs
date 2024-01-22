@@ -13,11 +13,13 @@ namespace StrategyUnits
         public HealthChangedDelegate MagicFireBollAttack;
         public int currentArmor;
         public int _work = 0;
-        public Paladin() : base(90, "Paladin", true, 6, 15, 45, 3, 0, 0)
+
+        public Paladin(int health, string? name, bool active, int damage, int maxDamage, int mana, int armors, int lvlappArmor, int lvlappAttack) : base(health, name, active, damage, maxDamage, mana, armors, lvlappArmor, lvlappAttack)
         {
             currentArmor = armor;
             ManaCast = 3;
         }
+
         public override int Mana
         {
             get => base.Mana;

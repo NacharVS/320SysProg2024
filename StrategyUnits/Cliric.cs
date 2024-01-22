@@ -7,6 +7,11 @@ namespace StrategyUnits
         public event HealthChangedDelegate HealUnit;
 
         private int _healthValue;
+
+        public Cliric(int health, string? name, bool active, int damage, int maxDamage, int mana, int armors, int lvlappArmor, int lvlappAttack) : base(health, name, active, damage, maxDamage, mana, armors, lvlappArmor, lvlappAttack)
+        {
+        }
+
         public int Heal
         {
             get { return _healthValue; }
@@ -18,14 +23,12 @@ namespace StrategyUnits
             get => base.Mana;
             set => base.Mana = value;
         }
-        public Cliric() : base(80, "Clirc", true, 1, 3, 60,5,0,0)
-        {
-            _healthValue = 1;
-        }
+        
 
       
         public  void HealHealthunit(Unit unit)
         {
+            _healthValue = 1;
             if (unit == this)
             {
                 while (Mana >= 1 && unit.Health < unit._maxHealth)
