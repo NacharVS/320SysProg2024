@@ -15,19 +15,19 @@ namespace StrategyUnits
             
         }
 
-        public void Prayer(ZeelotKnight zeelotKnight)
+        public void Prayer()
         {
 
-            if (DeadPerson == true)
+            if (DeadPerson)
             {
-                Console.WriteLine($"{zeelotKnight.Name} died and can't pray.");
+                Console.WriteLine($"{Name} died and can't pray.");
                 return;
             }
-            else if(zeelotKnight.Manna >= 10)
+            else if(Manna >= 10)
             {
-                zeelotKnight.Health += 20;
+                Health += 20;
                 Manna -= 10;
-                Console.WriteLine($"{zeelotKnight.Name} operation was successfully.");
+                Console.WriteLine($"{Name} operation was successfully.");
             }
             else
             {

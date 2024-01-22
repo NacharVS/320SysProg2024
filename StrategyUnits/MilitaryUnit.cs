@@ -16,7 +16,7 @@ namespace StrategyUnits
         }
         public virtual void InflictDamage(Unit unit)
         {
-            if (DeadPerson == true)
+            if (DeadPerson)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Unit died");

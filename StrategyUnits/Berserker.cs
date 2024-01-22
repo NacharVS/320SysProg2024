@@ -16,10 +16,10 @@ namespace StrategyUnits
 
         public void Rage(Unit unit)
         {
-            if (DeadPerson == true)
+            if (DeadPerson)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"{unit.Name} died, You can't rage dead characters.");
+                Console.WriteLine($"{unit.Name} died.");
                 Console.ResetColor();
                 return;
             }

@@ -12,7 +12,7 @@ namespace StrategyUnits
 
         public void HillOthers(Unit unit)
         {
-            if (DeadPerson == true)
+            if (DeadPerson)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{unit.Name} died, You can't hill dead characters.");
@@ -49,21 +49,21 @@ namespace StrategyUnits
 
 
         }
-        public void HillMyself(Unit unit)
+        public void HillMyself()
         {
-            if (DeadPerson == true)
+            if (DeadPerson)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"{unit.Name} died, You can't hill dead characters.");
+                Console.WriteLine($"{Name} died, You can't hill dead characters.");
                 Console.ResetColor();
                 return;
             }
             while (Manna > 0)
             {
-                if (unit.MaxHealth <= unit.Health)
+                if (MaxHealth <= Health)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"{unit.Name} hill");
+                    Console.WriteLine($"{Name} hill");
                     Console.ResetColor();
                     return;
                 }
@@ -76,10 +76,10 @@ namespace StrategyUnits
                 else
                     while (Manna >= 1)
                     {
-                        unit.Health += 2;
+                        Health += 2;
                         Manna -= 1;
                     }
-                Console.WriteLine($"Character {unit.Name} hill himself");
+                Console.WriteLine($"Character {Name} hill himself");
             }
         }
 

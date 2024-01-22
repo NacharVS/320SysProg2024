@@ -87,7 +87,6 @@
         }
         public event HealthChangeDelegate HealthDecreasedEvent;
         public event HealthChangeDelegate HealthIncreasedEvent;
-        public event HealthChangeDelegate HealthNotChangeDelegate;
 
     }
 }

@@ -51,7 +51,7 @@ namespace StrategyUnits
 
         public void HollyArmorAttack(Unit unit)
         {
-            if (DeadPerson == true)
+            if (DeadPerson)
             {
                 Console.WriteLine($"{Name} died.");
             }
