@@ -19,7 +19,7 @@
             }
             else
             {
-                    if(unit.IsDead == true)
+                    if(unit.IsDead == true || unit.Health <= 0)
                     { Console.WriteLine($"Урон невозможен. {unit.Name} мёртв."); }
                     else
                     {
@@ -42,7 +42,7 @@
             }
             else
             {
-                if (unit.IsDead == true)
+                if (unit.IsDead == true || unit.Health <= 0)
                 { Console.WriteLine($"Урон невозможен. {unit.Name} мёртв."); }
                 else
                 {

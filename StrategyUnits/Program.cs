@@ -230,33 +230,115 @@
 //cleric.GetInfoManna();
 //altar1.ShowInfoAltar();
 
+//Barracs barracs = new Barracs();
+//Altar alt = new Altar();
+
+//Cleric cleric = alt.CreateCleric();
+//Palladin palladin = alt.CreatePalladin();
+//Footman footman = barracs.CreateFootman();
+//Berserker berserker = barracs.CreateBerserker();
+//berserker.InflictDamageEvent += MethodYron;
+
+//cleric.ShowInfo();
+//palladin.ShowInfo();
+//footman.ShowInfo();
+//berserker.ShowInfo();
+
+
+////Атака берсерка на футмена
+//Console.WriteLine("\n");
+//berserker.InflictDamage(footman);
+//berserker.InflictDamage(footman);
+//berserker.InflictDamage(footman);
+//palladin.HillyArmor(footman);
+//palladin.HillyArmor(footman);
+//palladin.HillyArmor(footman);
+//palladin.ShowInfo();
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ГЛОБАЛЬНОЕ ТЕСТИРОВАНИЕ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Console.WriteLine("Создание всех игровых юнитов. Вывод информации о них.\n");  //Успешно
 Barracs barracs = new Barracs();
-Altar alt = new Altar();
+Altar altar = new Altar();
 
-Cleric cleric = alt.CreateCleric();
-Palladin palladin = alt.CreatePalladin();
-Footman footman = barracs.CreateFootman();
-Berserker berserker = barracs.CreateBerserker();
-berserker.InflictDamageEvent += MethodYron;
+Peasant peasant_1 = new Peasant(); //Нет метода
+Peasant peasant_2 = new Peasant(); //Нет метода
+Peasant peasant_3 = new Peasant(); //Нет метода
+Peasant peasant_4 = new Peasant(); //Нет метода
+Footman footman_1 = barracs.CreateRecruit(); //Атака
+Footman footman_2 = barracs.CreateFootman(); //Атака
+Berserker berserker_1 = barracs.CreateBerserker(); //Атака, ярость
+ZeelotKnight zeelotKnight_1 = altar.CreateZeelotKnight(); //Атака, Магический урон
+Palladin palladin_1 = altar.CreatePalladin(); // Атака, СвятойОгонь, СвятаяЗащита
+Cleric cleric_1 = altar.CreateCleric(); //Атака, ХиллСебя, ХиллДругого
+Cleric cleric_2 = altar.CreateCleric(); //Атака, ХиллСебя, ХиллДругого
 
-cleric.ShowInfo();
-palladin.ShowInfo();
-footman.ShowInfo();
-berserker.ShowInfo();
+peasant_1.ShowInfo();
+peasant_2.ShowInfo();
+footman_1.ShowInfo();
+footman_2.ShowInfo();
+berserker_1.ShowInfo();
+zeelotKnight_1.ShowInfo();
+palladin_1.ShowInfo();
+cleric_1.ShowInfo();
 
+//Проверка методов и ивентов КАЖДОГО.
+footman_1.InflictDamageEvent += MethodYron;
+footman_2.InflictDamageEvent += MethodYron;
+berserker_1.InflictDamageEvent += MethodYron;
+zeelotKnight_1.InflictDamageEvent += MethodYron;
+palladin_1.InflictDamageEvent += MethodYron;
+cleric_1.InflictDamageEvent += MethodYron;
+cleric_1.HillEvent += MethodHill;
+cleric_2.HillEvent += MethodHill;
 
-//Атака берсерка на футмена
+Console.WriteLine("\nПроверка методов и ивентов АТАК.\n"); //Успешно
+footman_1.InflictDamage(peasant_1);
+footman_2.InflictDamage(peasant_1);
+berserker_1.InflictDamage(peasant_1);
+zeelotKnight_1.InflictDamage(peasant_2);
+palladin_1.InflictDamage(peasant_2);
+cleric_1.InflictDamage(peasant_2);
+
 Console.WriteLine("\n");
-berserker.InflictDamage(footman);
-berserker.InflictDamage(footman);
-berserker.InflictDamage(footman);
-palladin.HillyArmor(footman);
-palladin.HillyArmor(footman);
-palladin.HillyArmor(footman);
-palladin.ShowInfo();
+
+berserker_1.Rage(peasant_3);
+peasant_3.ShowInfo();
+Console.WriteLine("\n");
+zeelotKnight_1.MagicAttack(peasant_3);
+peasant_3.ShowInfo();
+Console.WriteLine("\n");
+palladin_1.MagicAttack(peasant_4);
+peasant_4.ShowInfo();
+
+Console.WriteLine("\nПроверка методов и ивентов ХИЛЛА.\n"); //Успешно
+cleric_1.HillOthers(peasant_4);
+Console.WriteLine("\n");
+palladin_1.InflictDamage(cleric_2);
+Console.WriteLine("\n");
+cleric_2.HillMyself(cleric_2);
+
+Console.WriteLine("\nПроверка методов и ивентов Клерика, Рыцаря, Палладина, Берсерка.\n");
+Console.WriteLine("\nБерсерка: при здоровье меньше 50% - не совершает метод Ярость\n"); //Успешно
+berserker_1.ShowInfo();
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+palladin_1.InflictDamage(berserker_1);
+
+berserker_1.Rage(cleric_1);
 
 
-
+//zeelotKnight_1.ShowInfo();
+//palladin_1.ShowInfo();
+//cleric_1.ShowInfo();
 
 
 static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)

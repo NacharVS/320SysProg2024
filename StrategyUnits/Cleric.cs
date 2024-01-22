@@ -54,9 +54,9 @@
                         cleric.Health += 2;
                         Manna -= 1;
                     }
-                    Console.WriteLine($"{cleric.Name} было восстановлено здоровье.");
+                    HillEvent.Invoke(Manna, cleric.Health, Name, cleric.Name);
                 }
-                HillEvent.Invoke(Manna, cleric.Health, Name, cleric.Name);
+
             }
         }
 

@@ -59,8 +59,8 @@
             {
                 if (value < 0)
                 {
-                    _health = 0;
                     IsDead = true;
+                    _health = 0;
                     Console.WriteLine($"{Name} мёртв. Нанесения урона невозможно.");
                 }
                 else

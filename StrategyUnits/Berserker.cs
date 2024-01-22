@@ -7,20 +7,25 @@
 
         }
 
-        public void Rage (Unit unit) //Ярость
+        public void Rage(Unit unit) //Ярость
         {
             if (IsDead == true)
                 Console.WriteLine($"{Name} мёртв.");
-            else if(Health > (Health * 0.5) )
+            else
             {
-                if (unit.IsDead == true)
-                    Console.WriteLine($"{unit.Name} мёртв. Атака невозможна.");
-                else
+                if (Health >= (MaxHealth / 2))
                 {
-                    Damage = (int)(Damage + (Damage * 0.5));
-                    unit.Health -= Damage;
-                    Console.WriteLine($"{unit.Name} получил урон {Damage}");
+                    if (unit.IsDead == true || unit.Health <= 0)
+                        Console.WriteLine($"{unit.Name} мёртв. Атака невозможна.");
+                    else
+                    {
+                        unit.Health -= (int)(Damage + (Damage * 0.5)); ;
+                        Console.WriteLine($"{unit.Name} получил урон {Damage + (Damage * 0.5)}");
+                    }
                 }
+                else
+                    Console.WriteLine("Нельзя использовать Ярость");
+
 
             }
         }

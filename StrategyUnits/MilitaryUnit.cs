@@ -45,6 +45,11 @@ namespace StrategyUnits
             _damage = damage;
         }
 
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Unit: {Name}\t Здоровье: {Health} Защита: {Armor} Атака: {Damage} Состоние жизни: {IsDead}");
+        }
+
         public event InflictDamageDelegate InflictDamageEvent; //Ивет НанесенияУрона
     }
 }
