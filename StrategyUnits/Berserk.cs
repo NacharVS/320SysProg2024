@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Berserk : MilitaryUnit
+    internal class Berserk : Footman
     {
 
         private bool _rage;
+
+        public Berserk(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int v, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, v, nameOfUnit)
+        {
+            NameOfUnit = nameOfUnit;
+        }
+
         public bool Rage
         {
             get
@@ -18,13 +24,12 @@ namespace StrategyUnits
                 return _rage;
             }
         }
-        public Berserk(int currentHealth, string? nameOfClass, int defense) : base(currentHealth, nameOfClass, defense)
-        {
+     
 
-        }
         public override void ShowInfo()
         {
-              
+
+            Console.WriteLine($"{NameOfUnit} - юнит {NameOfClass} класса \n" + $"Здоровье: {CurrentHealth}/{MaxHealth}\n" + $"Броня: {Defense}\n" + $"Состояние рейдж!!!: {Rage}\n" + $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n");
         }
 
         public void RageOn()

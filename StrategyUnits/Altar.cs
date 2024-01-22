@@ -36,17 +36,16 @@ namespace StrategyUnits
             {
                 int manaDifference = restorableUnit.MaxManaPoints - restorableUnit.ManaPoints;
                 restorableUnit.ManaPoints += manaDifference;
-                this.Capacity -= manaDifference * 5;
-                Console.WriteLine($" Altar has restored {manaDifference} MP, losing {manaDifference * 5} EP of its' capability.\n");
+                Capacity -= manaDifference * 5;
+                Console.WriteLine($" Алтарь восстанавливает {manaDifference} MP, теряет {manaDifference * 5} EP из алтаря\n");
             }
         }
 
         public void ShowInfo()
         {
 
-            Console.WriteLine($"{AltarName} - an altar\n" +
-                $"Its' capability is {Capacity} EP\n" +
-               $"====== ========= ========\n");
+            Console.WriteLine($"{AltarName} - Алтарь \n" +
+                $"У алтаря осталось {Capacity} EP\n");
         }
 
     }

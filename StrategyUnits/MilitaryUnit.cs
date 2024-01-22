@@ -8,6 +8,8 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
+        internal int _levelDamage = 0;
+        internal int _levelShield = 0;
 
 
         private int _minDamage;
@@ -34,7 +36,7 @@ namespace StrategyUnits
         public virtual void Attack(Unit attackedUnit)
         {
             Random rnd = new Random();
-            int appliedDamage = rnd.Next(this.MinDamage, this.MaxDamage) - attackedUnit.Defense;
+            int appliedDamage = rnd.Next(MinDamage, MaxDamage) - attackedUnit.Defense;
             if (!attackedUnit.IsDead)
             {
                 if (appliedDamage >= 0)

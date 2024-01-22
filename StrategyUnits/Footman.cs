@@ -3,7 +3,7 @@
     internal class Footman : MilitaryUnit
     {
         private String _nameOfUnit;
-        public Footman(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage)
+        public Footman(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int v, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage)
         {
             _nameOfUnit = nameOfUnit;
         }
@@ -16,7 +16,7 @@
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"{NameOfUnit} - a unit of {NameOfClass} class\n" +
+            Console.WriteLine($"{NameOfUnit} - юнит {NameOfClass} класса \n" +
                $"Здоровье: {CurrentHealth}/{MaxHealth}\n" +
                $"Броня: {Defense}\n" +
                $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n");
