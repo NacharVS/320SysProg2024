@@ -22,5 +22,15 @@ namespace StrategyUnits
         {
             return new Footman(120, "Berserker", 15);
         }
+        public Healer CreateHealer(string nameOfUnit)
+        {
+            Healer healer = new Healer();
+            return healer;
+        }
+        public Paladin CreatePaladin(string nameOfUnit)
+        {
+
+            return new Paladin(); 
+        }
     }
 }

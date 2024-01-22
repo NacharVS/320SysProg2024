@@ -43,7 +43,6 @@ namespace StrategyUnits
                         Health += 20;
                         Console.WriteLine($"Current mana: {Mana} | Current Health: {Health}");
                     }
-                    
                 }
             }
             

@@ -12,8 +12,9 @@ Footman berserker = barracks.CreateBerserker();
 //Peasant ps1 = new Peasant();
 Healer healer = new Healer();
 Paladin paladin = new Paladin();
+Healer healer1 = barracks.CreateHealer("Healer2");
 //Altar altar = new Altar();
-
+healer1.ShowInfo();
 //altar.ShowInf();
 //ps1.ShowInfo();
 healer.ShowInfo();
@@ -120,17 +121,20 @@ footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
 footman.InflictDamage(berserker);
+
 footman.InflictDamage(berserker);
 berserker.ShowInfo();
 
 Console.WriteLine("...");
+
 footman.InflictDamage(paladin);
 footman.InflictDamage(paladin);
-footman.InflictDamage(paladin);
+footman.InflictDamage(paladin);paladin.ProtectSuit();
 footman.InflictDamage(paladin);
 paladin.Pray();
 paladin.Pray();
 paladin.Pray();
+berserker.ShowInfo();
 paladin.Pray();
 
 Weapon weapon = new Weapon();
@@ -155,5 +159,5 @@ static void HighHealth(int number, int n, string? name)
 }
 static void StRage(int health)
 {
-    Console.WriteLine($"Health is low then 50%. Current health: {health}.");
+    Console.WriteLine($"Health is less then 50%. Current health: {health}.");
 }

@@ -30,18 +30,22 @@ namespace StrategyUnits
         public override int Health
         {
             get => base.Health;
-            set 
+            set
             { 
                 base.Health = value;
                 double percent = Math.Round(((double)PrevHealth / (double)_maxHealth), 4);
-                if ((Rrage) && (Name=="Berserker") && (percent >= 0.5))
+                if ((Rrage) && (Name == "Berserker") && (percent >= 0.5))
                 {
                     Console.Write("Rage's ON | Previous damage: " + _attack);
                     _attack *= 2;
                     Console.WriteLine("| Current damage: " + _attack);
-                    Rrage = false;
                 }
-
+                if (Rrage && (percent >= 0.5) && Suit && (Name == "Paladin"))
+                {
+                    Console.Write("HolyArmor's ON | Previous suit HP: " + SuitHP);
+                    SuitHP *= 2;
+                    Console.WriteLine("| Current suitHP: " + SuitHP);
+                }
             }
         }
         virtual public void InflictDamage(Unit unit)
@@ -58,7 +62,6 @@ namespace StrategyUnits
                     Console.Write(" | Attack was " + unit.SuitHP);
                     Console.WriteLine(" | Current Health: " + unit.Health);
                     unit.Suit = false;
-
                 }
             }
             else

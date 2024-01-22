@@ -34,5 +34,20 @@ namespace StrategyUnits
                 unit.Health -= _damage * 2;
             Console.WriteLine(Name + "'s current mana: " + Mana);
         }
+        public override int Health
+        {
+            get => base.Health;
+            set
+            {
+                base.Health = value;
+                double percent = Math.Round(((double)PrevHealth / (double)_maxHealth), 4);
+                if (Rrage && (percent >= 0.5) && Suit)
+                {
+                    Console.Write("HolyArmor's ON | Previous suit HP: " + SuitHP);
+                    SuitHP *= 2;
+                    Console.WriteLine("| Current suitHP: " + SuitHP);
+                }
+            }
+        }
     }
 }
