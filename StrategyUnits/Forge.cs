@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,60 +9,68 @@ namespace StrategyUnits
 {
     internal class Forge
     {
-        public void UpgradeDamage(MilitaryUnit unit, string NameOfUnit)
+        private int _armorlevel = 1;
+       
+        public int Armorlevel
         {
-            if (!unit.IsDead)
-            {
-                Console.WriteLine($"{unit.NameOfClass} мертв. Он не может посетить кузницу");
-                return;
-            }
-            if (unit._levelDamage == 0)
-            {
-                unit.MinDamage += 2;
-                unit.MaxDamage += 2;
-                unit._levelDamage++;
-                Console.WriteLine($"{unit.NameOfClass} сделал первое улучшение атаки. Текущая атака: {unit.MinDamage}-{unit.MaxDamage}");
-                return;
-            }
-            if (unit._levelDamage == 1)
-            {
-                unit.MinDamage += 3;
-                unit.MaxDamage += 3;
-                unit._levelDamage++;
-                Console.WriteLine($"{unit.NameOfClass} сделал второе улучшение атаки. Текущая атака: {unit.MinDamage}-{unit.MaxDamage}");
-            }
-            else
-            {
-                Console.WriteLine($"{unit.NameOfClass} имеет максимальное улучшение атаки. Больше нельзя улучшить");
-            }
+            get { return _armorlevel; }
+            set { _armorlevel = value; }
         }
 
 
-        public void UpgradeShield(MilitaryUnit unit)
+        private int _weaponlevel = 1;
+
+        public int WeaponLevel
         {
-            if (!unit.IsDead)
+            get { return _weaponlevel; }
+            set { _weaponlevel = value; }
+        }
+
+        public void UpgradeWeapon(MilitaryUnit unit, string NameOfUnit)
+        {
+
+            if (unit.IsDead)
             {
-                Console.WriteLine($"{unit.NameOfClass} мертв. Он не может посетить кузницу");
-                return;
+                if (unit.WeaponLevel <= 3)
+                {
+                    unit.MaxDamage += 5;
+                    unit.MinDamage += 5;
+                    unit.WeaponLevel++;
+                    Console.WriteLine($"Уровень повышен на 1!! Нынешний уровень: {unit.WeaponLevel}");
+                }
+                else
+                {
+                    Console.WriteLine($"Уровень оружия достиг максимального.");
+                }
             }
-            if (unit._levelShield == 0)
+            else 
             {
-                unit.Defense += 2;
-                unit._levelShield++;
-                Console.WriteLine($"{unit.NameOfClass} сделал первое улучшение защиты. Текущая защита: {unit.Defense}");
-                return;
+                Console.WriteLine($"{unit.NameOfClass} мертв. Он не может прокачаться");
             }
-            if (unit._levelShield == 1)
+        }
+
+        public void UpgradeArmor(MilitaryUnit unit, string NameOfUnit)
+        {
+
+            if (unit.IsDead)
             {
-                unit.Defense += 2;
-                unit._levelShield++;
-                Console.WriteLine($"{unit.NameOfClass} сделал второе улучшение защиты. Текущая защита: {unit.Defense}");
+                if (unit.Armorlevel <= 3)
+                {
+                    unit.Defense += 2;
+                    unit.Armorlevel++;
+                    Console.WriteLine($"Уровень повышен на 1!! Нынешний уровень: {unit.Armorlevel}");
+                }
+                else
+                {
+                    Console.WriteLine($"Уровень брони достиг максимального.");
+                }
             }
             else
             {
-                Console.WriteLine($"{unit.NameOfClass} имеет максимальное улучшение защиты. Больше нельзя улучшить");
+                Console.WriteLine($"{unit.NameOfClass} мертв. Он не может прокачаться");
             }
         }
+
 
 
     }

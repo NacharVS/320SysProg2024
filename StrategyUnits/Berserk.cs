@@ -11,7 +11,7 @@ namespace StrategyUnits
 
         private bool _rage;
 
-        public Berserk(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int v, string nameOfUnit) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, v, nameOfUnit)
+        public Berserk(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int v, string nameOfUnit, int ArmorLevel, int WeaponLevel) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, v, nameOfUnit, ArmorLevel, WeaponLevel)
         {
             NameOfUnit = nameOfUnit;
         }
@@ -20,7 +20,6 @@ namespace StrategyUnits
         {
             get
             {
-
                 return _rage;
             }
         }
@@ -29,7 +28,7 @@ namespace StrategyUnits
         public override void ShowInfo()
         {
 
-            Console.WriteLine($"{NameOfUnit} - юнит {NameOfClass} класса \n" + $"Здоровье: {CurrentHealth}/{MaxHealth}\n" + $"Броня: {Defense}\n" + $"Состояние рейдж!!!: {Rage}\n" + $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n");
+            Console.WriteLine($"{NameOfUnit} - юнит {NameOfClass} класса \n" + $"Здоровье: {CurrentHealth}/{MaxHealth}\n" + $"Броня: {Defense}\n" + $"Состояние рейдж: {Rage}\n" + $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n");
         }
 
         public void RageOn()
@@ -37,6 +36,7 @@ namespace StrategyUnits
 
             if (CurrentHealth <= MaxHealth / 2 && _rage == false)
             {
+                Console.WriteLine($" Берсерк {NameOfUnit} впал в ярость\n");
                 MinDamage *= 2;
                 MaxDamage *= 2;
                 _rage = true;
@@ -46,6 +46,7 @@ namespace StrategyUnits
         {
             if (CurrentHealth > MaxHealth / 2 && _rage == true)
             {
+                Console.WriteLine($"Берсерк {NameOfUnit} выпал из ярости\n");
                 MinDamage /= 2;
                 MaxDamage /= 2;
                 _rage = false;

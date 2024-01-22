@@ -10,7 +10,7 @@ namespace StrategyUnits
     {
         private string _nameOfUnit;
 
-        public Healer(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, manaPoints)
+        public Healer(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints, int ArmorLevel, int WeaponLevel) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, manaPoints, ArmorLevel, WeaponLevel)
         {
             _nameOfUnit = NameOfUnit;
         }

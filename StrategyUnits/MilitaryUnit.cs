@@ -8,10 +8,6 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
-        internal int _levelDamage = 0;
-        internal int _levelShield = 0;
-
-
         private int _minDamage;
         public int MinDamage
         {
@@ -21,7 +17,24 @@ namespace StrategyUnits
 
         private int _maxDamage;
 
-        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage) : base(currentHealth, nameOfClass, defense)
+        private int _armorlevel = 1;
+
+        public int Armorlevel
+        {
+            get { return _armorlevel; }
+            set { _armorlevel = value; }
+        }
+
+
+        private int _weaponlevel = 1;
+
+        public int WeaponLevel
+        {
+            get { return _weaponlevel; }
+            set { _weaponlevel = value; }
+        }
+
+        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense,int ArmorLevel, int WeaponLevel, int minDamage, int maxDamage) : base(currentHealth, nameOfClass, defense)
         {
             MinDamage = minDamage;
             MaxDamage = maxDamage;

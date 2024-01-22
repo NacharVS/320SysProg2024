@@ -19,7 +19,7 @@ namespace StrategyUnits
         }
         private string _nameOfUnit;
 
-        public Paladin(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, manaPoints)
+        public Paladin(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage, int manaPoints, int ArmorLevel, int WeaponLevel) : base(currentHealth, nameOfClass, defense, minDamage, maxDamage, manaPoints, ArmorLevel, WeaponLevel)
         {
             NameOfUnit = _nameOfUnit;
         }
