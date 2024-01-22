@@ -14,11 +14,11 @@ namespace StrategyUnits
             {
                 unit.WeaponLvl += 1;
                 unit.Damage += 3;
-                Console.WriteLine($"{unit.Name} улучшил свой меч на 1 уровень. Текущий урон: {unit.Damage}, текущий уровень меча {unit.WeaponLvl}");
+                Console.WriteLine($"{unit.Name} improved sword by 1 level. Current damage: {unit.Damage}, current sword level: {unit.WeaponLvl}");
             }
             else
             {
-                Console.WriteLine($"{unit.Name} имеет максимальный уровень меча: {unit.WeaponLvl}");
+                Console.WriteLine($"{unit.Name} has maximum sword level: {unit.WeaponLvl}");
             }
         }
         public void ArmorUpgrade(Unit unit)
@@ -27,11 +27,11 @@ namespace StrategyUnits
             {
                 unit.ArmorLvl += 1;
                 unit.Protection += 3;
-                Console.WriteLine($"{unit.Name} улучшил свою броню на 1 уровень. Текущая броня: {unit.Protection}, текущий уровень брони: {unit.ArmorLvl}");
+                Console.WriteLine($"{unit.Name} improved armor by 1 level. Current protection: {unit.Protection}, current armor level: {unit.ArmorLvl}");
             }
             else
             {
-                Console.WriteLine($"{unit.Name} имеет максимальный уровень брони: {unit.ArmorLvl}");
+                Console.WriteLine($"{unit.Name} has maximum armor level: {unit.ArmorLvl}");
             }
         }
     }
