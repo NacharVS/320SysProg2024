@@ -6,11 +6,14 @@
         {
 
         }
+<<<<<<< Updated upstream
 
         public void Attack(Unit unit)
         {
             unit.CurrentHealth -= (this.Damage - unit.Protection);
         }
+=======
+>>>>>>> Stashed changes
        
     }
 }

@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< Updated upstream
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyUnits", "StrategyUnits\StrategyUnits.csproj", "{7139D3BA-2AC2-4D12-BF90-E8AB38F467B6}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyUnits", "StrategyUnits\StrategyUnits.csproj", "{7139D3BA-2AC2-4D12-BF90-E8AB38F467B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWeaponInterfaces", "TestWeaponInterfaces\TestWeaponInterfaces.csproj", "{EFB254F0-681E-41BF-9E01-EA38C453CA3C}"
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,13 @@ Global
 		{7139D3BA-2AC2-4D12-BF90-E8AB38F467B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7139D3BA-2AC2-4D12-BF90-E8AB38F467B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7139D3BA-2AC2-4D12-BF90-E8AB38F467B6}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< Updated upstream
+=======
+		{EFB254F0-681E-41BF-9E01-EA38C453CA3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB254F0-681E-41BF-9E01-EA38C453CA3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB254F0-681E-41BF-9E01-EA38C453CA3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB254F0-681E-41BF-9E01-EA38C453CA3C}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
