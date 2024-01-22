@@ -15,7 +15,11 @@ namespace StrategyUnits
 
         public void Prayer()
         {
-            if (Mana >= 10)
+            if (Health == MaxHealth)
+            {
+                Console.WriteLine($"{Name} имеет полное здоровье");
+            }
+            else if (Mana >= 10)
             {
                 Console.WriteLine($"{Name} помолился");
                 Health += 20;

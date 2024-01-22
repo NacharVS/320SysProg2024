@@ -18,9 +18,9 @@ namespace StrategyUnits
             return new Footman("Foorman", 90, 7, 10, 15);
         }
 
-        public Footman CreateBerserker()
+        public Berserker CreateBerserker()
         {
-            return new Footman("Berserker", 120, 10, 15, 20);
+            return new Berserker("Berserker", 120, 10, 15, 20);
         }
     }
 }
