@@ -5,14 +5,24 @@
         private string? _name;
         private int _currentHP;
         private bool _deadUnit;
+        private int _weaponLvl;
+        private int _protection;
         public int MaximumHP { get; private set; }
+        public int MaximumProtect { get; private set; }
 
-        public Unit(int maxHP, string? name)
+        public Unit(string? name, int maxHP, int protection)
         {
             _name = name;
             MaximumHP = maxHP;
+            _protection = protection;
             _currentHP = MaximumHP;
             _deadUnit = false;
+        }
+
+        public int WeaponLvl
+        {
+            get { return _weaponLvl; }
+            set { _weaponLvl = value; }
         }
 
         public string Name
@@ -21,6 +31,28 @@
             set { _name = value; }
         }
 
+        public int Protection
+        {
+            get => _protection;
+            set
+            {
+                if (value < 0)
+                {
+                    _protection = 0;
+                }
+                else
+                {
+                    if (value > MaximumProtect)
+                    {
+                        _protection = MaximumProtect;
+                    }
+                    else
+                    {
+                        _protection = value;
+                    }
+                }
+            }
+        }
         public int CurrentHP
         { 
             get => _currentHP; 
@@ -58,7 +90,7 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_currentHP}/{MaximumHP} Unit is dead: {DeadUnit}");
+            Console.WriteLine($"Unit: {_name} Health: {_currentHP}/{MaximumHP} Protection {_protection} Unit is dead: {DeadUnit} Weapon Level {_weaponLvl} Armor Level {_armorLvl}");
         }
 
         public delegate void HPChangeDelegate(int maxHP, string name);

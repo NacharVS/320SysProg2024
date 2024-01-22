@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class ZeelotKnight : MagicUnit
+    internal class ZealotKnight : MagicUnit
     {
         private int _defense;
-
-        public ZeelotKnight(int maxHP, string? name, int damage) : base(maxHP, name, damage) { }
-
+        public ZealotKnight(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection, damage) { }
         public int Defense
         {
             get { return _defense; }
             set { _defense = value; }
         }
-
         public void Prayer(Unit unit)
         {
             if (DeadUnit == false)

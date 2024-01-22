@@ -10,7 +10,7 @@ namespace StrategyUnits
             get { return _damage; }
             set { _damage = value; }
         }
-        public MilitaryUnit(int maxHP, string? name, int damage) : base(maxHP, name)
+        public MilitaryUnit(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection)
         {
             _damage = damage;
         }
@@ -19,6 +19,11 @@ namespace StrategyUnits
         {
             if (DeadUnit == false)
             {
+                while (Protection > 0)
+                {
+                    unit.Protection -= _damage;
+                }
+                Console.WriteLine("Защита пробита.");
                 unit.CurrentHP -= _damage;
                 InflictDamageEvent.Invoke(_damage, unit.CurrentHP, Name, unit.Name);
             }

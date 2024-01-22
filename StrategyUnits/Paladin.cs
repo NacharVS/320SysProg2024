@@ -2,10 +2,7 @@
 {
     internal class Paladin : MagicUnit
     {
-        public Paladin() : base(80, "Paladin", 10, 150)
-        {
-
-        }
+        public Paladin() : base("Paladin", 80, 40, 10, 150) { }
 
         public void FireAttack(Unit unit)
         {

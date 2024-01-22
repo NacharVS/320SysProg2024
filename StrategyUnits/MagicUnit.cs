@@ -33,7 +33,7 @@
                 }
             }
         }
-        public MagicUnit(int maxHP, string? name, int damage, int MaximumMana) : base(maxHP, name, damage)
+        public MagicUnit(string? name, int maxHP, int protection, int damage, int MaximumMana) : base(name, maxHP, protection, damage)
         {
             _currentMana = MaximumMana;
             _maximumMana = MaximumMana;
