@@ -33,7 +33,7 @@ namespace StrategyUnits
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Random rnd = new Random();
-            int appliedDamage = rnd.Next(this.MinDamage, this.MaxDamage) - attackedUnit.Defense;
+            int appliedDamage = rnd.Next(MinDamage, MaxDamage) - attackedUnit.Defense;
             if (!attackedUnit.IsDead)
             {
                 if (appliedDamage >= 0)
