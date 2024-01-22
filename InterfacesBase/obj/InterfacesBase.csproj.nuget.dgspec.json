@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\202124\\Source\\Repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj": {}
+    "C:\\Users\\202124\\source\\repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj": {}
   },
   "projects": {
-    "C:\\Users\\202124\\Source\\Repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj": {
+    "C:\\Users\\202124\\source\\repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\202124\\Source\\Repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj",
+        "projectUniqueName": "C:\\Users\\202124\\source\\repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj",
         "projectName": "InterfacesBase",
-        "projectPath": "C:\\Users\\202124\\Source\\Repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj",
+        "projectPath": "C:\\Users\\202124\\source\\repos\\320SysProg2024\\InterfacesBase\\InterfacesBase.csproj",
         "packagesPath": "C:\\Users\\202124\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\202124\\Source\\Repos\\320SysProg2024\\InterfacesBase\\obj\\",
         "projectStyle": "PackageReference",

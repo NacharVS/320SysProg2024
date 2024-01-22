@@ -1,0 +1,15 @@
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.csproj.AssemblyReference.cache
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.AssemblyInfoInputs.cache
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.AssemblyInfo.cs
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.csproj.CoreCompileInputs.cache
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\bin\Debug\net6.0\InterfacesBase.exe
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\bin\Debug\net6.0\InterfacesBase.deps.json
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\bin\Debug\net6.0\InterfacesBase.runtimeconfig.json
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\bin\Debug\net6.0\InterfacesBase.dll
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\bin\Debug\net6.0\InterfacesBase.pdb
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.dll
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\refint\InterfacesBase.dll
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.pdb
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\InterfacesBase.genruntimeconfig.cache
+C:\Users\202124\source\repos\320SysProg2024\InterfacesBase\obj\Debug\net6.0\ref\InterfacesBase.dll
