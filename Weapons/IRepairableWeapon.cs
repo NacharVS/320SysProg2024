@@ -8,5 +8,6 @@ namespace Weapons
 {
     internal interface IRepairableWeapon
     {
+        public void RepairWeapon();
     }
 }
