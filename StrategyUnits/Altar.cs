@@ -13,8 +13,8 @@ namespace StrategyUnits
         private double _maxEnergy;
         public Altar()
         {
-            _nowEnergy = 100;
-            _maxEnergy = 100;
+            _nowEnergy = 50;
+            _maxEnergy = 50;
         }
         public double NowEnergy
         {

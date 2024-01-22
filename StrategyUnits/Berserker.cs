@@ -36,15 +36,13 @@ namespace StrategyUnits
                         base.Health = value;
                 }
 
-                if (base.Health < MaxHealth * 0.5 && !_rage)
+                if (!_rage && base.Health < MaxHealth * 0.5)
                 {
                     PowerRage();
                 }
-                else if (base.Health >= MaxHealth * 0.5 && _rage)
+                else if (_rage && base.Health >= MaxHealth * 0.5)
                 {
-                    _rage = false;
-                    Damage /= 1.5;
-                    Console.WriteLine($"У {Name} сверх ярость больше неактивна!");
+                    DeactevedRage();
                 }
             }
         }
@@ -54,6 +52,13 @@ namespace StrategyUnits
             Damage *= 1.5;
             _rage = true;
             Console.WriteLine($"{Name} активировал сверх ярость!");
+        }
+
+        public void DeactevedRage()
+        {
+             _rage = false;
+             Damage /= 1.5;
+             Console.WriteLine($"У {Name} сверх ярость больше неактивна!");
         }
 
         public Berserker(string? name,double health,  double damage, double defence) : base(name,health,  damage, defence)

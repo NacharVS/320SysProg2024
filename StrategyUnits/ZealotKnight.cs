@@ -25,6 +25,11 @@ namespace StrategyUnits
             {
                 Console.WriteLine("Недостаточно очков энергии для восстановления здоровья");
             }
+
+            if(DiedUnit == true)
+            {
+                Console.WriteLine($"Персонаж {Name} мертв, действие невозможно");
+            }
         }
 
     }

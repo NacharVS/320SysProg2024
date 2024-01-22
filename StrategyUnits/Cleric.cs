@@ -15,27 +15,6 @@ namespace StrategyUnits
            
         }
 
-        //public void HealYourself (Unit unit)
-        //{
-        //    if (unit.DiedUnit)
-        //    {
-        //        Console.WriteLine("Персонаж мертв! Лечить нельзя!");
-        //        return;
-        //    }
-        //    while (NowEnergy > 0)
-        //    {
-               
-        //        if (unit.MaxHealth <= unit.Health)
-        //        {
-        //            Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
-        //            return;
-        //        }
-        //        NowEnergy -= 1;
-        //        unit.Health += 2;
-        //    }
-        //    Console.WriteLine("Персонаж исцелился! Жизни = " + unit.Health);
-        //}
-
         public void HealOther (Unit unit)
         {
             if (unit.DiedUnit)

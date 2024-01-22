@@ -24,7 +24,7 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Урон: {Damage} Уровень защиты: {LvlWeapon} Уровень оружия: {LvlArmor}");
+            Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Урон: {Damage} Уровень защиты: {LvlArmor} Уровень оружия: {LvlWeapon}");
         }
 
         private double _damage;

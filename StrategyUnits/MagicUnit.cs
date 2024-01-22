@@ -11,10 +11,6 @@ namespace StrategyUnits
     {
         private double _maxEnergy;
         private double _nowEnergy;
-
-        public delegate void EnergyChangedDelegate(string name, double energy, double difference);
-        public event EnergyChangedDelegate EnergyDecreasedEvent;
-        public event EnergyChangedDelegate EnergyIncreasedEvent;
         public double NowEnergy
         {
             get { return _nowEnergy; }
@@ -30,11 +26,11 @@ namespace StrategyUnits
 
                 if (value < previousEnergy)
                 {
-                    EnergyDecreasedEvent.Invoke(this.Name, NowEnergy, previousEnergy - value);
+                    EnergyDecreasedEvent.Invoke(Name, NowEnergy, previousEnergy - value);
                 }
                 else if (value > previousEnergy)
                 {
-                    EnergyIncreasedEvent.Invoke(this.Name, NowEnergy, value - previousEnergy);
+                    EnergyIncreasedEvent.Invoke(Name, NowEnergy, value - previousEnergy);
                 }
             }
         }
@@ -65,7 +61,11 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Персонаж: {Name} Жизни: {Health} Энергия: {_nowEnergy} Урон: {Damage} Уровень защиты: {LvlWeapon} Уровень оружия: {LvlArmor}");
         }
-
+        
+        
+        public delegate void EnergyChangedDelegate(string name, double energy, double difference);
+        public event EnergyChangedDelegate EnergyDecreasedEvent;
+        public event EnergyChangedDelegate EnergyIncreasedEvent;
     }
 }
 

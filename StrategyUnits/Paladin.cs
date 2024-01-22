@@ -37,15 +37,13 @@ namespace StrategyUnits
                         base.Health = value;
                 }
 
-                if (base.Health < MaxHealth * 0.5 && !_holyArmorActive)
+                if (!_holyArmorActive && base.Health < MaxHealth * 0.5)
                 {
                     HolyArmor();
                 }
-                else if (base.Health >= MaxHealth * 0.5 && _holyArmorActive)
+                else if ( _holyArmorActive && base.Health >= MaxHealth * 0.5)
                 {
-                    _holyArmorActive = false;
-                    Defence /= 1.5;
-                    Console.WriteLine($"У {Name} святая защита перестала быть активна!");
+                    HolyArmorDeacteved();
                 }
             }
         }
@@ -55,6 +53,13 @@ namespace StrategyUnits
             Defence *= 1.5;
             _holyArmorActive = true;
             Console.WriteLine($"{Name} активировал святую защиту!");
+        }
+
+        public void HolyArmorDeacteved()
+        {
+            _holyArmorActive = false;
+            Defence /= 1.5;
+            Console.WriteLine($"У {Name} святая защита перестала быть активна!");
         }
         public Paladin(string? name, double health, double damage, double maxEnergy, 
             double defence, double magicDamage) : base(name, health, damage, maxEnergy, defence)
