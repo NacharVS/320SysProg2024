@@ -234,23 +234,28 @@ Barracs barracs = new Barracs();
 Altar alt = new Altar();
 
 Cleric cleric = alt.CreateCleric();
+Palladin palladin = alt.CreatePalladin();
 Footman footman = barracs.CreateFootman();
 Berserker berserker = barracs.CreateBerserker();
 berserker.InflictDamageEvent += MethodYron;
 
 cleric.ShowInfo();
+palladin.ShowInfo();
 footman.ShowInfo();
 berserker.ShowInfo();
+
 
 //Атака берсерка на футмена
 Console.WriteLine("\n");
 berserker.InflictDamage(footman);
 berserker.InflictDamage(footman);
 berserker.InflictDamage(footman);
+palladin.HillyArmor(footman);
+palladin.HillyArmor(footman);
+palladin.HillyArmor(footman);
+palladin.ShowInfo();
 
-//Метод Ярость на футмена
-Console.WriteLine("\n");
-berserker.Rage(footman);
+
 
 
 
@@ -264,4 +269,14 @@ static void MethodHill(int manna, int health, string nameHiller, string nameHill
 {
     Console.WriteLine($"{nameHiller} восстановил здоровье {nameHill} до {health}.\nТекущая манна {nameHiller}: {manna}");
 
+}
+
+static void MethodUpgradeDamage (string? name, int lever, int damage)
+{
+    Console.WriteLine($"{name} улучшил уровень атаки. \tТекущая атака: {damage} уровня {lever}");
+}
+
+static void MethodUpgradeArmor(string? name, int lever, int armor)
+{
+    Console.WriteLine($"{name} улучшил уровень защиты. \tТекущая защита: {armor} уровня {lever}");
 }

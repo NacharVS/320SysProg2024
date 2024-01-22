@@ -8,8 +8,15 @@
         private int _armor;                                               //Защита (броня).
         public bool? IsDead { get; private set; }                         //Мертв == true
         public int MaxHealth { get; private set; }                        //Максимальное здоровье
-        public int MaxArmor { get; private set; }                         //Максимальная защита
+        private int _MaxArmor;                    //Максимальная защита
+        public int LeverDamage { get; set; } = 0;                 //Уровень Атаки
+        internal int LeverArmor { get; set; } = 0;                  //Уровень Защиты
 
+        public int MaxArmor
+        {
+            get { return _armor; }
+            set { _armor = value; }
+        }
 
         public Unit(int health, string? name, int armor)
         {
@@ -17,7 +24,6 @@
             _name = name;
             _armor = armor;
             MaxHealth = _health;
-            MaxArmor = _armor;
             IsDead = false;
 
         }

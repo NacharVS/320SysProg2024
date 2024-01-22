@@ -48,7 +48,7 @@
                 {
                     unit.Armor += 1;
                     Manna -= 3;
-                    Console.WriteLine($"{Name} использовал заклинание 'Святая Броня' для {unit.Name}. Его тякущая защита: {unit.Armor}");
+                    Console.WriteLine($"{Name} использовал заклинание 'Святая Броня' для {unit.Name}. Его текущая защита: {unit.Armor}");
                 }
             }
         }
