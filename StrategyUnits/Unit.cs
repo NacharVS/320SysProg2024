@@ -65,11 +65,11 @@
 
                 if (value <= _health)
                 {
-                    HealthDecreasedEvent.Invoke(_health, _name, (MaxHealth - value), _guard);
+                    HealthDecreasedEvent.Invoke(Health, Name, (MaxHealth - value), Guard);
                 }
                 else if (value > _health)
                 {
-                    HealthIncreasedEvent.Invoke(_health, _name, MaxHealth - _health, _guard);
+                    HealthIncreasedEvent.Invoke(Health, Name, (MaxHealth - value), Guard);
                 }
             }
         }

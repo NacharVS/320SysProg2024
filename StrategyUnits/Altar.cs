@@ -47,7 +47,7 @@ namespace StrategyUnits
             {
                 while (magicUnit.Manna < magicUnit.MaxManna)
                 {
-                    magicUnit.Manna += 10;
+                    magicUnit.Manna += 1;
                     _Energy--;
                 }
                 return;

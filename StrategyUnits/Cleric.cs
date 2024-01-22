@@ -19,7 +19,8 @@ namespace StrategyUnits
                 Console.ResetColor();
                 return;
             }
-
+            else
+            {
             while (Manna >= 2)
             {
                 if (unit.MaxHealth <= unit.Health)
@@ -44,6 +45,9 @@ namespace StrategyUnits
                     }
                 }
             }
+            }
+
+
         }
         public void HillMyself(Unit unit)
         {

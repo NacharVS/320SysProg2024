@@ -53,7 +53,22 @@ namespace StrategyUnits
         {
             if (DeadPerson == true)
             {
-                Console.WriteLine("Palladin died.");
+                Console.WriteLine($"{Name} died.");
+            }
+            else if (Manna < 4)
+            {
+                Console.WriteLine("Not enough manna.");
+            }
+            else
+            {
+                if (unit.DeadPerson == true || unit.Health <= 0)
+                { Console.WriteLine($"Palladin take armor magic. {unit.Name} died."); }
+                else
+                {
+                    unit.Guard += 1;
+                    Manna -= 3;
+                    Console.WriteLine($"{Name} cast 'Holy Armor' on  {unit.Name}. Its current armor is: {unit.Guard}");
+                }
             }
         }
         public override void ShowInfo()

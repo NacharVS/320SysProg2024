@@ -8,7 +8,7 @@ namespace StrategyUnits
 {
     internal class Forge
     {
-        public void UpdateLevelWeapon(MagicUnit unit)
+        public void UpdateLevelWeapon(MilitaryUnit unit)
         {
             if (unit.LevelWeapon < 2)
             {
@@ -27,7 +27,7 @@ namespace StrategyUnits
             {
                 unit.LevellArmor += 1;
                 unit.Guard += 2;
-                Console.WriteLine($"{unit.Name} make his guard better on 1 level. Armor level: {unit.Guard}, Level right now: {unit.LevellArmor}");
+                Console.WriteLine($"{unit.Name} make his guard better on 1 level. Armor: {unit.Guard}, Level right now: {unit.LevellArmor}");
             }
             else
             {
