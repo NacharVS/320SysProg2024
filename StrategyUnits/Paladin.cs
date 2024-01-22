@@ -25,25 +25,25 @@
             {
                 if (Mana < 5)
                 {
-                    Console.WriteLine("You don't have mana.");
+                    Console.WriteLine($"{Name} не хватает маны.\n");
                 }
                 else
                 {
                     if (unit.CurrentHP == 0)
                     {
-                        Console.WriteLine($"Unit {unit.Name} is dead. Damage can't be done.");
+                        Console.WriteLine($"{unit.Name} мертв. Невозможно нанести урон.\n");
                     }
                     else
                     {
                         unit.CurrentHP -= 15;
                         Mana -= 5;
-                        Console.WriteLine($"Paladin dealt Magic damage to {unit.Name}.");
+                        Console.WriteLine($"{Name} нанес магичский урон {unit.Name}.\n");
                     }
                 }
             }
             else
             {
-                Console.WriteLine("Paladin is dead.");
+                Console.WriteLine($"{this.Name} мертв.\n");
             }
         }
         public void ActivateHolyArmor(Unit unit)
@@ -52,7 +52,7 @@
             {
                 _holyArmor = true;
                 Protection += Protection / 2;
-                Console.WriteLine($"{Name} activated Holy Armor.");
+                Console.WriteLine($"{Name} активировал святую броню.\n");
             }
             else
             {
@@ -70,12 +70,12 @@
             }
             else
             {
-                Console.WriteLine($"{Name} doesn't have mana. Current mana {Mana}/{MaximumMana}.");
+                Console.WriteLine($"{Name} не хватает маны. Текущая мана: {Mana}/{MaximumMana}.\n");
             }
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($" Unit: {Name} Health: {CurrentHP}/{MaximumHP} Damage: {Damage} Protection: {Protection}/{MaximumProtect} Energy: {Mana}/{MaximumMana} MagicDamage:{MagicDamage} HolyArmor: {HolyArmor} Weapon Level: {WeaponLvl} Armor Level: {ArmorLvl}");
+            Console.WriteLine($" Unit: {Name} Health: {CurrentHP}/{MaximumHP} Damage: {Damage} Protection: {Protection}/{MaximumProtect} Energy: {Mana}/{MaximumMana} MagicDamage:{MagicDamage} HolyArmor: {HolyArmor} Weapon Level: {WeaponLvl} Armor Level: {ArmorLvl}\n");
             Console.WriteLine();
         }
     }

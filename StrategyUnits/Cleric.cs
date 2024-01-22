@@ -18,12 +18,12 @@
                 }
                 else
                 {
-                    Console.WriteLine($"{this.Name} doesn't have mana.");
+                    Console.WriteLine($"{this.Name} не хватает маны.\n");
                 }
             }
             else
             {
-                Console.WriteLine("Unit is dead. You can't heal him.");
+                Console.WriteLine($"{unit.Name} мертв. Вы не можете вылечить его.\n");
                 return;
             }
         }

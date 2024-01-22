@@ -6,7 +6,7 @@
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"{Name} Damage: {Damage} HP: {CurrentHP}/{MaximumHP} Protection {Protection}/{MaximumProtect}");
+            Console.WriteLine($"{Name} Damage: {Damage} HP: {CurrentHP}/{MaximumHP} Protection {Protection}/{MaximumProtect}\n");
         }
     }
 }

@@ -3,8 +3,8 @@
     internal class MagicUnit : MilitaryUnit
     {
         public delegate void ManaChangedDelegate(string name, int maxMana);
-        ManaChangedDelegate ManaLossEvent;
-        ManaChangedDelegate ManaGetEvent;
+        public event ManaChangedDelegate ManaLossEvent;
+        public event ManaChangedDelegate ManaGetEvent;
         private int _currentMana;
         public int MaximumMana { get; private set; }
         public int Mana
@@ -31,7 +31,7 @@
                 {
                     ManaLossEvent.Invoke(this.Name, Mana);
                 }
-                else if (value < _currentMana)
+                else if (value > _currentMana)
                 {
                     ManaGetEvent.Invoke(this.Name, Mana);
                 }
@@ -44,7 +44,7 @@
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($" Unit: {this.Name} Health: {this.CurrentHP}/{this.MaximumHP} Mana: {this.Mana}/{this.MaximumMana} Damage: {this.Damage} Protection: {Protection}/{MaximumProtect} LvlWeapon: {WeaponLvl} LvlArmor: {ArmorLvl}");
+            Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHP}/{this.MaximumHP} Mana: {this.Mana}/{this.MaximumMana} Damage: {this.Damage} Protection: {Protection}/{MaximumProtect} LvlWeapon: {WeaponLvl} LvlArmor: {ArmorLvl}\n");
         }
     }
 }

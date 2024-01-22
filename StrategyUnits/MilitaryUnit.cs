@@ -21,26 +21,21 @@ namespace StrategyUnits
         {
             if (DeadUnit == false)
             {
-                if (unit.Protection > _damage)
+                if (unit.Protection > 0)
                 {
                     unit.Protection -= _damage;
-                }
-                else if (unit.Protection < _damage && unit.Protection > 0)
-                {
-                    unit.Protection -= _damage;
-                    unit.Protection = 0;
                     inflictDamageToProtectEvent.Invoke(_damage, unit.CurrentHP, unit.Protection, Name, unit.Name);
                 }
                 else
                 {
-                    Console.WriteLine("Защита пробита.");
+                    Console.WriteLine("Защита пробита.\n");
                     unit.CurrentHP -= _damage;
                     inflictDamageEvent.Invoke(_damage, unit.CurrentHP, unit.Protection, Name, unit.Name);
                 }
             }
             else
             { 
-                Console.WriteLine("Unit is dead.");
+                Console.WriteLine($"{Name} мертв.\n");
             }
         }
     }

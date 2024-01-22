@@ -45,7 +45,7 @@ namespace StrategyUnits
         }
         public void ShowInfoAboutAltar()
         {
-            Console.WriteLine($"Energy right now {_currentEnergy}/{MaxEnergy}.");
+            Console.WriteLine($"Текущая мана: {_currentEnergy}/{MaxEnergy}.\n");
         }
         public void RecoverMP(MagicUnit magicUnit)
         {

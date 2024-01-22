@@ -10,24 +10,24 @@ namespace StrategyUnits
     {
         private int _defense;
         public ZealotKnight(string? name, int maxHP, int protection, int damage, int maxMana) : base(name, maxHP, protection, damage, maxMana) { }
-        public void Prayer(ZealotKnight zealotKnight)
+        public void Prayer()
         {
             if (DeadUnit == false)
             {
-                if (zealotKnight.Mana >= 10)
+                if (Mana >= 10)
                 {
                     CurrentHP += 20;
                     Mana -= 10;
-                    Console.WriteLine("Zealot Knight prayed.");
+                    Console.WriteLine($"{Name} помолился.");
                 }
                 else
                 {
-                    Console.WriteLine("Zealot Knight doesn't have mana.");
+                    Console.WriteLine($"{Name} не хватает маны.");
                 }
             }
             else
             {
-                Console.WriteLine("Zealot Knight is dead.");
+                Console.WriteLine($"{Name} мертв.");
             }
         }
     }

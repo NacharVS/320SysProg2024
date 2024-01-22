@@ -16,13 +16,13 @@ namespace StrategyUnits
         }
         public Berserker(string? name, int maxHP, int maxProtect, int damage) : base(name, maxHP, maxProtect, damage) { }
 
-        public void ActivateRage(Unit unit)
+        public void ActivateRage()
         {
             if (CurrentHP > MaximumHP / 2)
             {
                 _rage = true;
                 Damage += Damage / 2;
-                Console.WriteLine($"{Name} activated rage.");
+                Console.WriteLine($"{Name} активировал ярость.");
             }
             else
             {
@@ -33,7 +33,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($" Unit: {Name} Current health: {CurrentHP}/{MaximumHP} Damage: {Damage} Protection: {Protection}/{MaximumProtect} Weapon Level: {WeaponLvl} Armor Level : {ArmorLvl}");
+            Console.WriteLine($"Unit: {Name} Current health: {CurrentHP}/{MaximumHP} Damage: {Damage} Protection: {Protection}/{MaximumProtect} Weapon Level: {WeaponLvl} Armor Level : {ArmorLvl}\n");
         }
     }
 }

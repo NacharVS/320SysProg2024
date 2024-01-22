@@ -68,14 +68,14 @@
                 {
                     _currentHP = 0;
                     _deadUnit = true;
-                    Console.WriteLine($"{this.Name} is dead.");
+                    Console.WriteLine($"{this.Name} мертв.\n");
                 }
                 else
                 {
                     if (value > MaximumHP)
                     {
                         _currentHP = MaximumHP;
-                        Console.WriteLine($"{this.Name} has MaxHP.");;
+                        Console.WriteLine($"{this.Name} имеет максимальное HP.\n");;
                     }
                     else
                     {
@@ -96,7 +96,7 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_name} Health: {_currentHP}/{MaximumHP} Protection {_protection} Unit is dead: {DeadUnit} Weapon Level {_weaponLvl} Armor Level {_armorLvl}");
+            Console.WriteLine($"Unit: {_name} Health: {_currentHP}/{MaximumHP} Protection {_protection} Unit is dead: {DeadUnit} Weapon Level {_weaponLvl} Armor Level {_armorLvl}\n");
         }
 
         public delegate void HPChangeDelegate(int maxHP, string name);
