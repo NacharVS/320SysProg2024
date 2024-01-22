@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gunslinger.cs" />
+    <Compile Include="IAutomaticWeapon.cs" />
+    <Compile Include="IWeapon.cs" />
+    <Compile Include="Machinegun.cs" />
+    <Compile Include="Pistol.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
