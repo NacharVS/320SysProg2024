@@ -65,11 +65,11 @@
 
                 if (value <= _health)
                 {
-                    HealthDecreasedEvent.Invoke(_health, _name, (_health - value), _guard);
+                    HealthDecreasedEvent.Invoke(_health, _name, (MaxHealth - value), _guard);
                 }
                 else if (value > _health)
                 {
-                    HealthIncreasedEvent.Invoke(_health, _name, value - _health, _guard);
+                    HealthIncreasedEvent.Invoke(_health, _name, MaxHealth - _health, _guard);
                 }
             }
         }
@@ -79,7 +79,7 @@
             Console.WriteLine("Is moving");
         }
 
-        public delegate void HealthChangeDelegate(int health, string name, int maxManna, int guard);
+        public delegate void HealthChangeDelegate(int health, string name, int manna, int guard);
         public virtual void ShowInfo()
         {
             Console.WriteLine($" Unit: {Name} Health: {Health} Level Weapon: {_levelWeapon} Level Armor: {_levelArmor}");

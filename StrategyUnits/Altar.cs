@@ -42,7 +42,16 @@ namespace StrategyUnits
         //
         public void RegenerationManna(MagicUnit magicUnit)
         {
-
+            var EnergyBefore = magicUnit.Manna; 
+            while (_Energy > 0)
+            {
+                while (magicUnit.Manna < magicUnit.MaxManna)
+                {
+                    magicUnit.Manna += 10;
+                    _Energy--;
+                }
+                return;
+            }
         }
         public ZeelotKnight CreateZeelotKnight()
         {
@@ -54,7 +63,7 @@ namespace StrategyUnits
         }
         public Cleric CreateCleric()
         {
-            return new Cleric(75, "Cleric", 1, 15, 0);
+            return new Cleric(75, "Cleric", 1, 15, 3);
         }
         public void ShowInfoAboutAltar()
         {
