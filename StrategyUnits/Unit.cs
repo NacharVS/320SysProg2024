@@ -92,7 +92,7 @@ namespace StrategyUnits
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_nameOfClass} Health: {_currentHealth} MaxHealth: {_maxHealth} Defense: {_defense}");
+            Console.WriteLine($"Юнит: {_nameOfClass} Здоровье: {_currentHealth} Макс здоровье: {_maxHealth} Защита: {_defense}");
         }
 
         public event HealthIncreasedDelegate HealthIncreasedEvent;

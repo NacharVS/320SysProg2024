@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Altar
+    internal class Altar // фабрика
     {
         private string _altarName;
 
@@ -46,6 +46,24 @@ namespace StrategyUnits
 
             Console.WriteLine($"{AltarName} - Алтарь \n" +
                 $"У алтаря осталось {Capacity} EP\n");
+        }
+
+
+        public Healer CreateHealer(string nameOfUnit)
+        {
+            return new Healer (60, "Лекарь", 2, 7, 9, 70,  1, 1);
+
+        }
+        public ZealotKnight CreateZealotKnight(string nameOfUnit)
+        {
+            return new ZealotKnight(90, "Святой рыцарь", 2, 5, 20, 100, 1, 1);
+
+        }
+
+        public Paladin CreatePaladin(string nameOfUnit)
+        {
+            return new Paladin(80, "Палладин", 2, 11, 13, 85, 1, 1);
+
         }
 
     }

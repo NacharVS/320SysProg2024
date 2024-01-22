@@ -16,7 +16,7 @@
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"{NameOfUnit} - юнит {NameOfClass} класса \n" +
+            Console.WriteLine($"{NameOfUnit} - юнит" +
                $"Здоровье: {CurrentHealth}/{MaxHealth}\n" +
                $"Броня: {Defense}\n" +
                $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n");

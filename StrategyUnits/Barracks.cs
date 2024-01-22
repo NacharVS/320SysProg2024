@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Barracks
+    internal class Barracks // фабрика
     {
       
         public Footman CreateFootman(string nameOfUnit)
@@ -20,9 +20,10 @@ namespace StrategyUnits
 
         }
 
-        internal Footman CreateRecruit(string nameOfUnit)
+        public Footman CreateRecruit(string nameOfUnit)
         {
             return new Footman(90, "Пехотинец", 2, 5, 20, 100, nameOfUnit, 1, 1);
         }
+
     }
 }

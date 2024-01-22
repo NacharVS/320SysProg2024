@@ -38,9 +38,9 @@ namespace StrategyUnits
             {
                 if (appliedDamage >= 0)
                 {
-                    if (this.ManaPoints > appliedDamage)
+                    if (ManaPoints > appliedDamage)
                     {
-                        this.ManaPoints -= appliedDamage * 3;
+                        ManaPoints -= appliedDamage * 3;
                         Console.WriteLine($"Магическая атака прошла успешна!!. Вы нанесли {appliedDamage} MDP.\n");
                         attackedUnit.CurrentHealth -= appliedDamage;
                     }
@@ -84,7 +84,7 @@ namespace StrategyUnits
         {
 
             Console.WriteLine(
-                $"{NameOfUnit} - юнит {NameOfClass} класса\n" +
+                $"{NameOfUnit} - юнит" +
                $"Здоровье: {CurrentHealth}/{MaxHealth}\n" +
                $"Броня: {Defense}\n" +
                $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n" +
