@@ -336,6 +336,11 @@ palladin_1.InflictDamage(berserker_1);
 
 berserker_1.Rage(cleric_1);
 
+Console.WriteLine("\nПроверка Рыцаря на моливу.\n");
+berserker_1.InflictDamage(zeelotKnight_1);
+berserker_1.InflictDamage(zeelotKnight_1);
+berserker_1.InflictDamage(zeelotKnight_1);
+zeelotKnight_1.Prayer(zeelotKnight_1);
 ////Проверка восстановления манны.
 //Console.WriteLine("\nПроверка восстановления манны через Алтарь.\n");
 //altar.RegenerationManna(cleric_1);

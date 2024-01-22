@@ -28,5 +28,25 @@
                 }
             }
         }
+
+        public void Prayer(ZeelotKnight zeelotKnight)
+        {
+
+            if (IsDead == true)
+            {
+                Console.WriteLine($"{zeelotKnight.Name} мёртв.");
+                return;
+            }
+            else if (zeelotKnight.Manna >= 10)
+            {
+                zeelotKnight.Health += 20;
+                Manna -= 10;
+                Console.WriteLine($"{zeelotKnight.Name} использовал заклинание 'Молитва'. Его текущее здоровье: {zeelotKnight.Health}");
+            }
+            else
+            {
+                Console.WriteLine("Недостаточно манны.");
+            }
+        }
     }
 }
