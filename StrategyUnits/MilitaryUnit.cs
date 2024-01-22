@@ -8,15 +8,28 @@ namespace StrategyUnits
 {
     internal class MilitaryUnit : Unit
     {
+        private int _ArmorLvl = 1;
+        public int ArmorLvl
+        {
+            get { return _ArmorLvl; }
+            set { _ArmorLvl = value; }
+        }
+
+        private int _WeaponLvl = 1;
+        public int WeaponLvl
+        {
+            get { return _WeaponLvl; }
+            set { _WeaponLvl = value; }
+        }
         private int _damage;
         public int Damage
         {
             get { return _damage; }
             set { _damage = value; }
         }
-        public MilitaryUnit(int health, string? name, int defense) : base(health, name, defense)
-        {
-            _damage = 15;
+        public MilitaryUnit(int health, string? name, int defense,int damage, int ArmorLvl, int WeaponLvl) : base(health, name, defense)
+        {   
+            _damage = damage;
         }
 
         public void InflictDamage(Unit unit)
@@ -29,8 +42,8 @@ namespace StrategyUnits
             if (unit.Alive)
             {   
                 Random random = new Random();
-                int RandomDamage = random.Next(Damage/3 , Damage) - unit.Defense;
-                if (RandomDamage < 0)
+                int RandomDamage = random.Next(Damage/2 , Damage) - unit.Defense;
+                if (RandomDamage <= 0)
                     Console.WriteLine($"Атака не прошла на {unit.Name}");
                 else 
                 {

@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Paladin : MagicUnit
+    internal class Paladin : ZealotKnight
     {
-        public Paladin() : base(60, "Paladin", 6)
+        public Paladin(int health, string? name, int defense, int damage, int mana, int ArmorLvl, int WeaponLvl) : base(health, name, defense, damage, mana, ArmorLvl, WeaponLvl)
         {
-            Mana = 30;
-            Damage = 14;
             MagicDamage = 8;
-            Defense = 6;
         }
 
         public void FireAttack(Unit unit)
@@ -37,6 +34,45 @@ namespace StrategyUnits
             Console.WriteLine($"{Name} атаковал огненным шаром {unit.Name}");
             unit.Health -= MagicDamage;
             Mana -= 8;
+        }
+
+        private bool _holyArmor;
+        public bool HolyArmor
+        {
+            get { return _holyArmor; }
+            set { _holyArmor = value; }
+        }
+        public override int Health
+        {
+            get => base.Health;
+            set
+            {
+                if (value <= 0)
+                {
+                    base.Health = 0;
+                    Alive = false;
+                }
+                else
+                    if (value > MaxHealth)
+                    base.Health = MaxHealth;
+                else
+                {
+                    base.Health = value;
+                    if (value <= MaxHealth / 2 && HolyArmor == false)
+                    {
+                        HolyArmor = true;
+                        Defense *= 2;
+                        Console.WriteLine($"У {Name} появился святой щит. Нынешняя защита равна {Defense}");
+                    }
+                    else if (value > MaxHealth / 2 && HolyArmor == true)
+                    {
+                        HolyArmor = false;
+                        Defense /= 2;
+                        Console.WriteLine($"У {Name} пропал святой щит. Нынешняя защита равна {Defense}");
+                    }
+
+                }
+            }
         }
 
     }

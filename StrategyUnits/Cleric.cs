@@ -8,9 +8,8 @@ namespace StrategyUnits
 {
     internal class Cleric : MagicUnit
     {
-        public Cleric() : base(50, "Safin", 4)
+        public Cleric(int health, string? name, int defense, int damage,int mana, int ArmorLvl, int WeaponLvl) : base(health, name, defense, damage,mana,ArmorLvl, WeaponLvl)
         {
-            Mana = 50;
         }
 
         public void CureSomebody(Unit unit)
@@ -41,34 +40,6 @@ namespace StrategyUnits
             else
                 Console.WriteLine($"Вы не можете вылечить {unit.Name}, его с нами больше нет (╥_╥)");
 
-        }
-
-        public void CureYourself(Cleric cleric)
-        {
-            if (cleric.Alive)
-            {
-                if (cleric.Health == cleric.MaxHealth)
-                {
-                    Console.WriteLine($"Вы полностью здоровы!");
-                    return;
-                }
-                else if (Mana < 1)
-                {
-                    Console.WriteLine("У вас недостаточно маны,чтобы вылечить себя");
-                    return;
-                }
-                else
-                {
-                    while (Mana > 0 && cleric.Health < cleric.MaxHealth)
-                    {
-                        Console.WriteLine("Вы вылечили себя на 2 HP. Ваше состояние здоровья...");
-                        cleric.Health += 2;
-                        Mana -= 1;
-                    }
-                }
-            }
-            else
-                Console.WriteLine($"Вы не можете вылечить себя, вы уже мертвы");
         }
 
         public void RegenerationMana()

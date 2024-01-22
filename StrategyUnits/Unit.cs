@@ -13,7 +13,6 @@
         public delegate void DecreasedHealthChange(int _health,int _current_health, int MaxHealth);
         public event RegenerateHealthChange RegenerateHealthChangeEvent;
         public event DecreasedHealthChange DecreasedHealthChangeEvent;
-
         public Unit(int health, string? name, int defense)
         {
             _health = health;
@@ -29,7 +28,7 @@
             set { _name = value; }
         }
 
-        public int Health 
+        public virtual int Health 
         { 
             get => _health; 
             set
@@ -52,7 +51,7 @@
                     {
                         DecreasedHealthChangeEvent.Invoke(_health, value, MaxHealth);
                     }
-                    _health = value;
+                    _health = value;                    
                 }  
             } 
         }

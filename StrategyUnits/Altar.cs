@@ -76,7 +76,18 @@ namespace StrategyUnits
                 Console.WriteLine($"Алтарь не может восстановить ману у {MagicUnit.Name}, его с нами больше нет (╥_╥)");
         }
 
-
+        public Cleric CreateCleric()
+        {
+            return new Cleric(50, "Cleric", 4, 0,50,1,1);
+        }
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight(80, "ZealotKnight", 7, 12, 30,1, 1);
+        }
+        public Paladin CreatePaladin()
+        {
+            return new Paladin(100, "Paladin", 7, 15,30,1,1);
+        }
 
     }
 }
