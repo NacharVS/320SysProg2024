@@ -60,9 +60,20 @@
             Console.WriteLine($"Текущее количество энергии {NameA}: {Energy}.");
         }
 
-        public Cleric CreateCleric() //Рекрут
+        //СОЗДАНИЕ ЮНИТОВ С МАГИЕЙ----------------------------------------------------------------------------
+        public Cleric CreateCleric() //Создание клериков
         {
-            return new Cleric(45, "Cleric", 1, 5, 9);
+            return new Cleric(45, "Cleric", 3, 5, 20);
+        }
+
+        public Palladin CreatePalladin()
+        {
+            return new Palladin(95, "Palladin", 10, 10, 35);
+        }
+
+        public ZeelotKnight CreateZeelotKnight()
+        {
+            return new ZeelotKnight(70, "Zeelot Knight", 3, 5, 15);
         }
 
     }
