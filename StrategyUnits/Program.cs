@@ -63,11 +63,11 @@ paladin.HolyFire(zealotKnight);
 paladin.HolyFire(zealotKnight);
 paladin.HolyFire(zealotKnight);
 zealotKnight.Player();
-static void DecreaseInLife(string? name, double health, double difference, double defence)
+static void DecreaseInLife(string? name, double health, double difference)
 {
     Console.WriteLine($" Персонаж {name} был ранен. Жизни уменьшились на {difference}. Жизни = {health}");
 }
-static void IncreaseInLife(string? name, double health, double difference, double defence)
+static void IncreaseInLife(string? name, double health, double difference)
 {
     Console.WriteLine($" Персонаж {name} был излечен. Жизни увеличились на {difference}. Жизни = {health}");
 }

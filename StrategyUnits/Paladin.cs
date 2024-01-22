@@ -22,8 +22,6 @@ namespace StrategyUnits
             get => base.Health;
             set
             {
-                double previousHealth = base.Health;
-
                 if (value <= 0)
                 {
                     base.Health = 0;
@@ -37,13 +35,14 @@ namespace StrategyUnits
                         base.Health = value;
                 }
 
-                if (!_holyArmorActive && base.Health < MaxHealth * 0.5)
+                if (_holyArmorActive == false && base.Health < MaxHealth * 0.5)
                 {
                     HolyArmor();
                 }
-                else if ( _holyArmorActive && base.Health >= MaxHealth * 0.5)
+                else if ( _holyArmorActive == true && base.Health >= MaxHealth * 0.5)
                 {
-                    HolyArmorDeacteved();
+                    HolyArmorDeactivation();
+
                 }
             }
         }
@@ -55,7 +54,7 @@ namespace StrategyUnits
             Console.WriteLine($"{Name} активировал святую защиту!");
         }
 
-        public void HolyArmorDeacteved()
+        public void HolyArmorDeactivation()
         {
             _holyArmorActive = false;
             Defence /= 1.5;

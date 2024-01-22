@@ -13,15 +13,15 @@ namespace StrategyUnits
         private double _maxEnergy;
         public Altar()
         {
-            _nowEnergy = 50;
             _maxEnergy = 50;
+            _nowEnergy = _maxEnergy;
         }
         public double NowEnergy
         {
             get { return _nowEnergy; }
             set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     _nowEnergy = 0;
                 }
@@ -38,26 +38,12 @@ namespace StrategyUnits
         public double MaxEnergy
         {
             get { return _maxEnergy; }
-            set
-            {
-                if (value < 0)
-                {
-                    _nowEnergy = 0;
-                }
-                else
-                {
-                    if (value > _maxEnergy)
-                        _nowEnergy = _maxEnergy;
-                    else
-                        _nowEnergy = value;
-
-                }
-            }
+            set { _maxEnergy = value; }
         }
 
         public void RestoreEnergy(MagicUnit magicUnit)
         {
-            var currentEnergyBeforeRestore = magicUnit.NowEnergy;
+            
             while (_nowEnergy > 0)
             {
                 if (magicUnit.MaxEnergy <= magicUnit.NowEnergy)

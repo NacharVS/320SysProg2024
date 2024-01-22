@@ -2,7 +2,7 @@
 {
     internal class Unit
     {
-        public delegate void HealthChangedDelegate(string? name, double health, double difference, double defence);
+        
         private double _health;
         private string? _name;
         private double _maxHealth;
@@ -65,11 +65,11 @@
                     _health = value;
                 if (value < previousHealth)
                 {
-                    HealthDecreasedEvent.Invoke(_name, _health, (previousHealth - value), _defence);
+                    HealthDecreasedEvent.Invoke(_name, _health, (previousHealth - value));
                 }
                 else if (value > previousHealth)
                 {
-                    HealthIncreasedEvent.Invoke(_name, _health, value - previousHealth, _defence);
+                    HealthIncreasedEvent.Invoke(_name, _health, value - previousHealth);
                 }
             }
            
@@ -77,14 +77,14 @@
 
         public void Move()
         {
-            Console.WriteLine("Is moving");
+            Console.WriteLine("Движется");
         }
 
         public virtual void ShowInfo()
         {
             Console.WriteLine($"Персонаж: {_name} Жизни: {_health} Уровень защиты: {_lvlArmor}");
         }
-
+        public delegate void HealthChangedDelegate(string? name, double health, double difference);
         public event HealthChangedDelegate HealthIncreasedEvent;
         public event HealthChangedDelegate HealthDecreasedEvent;
         

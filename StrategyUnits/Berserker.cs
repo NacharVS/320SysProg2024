@@ -21,8 +21,6 @@ namespace StrategyUnits
             get => base.Health;
             set
             {
-                double previousHealth = base.Health;
-
                 if (value <= 0)
                 {
                     base.Health = 0;
@@ -36,13 +34,13 @@ namespace StrategyUnits
                         base.Health = value;
                 }
 
-                if (!_rage && base.Health < MaxHealth * 0.5)
+                if (_rage == false && base.Health < MaxHealth * 0.5)
                 {
                     PowerRage();
                 }
-                else if (_rage && base.Health >= MaxHealth * 0.5)
+                else if (_rage == true && base.Health >= MaxHealth * 0.5)
                 {
-                    DeactevedRage();
+                    DeactivationRage();
                 }
             }
         }
@@ -54,7 +52,7 @@ namespace StrategyUnits
             Console.WriteLine($"{Name} активировал сверх ярость!");
         }
 
-        public void DeactevedRage()
+        public void DeactivationRage()
         {
              _rage = false;
              Damage /= 1.5;

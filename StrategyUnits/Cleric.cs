@@ -19,7 +19,7 @@ namespace StrategyUnits
         {
             if (unit.DiedUnit)
             {
-                Console.WriteLine("Персонаж мертв! Лечить нельзя!");
+                Console.WriteLine($"Персонаж {unit.Name} мертв! Лечить нельзя!");
                 return;
             }
             while (NowEnergy > 0)
@@ -30,7 +30,7 @@ namespace StrategyUnits
                 }
                 if (NowEnergy < 2)
                 {
-                    Console.WriteLine("Для восстановления жизни другого персонажа необходимо минимум 2 очка энергии!");
+                    Console.WriteLine($"Для восстановления жизни персонажа {unit.Name} необходимо минимум 2 очка энергии!");
                     break;
                 }
                 NowEnergy -= 2;
@@ -40,5 +40,7 @@ namespace StrategyUnits
         }
 
         
+
+
     }
 }
