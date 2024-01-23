@@ -1,24 +1,36 @@
 ﻿using StrategyUnits;
 
-void DamageInfo(int health, string name, int? manna, int? damage)
+void DamageInfo(int health, string name, int? manna, int? damage, int? health1)
 {
-    Console.WriteLine($"{name} нанес {damage} урона");
+    if (health > 0)
+        Console.WriteLine($"У {name} {health} здоровья и он нанес {damage} урона оставив у врага {health1} здоровья");
 }
-void HealthInfo(int health, string name, int? manna, int? damage)
+void HealthInfo(int health, string name, int? manna, int? damage, int? health1)
 {
-    Console.WriteLine($"{name} имеет {health} здоровья");
+    if (health > 0)
+        Console.WriteLine($"{name} имеет {health} здоровья");
 }
-//Footman footman = new Footman();
-//footman.HealthChangedFootman += DamageInfo;
+void HealInfo(int health, string name, int? manna, int? damage, int? health1)
+{
+    if (health > 0)
+        Console.WriteLine($"Клирик вылечил {name}. {name} имеет {health} здоровья. У него осталось {manna} маны");
+}
+
+//footman.HealthChangedEvent += HealthInfo;
 //Paladin paladin = new Paladin();
 //paladin.AttackPaladin += DamageInfo;
-Berserker berserker = new Berserker();
+Barracs barracs1 = new Barracs();
+Berserker berserker = barracs1.CreateBerserker();
+Berserker berserker2 = barracs1.CreateBerserker();
+Cleric cleric = (Cleric)barracs1.CreateCleric();
+Paladin paladin = new Paladin();
+paladin.AttackPaladin += DamageInfo;
 berserker.AttackBerserker += DamageInfo;
-Berserker berserker2 = new Berserker();
 berserker2.AttackBerserker += DamageInfo;
 berserker2.HealthChangedEvent += HealthInfo;
-Peasant ps1 = new Peasant();
-Cleric cleric1 = new Cleric();
+cleric.ClericHeal += HealInfo;
+
+
 
 
 //проверка для лечения крестьянина клириком
@@ -32,8 +44,9 @@ berserker.Attack(berserker2);
 berserker.Attack(berserker2);
 berserker.Attack(berserker2);
 berserker.Attack(berserker2);
-berserker2.ShowInfo();
-berserker2.Attack(berserker);
+paladin.Attack(berserker2);
+berserker2.Attack(cleric);
+cleric.Heal(cleric);
 
 
 //Console.WriteLine();

@@ -8,7 +8,7 @@
         //private int _effectiveHP;
         public bool Alive { get; private set; }
         public int MaxHealth { get; private set; }
-        public delegate void HealthChangedDelegate(int health, string name, int? manna, int? damage);
+        public delegate void HealthChangedDelegate(int health, string name, int? manna, int? damage, int? health1);
         public event HealthChangedDelegate HealthChangedEvent;
         public Unit(int health, string? name, int armor)
         {
@@ -32,7 +32,8 @@
 
         public int Health
         {
-            get => _health; set
+            get => _health; 
+            set
             {
                 if (value < 0)
                 {
@@ -55,7 +56,7 @@
         }
         public virtual void ShowInfo()
         {
-            HealthChangedEvent.Invoke(_health, _name, null, null);
+            HealthChangedEvent.Invoke(_health, _name, null, null, null);
         }
     }
 }

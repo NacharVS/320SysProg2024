@@ -8,27 +8,43 @@ namespace StrategyUnits
     internal class Paladin : MagicUnit
     {
         private int _mannaDamage;
-        public event HealthChangedDelegate AttackPaladin;
-        public Paladin() : base(70, "Paladin", 5, 7, 10, 40)
+
+        public Paladin(int health, string? name, int armor, int damage, int maxdamage, int manna) : base(health, name, armor, damage, maxdamage, manna)
         {
-            _mannaDamage = 5;
         }
+
+        public event HealthChangedDelegate AttackPaladin;
+        
         public override void Attack(Unit unit)
         {
             if (unit.Alive)
             {
+                int currentDamage;
                 Random random = new Random();
                 Damage = random.Next(Damage, MaxDamage);
-                Damage = Damage + _mannaDamage;
-                Damage = Damage - unit.Armor;
-                unit.Health -= Damage;
-                Manna -= Manna - 2;
+                if (Health < MaxHealth / 2)
+                {
+                    HolyArmor();
+                    currentDamage = Damage + _mannaDamage - unit.Armor;
+                    unit.Health -= currentDamage;
+                    Manna -= Manna - 2;
+                }
+                else
+                {
+                    currentDamage = Damage + _mannaDamage - unit.Armor;
+                    unit.Health -= currentDamage;
+                    Manna -= Manna - 2;
+                }
+                AttackPaladin.Invoke(Health, Name, Manna, Damage, unit.Health);
             }
             else
             {
                 Console.WriteLine("Unit is dead");
             }
-            AttackPaladin.Invoke(Health, Name, Manna, Damage);
+        }
+        public void HolyArmor() 
+        {
+            Armor *= 2;
         }
     }
 }

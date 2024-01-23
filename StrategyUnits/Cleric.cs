@@ -12,10 +12,10 @@ namespace StrategyUnits
         //public int MaxManna { get; private set; }
         //private int _damage;
         public event HealthChangedDelegate ClericHeal;
-        public Cleric() : base(60, "Cleric", 2, 5, 8, 40)
+        public Cleric(int health, string? name, int armor, int damage, int maxdamage, int manna) : base(health, name, armor, damage, maxdamage, manna)
         {
-          //  MaxManna = _manna;
         }
+
         public void Heal(Unit unit)
         {
             if (unit.Alive)
@@ -34,15 +34,16 @@ namespace StrategyUnits
                         unit.Health += 1; Manna -= 2;
                     }
                 }
+                ClericHeal.Invoke(Health, Name, Manna, Damage, unit.Health);
             }
             else
             {
                 Console.WriteLine("Unit dead");
             }
         }
-        public override void ShowInfo()
-        {
-            ClericHeal.Invoke(Health, Name, Manna, Damage);
-        }
+        //public override void ShowInfo()
+        //{
+        //    ClericHeal.Invoke(Health, Name, Manna, Damage, null);
+        //}
     }
 }

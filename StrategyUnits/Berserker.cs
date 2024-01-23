@@ -7,36 +7,48 @@ namespace StrategyUnits
 {
     internal class Berserker : MilitaryUnit
     {
-        public event HealthChangedDelegate AttackBerserker; 
-        public Berserker() : base(60, "Berserker", 3, 9, 13)
-        { 
+        int currentDamage;
+        public Berserker(int health, string? name, int armor, int damage, int maxdamage) : base(health, name, armor, damage, maxdamage)
+        {
         }
+
+        public event HealthChangedDelegate AttackBerserker;
+
         public override void Attack(Unit unit)
         {
             if (unit.Alive)
             {
+                
                 Random random = new Random();
-                Damage = random.Next(Damage, MaxDamage);
-                Damage = Damage - unit.Armor;
-                if (Health < MaxHealth / 2)
+                Damage = random.Next(_damage, MaxDamage);
+                currentDamage = Damage - unit.Armor;
+                if (currentDamage > 0)
                 {
-                    Rage();
-                    unit.Health -= Damage;
+                    if (Health < MaxHealth / 2)
+                    {
+                        Rage();
+                        unit.Health -= currentDamage;
+                    }
+                    else
+                    {
+                        unit.Health -= currentDamage;
+                    }
                 }
                 else
                 {
-                    unit.Health -= Damage;
+                    unit.Health -= 1;
                 }
+                AttackBerserker.Invoke(Health, Name, null, Damage, unit.Health);
             }
             else
             {
                 Console.WriteLine("Unit is dead");
             }
-            AttackBerserker.Invoke(Health, Name, null, Damage);
         }
         public void Rage()
         {
-             Damage = Damage + Damage / 2;
+            _damage *= 2;
+            MaxDamage *= 2;
         }
     }
 }

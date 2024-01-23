@@ -7,9 +7,10 @@ namespace StrategyUnits
 {
     internal class ZeelotKnight : MagicUnit
     {
-        public ZeelotKnight(int health, string? name, int armor) : base(40, "Zeelot Knight", 5, 8, 10, 60)
+        public ZeelotKnight(int health, string? name, int armor, int damage, int maxdamage, int manna) : base(health, name, armor, damage, maxdamage, manna)
         {
         }
+
         public void Prayer()
         {
             Health += 20;
