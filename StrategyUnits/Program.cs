@@ -183,7 +183,7 @@ forge_v.UpdateLevelArmor(paladin);
 cleric_v.GetInfoManna();
 cleric_v.ShowInfo();
 
-cleric_v.HillMyself(cleric_v);
+cleric_v.HillMyself();
 cleric_v.GetInfoManna();
 cleric_v.ShowInfo();
 

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    internal interface IMleeWeapon
+    internal class Bazooka
     {
-        public int Sharpness { get; }
-        public void Hit();
     }
 }

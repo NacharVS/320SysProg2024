@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    internal interface IMleeWeapon
+    internal class PlasmaGrenade
     {
-        public int Sharpness { get; }
-        public void Hit();
     }
 }

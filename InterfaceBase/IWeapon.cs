@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    internal interface IMleeWeapon
+    internal interface IWeapon
     {
-        public int Sharpness { get; }
-        public void Hit();
+        public int Damage { get; }
+
+        public void Shoot();
     }
 }

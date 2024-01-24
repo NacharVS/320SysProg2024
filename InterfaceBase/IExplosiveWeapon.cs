@@ -8,5 +8,6 @@ namespace InterfaceBase
 {
     internal interface IExplosiveWeapon
     {
+        public int Range { get;  }
     }
 }

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using InterfaceBase;
 
-namespace InterfaceBase
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-        }
-    }
-}
+// 1. нож - Knife
+// 2. базука - Bazooka
+// 3. лазерная винтовка - Laser rifle
+// 4. плазменная граната - Plasma Grenade
+// 5. импульсная винтовка - Pulse rifle
+// Melee Weapon - оружие ближнего боя
+// ExplosiveWeapon - взрывчатое оружие
+// Energy Weapon - энергетическое оружие
+ //длина - length
+ //дальность - range
