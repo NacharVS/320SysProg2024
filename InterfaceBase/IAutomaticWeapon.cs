@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    public interface IExplosiveWeapon
+    internal interface IAutomaticWeapon
     {
-        public double Range { get; }
-        public void Explosion();
+        public void BurstShoot();
     }
 }

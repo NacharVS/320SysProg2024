@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    internal class PulseRifle
+    internal class PulseRifle : IWeapon, IEnergyWeapon
     {
+        public double Damage => 13;
+        public double DamageEnergy => 13;
+
+        public void EnergyDamage()
+        {
+            Console.WriteLine($"Произошел выстрел из импульсивной винтовки. Урон = {Damage}, урон энергии = {DamageEnergy}");
+        }
     }
 }
