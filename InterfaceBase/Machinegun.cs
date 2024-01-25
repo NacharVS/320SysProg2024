@@ -20,9 +20,9 @@ namespace InterfaceBase
             Console.WriteLine($"Tra-ta-ta! Dealed{totalDamage}");
         }
 
-        public void Shoot()
-        {
-            Console.WriteLine($"piu-piu! dealed {Damage}");
-        }
+        //public void Shoot()
+        //{
+        //    Console.WriteLine($"piu-piu! dealed {Damage}");
+        //}
     }
 }

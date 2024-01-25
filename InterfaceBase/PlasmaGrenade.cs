@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    internal class PlasmaGrenade
+    internal class PlasmaGrenade: IWeapon, IExplosiveWeapon
     {
+        public int Damage => 65;
+
+        public int Range => 50;
+
+        public void Explode()
+        {
+            Console.WriteLine($"Booms! The range of destruction was: {Range}");
+        }
+
     }
 }

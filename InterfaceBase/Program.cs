@@ -8,5 +8,7 @@
 // Melee Weapon - оружие ближнего боя
 // ExplosiveWeapon - взрывчатое оружие
 // Energy Weapon - энергетическое оружие
- //длина - length
- //дальность - range
+//длина - length
+//дальность - range
+//взрывать - Explode
+//oстрота - Sharpness

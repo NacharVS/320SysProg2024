@@ -10,9 +10,9 @@ namespace InterfaceBase
     {
         public int Damage => 7;
 
-        public void Shoot()
-        {
-            Console.WriteLine($"piu-piu! dealed {Damage}");
-        }
+        //public void Shoot()
+        //{
+        //    Console.WriteLine($"piu-piu! dealed {Damage}");
+        //}
     }
 }

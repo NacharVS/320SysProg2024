@@ -8,5 +8,7 @@ namespace InterfaceBase
 {
     internal interface IEnergeWeapon
     {
+        public int Energy { get; }
+        public void HitEnergy();
     }
 }
