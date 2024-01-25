@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    internal class Pistol: IWeapon
+    internal class Pistol: IAutomaticWeapon
     {
         public int Damage => 7;
 
-        //public void Shoot()
-        //{
-        //    Console.WriteLine($"piu-piu! dealed {Damage}");
-        //}
+        public void BurstShoot()
+        {
+            Console.WriteLine($"piu-piu! dealed {Damage}");
+        }
     }
 }

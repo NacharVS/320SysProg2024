@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfaceBase
 {
-    internal class Bazooka: IWeapon, IExplosiveWeapon
+    public class Bazooka: IWeapon, IExplosiveWeapon
     {
         public int Damage => 50;
 
@@ -14,7 +14,7 @@ namespace InterfaceBase
 
         public void Explode()
         {
-            Console.WriteLine($"Booms! The range of destruction was: {Range}");
+            Console.WriteLine($"Booms! The range of destruction was: {Range}, Damage: {Damage}");
         }
     }
 }

@@ -17,5 +17,18 @@ namespace InterfaceBase
         {
             weapon.BurstShoot();
         }
+
+        public static void Hit(IMleeWeapon weapon)
+        {
+            weapon.Hit();
+        }
+        public static void Explode(IExplosiveWeapon weapon)
+        {
+            weapon.Explode();
+        }
+        public static void HitEnergy(IEnergeWeapon weapon)
+        {
+            weapon.HitEnergy();
+        }
     }
 }
