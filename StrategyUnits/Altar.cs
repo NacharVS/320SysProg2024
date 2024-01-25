@@ -45,5 +45,21 @@ namespace StrategyUnits
                 Console.WriteLine($"{magicUnit.Name} восстановил ману");
             }
         }
+        public ZealotKnight CreateZealotKnight()
+        {
+            return new ZealotKnight(40, "ZealotKnight", 5, 40, 10);
+        }
+
+        public Healer CreateHealer()
+        {
+            return new Healer(60, "Healer", 2, 60, 0);
+        }
+
+        public Paladin CreatePaladin()
+        {
+            return new Paladin(60, "Paladin", 3, 50, 0);
+        }
+
+
     }
 }

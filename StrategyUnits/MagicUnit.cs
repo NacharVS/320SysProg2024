@@ -12,7 +12,7 @@ namespace StrategyUnits
     {
         private int _mana;
         private int _maxMana;
-        public MagicUnit(int health, string? name, int damage, int maxMana) : base(health, name, damage)
+        public MagicUnit(int health, string name, int damage, int maxMana, int armor) : base(health, name, damage, armor)
         {
             _maxMana = maxMana;
             _mana = maxMana;
@@ -37,7 +37,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} - Health: {Health}, Mana: {Mana}, Damage: {Damage}");
+            Console.WriteLine($"Unit: {Name} - Health: {Health}, Mana: {Mana}, Damage: {Damage}, Armor: {Armor}");
         }
 
     }

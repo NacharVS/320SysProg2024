@@ -5,11 +5,8 @@ namespace StrategyUnits
 
     internal class Healer : MagicUnit
     {
-
-
-        public Healer() : base(50, "Healer", 3, 60)
+        public Healer(int health, string name, int damage, int maxMana, int armor) : base(health, name, damage, maxMana, armor)
         {
-
         }
 
         public void HealSomebody(Unit unit)
