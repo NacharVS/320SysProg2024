@@ -66,8 +66,6 @@ namespace StrategyUnits
                 Console.Write($"{militaryUnit.Name} имеет защиту {militaryUnit.Shield}. ");
                 damage -= militaryUnit.Shield;
             }
-            else
-                Console.WriteLine();
             if(damage > 0)
             {
                 Console.WriteLine();

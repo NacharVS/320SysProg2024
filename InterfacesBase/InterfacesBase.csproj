@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Remove="IExplosiveWeapon.cs~RF1a959b2b.TMP" />
   </ItemGroup>
 
 </Project>
