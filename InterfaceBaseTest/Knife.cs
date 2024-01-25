@@ -9,10 +9,12 @@ namespace InterfaceBaseTest
     internal class Knife : IMleeWeapon
     {
         public int Damage => 5;
+        
+        public int Endurance => 7;
 
         public void Hit()
         {
-            Console.WriteLine($"hit! dealed {Damage}");
+            Console.WriteLine($"hit! dealed {Damage}, endurance - {Endurance}");
         }
     }
 }

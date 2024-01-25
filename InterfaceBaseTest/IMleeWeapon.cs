@@ -8,7 +8,7 @@ namespace InterfaceBaseTest
 {
     internal interface IMleeWeapon
     {
-        int Damage { get; }
+        int Endurance { get; }
 
         void Hit();
     }

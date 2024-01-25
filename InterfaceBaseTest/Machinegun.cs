@@ -2,9 +2,11 @@
 
 namespace InterfaceBaseTest
 {
-    internal class Machinegun : IWeapon, IAutomaticWeapon
+    internal class Machinegun : IWeapon, IRangeWeapon, IAutomaticWeapon
     {
         public int Damage { get => 4; }
+
+        public int Range => 100;
 
         public void BurstShoot()
         {
@@ -13,12 +15,12 @@ namespace InterfaceBaseTest
             {
                 totalDamage += Damage;
             }
-            Console.WriteLine($"Tra-ta-ta! Dealed{totalDamage}");
+            Console.WriteLine($"Tra-ta-ta! Dealed{totalDamage}, range - {Range}");
         }
 
         public void Shoot()
         {
-            Console.WriteLine($"piu-piu! dealed {Damage}");
+            Console.WriteLine($"piu-piu! dealed {Damage}, range - {Range}");
         }
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace InterfaceBaseTest
 {
-    internal interface IEnergeWeapon
+    internal interface IRangeWeapon
     {
-        int Energy { get; }
+        int Range { get; }
+
+        void Shoot();
     }
 }

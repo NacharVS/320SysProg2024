@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace InterfaceBaseTest
 {
-    internal class Bazooka : IWeapon, IExplosiveWeapon
+    internal class PlasmaGrenade : IWeapon, IExplosiveWeapon
     {
-        public int Damage => 20;
+        public int Damage => 50;
 
-        public int Span => 5;
+        public int Span => 3;
 
         public void Explode()
         {

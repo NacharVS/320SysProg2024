@@ -2,7 +2,7 @@
 {
     internal class Gunslinger
     {
-        public static void SingleShoot(IWeapon weapon)
+        public static void SingleShoot(IRangeWeapon weapon)
         {
             weapon.Shoot();
         }
