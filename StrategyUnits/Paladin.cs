@@ -18,6 +18,7 @@ namespace StrategyUnits
             unit.Health -= 12;
             Mana -= 3;
             Console.WriteLine("Атаковал огненным шаром");
+
         }
     }
 }
