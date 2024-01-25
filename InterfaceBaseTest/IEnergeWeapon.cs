@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace InterfaceBaseTest
 {
-    internal interface IExplosiveWeapon
+    internal interface IEnergeWeapon
     {
-        int Span { get; }
+        int Energy { get; }
 
-        void Explode();
+        void EnergeShoot();
     }
 }

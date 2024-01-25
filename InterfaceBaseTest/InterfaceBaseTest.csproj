@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bazooka.cs" />
     <Compile Include="Gunslinger.cs" />
     <Compile Include="IAutomaticWeapon.cs" />
+    <Compile Include="IEnergeWeapon.cs" />
+    <Compile Include="IExplosiveWeapon.cs" />
     <Compile Include="IMleeWeapon.cs" />
     <Compile Include="Knife.cs" />
     <Compile Include="Machinegun.cs" />
