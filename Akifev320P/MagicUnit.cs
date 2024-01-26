@@ -8,16 +8,16 @@ namespace Akifev320P
 {
     internal class MagicUnit : MilitaryUnit
     {
-        private int _manna;
+        public int _manna;
         private int _maxManna;
 
-        public MagicUnit(int health, string name, int damage, int manna) : base(health, name, damage, manna)
+        public MagicUnit(int health, string name, int damage, int manna) : base(health, name, damage)
         {
-            _maxManna = 60;
+            _manna = manna;
             _manna = _maxManna;
         }
 
-        public int Manna
+        public int manna
         {
             get { return _manna; }
             set { _manna = value; }
@@ -30,16 +30,16 @@ namespace Akifev320P
             set { _maxMana = value; }
         }
 
-        public int manna
+        public int Manna
         { 
             get { return manna; }
             set
             { if (value < 0)
                     manna = 0;
              else if (value > _maxManna)
-                    manna = _maxManna;
+                       manna = _maxManna;
              else
-                 manna = value;
+                    Manna = value;
             }
                 
         }

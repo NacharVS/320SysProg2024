@@ -9,9 +9,8 @@ namespace Akifev320P
     internal class Footman : MilitaryUnit
     {
 
-        public Footman() : base(60, "Footman", 7, 0)
+        public Footman(int health, string name, int damage) : base(health, name, damage)
         {
-
         }
         public void InflictDamage(Unit unit)
         {
@@ -25,5 +24,7 @@ namespace Akifev320P
             }
 
         }
-    }
+            
+
+    } 
 }

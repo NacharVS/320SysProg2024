@@ -8,7 +8,8 @@ namespace Akifev320P
 {
     internal class Palladin : MagicUnit
     {
-        private int _damage;
+ 
+       
 
         public Palladin() : base(60, "Palladin", 15, 55)
         {     
@@ -19,13 +20,18 @@ namespace Akifev320P
         {
             if (unit.isAlive)
             {
-                while (Manna >= 10)
+                while (manna >= 10)
                 {
-                    _damage = 20;
-                    Manna -= 10;
+                    unit.Health -= 20;
+                    _manna -= 10;
+                    Console.WriteLine($"Palladin used the skill and took down 20 HP");
                 }
             }
-            else
+           else if(manna<10)
+            {
+                Console.WriteLine($"\r\nNot enough mana! Mana - {_manna}");
+            }
+            else 
             {
                 Console.WriteLine("Object is dead");
             }

@@ -33,6 +33,9 @@ namespace Akifev320P
             set { _name = value; }
         }
 
+        
+        public event HealthChangedDelegate HealthIncreasedEvent;
+        public event HealthChangedDelegate HealthDecreasedEvent;
 
         public int Health
         {
@@ -40,11 +43,16 @@ namespace Akifev320P
             {
                 if (value > Health)
                 {
-                    HealthIncreasedEvent.Invoke(Name, Health, value);
+                    Console.WriteLine("erwr");
+                   HealthIncreasedEvent .Invoke(Name, Health, value);
                 }
                 else
                 {
-                    HealthIncreasedEvent.Invoke(Name, Health, value);
+                    HealthDecreasedEvent.Invoke(Name, Health, value);
+                }
+                if(value == Health)
+                {
+                    Console.WriteLine("0 damage");
                 }
                 if (value < 0)
                 {
@@ -58,8 +66,7 @@ namespace Akifev320P
             }
         }
 
-        public event HealthChangedDelegate HealthIncreasedEvent;
-        public event HealthChangedDelegate HealthDecreasedEvent;
+    
 
 
 

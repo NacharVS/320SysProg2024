@@ -16,9 +16,9 @@ namespace Akifev320P
             set { _damage = value; }
         }
 
-        public MilitaryUnit(int health, string name, int damage, int manna)
+        public MilitaryUnit(int health, string name, int damage) : base(health, name)
         {
-
+            _damage = damage;
         }
 
 

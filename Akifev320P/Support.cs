@@ -32,10 +32,11 @@ namespace Akifev320P
         {
             if (unit.isAlive)
             {
-                while (Manna >= 5)
+                while (manna >= 5 && unit.Health < unit.MaxHealth )
                 {
                     unit.Health += 1;
-                    Manna -= 2;
+                    manna -= 2;
+                    Console.WriteLine($"Support heal on 1 HP");
                 }
             }
             else

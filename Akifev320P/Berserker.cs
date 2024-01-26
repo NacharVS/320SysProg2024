@@ -8,7 +8,7 @@ namespace Akifev320P
 {
     internal class Berserker : MilitaryUnit
     {
-        public Berserker(int health, string name, int damage, int manna) : base(health, name, damage, manna)
+        public Berserker(int health, string name, int damage) : base(health, name, damage)
         {
         }
     }

@@ -10,56 +10,44 @@ using Akifev320P;
 //ps1.ShowInfo();
 
 Peasant ps1 = new Peasant();
-Support Support = new Support();
-Footman footman = new Footman();
-Support.Heal(ps1);
+Support support = new Support();
+Barracs barracs = new Barracs();
+Footman footman = barracs.CreateFootman();
 //ps1.ShowInfo();
+
+
+ps1.HealthDecreasedEvent += HealthDecrease;
+ps1.HealthIncreasedEvent += HealthIncrease;
+
 Palladin palladin = new Palladin();
-palladin.ShowInfo();
+
+Console.WriteLine(footman.Damage);
+
 
 
 ps1.ShowInfo();
 footman.InflictDamage(ps1);
 
-footman.InflictDamage(ps1);
-
-footman.InflictDamage(ps1);
-
-footman.InflictDamage(ps1);
-
-footman.InflictDamage(ps1);
-
-
-footman.HealthIncreasedEvent += HealthIncrease;
-
-footman.HealthDecreasedEvent += HealthDecrease;
-
-ps1.HealthIncreasedEvent += HealthIncrease;
-
-ps1.HealthDecreasedEvent += HealthDecrease;
-
-Support.HealthIncreasedEvent += HealthIncrease;
-
-Support.HealthDecreasedEvent += HealthDecrease;
-
-palladin.HealthIncreasedEvent += HealthIncrease;
-
-palladin.HealthDecreasedEvent += HealthDecrease;
-
 palladin.The_punitive_sword_of_justice(ps1);
-
-Support.Heal(ps1);
-
+palladin.ShowInfo();
 
 
-
-
-void HealthIncrease(string name, int health, int newHealth)
+static void HealthIncrease(string name, int health, int newHealth)
 {
     Console.WriteLine($"HP у {name} поднялось на {newHealth - health}. Текущее HP - {newHealth}");
 }
-void HealthDecrease(string name, int health, int newHealth)
+static void HealthDecrease(string name, int health, int newHealth)
 {
     Console.WriteLine($"HP у {name} уменьшилось на {health - newHealth}. Текущее HP - {newHealth}");
 }
 
+
+ps1.ShowInfo();
+support.Heal(ps1);
+footman.InflictDamage(ps1);
+
+footman.InflictDamage(ps1);
+
+support.Heal(ps1);
+
+Console.ReadKey();
