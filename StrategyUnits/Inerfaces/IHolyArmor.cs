@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Inerfaces
 {
-    internal interface IMagicAbilities
+    internal interface IHolyArmor
     {
-        public double MaxEnergy { get; set; }
-        public double CurrentEnergy { get; set; }
+        public bool HolyArmorActivate { get; set; }
     }
 }

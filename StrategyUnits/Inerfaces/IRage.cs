@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Inerfaces
 {
-    internal interface IMagicAbilities
+    internal interface IRage
     {
-        public double MaxEnergy { get; set; }
-        public double CurrentEnergy { get; set; }
     }
 }
