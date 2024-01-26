@@ -11,10 +11,10 @@ namespace InterfacesBase
         static void Main(string[] args)
         {
             Pistol pistol = new Pistol();
-            MachineGun pp = new MachineGun();
+            MachineGun machineGun = new MachineGun();
 
-            Gunslinger.SingleShoot(pp);
-            Gunslinger.MultiShoot(pp);
+            Gunslinger.SingleShoot(machineGun);
+            Gunslinger.SerialShoot(machineGun);
         }
     }
 }

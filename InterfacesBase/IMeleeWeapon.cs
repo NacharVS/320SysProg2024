@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfacesBase
 {
-    internal interface IMeleeWeapon : IWeapon
+    internal interface IMeleeWeapon
     {
         public int Sharpness { get; }
         public void Stab();

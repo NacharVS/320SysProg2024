@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfacesBase
 {
-    internal interface IAutomaticWeapon : IWeapon
+    internal interface IAutomaticWeapon
     {
         public void BurstFire();
     }

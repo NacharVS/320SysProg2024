@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfacesBase
 {
-    internal class PulseRifle : IEnergyWeapon
+    internal class PulseRifle : IWeapon, IEnergyWeapon
     {
         public int Damage => 20;
         public int Energy => 25;

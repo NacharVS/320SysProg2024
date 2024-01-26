@@ -13,9 +13,9 @@ namespace InterfacesBase
             weapon.Shoot();
         }
 
-        public static void MultiShoot(IAutomaticWeapon weapon)
+        public static void SerialShoot(IAutomaticWeapon weapon)
         {
-            weapon.BurstShoot();
+            weapon.BurstFire();
         }
     }
 }

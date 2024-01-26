@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfacesBase
 {
-    internal class Bazooka : IExplosiveWeapon
+    internal class Bazooka : IWeapon, IExplosiveWeapon
     {
         public int Damage => 50;
 

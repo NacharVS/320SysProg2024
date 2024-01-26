@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfacesBase
 {
-    internal interface IExplosiveWeapon : IWeapon
+    internal interface IExplosiveWeapon
     {
         public int Range { get; }
         public void BurstUp();

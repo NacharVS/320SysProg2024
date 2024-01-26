@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfacesBase
 {
-    internal class Knife : IMeleeWeapon
+    internal class Knife : IWeapon, IMeleeWeapon
     {
         public int Damage => 10;
         public int Sharpness => 8;

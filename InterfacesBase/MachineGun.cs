@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfacesBase
 {
-    internal class MachineGun : IAutomaticWeapon
+    internal class MachineGun : IWeapon, IAutomaticWeapon
     {
         public int Damage { get => 4; }
 
