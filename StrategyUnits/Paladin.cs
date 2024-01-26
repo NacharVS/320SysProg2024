@@ -11,7 +11,7 @@ namespace StrategyUnits
     {
         private bool _holyArmorActive = false;
         public Paladin(string? name, int health, int minDamage, int maxDamage, int shield, int maxMana) : base(name, health, minDamage, maxDamage, shield, maxMana)
-        {
+        { 
 
         }
         public void HolyFire(Unit unit)
