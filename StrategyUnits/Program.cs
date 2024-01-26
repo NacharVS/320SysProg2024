@@ -1,13 +1,12 @@
 ﻿using StrategyUnits;
 
-Barracs barracs = new Barracs();
-Footman footman = barracs.CreateRecruit();
-footman.ShowInfo();
 
+Throll throll = new Throll();
+Grunt grunt = new Grunt();
 
+throll.Attack(grunt);
+grunt.Attack(throll);
 
-static void Method(int number)
-{
-    Console.WriteLine($"Health has changed. CurrentHealth{number}");
-}
+Console.WriteLine(throll.Health);
+Console.WriteLine(grunt.Health);
 

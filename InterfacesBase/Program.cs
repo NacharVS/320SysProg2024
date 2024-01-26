@@ -7,7 +7,6 @@ Gunslinger.SingleShoot(pp);
 Gunslinger.MultiShoot(pp);
 
 
-// 1. Реализовать Нож, Базуку, Лазерную винтовку, Плазменная граната, Импульсная винтовка
-// 2. IMleeWeapon, IExplosiveWeapon, IEnergeWeapon
+
 
 
