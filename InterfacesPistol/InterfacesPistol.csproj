@@ -43,8 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bazooka.cs" />
+    <Compile Include="Gunslinger.cs" />
+    <Compile Include="IAutomaticWeapon.cs" />
+    <Compile Include="IEnergyWeapon.cs" />
+    <Compile Include="IExplosiveWeapon.cs" />
+    <Compile Include="IMeleeWeapon.cs" />
+    <Compile Include="IWeapon.cs" />
+    <Compile Include="Knife.cs" />
+    <Compile Include="LaserRifle.cs" />
+    <Compile Include="MachineGun.cs" />
+    <Compile Include="Pistol.cs" />
+    <Compile Include="PlasmaGrenade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PulseRifle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
