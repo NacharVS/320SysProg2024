@@ -7,18 +7,13 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace StrategyUnits
 {
-    internal class ZealotKnight : MagicUnit
+    internal class ZealotKnight : Unit, IMagicAbilities
     {
-        public ZealotKnight(string? name, double health, double damage, double maxEnergy, double defence) : base(name, health, damage, maxEnergy, defence)
-        {
-
-        }
-
         public void Player()
         {
-            if(NowEnergy >= 10)
+            if (Energy >= 10)
             {
-                NowEnergy -= 10;
+                Energy -= 10;
                 Health += 20;
             }
             else
@@ -26,11 +21,22 @@ namespace StrategyUnits
                 Console.WriteLine("Недостаточно очков энергии для восстановления здоровья");
             }
 
-            if(DiedUnit == true)
+            if (IsDied == true)
             {
                 Console.WriteLine($"Персонаж {Name} мертв, действие невозможно");
             }
         }
+        public int Energy { get; set; }
+        public int MaxEnergy { get; set; }
 
+        public void DecreaseEnergy(int energy)
+        {
+            Energy -= 2;
+        }
+
+        public void IncreaseEnergy(int energy)
+        {
+            Energy += energy;
+        }
     }
 }

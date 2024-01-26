@@ -8,7 +8,7 @@ namespace InterfaceBase
 {
     public interface IExplosiveWeapon
     {
-        public double Range { get; }
-        public void Explosion();
+        double Range { get; }
+        void Explosion();
     }
 }

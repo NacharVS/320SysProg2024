@@ -14,55 +14,55 @@ ZealotKnight zealotKnight = altar.CreateZealotKnight();
 Footman footman = barrack.CreateFootman();
 Berserker berserker = barrack.CreateBerserker();
 
-ps1.HealthIncreasedEvent += IncreaseInLife;
-ps1.HealthDecreasedEvent += DecreaseInLife;
+//ps1.HealthIncreasedEvent += IncreaseInLife;
+//ps1.HealthDecreasedEvent += DecreaseInLife;
 
-paladin.EnergyDecreasedEvent += DecreaseEnergy;
-paladin.EnergyIncreasedEvent += IncreaseInEnergy;
-paladin.HealthIncreasedEvent += IncreaseInLife;
-paladin.HealthDecreasedEvent += DecreaseInLife;
+//paladin.EnergyDecreasedEvent += DecreaseEnergy;
+//paladin.EnergyIncreasedEvent += IncreaseInEnergy;
+//paladin.HealthIncreasedEvent += IncreaseInLife;
+//paladin.HealthDecreasedEvent += DecreaseInLife;
 
-cleric.HealthIncreasedEvent += IncreaseInLife;
-cleric.HealthDecreasedEvent += DecreaseInLife;
-cleric.EnergyDecreasedEvent += DecreaseEnergy;
-cleric.EnergyIncreasedEvent += IncreaseInEnergy;
+//cleric.HealthIncreasedEvent += IncreaseInLife;
+//cleric.HealthDecreasedEvent += DecreaseInLife;
+//cleric.EnergyDecreasedEvent += DecreaseEnergy;
+//cleric.EnergyIncreasedEvent += IncreaseInEnergy;
 
-zealotKnight.HealthIncreasedEvent += IncreaseInLife;
-zealotKnight.HealthDecreasedEvent += DecreaseInLife;
-zealotKnight.EnergyDecreasedEvent += DecreaseEnergy;
-zealotKnight.EnergyIncreasedEvent += IncreaseInEnergy;
+//zealotKnight.HealthIncreasedEvent += IncreaseInLife;
+//zealotKnight.HealthDecreasedEvent += DecreaseInLife;
+//zealotKnight.EnergyDecreasedEvent += DecreaseEnergy;
+//zealotKnight.EnergyIncreasedEvent += IncreaseInEnergy;
 
-footman.HealthIncreasedEvent += IncreaseInLife;
-footman.HealthDecreasedEvent += DecreaseInLife;
+//footman.HealthIncreasedEvent += IncreaseInLife;
+//footman.HealthDecreasedEvent += DecreaseInLife;
 
-berserker.HealthIncreasedEvent += IncreaseInLife;
-berserker.HealthDecreasedEvent += DecreaseInLife;
-
-
-footman.Attack(paladin);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-berserker.ShowInfo();
-paladin.HolyFire(berserker);
-berserker.ShowInfo();
-
-forge.ArmorUpgrade(paladin);
+//berserker.HealthIncreasedEvent += IncreaseInLife;
+//berserker.HealthDecreasedEvent += DecreaseInLife;
 
 
-zealotKnight.ShowInfo();
+//footman.Attack(paladin);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//paladin.HolyFire(berserker);
+//berserker.ShowInfo();
+//paladin.HolyFire(berserker);
+//berserker.ShowInfo();
 
-paladin.HolyFire(zealotKnight);
-paladin.HolyFire(zealotKnight);
-paladin.HolyFire(zealotKnight);
-zealotKnight.Player();
+//forge.ArmorUpgrade(paladin);
+
+
+//zealotKnight.ShowInfo();
+
+//paladin.HolyFire(zealotKnight);
+//paladin.HolyFire(zealotKnight);
+//paladin.HolyFire(zealotKnight);
+//zealotKnight.Player();
 static void DecreaseInLife(string? name, double health, double difference)
 {
     Console.WriteLine($" Персонаж {name} был ранен. Жизни уменьшились на {difference}. Жизни = {health}");

@@ -7,14 +7,8 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Cleric : Unit, IMagicAbilities, IHealer
+    internal class Cleric : Unit, IMagicAbilities, IHealer, IMagicAttack
     {
-        
-        public Cleric(string? name, double health, double damage, double defence, double maxEnergy) : base(name, health, damage, defence, maxEnergy)
-        {
-           
-        }
-
         public int Energy { get; set; }
         public int MaxEnergy { get; set; }
         public double MagicDamage { get; set; }
