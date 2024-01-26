@@ -9,7 +9,8 @@ namespace StrategyUnits
     internal interface IHealth
     {
         public int Health { get; set; }
-
+        public int MaxHealth { get; set; }
+        public bool IsDead { get; set; }
         public void TakeDamage(int damage);
     }
 }

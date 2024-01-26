@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Example
 {
     internal class Throll : IHealth, IBattleUnit
     {
@@ -16,6 +16,7 @@ namespace StrategyUnits
 
         public int Health { get; set; }
         public int Damage { get; set; }
+        public int MaxHealth { get; set; }
 
         public void Attack(IHealth unit)
         {

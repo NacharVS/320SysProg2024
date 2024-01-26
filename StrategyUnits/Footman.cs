@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Extra;
+
+namespace StrategyUnits
 {
     internal class Footman : MilitaryUnit
     {

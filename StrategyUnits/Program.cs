@@ -1,4 +1,4 @@
-﻿using StrategyUnits;
+﻿using StrategyUnits.Example;
 using System.Text;
 using System.Xml.Linq;
 
