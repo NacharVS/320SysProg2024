@@ -1,4 +1,5 @@
 ﻿using StrategyUnits;
+using StrategyUnits.Units;
 
 Barracks barracks = new();
 Footman footman = barracks.CreateFootman("Hugo");

@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Berserk : Footman
     {
         private bool _rage;
         public bool Rage
         {
-            get {
-                
+            get
+            {
+
                 return _rage;
             }
         }
@@ -34,12 +35,12 @@ namespace StrategyUnits
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"====== CHARACTER ========\n" +
-                $"{NameOfUnit} - a unit of {this.NameOfClass} class\n" +
-               $"Health: {this.CurrentHealth}/{MaxHealth}\n" +
-               $"Defense: {this.Defense}\n" +
+                $"{NameOfUnit} - a unit of {NameOfClass} class\n" +
+               $"Health: {CurrentHealth}/{MaxHealth}\n" +
+               $"Defense: {Defense}\n" +
                $"Is raged: {Rage}\n" +
                $"Damage (min - max): {MinDamage} - {MaxDamage}\n" +
-               $"====== ========= ========\n") ;
+               $"====== ========= ========\n");
             Console.ForegroundColor = ConsoleColor.White;
 
         }
@@ -49,7 +50,7 @@ namespace StrategyUnits
             if (CurrentHealth <= MaxHealth / 2 && _rage == false)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine($">> Berserk {this.NameOfUnit} is now raging!\n");
+                Console.WriteLine($">> Berserk {NameOfUnit} is now raging!\n");
                 MinDamage *= 2;
                 MaxDamage *= 2;
                 _rage = true;
