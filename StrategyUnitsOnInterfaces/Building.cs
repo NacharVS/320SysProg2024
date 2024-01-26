@@ -8,5 +8,6 @@ namespace StrategyUnitsOnInterfaces
 {
     internal class Building
     {
+        public Building() { }
     }
 }
