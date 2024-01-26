@@ -50,6 +50,7 @@
     <Compile Include="IExplosiveWeapon.cs" />
     <Compile Include="IMeleeWeapon.cs" />
     <Compile Include="IWeapon.cs" />
+    <Compile Include="IWeapon2.cs" />
     <Compile Include="Knife.cs" />
     <Compile Include="LaserRifle.cs" />
     <Compile Include="MachineGun.cs" />
