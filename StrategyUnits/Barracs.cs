@@ -4,17 +4,17 @@
     {
         public Footman CreateRecruit()
         {
-            return new Footman("Recruit", 60, 5, 7, 10);
+            return new Footman(60, "Recruit", 7);
         }
 
         public Footman CreateFootman()
         {
-            return new Footman("Foorman", 90, 7, 10, 15);
+            return new Footman(90, "Footman", 10);
         }
 
-        public Berserc CreateBerserker()
+        public Footman CreateBerserker()
         {
-            return new Berserc("Berserc", 120, 10, 15, 20);
+            return new Footman(120, "Berserker", 15);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace StrategyUnits
     internal class Cleric : Unit
     {
         private int _manna;
-        public Cleric() : base("Cleric", 30)
+        public Cleric() : base(30, "Cleric")
         {
             _manna = 40;
         }
@@ -31,7 +31,7 @@ namespace StrategyUnits
 
         public void Heal(Unit unit)
         {
-            if (unit.Health > 0)
+            if (unit.isAlive)
             {
                 while (Manna >= 2)
                 {
