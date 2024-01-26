@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Cleric : MagicUnit
+    internal class Cleric : Unit, IMagicAbilities, IHealer
     {
         
         public Cleric(string? name, double health, double damage, double defence, double maxEnergy) : base(name, health, damage, defence, maxEnergy)
@@ -15,32 +15,45 @@ namespace StrategyUnits
            
         }
 
-        public void HealOther (Unit unit)
+        public int Energy { get; set; }
+        public int MaxEnergy { get; set; }
+        public double MagicDamage { get; set; }
+
+        public void DecreaseEnergy(int energy)
         {
-            if (unit.DiedUnit)
+            Energy -= 2;
+        }
+
+        public void HealSomebody(IHealth unit)
+        {
+            if (IsDied)
             {
-                Console.WriteLine($"Персонаж {unit.Name} мертв! Лечить нельзя!");
                 return;
             }
-            while (NowEnergy > 0)
+            while (Energy > 0)
             {
-                if (unit.MaxHealth <= unit.Health)
+                if (MaxHealth <= Health)
                 {
                     return;
                 }
-                if (NowEnergy < 2)
+                if (Energy < 2)
                 {
-                    Console.WriteLine($"Для восстановления жизни персонажа {unit.Name} необходимо минимум 2 очка энергии!");
                     break;
                 }
-                NowEnergy -= 2;
-                unit.Health += 1;
+                unit.IncreseHealth(1);
+                DecreaseEnergy(2);
             }
-            
         }
 
-        
+        public void IncreaseEnergy(int energy)
+        {
+            Energy += energy;
+        }
 
-
+        public void MagicAttack(IHealth unit)
+        {
+            DecreaseEnergy(1);
+            unit.DecreaseHealth(4);
+        }
     }
 }

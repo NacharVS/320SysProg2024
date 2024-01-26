@@ -16,53 +16,50 @@ namespace StrategyUnits
             set { _rage = value; }
         }
 
-        public override double Health
-        {
-            get => base.Health;
-            set
-            {
-                if (value <= 0)
-                {
-                    base.Health = 0;
-                    DiedUnit = true;
-                }
-                else
-                {
-                    if (value > MaxHealth)
-                        base.Health = MaxHealth;
-                    else
-                        base.Health = value;
-                }
+        //public override double Health
+        //{
+        //    get => base.Health;
+        //    set
+        //    {
+        //        if (value <= 0)
+        //        {
+        //            base.Health = 0;
+        //            DiedUnit = true;
+        //        }
+        //        else
+        //        {
+        //            if (value > MaxHealth)
+        //                base.Health = MaxHealth;
+        //            else
+        //                base.Health = value;
+        //        }
 
-                if (_rage == false && base.Health < MaxHealth * 0.5)
-                {
-                    PowerRage();
-                }
-                else if (_rage == true && base.Health >= MaxHealth * 0.5)
-                {
-                    DeactivationRage();
-                }
-            }
-        }
+        //        if (_rage == false && base.Health < MaxHealth * 0.5)
+        //        {
+        //            PowerRage();
+        //        }
+        //        else if (_rage == true && base.Health >= MaxHealth * 0.5)
+        //        {
+        //            DeactivationRage();
+        //        }
+        //    }
+        //}
 
-        public void PowerRage()
-        {
-            Damage *= 1.5;
-            _rage = true;
-            Console.WriteLine($"{Name} активировал сверх ярость!");
-        }
+        //public void PowerRage()
+        //{
+        //    Damage *= 1.5;
+        //    _rage = true;
+        //    Console.WriteLine($"{Name} активировал сверх ярость!");
+        //}
 
-        public void DeactivationRage()
-        {
-             _rage = false;
-             Damage /= 1.5;
-             Console.WriteLine($"У {Name} сверх ярость больше неактивна!");
-        }
+        //public void DeactivationRage()
+        //{
+        //     _rage = false;
+        //     Damage /= 1.5;
+        //     Console.WriteLine($"У {Name} сверх ярость больше неактивна!");
+        //}
 
-        public Berserker(string? name,double health,  double damage, double defence) : base(name,health,  damage, defence)
-        {
-
-        }
+        
         
     }
 }
