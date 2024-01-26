@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal interface IDefense
+    public interface IDefense
     {
+        public int Defense { get; set; }
     }
 }

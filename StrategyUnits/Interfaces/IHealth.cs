@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal interface IHealth
+    public interface IHealth
     {
         public int CurrentHealth { get; set; }
         public int MaxHealth { get; set; }
+        public bool IsDead { get; set; }
         public void TakeDamage(int damage);
     }
 }
