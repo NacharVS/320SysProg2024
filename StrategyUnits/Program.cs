@@ -2,8 +2,12 @@
 using StrategyUnits.Units;
 
 var barrack = new Barrack();
+var altar = new Altar();
+
 var footman = barrack.CreateFootman();
 var recruit = barrack.CreateRecruit();
+
+var cleric = altar.CreateCleric();
 
 footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
@@ -12,6 +16,7 @@ recruit.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 recruit.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
 footman.Attack(recruit);
+cleric.HealSomebody(recruit);
 
 
 static void ShowInformationAfterLossOfHealth(string? name, double health, double difference, double maxHealth)

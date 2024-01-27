@@ -29,7 +29,7 @@ namespace StrategyUnits.Units
             }
             while (Energy > 0)
             {
-                if (MaxHealth <= CurrentHealth)
+                if (unit.MaxHealth <= unit.CurrentHealth)
                 {
                     return;
                 }
