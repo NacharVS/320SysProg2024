@@ -63,13 +63,13 @@ Berserker berserker = barrack.CreateBerserker();
 //paladin.HolyFire(zealotKnight);
 //paladin.HolyFire(zealotKnight);
 //zealotKnight.Player();
-static void DecreaseInLife(string? name, double health, double difference)
+static void DecreaseInLife(string? name, double health)
 {
-    Console.WriteLine($" Персонаж {name} был ранен. Жизни уменьшились на {difference}. Жизни = {health}");
+    Console.WriteLine($" Персонаж {name} был ранен. Жизни = {health}");
 }
-static void IncreaseInLife(string? name, double health, double difference)
+static void IncreaseInLife(string? name, double health)
 {
-    Console.WriteLine($" Персонаж {name} был излечен. Жизни увеличились на {difference}. Жизни = {health}");
+    Console.WriteLine($" Персонаж {name} был излечен. Жизни = {health}");
 }
 
 static void DecreaseEnergy(string name, double energy, double difference)

@@ -9,6 +9,7 @@ namespace StrategyUnits
 {
     internal class Cleric : Unit, IMagicAbilities, IHealer, IMagicAttack
     {
+        public Cleric() { }
         public int Energy { get; set; }
         public int MaxEnergy { get; set; }
         public double MagicDamage { get; set; }
@@ -26,7 +27,7 @@ namespace StrategyUnits
             }
             while (Energy > 0)
             {
-                if (MaxHealth <= Health)
+                if (unit.MaxHealth <= unit.Health)
                 {
                     return;
                 }

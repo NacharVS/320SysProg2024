@@ -2,10 +2,16 @@
 {
     internal class Unit : IHealth, IMovingUnit
     {
+        public Unit(string? name, bool isDied, double maxHealth)
+        {
+            _name = name;
+            IsDied = isDied;
+            _health = maxHealth;
+            MaxHealth = maxHealth;
+
+        }
         
         private string? _name;
-        
-
         public string Name
         {
             get { return _name; }
@@ -13,7 +19,36 @@
         }
 
         public bool IsDied { get; set; }
-        public double Health { get; set; }
+        private double _health;
+        public double Health 
+        {
+            get => _health;
+            set
+            {
+                double pred_health = _health;
+
+                if (value <= 0)
+                {
+                    _health = 0;
+                    IsDied = true;
+                }
+                else
+                {
+                    if (value > MaxHealth)
+                        _health = MaxHealth;
+                    else
+                        _health = value;
+                }
+                if (value <= pred_health)
+                {
+                    HealthDecreasedEvent.Invoke(_name, _health);
+                }
+                else if (value > pred_health)
+                {
+                    HealthIncreasedEvent.Invoke(_name, _health);
+                }
+            }
+        }
         public double MaxHealth { get; set; }
 
         public void Move()
@@ -36,9 +71,9 @@
             Health += health;
         }
 
-        //public delegate void HealthChangedDelegate(string? name, double health, double difference);
-        //public event HealthChangedDelegate HealthIncreasedEvent;
-        //public event HealthChangedDelegate HealthDecreasedEvent;
-        
+        public delegate void HealthChangedDelegate(string? name, double health);
+        public event HealthChangedDelegate HealthIncreasedEvent;
+        public event HealthChangedDelegate HealthDecreasedEvent;
+
     }
 }
