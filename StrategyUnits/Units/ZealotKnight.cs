@@ -39,8 +39,8 @@ namespace StrategyUnits.Units
             }
         }
         public int MaxEnergy { get; set; }
-        public int Protection { get; set; }
-        public ZealotKnight(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, int protection) : base(name, isDied, currentHealth, maxHealth)
+        public double Protection { get; set; }
+        public ZealotKnight(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double protection) : base(name, isDied, currentHealth, maxHealth)
         {
             _currentEnergy = energy;
             MaxEnergy = maxEnergy;

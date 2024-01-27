@@ -7,10 +7,16 @@ var altar = new Altar();
 var footman = barrack.CreateFootman();
 var recruit = barrack.CreateRecruit();
 
+var paladin = altar.CreatePaladin();
 var cleric = altar.CreateCleric();
 
 cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
 cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+
+paladin.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+paladin.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+paladin.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+paladin.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
 footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
@@ -18,13 +24,17 @@ footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 recruit.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 recruit.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
-footman.Attack(recruit);
-cleric.HealSomebody(recruit);
+recruit.Attack(paladin);
+recruit.Attack(paladin);
+recruit.Attack(paladin);
+cleric.HealSomebody(paladin);
 
 
 static void ShowInformationAfterLossOfHealth(string? name, double health, double difference, double maxHealth)
 {
-    Console.WriteLine($"\u001b[31m{name} получил урон, здоровье уменьшилось на {difference}\u001b[0m, текущее здоровье: {health}/{maxHealth}\u001b[0m");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"{name} получил урон, здоровье уменьшилось на {difference}, текущее здоровье: {health}/{maxHealth}");
+    Console.ForegroundColor = ConsoleColor.White;
 }
 
 static void ShowInformationAfterHealthIsRestored(string? name, double health, double difference, double maxHealth)

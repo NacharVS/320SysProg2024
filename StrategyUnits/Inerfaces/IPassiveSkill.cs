@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Inerfaces
 {
-    internal interface IArmoredUnit
+    internal interface IPassiveSkill
     {
-        public double Protection { get; set; }
-        public static int LvlArmor {get;set;}
+        public bool PassiveSkillActivate { get; set; }
     }
 }

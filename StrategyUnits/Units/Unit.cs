@@ -23,7 +23,7 @@ namespace StrategyUnits.Units
 
         public bool IsDied { get; set; }
         private double _currentHealth;
-        public double CurrentHealth
+        public virtual double CurrentHealth
         {
             get => _currentHealth;
             set

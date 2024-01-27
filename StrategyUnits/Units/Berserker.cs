@@ -10,8 +10,8 @@ namespace StrategyUnits.Units
     internal class Berserker : Footman, IArmoredUnit
     {
 
-        public int Protection { get; set; }
-        public Berserker(string? name, bool isDied, double currentHealth, double maxHealth, double damage, int protection) : base(name, isDied, currentHealth, maxHealth, damage)
+        public double Protection { get; set; }
+        public Berserker(string? name, bool isDied, double currentHealth, double maxHealth, double damage, double protection) : base(name, isDied, currentHealth, maxHealth, damage)
         {
             Protection = protection;
         }
