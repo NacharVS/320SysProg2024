@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Inerfaces
 {
-    internal interface IHolyArmor
+    internal interface IMagicAttack
     {
-        public bool HolyArmorActivate { get; set; }
+        public void MagicAttack(IHealth unit);
+        public double MagicDamage { get; set; }
     }
 }

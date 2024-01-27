@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Inerfaces
 {
-    internal interface IRage
+    internal interface IAttack
     {
+        public void Attack(IHealth currentHealth);
+        public double Damage { get; set; }
     }
 }

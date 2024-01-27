@@ -8,7 +8,9 @@ namespace StrategyUnits.Inerfaces
 {
     internal interface IMagicAbilities
     {
-        public double MaxEnergy { get; set; }
-        public double CurrentEnergy { get; set; }
+        public int Energy { get; set; }
+        public int MaxEnergy { get; set; }
+        public void DecreaseEnergy(int energy);
+        public void IncreaseEnergy(int energy);
     }
 }

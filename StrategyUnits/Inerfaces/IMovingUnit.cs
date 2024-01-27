@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Inerfaces
 {
-    internal interface IMagicUnit
+    internal interface IMovingUnit
     {
-        public void MagicAttack(IHealth health)
+        public void Move();
     }
 }

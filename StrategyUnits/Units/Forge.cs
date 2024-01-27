@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Forge
     {
         public void WeaponUpgrade(MilitaryUnit unit)
         {
-            if(unit.LvlWeapon < 2)
+            if (unit.LvlWeapon < 2)
             {
                 unit.LvlWeapon += 1;
                 unit.Damage += 1;

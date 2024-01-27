@@ -1,13 +1,12 @@
-﻿namespace StrategyUnits
+﻿namespace StrategyUnits.Units
 {
     internal class Peasant : Unit
     {
-        public bool IsWorking { get; set; }
-
-        public Peasant() : base(30, "Peasant", 2)
+        public Peasant(string? name, bool isDied, double currentHealth, double maxHealth) : base(name, isDied, currentHealth, maxHealth)
         {
-            IsWorking = false;
         }
+
+        public bool IsWorking { get; set; }
 
         public void PlowField()
         {
