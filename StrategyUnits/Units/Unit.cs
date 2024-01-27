@@ -11,7 +11,7 @@ namespace StrategyUnits.Units
         {
             _name = name;
             IsDied = isDied;
-            CurrentHealth = currentHealth;
+            _currentHealth = currentHealth;
             MaxHealth = maxHealth;
         }
 
@@ -22,32 +22,33 @@ namespace StrategyUnits.Units
         }
 
         public bool IsDied { get; set; }
+        private double _currentHealth;
         public double CurrentHealth
         {
-            get => CurrentHealth;
+            get => _currentHealth;
             set
             {
-                double previousHealth = CurrentHealth;
+                double previousHealth = _currentHealth;
 
                 if (value <= 0)
                 {
-                    CurrentHealth = 0;
+                    _currentHealth = 0;
                     IsDied = true;
                 }
                 else
                 {
                     if (value > MaxHealth)
-                        CurrentHealth = MaxHealth;
+                        _currentHealth = MaxHealth;
                     else
-                        CurrentHealth = value;
+                        _currentHealth = value;
                 }
                 if (value <= previousHealth)
                 {
-                    HealthDecreasedEvent.Invoke(_name, CurrentHealth, (previousHealth - value), MaxHealth);
+                    HealthDecreasedEvent.Invoke(_name, _currentHealth, (previousHealth - value), MaxHealth);
                 }
                 else if (value > previousHealth)
                 {
-                    HealthIncreasedEvent.Invoke(_name, CurrentHealth, value - previousHealth, MaxHealth);
+                    HealthIncreasedEvent.Invoke(_name, _currentHealth, value - previousHealth, MaxHealth);
                 }
             }
         }

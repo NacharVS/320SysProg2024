@@ -16,7 +16,7 @@ namespace StrategyUnits.Units
         }
         public Paladin CreatePaladin()
         {
-            return new Paladin("Paladin", false, 18,18,30,30,6,22);
+            return new Paladin("Paladin", false, 18, 18, 30, 30, 6, 22);
         }
         public Cleric CreateCleric()
         {

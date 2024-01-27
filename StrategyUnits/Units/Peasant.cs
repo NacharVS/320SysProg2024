@@ -2,8 +2,9 @@
 {
     internal class Peasant : Unit
     {
-        public Peasant(string? name, bool isDied, double currentHealth, double maxHealth) : base(name, isDied, currentHealth, maxHealth)
+        public Peasant(string? name, bool isDied, double currentHealth, double maxHealth, bool isWorking) : base(name, isDied, currentHealth, maxHealth)
         {
+            IsWorking = isWorking;
         }
 
         public bool IsWorking { get; set; }

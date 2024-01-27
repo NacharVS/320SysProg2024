@@ -9,18 +9,18 @@ namespace StrategyUnits.Units
 {
     internal class Berserker : Footman, IArmoredUnit
     {
+
         public int Protection { get; set; }
-        private bool _rage = false;
-
-        public Berserker(double currentHealth, bool isDied, double maxHealth, double damage) : base(currentHealth, isDied, maxHealth, damage)
+        public Berserker(string? name, bool isDied, double currentHealth, double maxHealth, double damage, int protection) : base(name, isDied, currentHealth, maxHealth, damage)
         {
+            Protection = protection;
         }
-
-        public bool Rage
-        {
-            get { return _rage; }
-            set { _rage = value; }
-        }
+        //private bool _rage = false;
+        //public bool Rage
+        //{
+        //    get { return _rage; }
+        //    set { _rage = value; }
+        //}
 
 
     }

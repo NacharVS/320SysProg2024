@@ -1,6 +1,17 @@
 ﻿using StrategyUnits;
+using StrategyUnits.Units;
 
+var barrack = new Barrack();
+var footman = barrack.CreateFootman();
+var recruit = barrack.CreateRecruit();
 
+footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
+recruit.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+recruit.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
+footman.Attack(recruit);
 
 
 static void ShowInformationAfterLossOfHealth(string? name, double health, double difference, double maxHealth)
