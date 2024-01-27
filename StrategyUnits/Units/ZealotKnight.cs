@@ -10,32 +10,60 @@ namespace StrategyUnits.Units
 {
     internal class ZealotKnight : Unit, IMagicAbilities, IArmoredUnit
     {
-  
-
-        
-        public int Energy { get; set; }
+        private int _currentEnergy;
+        public int CurrentEnergy
+        {
+            get { return _currentEnergy; }
+            set
+            {
+                int previousEnergy = _currentEnergy;
+                if (value < 0)
+                {
+                    _currentEnergy = 0;
+                }
+                else
+                {
+                    if (value > MaxEnergy)
+                        _currentEnergy = MaxEnergy;
+                    else
+                        _currentEnergy = value;
+                }
+                if (value < previousEnergy)
+                {
+                    EnergyDecreasedEvent.Invoke(this.Name, _currentEnergy, previousEnergy - value, MaxEnergy);
+                }
+                else if (value > previousEnergy)
+                {
+                    EnergyIncreasedEvent.Invoke(this.Name, _currentEnergy, value - previousEnergy, MaxEnergy);
+                }
+            }
+        }
         public int MaxEnergy { get; set; }
         public int Protection { get; set; }
         public ZealotKnight(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, int protection) : base(name, isDied, currentHealth, maxHealth)
         {
-            Energy = energy;
+            _currentEnergy = energy;
             MaxEnergy = maxEnergy;
             Protection = protection;
         }
+
+        public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagicAbilities.EnergyChangedDelegate EnergyIncreasedEvent;
+
         public void DecreaseEnergy(int energy)
         {
-            Energy -= 2;
+            CurrentEnergy -= 2;
         }
 
         public void IncreaseEnergy(int energy)
         {
-            Energy += energy;
+            CurrentEnergy += energy;
         }
         public void Player()
         {
-            if (Energy >= 10)
+            if (CurrentEnergy >= 10)
             {
-                Energy -= 10;
+                CurrentEnergy -= 10;
                 CurrentHealth += 20;
             }
             else

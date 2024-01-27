@@ -74,9 +74,8 @@ namespace StrategyUnits.Units
             CurrentHealth += health;
         }
 
-        public delegate void HealthChangedDelegate(string? name, double health, double difference, double maxHealth);
-        public event HealthChangedDelegate HealthIncreasedEvent;
-        public event HealthChangedDelegate HealthDecreasedEvent;
+        public event IHealth.HealthChangedDelegate HealthIncreasedEvent;
+        public event IHealth.HealthChangedDelegate HealthDecreasedEvent;
 
     }
 }

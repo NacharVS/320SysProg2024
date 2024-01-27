@@ -8,17 +8,47 @@ namespace StrategyUnits.Units
 
         public Cleric(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double magicDamage) : base(name, isDied, currentHealth, maxHealth)
         {
-            Energy = energy;
+            _currentEnergy = energy;
             MaxEnergy = maxEnergy;
             MagicDamage = magicDamage;
         }
-        public int Energy { get; set; }
+        private int _currentEnergy;
+        public int CurrentEnergy
+        {
+            get { return _currentEnergy; }
+            set
+            {
+                int previousEnergy = _currentEnergy;
+                if (value < 0)
+                {
+                    _currentEnergy = 0;
+                }
+                else
+                {
+                    if (value > MaxEnergy)
+                        _currentEnergy = MaxEnergy;
+                    else
+                        _currentEnergy = value;
+                }
+                if (value < previousEnergy)
+                {
+                    EnergyDecreasedEvent.Invoke(this.Name, _currentEnergy, previousEnergy - value, MaxEnergy);
+                }
+                else if (value > previousEnergy)
+                {
+                    EnergyIncreasedEvent.Invoke(this.Name, _currentEnergy, value - previousEnergy, MaxEnergy);
+                }
+            }
+        }
         public int MaxEnergy { get; set; }
         public double MagicDamage { get; set; }
 
+        public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagicAbilities.EnergyChangedDelegate EnergyIncreasedEvent;
+
         public void DecreaseEnergy(int energy)
         {
-            Energy -= 2;
+            CurrentEnergy -= 2;
         }
 
         public void HealSomebody(IHealth unit)
@@ -27,13 +57,13 @@ namespace StrategyUnits.Units
             {
                 return;
             }
-            while (Energy > 0)
+            while (CurrentEnergy > 0)
             {
                 if (unit.MaxHealth <= unit.CurrentHealth)
                 {
                     return;
                 }
-                if (Energy < 2)
+                if (CurrentEnergy < 2)
                 {
                     break;
                 }
@@ -44,7 +74,7 @@ namespace StrategyUnits.Units
 
         public void IncreaseEnergy(int energy)
         {
-            Energy += energy;
+            CurrentEnergy += energy;
         }
 
         public void MagicAttack(IHealth unit)

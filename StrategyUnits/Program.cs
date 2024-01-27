@@ -9,6 +9,9 @@ var recruit = barrack.CreateRecruit();
 
 var cleric = altar.CreateCleric();
 
+cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+
 footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
@@ -31,14 +34,14 @@ static void ShowInformationAfterHealthIsRestored(string? name, double health, do
     Console.ForegroundColor = ConsoleColor.White;
 }
 
-void ShowInformationAfterLossOfEnergy(string name, double energy, double difference, double maxEnergy)
+void ShowInformationAfterLossOfEnergy(string name, int energy, int difference, int maxEnergy)
 {
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine($"{name} энергия уменьшена на {difference}, текущая энергия: {energy}/{maxEnergy}");
     Console.ForegroundColor = ConsoleColor.White;
 }
 
-void ShowInformationAfterEnergyIsRestored(string name, double energy, double difference, double maxEnergy)
+void ShowInformationAfterEnergyIsRestored(string name, int energy, int difference, int maxEnergy)
 {
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine($"{name} энергия увеличена на {difference}, текущая энергия: {energy}/{maxEnergy}");
