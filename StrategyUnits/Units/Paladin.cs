@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace StrategyUnits.Units
 {
-    internal class Paladin : ZealotKnight, IMagicAttack, IPassiveSkill, IArmoredUnit
+    internal class Paladin : ZealotKnight, IMagicAttack, IPassiveSkill
     {
         private bool _holyArmorActive = false;
         private double _magicDamage;
