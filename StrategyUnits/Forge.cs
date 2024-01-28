@@ -8,58 +8,46 @@ namespace StrategyUnits
 {
     internal class Forge
     {
-        public void UpgradeDamage(MilitaryUnit unit)
+        public void UpgradeDamage()
         {
-            if (!unit.Alive)
+            if (IBattleUnit.LevelExtraDamage == 0)
             {
-                Console.WriteLine($"{unit.Name} мертв. Он не может посетить кузницу");
+                IBattleUnit.ExtraDamage += 2;
+                IBattleUnit.LevelExtraDamage++;
+                Console.WriteLine($"Сделано первое улучшение атаки юнитов.");
                 return;
             }
-            if (unit._levelDamage == 0)
+            if (IBattleUnit.LevelExtraDamage == 1)
             {
-                unit.MinDamage += 2;
-                unit.MaxDamage += 2;
-                unit._levelDamage++;
-                Console.WriteLine($"{unit.Name} сделал первое улучшение атаки. Текущая атака: {unit.MinDamage}-{unit.MaxDamage}");
-                return;
-            }
-            if (unit._levelDamage == 1)
-            {
-                unit.MinDamage += 3;
-                unit.MaxDamage += 3;
-                unit._levelDamage++;
-                Console.WriteLine($"{unit.Name} сделал второе улучшение атаки. Текущая атака: {unit.MinDamage}-{unit.MaxDamage}");
+                IBattleUnit.ExtraDamage += 3;
+                IBattleUnit.LevelExtraDamage++;
+                Console.WriteLine($"Сделано второе улучшение атаки юнитов.");
             }
             else
             {
-                Console.WriteLine($"{unit.Name} имеет максимальное улучшение атаки. Больше нельзя улучшить");
+                Console.WriteLine($"Юниты имеют максимальное улучшение атаки. Больше нельзя улучшить");
             }
         }
 
 
-        public void UpgradeShield(MilitaryUnit unit)
+        public void UpgradeArmor()
         {
-            if (!unit.Alive)
+            if (IArmoredUnit.LevelExtraArmor == 0)
             {
-                Console.WriteLine($"{unit.Name} мертв. Он не может посетить кузницу");
+                IArmoredUnit.ExtraArmor += 2;
+                IArmoredUnit.LevelExtraArmor++;
+                Console.WriteLine($"Сделано первое улучшение защиты юнитов.");
                 return;
             }
-            if (unit._levelShield == 0)
+            if (IArmoredUnit.LevelExtraArmor == 1)
             {
-                unit.Shield += 2;
-                unit._levelShield++;
-                Console.WriteLine($"{unit.Name} сделал первое улучшение защиты. Текущая защита: {unit.Shield}");
-                return;
-            }
-            if (unit._levelShield == 1)
-            {
-                unit.Shield += 2;
-                unit._levelShield++;
-                Console.WriteLine($"{unit.Name} сделал второе улучшение защиты. Текущая защита: {unit.Shield}");
+                IArmoredUnit.ExtraArmor += 2;
+                IArmoredUnit.LevelExtraArmor++;
+                Console.WriteLine($"Сделано второе улучшение защиты юнитов.");
             }
             else
             {
-                Console.WriteLine($"{unit.Name} имеет максимальное улучшение защиты. Больше нельзя улучшить");
+                Console.WriteLine($"Юниты имеют максимальное улучшение защиты. Больше нельзя улучшить");
             }
         }
     }

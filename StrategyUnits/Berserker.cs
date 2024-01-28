@@ -9,21 +9,12 @@ namespace StrategyUnits
     internal class Berserker : Footman
     {
         internal bool _rageActive = false;
-        public Berserker(string? name, int maxHealth, int minDamage, int maxDamage, string weapon, int shield) 
-            : base(name, maxHealth, minDamage, maxDamage, weapon, shield)
-        {
-        }
+        private int _minDamage;
+        private int _maxDamage;
 
-        public override int MaxDamage
+        public Berserker(string? name, int maxHealth, int minDamage, int maxDamage, string weapon, int armor) 
+            : base(name, maxHealth, minDamage, maxDamage, weapon, armor)
         {
-            get
-            {
-                if (_rageActive)
-                    return _maxDamage + _maxDamage / 2;
-                else
-                    return _maxDamage;
-            }
-            set { _maxDamage = value; }
         }
 
         public override int MinDamage
@@ -38,5 +29,16 @@ namespace StrategyUnits
             set { _minDamage = value; }
         }
 
+        public override int MaxDamage
+        {
+            get
+            {
+                if (_rageActive)
+                    return _maxDamage + _maxDamage / 2;
+                else
+                    return _maxDamage;
+            }
+            set { _maxDamage = value; }
+        }
     }
 }

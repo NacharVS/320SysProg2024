@@ -54,16 +54,16 @@ namespace StrategyUnits
             _maxEnergy = _energy;
         }
 
-        public void RestoreMana(MagicUnit unit)
+        public void RestoreMana(IMagicUnit unit)
         {
-            if (!unit.Alive)
+            if (!((Unit)unit).Alive)
             {
-                Console.WriteLine($"{unit.Name} мертв. Он не может восстанавливать ману в алтаре");
+                Console.WriteLine($"{((Unit)unit).Name} мертв. Он не может восстанавливать ману в алтаре");
                 return;
             }
             if (unit.Mana == unit.MaxMana)
             {
-                Console.WriteLine($"{unit.Name} имеет полную ману. Не нужно восстанавливать в алтаре");
+                Console.WriteLine($"{((Unit)unit).Name} имеет полную ману. Не нужно восстанавливать в алтаре");
                 return;
             }
             if (Energy < 1)
@@ -71,7 +71,7 @@ namespace StrategyUnits
                 Console.WriteLine($"Алтарь имеет энергию {Energy}/{MaxEnergy}. Для восстановаления маны нужно минимум 1 очко энергии алтаря");
                 return;
             }
-            Console.WriteLine($"{unit.Name} восстанавливает ману в алтаре");
+            Console.WriteLine($"{((Unit)unit).Name} восстанавливает ману в алтаре");
             int needRestore = unit.MaxMana - unit.Mana;
             while(needRestore % 10 != 0)
             {
@@ -92,7 +92,7 @@ namespace StrategyUnits
 
         public Healer CreateHealer()
         {
-            return new Healer("Healer", 45, 1, 4, "посохом", 1, 50);
+            return new Healer("Healer", 45, 50);
         }
 
         public Palladin CreatePalladin()

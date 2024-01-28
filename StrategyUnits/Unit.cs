@@ -63,12 +63,14 @@ namespace StrategyUnits
                     if (Health < MaxHealth / 2 && !b._rageActive)
                     {
                         b._rageActive = true;
-                        Console.WriteLine($"Здоровье {Name} стало меньше половины. Урон увеличился и стал {b.MinDamage}-{b.MaxDamage}");
+                        Console.WriteLine($"Здоровье {Name} стало меньше половины. Урон увеличился и стал " +
+                            $"{b.MinDamage + IBattleUnit.ExtraDamage}-{b.MaxDamage + IBattleUnit.ExtraDamage}");
                     }
                     if (Health >= MaxHealth / 2 && b._rageActive)
                     {
                         b._rageActive = false;
-                        Console.WriteLine($"Здоровье {Name} дошло до половины или больше. Урон стал обычным {b.MinDamage}-{b.MaxDamage}");
+                        Console.WriteLine($"Здоровье {Name} дошло до половины или больше. Урон стал обычным " +
+                            $"{b.MinDamage + IBattleUnit.ExtraDamage}-{b.MaxDamage + IBattleUnit.ExtraDamage}");
                     }
                 }
             }
@@ -92,7 +94,7 @@ namespace StrategyUnits
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Здоровье: {Health}/{MaxHealth}");
+            Console.WriteLine($"Юнит: {Name} Здоровье: {Health}/{MaxHealth}");
         }
 
         public static event HealthchangedDelegate? HealthIncreasedEvent;

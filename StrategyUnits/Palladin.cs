@@ -87,8 +87,8 @@ namespace StrategyUnits
                 Console.WriteLine($"{Name} имеет ману {Mana}/{MaxMana}. Для святой защиты нужно минимум 12 очков маны");
                 return;
             }
-            Shield += 2;
-            Console.WriteLine($"{Name} активировал святую защиту. Текущая защита {Shield}");
+            Armor += 2;
+            Console.WriteLine($"{Name} активировал святую защиту. Текущая защита {Armor + IArmoredUnit.ExtraArmor}");
             _holyArmorActive = true;
             Mana -= 12;            
         }
