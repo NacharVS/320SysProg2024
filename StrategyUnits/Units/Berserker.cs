@@ -54,7 +54,7 @@ namespace StrategyUnits.Units
                         base.CurrentHealth = value;
                 }
 
-                if (base.CurrentHealth < MaxHealth * 0.5 && !PassiveSkillActivate)
+                if (base.CurrentHealth < MaxHealth * 0.5 && !PassiveSkillActivate && !IsDied)
                 {
                     PassiveSkillActivate = true;
                     Protection *= 1.5;
@@ -62,7 +62,7 @@ namespace StrategyUnits.Units
                     Console.WriteLine($"{Name} активировал Безумство!");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-                else if (base.CurrentHealth >= MaxHealth * 0.5 && PassiveSkillActivate)
+                else if (base.CurrentHealth >= MaxHealth * 0.5 && PassiveSkillActivate && !IsDied)
                 {
                     PassiveSkillActivate = false;
                     Protection /= 1.5;
@@ -71,6 +71,10 @@ namespace StrategyUnits.Units
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 }
             }
+        }
+        public override void ShowInformation()
+        {
+            Console.WriteLine($" Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Урон: {Damage} \n Безумство: {PassiveSkillActivate}\n Живой: {!IsDied}");
         }
 
     }

@@ -2,25 +2,8 @@
 
 namespace StrategyUnits.Units
 {
-    internal class Unit : IHealth, IMovingUnit
+    internal class Unit : IHealth, IMovingUnit, IGeneralInformation
     {
-
-        private string? _name;
-
-        public Unit(string? name, bool isDied, double currentHealth, double maxHealth)
-        {
-            _name = name;
-            IsDied = isDied;
-            _currentHealth = currentHealth;
-            MaxHealth = maxHealth;
-        }
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
         public bool IsDied { get; set; }
         private double _currentHealth;
         public virtual double CurrentHealth
@@ -34,7 +17,6 @@ namespace StrategyUnits.Units
                 {
                     _currentHealth = 0;
                     IsDied = true;
-                    Console.WriteLine($"{Name} умер");
                 }
                 else
                 {
@@ -45,24 +27,26 @@ namespace StrategyUnits.Units
                 }
                 if (value <= previousHealth)
                 {
-                    HealthDecreasedEvent.Invoke(_name, _currentHealth, (previousHealth - value), MaxHealth);
+                    HealthDecreasedEvent.Invoke(Name, _currentHealth, (previousHealth - value), MaxHealth);
                 }
                 else if (value > previousHealth)
                 {
-                    HealthIncreasedEvent.Invoke(_name, _currentHealth, value - previousHealth, MaxHealth);
+                    HealthIncreasedEvent.Invoke(Name, _currentHealth, value - previousHealth, MaxHealth);
                 }
             }
         }
         public double MaxHealth { get; set; }
-
+        public string? Name { get; set; }
+        public Unit(string? name, bool isDied, double currentHealth, double maxHealth)
+        {
+            Name = name;
+            IsDied = isDied;
+            _currentHealth = currentHealth;
+            MaxHealth = maxHealth;
+        }
         public void Move()
         {
             Console.WriteLine("Движется");
-        }
-
-        public virtual void ShowInfo()
-        {
-            Console.WriteLine($"Персонаж: {_name}");
         }
 
         public virtual void DecreaseHealth(double damage)
@@ -73,6 +57,11 @@ namespace StrategyUnits.Units
         public void IncreseHealth(double health)
         {
             CurrentHealth += health;
+        }
+
+        public virtual void ShowInformation()
+        {
+            Console.WriteLine($" Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Живой: {IsDied}");
         }
 
         public event IHealth.HealthChangedDelegate HealthIncreasedEvent;

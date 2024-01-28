@@ -23,7 +23,10 @@ namespace StrategyUnits.Units
         {
             CurrentHealth -= damage;
         }
-
+        public override void ShowInformation()
+        {
+            Console.WriteLine($" Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Урон: {Damage}\n Живой: {!IsDied}");
+        }
         public void IncreseHealth(double health)
         {
             CurrentHealth += health;

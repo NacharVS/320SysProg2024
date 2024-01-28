@@ -1,5 +1,6 @@
 ﻿using StrategyUnits.Inerfaces;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace StrategyUnits.Units
 {
@@ -32,19 +33,16 @@ namespace StrategyUnits.Units
                 }
                 if (value < previousEnergy)
                 {
-                    EnergyDecreasedEvent.Invoke(this.Name, _currentEnergy, previousEnergy - value, MaxEnergy);
+                    EnergyDecreasedEvent.Invoke(Name, _currentEnergy, previousEnergy - value, MaxEnergy);
                 }
                 else if (value > previousEnergy)
                 {
-                    EnergyIncreasedEvent.Invoke(this.Name, _currentEnergy, value - previousEnergy, MaxEnergy);
+                    EnergyIncreasedEvent.Invoke(Name, _currentEnergy, value - previousEnergy, MaxEnergy);
                 }
             }
         }
         public int MaxEnergy { get; set; }
         public double MagicDamage { get; set; }
-
-        public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
-        public event IMagicAbilities.EnergyChangedDelegate EnergyIncreasedEvent;
 
         public void DecreaseEnergy(int energy)
         {
@@ -82,5 +80,11 @@ namespace StrategyUnits.Units
             DecreaseEnergy(1);
             unit.DecreaseHealth(4);
         }
+        public override void ShowInformation()
+        {
+            Console.WriteLine($" Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Мана: {CurrentEnergy}/{MaxEnergy} \n Магический урон: {MagicDamage} \n Живой: {!IsDied}");
+        }
+        public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagicAbilities.EnergyChangedDelegate EnergyIncreasedEvent;
     }
 }

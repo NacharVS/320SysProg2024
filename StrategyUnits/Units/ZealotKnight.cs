@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace StrategyUnits.Units
 {
-    internal class ZealotKnight : Unit, IMagicAbilities, IArmoredUnit, IAttack
+    internal class ZealotKnight : Unit, IMagicAbilities, IArmoredUnit, IAttack, IBeliever
     {
         private int _currentEnergy;
         public int CurrentEnergy
@@ -60,9 +60,6 @@ namespace StrategyUnits.Units
             _protection = protection;
         }
 
-        public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
-        public event IMagicAbilities.EnergyChangedDelegate EnergyIncreasedEvent;
-
         public void DecreaseEnergy(int energy)
         {
             CurrentEnergy -= 2;
@@ -84,11 +81,11 @@ namespace StrategyUnits.Units
                 base.DecreaseHealth(damage);
             }
         }
-        public void Player()
+        public void Pray()
         {
             if (CurrentEnergy >= 10)
             {
-                CurrentEnergy -= 10;
+                CurrentEnergy -= 20;
                 CurrentHealth += 20;
             }
             else
@@ -101,10 +98,15 @@ namespace StrategyUnits.Units
                 Console.WriteLine($"Персонаж {Name} мертв, действие невозможно");
             }
         }
-
+        public override void ShowInformation()
+        {
+            Console.WriteLine($"Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Урон: {Damage} Мана: {CurrentEnergy}/{MaxEnergy} \n Живой: {!IsDied}");
+        }
         public void Attack(IHealth unit)
         {
             unit.DecreaseHealth(Damage);
         }
+        public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagicAbilities.EnergyChangedDelegate EnergyIncreasedEvent;
     }
 }

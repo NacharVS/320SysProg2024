@@ -1,6 +1,8 @@
-﻿namespace StrategyUnits.Units
+﻿using StrategyUnits.Inerfaces;
+
+namespace StrategyUnits.Units
 {
-    internal class Peasant : Unit
+    internal class Peasant : Unit, ICivilian
     {
         public Peasant(string? name, bool isDied, double currentHealth, double maxHealth, bool isWorking) : base(name, isDied, currentHealth, maxHealth)
         {
@@ -11,6 +13,11 @@
 
         public void PlowField()
         {
+            if (IsDied)
+            {
+                Console.WriteLine("Мирный житель мертв");
+                return;
+            }
             if (IsWorking)
             {
                 Console.WriteLine("Крестьянин уже занят работой.");
@@ -24,6 +31,11 @@
 
         public void FinishWork()
         {
+            if (IsDied)
+            {
+                Console.WriteLine("Мирный житель мертв");
+                return;
+            }
             if (IsWorking)
             {
                 Console.WriteLine("Крестьянин закончил работу.");
@@ -33,6 +45,10 @@
             {
                 Console.WriteLine("Крестьянин не работает сейчас.");
             }
+        }
+        public virtual void ShowInformation()
+        {
+            Console.WriteLine($" Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Живой: {!IsDied} \n Работает: {IsWorking}");
         }
     }
 }

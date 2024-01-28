@@ -27,6 +27,10 @@ namespace StrategyUnits.Units
             DecreaseEnergy(2);
             unit.DecreaseHealth(10);
         }
+        public override void ShowInformation()
+        {
+            Console.WriteLine($" Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Урон: {Damage}\n Мана: {CurrentEnergy}/{MaxEnergy} \n Магический урон: {MagicDamage} \n Святая броня: {PassiveSkillActivate}\n Живой: {!IsDied}");
+        }
         public override double CurrentHealth
         {
             get => base.CurrentHealth;
@@ -47,7 +51,7 @@ namespace StrategyUnits.Units
                         base.CurrentHealth = value;
                 }
 
-                if (base.CurrentHealth < MaxHealth * 0.5 && !PassiveSkillActivate)
+                if (base.CurrentHealth < MaxHealth * 0.5 && !PassiveSkillActivate && !IsDied)
                 {
                     PassiveSkillActivate = true;
                     Protection *= 1.5;
@@ -55,7 +59,7 @@ namespace StrategyUnits.Units
                     Console.WriteLine($"{Name} активировал Святой щит!");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-                else if (base.CurrentHealth >= MaxHealth * 0.5 && PassiveSkillActivate)
+                else if (base.CurrentHealth >= MaxHealth * 0.5 && PassiveSkillActivate && !IsDied)
                 {
                     PassiveSkillActivate = false;
                     Protection /= 1.5;

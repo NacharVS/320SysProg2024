@@ -1,12 +1,15 @@
 ﻿using StrategyUnits;
 using StrategyUnits.Units;
 
-var barrack = new Barrack();
-var altar = new Altar();
-var forge = new Forge();
+var barrack = new Barrack("Казарма");
+var altar = new Altar(100, 100, "Алтарь");
+var forge = new Forge("Кузница");
 
 var footman = barrack.CreateFootman();
 var recruit = barrack.CreateRecruit();
+var berserker = barrack.CreateBerserker();
+
+var peasant = new Peasant("Крестьянин", false, 5, 5, false);
 
 var paladin = altar.CreatePaladin();
 var cleric = altar.CreateCleric();
@@ -14,11 +17,22 @@ var cleric = altar.CreateCleric();
 
 cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
 cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+cleric.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+cleric.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
+peasant.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+peasant.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
 paladin.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
 paladin.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
 paladin.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 paladin.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
+altar.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+altar.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+
+berserker.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+berserker.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
 footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
@@ -26,16 +40,25 @@ footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 recruit.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 recruit.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
-footman.Attack(paladin);
-forge.UpdateWeapons();
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-cleric.HealSomebody(paladin);
+peasant.PlowField();
+peasant.ShowInformation();
 
+footman.Attack(peasant);
+
+peasant.FinishWork();
+peasant.ShowInformation();
+
+footman.Attack(berserker);
+footman.Attack(berserker);
+forge.UpdateWeapons();
+berserker.ShowInformation();
+cleric.HealSomebody(berserker);
+altar.RecoveryEnergy(cleric);
+altar.RestoreEnergy();
+
+altar.ShowInformation();
+cleric.ShowInformation();
+paladin.ShowInformation();
 
 static void ShowInformationAfterLossOfHealth(string? name, double health, double difference, double maxHealth)
 {
