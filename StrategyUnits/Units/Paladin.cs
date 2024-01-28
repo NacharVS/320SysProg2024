@@ -10,9 +10,6 @@ namespace StrategyUnits.Units
 {
     internal class Paladin : ZealotKnight, IMagicAttack, IPassiveSkill
     {
-        private bool _holyArmorActive = false;
-        private double _magicDamage;
-
         public Paladin(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double protection, double magicDamage, double damage) : base(name, isDied, currentHealth, maxHealth, energy, maxEnergy, protection, damage)
         {
             MagicDamage = magicDamage;
@@ -25,7 +22,7 @@ namespace StrategyUnits.Units
         public void MagicAttack(IHealth unit)
         {
             DecreaseEnergy(2);
-            unit.DecreaseHealth(10);
+            unit.DecreaseHealth(MagicDamage);
         }
         public override void ShowInformation()
         {

@@ -6,7 +6,6 @@ namespace StrategyUnits.Units
 {
     internal class Cleric : Unit, IMagicAbilities, IHealer, IMagicAttack
     {
-
         public Cleric(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double magicDamage) : base(name, isDied, currentHealth, maxHealth)
         {
             _currentEnergy = energy;
@@ -78,7 +77,7 @@ namespace StrategyUnits.Units
         public void MagicAttack(IHealth unit)
         {
             DecreaseEnergy(1);
-            unit.DecreaseHealth(4);
+            unit.DecreaseHealth(MagicDamage);
         }
         public override void ShowInformation()
         {
