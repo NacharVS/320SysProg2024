@@ -22,8 +22,8 @@ ZeelotKnight zealotKnight = altar.CreateZeelotKnight();
 //footman.ShowInfo();
 //cleric.ShowInfo();
 //paladin.ShowInfo();
-//paladin.HealthDecreasedEvent += InfoHealthIncreased;
-//paladin.HealthIncreasedEvent += InfoHealthIncreased;
+paladin.HealthDecreasedEvent += InfoHealthIncreased;
+paladin.HealthIncreasedEvent += InfoHealthIncreased;
 
 //paladin.MannaDecreasedEvent += InfoMannaLess;
 //Console.WriteLine("Footman attack");
@@ -166,12 +166,18 @@ Footman footman_v = barrack.CreateFootman();
 footman_v.ShowInfo();
 Console.WriteLine(" ");
 
+Palladin palladin_v = altar.CreatePalladin();
+palladin_v.ShowInfo();
+Console.WriteLine(" ");
+
 cleric_v.HealthDecreasedEvent += InfoHealthIncreased;
 cleric_v.HealthIncreasedEvent += InfoHealthIncreased;
 footman_v.HealthDecreasedEvent += InfoHealthIncreased;
 footman_v.HealthIncreasedEvent += InfoHealthIncreased;
 berserker_v.HealthDecreasedEvent += InfoHealthIncreased;
 berserker_v.HealthIncreasedEvent += InfoHealthIncreased;
+palladin_v.HealthDecreasedEvent += InfoHealthIncreased;
+palladin_v.HealthIncreasedEvent += InfoHealthIncreased;
 //cleric_v.MannaDecreasedEvent += ;
 cleric_v.MannaIncreasedEvent += InfoMannaLess;
 
@@ -227,23 +233,33 @@ forge_v.UpdateLevelWeapon();
 
 //cleric_v.GetInfoManna();
 //cleric_v.ShowInfo();
-
-//cleric_v.HillMyself();
+Console.WriteLine("Hill himself");
+cleric_v.HillMyself();
 //cleric_v.GetInfoManna();
-//cleric_v.ShowInfo();
+cleric_v.ShowInfo();
 
-//berserker_v.ShowInfo();
-//footman_v.InflictDamage(berserker_v);
-//footman_v.InflictDamage(berserker_v);
-//footman_v.InflictDamage(berserker_v);
-//footman_v.InflictDamage(berserker_v);
-//footman_v.InflictDamage(berserker_v);
-//footman_v.InflictDamage(berserker_v);
+berserker_v.ShowInfo();
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
+footman_v.InflictDamage(berserker_v);
 //footman_v.InflictDamage(berserker_v);
 //footman_v.InflictDamage(berserker_v);
 
 //berserker_v.Rage(footman_v);
-//berserker_v.ShowInfo();
+berserker_v.ShowInfo();
+
+footman_v.InflictDamage(palladin_v);
+footman_v.InflictDamage(palladin_v);
+footman_v.InflictDamage(palladin_v);
+footman_v.InflictDamage(palladin_v);
+footman_v.InflictDamage(palladin_v);
+footman_v.InflictDamage(palladin_v);
+palladin_v.ShowInfo();
+
+
 //static void InfoMannaLess (int health, string name, int manna)
 //{
 //    Console.WriteLine($"Health: {health} Name: {name} Manna: {manna}");

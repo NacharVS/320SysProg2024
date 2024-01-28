@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Altar
+    internal class Altar: IMagicUnitCapability
     {
         private int _Energy;
         private int _MaxEnergy;
@@ -39,6 +39,9 @@ namespace StrategyUnits
             }
         }
 
+        public int Change_manna { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int MaxManna { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         //
         public void RegenerationManna(IMagicUnitCapability unit)
         {
@@ -69,5 +72,18 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Energy right now: {Energy}.");
         }
+
+        public void DecreaseManna(int manna)
+        {
+            Change_manna -= 2;
+        }
+
+        public void IncreaseManna(int manna)
+        {
+            Change_manna += manna;
+        }
+
+        public event IMagicUnitCapability.MannaChangedDelegate MannaDecreasedEvent;
+        public event IMagicUnitCapability.MannaChangedDelegate MannaIncreasedEvent;
     }
 }
