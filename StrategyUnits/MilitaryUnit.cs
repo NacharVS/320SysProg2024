@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.@interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace StrategyUnits
 {
 
     
-    internal class MilitaryUnit : Unit
+    internal class MilitaryUnit : Unit, IBattleUnit 
     {
         public int _damage;
         public int Damage

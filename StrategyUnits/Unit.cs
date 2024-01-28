@@ -1,9 +1,10 @@
-﻿using System.Diagnostics;
+﻿using StrategyUnits.@interface;
+using System.Diagnostics;
 using static StrategyUnits.Unit;
 
 namespace StrategyUnits
 {
-    internal class Unit
+    internal class Unit : IHealth , IArmoredUnit
     {
         public delegate void HealthChangedDelegate(int health);
         public delegate void HealthIncreasedDelegate(int helth);
@@ -25,22 +26,17 @@ namespace StrategyUnits
             get => _suitHP;
             set => _suitHP = value;
         }
-
-
         public bool Rage { get; set; }
-        
         public int Armor
         {
             get { return _armor; }
             set { _armor = value; }
         }
-
         public int Weapon
         {
             get { return _weapon; }
             set { _weapon = value; }
         }
-
         public Unit(int health, string? name)
         {
             _health = health;
@@ -50,19 +46,16 @@ namespace StrategyUnits
             _weapon = 0;
             _armor = 0;
         }
-
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
-
         public int MaxHealth
         {
             get => _maxHealth;
             set => _maxHealth = value;
         }
-
         public int PravHealth
         {
             get { return _pravHealth; }
@@ -134,7 +127,6 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Персонаж: {_name} Максимальное здоровье: {_maxHealth} Здоровье: {_health}");
         }
-
         public event HealthIncreasedDelegate HealthIncreasedEvent;
         public event HealthDecreasedDelegate HealthDecreasedEvent;
         public event HealthChangedDelegate HealthChangedEvent;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.@interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class MagicUnit : MilitaryUnit
+    internal class MagicUnit : MilitaryUnit, IMagicUnit
     {
         public int _nameMagic;
         public int _mana;
@@ -26,7 +27,7 @@ namespace StrategyUnits
 
         public void Heal(Unit unit)
         {
-            if (unit.Dead == true)
+            if (unit.Dead)
             {
                 Console.WriteLine($"{unit.Name} мертв.");
                 return;
@@ -56,37 +57,37 @@ namespace StrategyUnits
             }
         }
 
-        public void Healself()
-        {
-            if (Dead == true)
-            {
-                Console.WriteLine("Лекарь мертв");
-                return;
-            }
-            while (_mana > 0)
-            {
-                if (CurentHealth < MaxHealth)
-                {
-                    _mana--;
-                    int finalHealth = CurentHealth + 2;
-                    if (MaxHealth >= MaxHealth)
-                        CurentHealth = MaxHealth;
-                    else
-                        CurentHealth += 2;
-                    Console.WriteLine($"Здоровье от {CurentHealth} до {finalHealth}; Остаток маны: {_mana}");
-                    //Health += 2;
-                }
-                if (CurentHealth >= MaxHealth)
-                {
-                    Console.WriteLine($"Исцелился.");
-                    break;
-                }
-            }
-            if (Mana == 0)
-            {
-                Console.WriteLine("Мана закончилась!");
-            }
-        }
+        //public void Healself()
+        //{
+        //    if (Dead == true)
+        //    {
+        //        Console.WriteLine("Лекарь мертв");
+        //        return;
+        //    }
+        //    while (_mana > 0)
+        //    {
+        //        if (CurentHealth < MaxHealth)
+        //        {
+        //            _mana--;
+        //            int finalHealth = CurentHealth + 2;
+        //            if (MaxHealth >= MaxHealth)
+        //                CurentHealth = MaxHealth;
+        //            else
+        //                CurentHealth += 2;
+        //            Console.WriteLine($"Здоровье от {CurentHealth} до {finalHealth}; Остаток маны: {_mana}");
+        //            //Health += 2;
+        //        }
+        //        if (CurentHealth >= MaxHealth)
+        //        {
+        //            Console.WriteLine($"Исцелился.");
+        //            break;
+        //        }
+        //    }
+        //    if (Mana == 0)
+        //    {
+        //        Console.WriteLine("Мана закончилась!");
+        //    }
+        //}
         public int Mana
         {
             get { return _mana; }
