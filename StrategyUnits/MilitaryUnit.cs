@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class MilitaryUnit: Unit, IGuard
-    ////{
+    internal class MilitaryUnit
+    {
     ////    private int _damage;
     ////    public int Damage
     ////    {

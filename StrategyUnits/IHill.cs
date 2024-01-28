@@ -8,5 +8,6 @@ namespace StrategyUnits
 {
     internal interface IHill
     {
+        public void HillOthers(IHealth health);
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class MagicUnit : MilitaryUnit
-    //{
+    internal class MagicUnit 
+    {
     //    private int _manna;
     //    private int _MaxManna;
 

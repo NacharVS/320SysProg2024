@@ -8,5 +8,6 @@ namespace StrategyUnits
 {
     internal interface IMoving
     {
+        public void Move();
     }
 }

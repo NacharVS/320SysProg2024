@@ -3,33 +3,33 @@
     internal class Unit: IHealth, IMoving
     {
         private string? _name;
-        public int MaxHealth { get; set; }
-        public int Health { get; set; }
-        public bool DeadPeson { get; set; }
-
+ 
         ////private bool _deadperson;
         ////private int _levelArmor;
         ////private int _levelWeapon;
         //private int _guard;
-        //public Unit(int health, string name, int maxHealth)
-        //{ 
-        //    Name = name;
-        //    Health = health;
-        //    MaxHealth = maxHealth;
-
-        //    //_health = health;
-        //    //_name = name;
-        //    //MaxHealth = _health;
-        //    //_deadperson = false;
-        //    //_levelArmor = 0;
-        //    //_levelWeapon = 0;
-        //    //_guard = guard;
-        //}
-
-        public void TakeDamage(int damage)
+        public Unit(string? name, int change_health, bool  deadperson, int maxHealth)
         {
-            Health -= damage;
+            //    Name = name;
+            //    Health = health;
+            //    MaxHealth = maxHealth;
+            _name = name;
+            DeadPerson = deadperson;
+            _change_health = change_health;
+            MaxHealth = maxHealth;
+            
+            //    //_levelArmor = 0;
+            //    //_levelWeapon = 0;
+            //    //_guard = guard;
         }
+        public int MaxHealth { get; set; }
+        private int _change_health { get; set; }
+        public bool DeadPerson { get; set; }
+
+        //public void TakeDamage(int damage)
+        //{
+        //    Health -= damage;
+        //}
         //public virtual int Guard
         //{
         //    get { return _guard; }
@@ -57,58 +57,60 @@
         ////    set { _deadperson = value; }
         ////}
 
-        ////public int Health 
-        ////{ 
-        ////    get => _health;
-        ////    set
-        ////    {
-        ////        if (value < 0)
-        ////        {
-        ////            _health = 0;
-        ////            _deadperson = true;
-        ////            Console.WriteLine("Character is dead.You can't damage.");
-        ////        }
-        ////        else
-        ////           if (value > MaxHealth)
-        ////            _health = MaxHealth;
-        ////        else
-        ////            _health = value;
+        public int Change_Health
+        {
+            get => _change_health;
+            set
+            {
+                int begin_health = _change_health;
 
-        ////        if (value <= _health)
-        ////        {
-        ////            HealthDecreasedEvent.Invoke(Health, Name, (MaxHealth - value), Guard);
-        ////        }
-        ////        else if (value > _health)
-        ////        {
-        ////            HealthIncreasedEvent.Invoke(Health, Name, (MaxHealth - value), Guard);
-        ////        }
-        ////    }
-        ////}
+                if (value < 0)
+                {
+                    _change_health = 0;
+                    DeadPerson = true;
+                    Console.WriteLine("Character is dead.You can't damage.");
+                }
+                else
+                   if (value > MaxHealth)
+                    _change_health = MaxHealth;
+                else
+                    _change_health = value;
+
+                if (value <= begin_health)
+                {
+                    HealthDecreasedEvent.Invoke(_change_health, Name, (begin_health - value), MaxHealth);
+                }
+                else if (value > begin_health)
+                {
+                    HealthIncreasedEvent.Invoke(_change_health, Name, (value - begin_health), MaxHealth);
+                }
+            }
+        }
 
         public void Move()
         {
             Console.WriteLine("Is moving");
         }
 
-        ////public delegate void HealthChangeDelegate(int health, string name, int manna, int guard);
+        //public delegate void HealthChangeDelegate(int health, string name, int manna, int guard);
         public virtual void ShowInfo()
         {
-            Console.WriteLine($" Unit: {Name} Health: {Health} Level Weapon: {_levelWeapon} Level Armor: {_levelArmor}");
+            Console.WriteLine($" Unit: {Name}");
             Console.WriteLine();
         }
 
 
         public void DecreaseHealth(int damage)
         {
-            Health -= damage;
+            Change_Health -= damage;
         }
 
         public void IncreaseHealth(int health)
         {
-            Health += health;
+            Change_Health += health;
         }
-        ////public event HealthChangeDelegate HealthDecreasedEvent;
-        ////public event HealthChangeDelegate HealthIncreasedEvent;
+        public event IHealth.HealthChangeDelegate HealthDecreasedEvent;
+        public event IHealth.HealthChangeDelegate HealthIncreasedEvent;
 
     }
 }

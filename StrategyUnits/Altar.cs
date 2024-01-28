@@ -40,14 +40,14 @@ namespace StrategyUnits
         }
 
         //
-        public void RegenerationManna(MagicUnit magicUnit)
+        public void RegenerationManna(IMagicUnitCapability unit)
         {
-            var EnergyBefore = magicUnit.Manna; 
+            var EnergyBefore = unit.Change_manna; 
             while (_Energy > 0)
             {
-                while (magicUnit.Manna < magicUnit.MaxManna)
+                while (unit.Change_manna < unit.MaxManna)
                 {
-                    magicUnit.Manna += 1;
+                    unit.Change_manna += 1;
                     _Energy--;
                 }
                 return;
@@ -55,15 +55,15 @@ namespace StrategyUnits
         }
         public ZeelotKnight CreateZeelotKnight()
         {
-            return new ZeelotKnight(55, "Zealot knight", 6, 10, 3);
+            return new ZeelotKnight(55, 60, "Zealot knight", false, 6, 10, 30, 4);
         }
         public Palladin CreatePalladin()
         {
-            return new Palladin(65, "Paladin", 10, 30, 5, 8);
+            return new Palladin(60, 65, "Paladin", false, 10, 30, 31, 5, 8);
         }
         public Cleric CreateCleric()
         {
-            return new Cleric(75, "Cleric", 1, 15, 3);
+            return new Cleric("Cleric", false, 15, 30, 20, 20, 4);
         }
         public void ShowInfoAboutAltar()
         {

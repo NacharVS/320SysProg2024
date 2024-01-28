@@ -6,27 +6,34 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Berserker: MilitaryUnit
+    internal class Berserker: Footman, IArmor 
     {
 
-        public Berserker(int health, string? name, int damage, int guard) : base(health, name, damage, guard) 
+        public Berserker(int change_health, int maxHealth, string? name, bool deadperson, int damage, int guard) : base(change_health, name, deadperson, change_health, maxHealth, damage) 
         {
-            
+            _guard = guard;
         }
 
-        public void Rage(Unit unit)
+        private int _guard;
+
+        public int Guard
+        {
+            get => IArmor.LevelArmor * 2 + _guard;
+            set => IArmor.LevelArmor = value;
+        }
+        public void Rage(IHealth unit)
         {
             if (DeadPerson)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"{unit.Name} died.");
+                Console.WriteLine("Unit died.");
                 Console.ResetColor();
                 return;
             }
-            if (Health < (MaxHealth / 2))
+            if (Change_Health < (MaxHealth / 2))
             {
                 Damage += Damage / 2;
-                Console.WriteLine($"{Name} has less than half health: {Health}/{MaxHealth}, damage: {Damage}");
+                Console.WriteLine($"{Name} has less than half health: {Change_Health}/{MaxHealth}\n Damage: {Damage}");
             }
             else
             {
@@ -35,7 +42,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($" Unit: {Name} Health: {Health} Damage: {Damage} Guard: {Guard} Level Weapon: {LevelWeapon} Level Armor: {LevellArmor}");
+            Console.WriteLine($" Unit: {Name} \n Health: {Change_Health}/{MaxHealth}\n Damage: {Damage}\n Guard: {Guard} \n Live? {!DeadPerson}");
         }
 
     }

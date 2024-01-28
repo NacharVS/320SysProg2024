@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal interface Interface1
+    internal interface IMagicAttack
     {
+        public void MagicAttack (IHealth unit);
+        public int MagicDamage { get; set; }
     }
 }

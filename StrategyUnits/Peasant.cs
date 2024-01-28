@@ -1,8 +1,8 @@
 ﻿namespace StrategyUnits
 {
-    internal class Peasant : Unit
+    internal class Peasant
     {
-        public Peasant() : base(30, "Peasant", 3)
+        public Peasant() 
         {
         }
     }

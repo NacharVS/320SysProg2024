@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal interface IMagicUnit
+    internal interface IArmor
     {
+        public int Guard { get; set; }
+        public static int LevelArmor { get; set; }
     }
 }
