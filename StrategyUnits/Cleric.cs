@@ -4,17 +4,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace StrategyUnits
 {
     internal class Cleric : Unit, IMagicAbilities, IHealer, IMagicAttack
     {
-        public Cleric() { }
-        public int Energy { get; set; }
-        public int MaxEnergy { get; set; }
+        public Cleric(string? name, bool isDied, double maxHealth, double maxEnergy, double magicDamage) : base(name, isDied, maxHealth)
+        {
+            MaxEnergy = maxEnergy;
+            MagicDamage = magicDamage;
+            _energy = maxEnergy;
+        }
+        private double _energy;
+        public double Energy 
+        { 
+            get { return _energy; } 
+            set
+            {
+                double pred_energy = _energy;
+                if (value < 0)
+                {
+                    _energy = 0;
+                }
+                else
+                {
+                    if (value > MaxEnergy)
+                        _energy = MaxEnergy;
+                    else
+                        _energy = value;
+                }
+                if (value < pred_energy)
+                {
+                    EnergyDecreasedEvent.Invoke(Name, _energy);
+                }
+                else if (value > pred_energy)
+                {
+                    EnergyIncreasedEvent.Invoke(Name, _energy);
+                }
+            }
+                 
+        }
+
+        public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagicAbilities.EnergyChangedDelegate EnergyIncreasedEvent;
+        public double MaxEnergy { get; set; }
         public double MagicDamage { get; set; }
 
-        public void DecreaseEnergy(int energy)
+        public void DecreaseEnergy(double energy)
         {
             Energy -= 2;
         }
@@ -35,12 +72,12 @@ namespace StrategyUnits
                 {
                     break;
                 }
-                unit.IncreseHealth(1);
+                unit.IncreaseHealth(1);
                 DecreaseEnergy(2);
             }
         }
 
-        public void IncreaseEnergy(int energy)
+        public void IncreaseEnergy(double energy)
         {
             Energy += energy;
         }
@@ -48,7 +85,15 @@ namespace StrategyUnits
         public void MagicAttack(IHealth unit)
         {
             DecreaseEnergy(1);
-            unit.DecreaseHealth(4);
+            unit.DecreaseHealth(MagicDamage);
         }
+
+        public override void ShowInfo()
+        {
+            Console.WriteLine($" Персонаж: {Name} Здоровье =  {Health}  Энергия: {Energy} Магический урон: {MagicDamage}");
+        }
+
+
+
     }
 }

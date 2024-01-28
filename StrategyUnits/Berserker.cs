@@ -7,59 +7,80 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Berserker : Footman
+    internal class Berserker : Footman, IProtection, ISkill
     {
-        private bool _rage = false;
-        public bool Rage
+        
+        private double _protection;
+
+        public Berserker(string? name, bool isDied, double maxHealth, double damage, double protection) : base(name, isDied, maxHealth, damage)
         {
-            get { return _rage; }
-            set { _rage = value; }
+            _protection = protection;
+            SkillActivate = false;
         }
 
-        //public override double Health
-        //{
-        //    get => base.Health;
-        //    set
-        //    {
-        //        if (value <= 0)
-        //        {
-        //            base.Health = 0;
-        //            DiedUnit = true;
-        //        }
-        //        else
-        //        {
-        //            if (value > MaxHealth)
-        //                base.Health = MaxHealth;
-        //            else
-        //                base.Health = value;
-        //        }
+        public double Protection 
+        {
+            get => IProtection.LvlArmor * 2 + _protection;
+            set => _protection = value;
+        }
+        public bool SkillActivate { get ; set; }
 
-        //        if (_rage == false && base.Health < MaxHealth * 0.5)
-        //        {
-        //            PowerRage();
-        //        }
-        //        else if (_rage == true && base.Health >= MaxHealth * 0.5)
-        //        {
-        //            DeactivationRage();
-        //        }
-        //    }
-        //}
+        public override double Health
+        {
+            get => base.Health;
+            set
+            {
+                if (value <= 0)
+                {
+                    base.Health = 0;
+                    IsDied = true;
+                }
+                else
+                {
+                    if (value > MaxHealth)
+                        base.Health = MaxHealth;
+                    else
+                        base.Health = value;
+                }
 
-        //public void PowerRage()
-        //{
-        //    Damage *= 1.5;
-        //    _rage = true;
-        //    Console.WriteLine($"{Name} активировал сверх ярость!");
-        //}
+                if (SkillActivate == false && base.Health < MaxHealth * 0.5)
+                {
+                    PowerRage();
+                }
+                else if (SkillActivate == true && base.Health >= MaxHealth * 0.5)
+                {
+                    DeactivationRage();
+                }
+            }
+        }
 
-        //public void DeactivationRage()
-        //{
-        //     _rage = false;
-        //     Damage /= 1.5;
-        //     Console.WriteLine($"У {Name} сверх ярость больше неактивна!");
-        //}
+        public void PowerRage()
+        {
+            Damage *= 1.5;
+            SkillActivate = true;
+            Console.WriteLine($"{Name} активировал сверх ярость!");
+        }
 
-        
-        
+        public void DeactivationRage()
+        {
+            SkillActivate = false;
+            Damage /= 1.5;
+            Console.WriteLine($"У {Name} сверх ярость больше неактивна!");
+        }
+
+        public override void DecreaseHealth(double damage)
+        {
+            if (Protection > 0)
+            {
+                double actualDamage = damage - Protection;
+                base.DecreaseHealth(actualDamage);
+            }
+            else
+            {
+                base.DecreaseHealth(damage);
+            }
+        }
+
+
     }
 }

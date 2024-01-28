@@ -11,10 +11,10 @@ namespace StrategyUnits
 
         private double _nowEnergy;
         private double _maxEnergy;
-        public Altar()
+        public Altar(double maxEnergy)
         {
-            _maxEnergy = 50;
-            _nowEnergy = _maxEnergy;
+            _maxEnergy = maxEnergy;
+            _nowEnergy = maxEnergy;
         }
         public double NowEnergy
         {
@@ -41,31 +41,41 @@ namespace StrategyUnits
             set { _maxEnergy = value; }
         }
 
-        public void RestoreEnergy(MagicUnit magicUnit)
+        public void RestoreEnergy()
         {
-            
-            while (_nowEnergy > 0)
+            while (NowEnergy != MaxEnergy)
             {
-                if (magicUnit.MaxEnergy <= magicUnit.NowEnergy)
+                NowEnergy = MaxEnergy;
+            }
+        }
+        public void RecoveryEnergy(IMagicAbilities unit)
+        {
+            while (NowEnergy > 0)
+            {
+                if (unit.MaxEnergy <= unit.Energy)
                 {
                     return;
                 }
-                magicUnit.NowEnergy += 10;
-                _nowEnergy -= 1;
+                if (NowEnergy < 2)
+                {
+                    break;
+                }
+                unit.IncreaseEnergy(1);
+                NowEnergy -= 2;
             }
         }
 
         public ZealotKnight CreateZealotKnight()
         {
-            return new ZealotKnight("Zealot knight", 60, 10, 50, 3);
+            return new ZealotKnight("Zealot knight", false, 60, 50, 3, 10);
         }
         public Paladin CreatePaladin()
         {
-            return new Paladin("Paladin", 60, 8, 60, 5, 10);
+            return new Paladin("Paladin", false, 60, 60, 5, 10, 5);
         }
         public Cleric CreateCleric()
         {
-            return new Cleric("Cleric", 60, 7, 3, 50);
+            return new Cleric("Cleric", false, 60, 50, 8);
         }
     }
 }

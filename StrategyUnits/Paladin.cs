@@ -6,78 +6,90 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Paladin : ZealotKnight, IMagicAttack
+    internal class Paladin : ZealotKnight, IMagicAttack, ISkill
     {
-        private bool _holyArmorActive = false;
+
         private double _magicDamage;
+
+        public Paladin(string? name, bool isDied, double maxHealth, double maxEnergy, double protection, double magicDamage, double damage) : base(name, isDied, maxHealth, maxEnergy, protection, damage)
+        {
+            MagicDamage = magicDamage;
+            SkillActivate = false;
+
+        }
 
         public double MagicDamage
         {
             get { return _magicDamage; }
             set { _magicDamage = value; }
         }
+        
+        public bool SkillActivate 
+        {
+            get; set;
+        }
 
         public void MagicAttack(IHealth unit)
         {
             DecreaseEnergy(2);
-            unit.DecreaseHealth(10);
+            unit.DecreaseHealth(MagicDamage);
         }
 
-        //public override double Health
-        //{
-        //    get => base.Health;
-        //    set
-        //    {
-        //        if (value <= 0)
-        //        {
-        //            base.Health = 0;
-        //            DiedUnit = true;
-        //        }
-        //        else
-        //        {
-        //            if (value > MaxHealth)
-        //                base.Health = MaxHealth;
-        //            else
-        //                base.Health = value;
-        //        }
+        public override double Health
+        {
+            get => base.Health;
+            set
+            {
+                double pred_health = base.Health;
+                if (value <= 0)
+                {
+                    base.Health = 0;
+                    IsDied = true;
+                }
+                else
+                {
+                    if (value > MaxHealth)
+                        base.Health = MaxHealth;
+                    else
+                        base.Health = value;
+                }
 
-        //        if (_holyArmorActive == false && base.Health < MaxHealth * 0.5)
-        //        {
-        //            HolyArmor();
-        //        }
-        //        else if ( _holyArmorActive == true && base.Health >= MaxHealth * 0.5)
-        //        {
-        //            HolyArmorDeactivation();
+                if (SkillActivate == false && base.Health < MaxHealth * 0.5)
+                {
+                    HolyArmor();
+                }
+                else if (SkillActivate == true && base.Health >= MaxHealth * 0.5)
+                {
+                    HolyArmorDeactivation();
 
-        //        }
-        //    }
-        //}
+                }
+            }
+        }
 
-        //public void HolyArmor()
-        //{
-        //    Defence *= 1.5;
-        //    _holyArmorActive = true;
-        //    Console.WriteLine($"{Name} активировал святую защиту!");
-        //}
+        public void HolyArmor()
+        {
+            Protection *= 1.5;
+            SkillActivate = true;
+            Console.WriteLine($"{Name} активировал святую защиту!");
+        }
 
-        //public void HolyArmorDeactivation()
-        //{
-        //    _holyArmorActive = false;
-        //    Defence /= 1.5;
-        //    Console.WriteLine($"У {Name} святая защита перестала быть активна!");
-        //}
-        //public Paladin(string? name, double health, double damage, double maxEnergy, 
-        //    double defence, double magicDamage) : base(name, health, damage, maxEnergy, defence)
-        //{
-        //    _magicDamage = magicDamage;
-        //}
+        public void HolyArmorDeactivation()
+        {
+            SkillActivate = false;
+            Protection /= 1.5;
+            Console.WriteLine($"У {Name} святая защита перестала быть активна!");
+        }
 
+        public override void ShowInfo()
+        {
+            Console.WriteLine($" Персонаж: {Name} Здоровье = {Health}  Урон = {Damage} Энергия = {Energy} Магический урон = {MagicDamage} Святая броня = {SkillActivate}");
+        }
         //public void HolyFire(Unit unit)
         //{
         //    if (unit.DiedUnit == false && NowEnergy > 0)
         //    {
         //        NowEnergy -= 1;
-        //        unit.Health -= (Damage - unit.Defence);
+        //        unit.Health -= (Damage - unit.Protection);
         //        Console.WriteLine($"Персонажу {unit.Name} нанесен урон с помощью магического удара.");
         //    }
         //    else

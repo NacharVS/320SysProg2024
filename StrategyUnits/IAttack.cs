@@ -10,5 +10,6 @@ namespace StrategyUnits
     {
         public void Attack(IHealth currentHealth);
         public double Damage { get; set; }
+        public static int LvlWeapon { get; set; }
     }
 }

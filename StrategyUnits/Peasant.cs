@@ -4,6 +4,11 @@
     {
         public bool working;
 
+        public Peasant(string? name, bool isDied, double maxHealth) : base(name, isDied, maxHealth)
+        {
+            working = false;
+        }
+
         public bool WorkingUnit
         {
             get { return working; }

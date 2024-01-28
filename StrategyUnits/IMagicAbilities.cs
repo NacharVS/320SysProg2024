@@ -8,9 +8,13 @@ namespace StrategyUnits
 {
     internal interface IMagicAbilities
     {
-        public int Energy { get; set; }
-        public int MaxEnergy { get; set; }
-        public void DecreaseEnergy(int energy);
-        public void IncreaseEnergy(int energy);
+        public double Energy { get; set; }
+        public double MaxEnergy { get; set; }
+        public void DecreaseEnergy(double energy);
+        public void IncreaseEnergy(double energy);
+        public delegate void EnergyChangedDelegate(string name, double energy);
+        public event EnergyChangedDelegate EnergyDecreasedEvent;
+        public event EnergyChangedDelegate EnergyIncreasedEvent;
+
     }
 }

@@ -20,7 +20,7 @@
 
         public bool IsDied { get; set; }
         private double _health;
-        public double Health 
+        public virtual double Health 
         {
             get => _health;
             set
@@ -58,15 +58,15 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {_name}");
+            Console.WriteLine($"Персонаж: {_name} Здоровье = {_health}");
         }
 
-        public void DecreaseHealth(double damage)
+        public virtual void DecreaseHealth(double damage)
         {
             Health -= damage;
         }
 
-        public void IncreseHealth(double health)
+        public void IncreaseHealth(double health)
         {
             Health += health;
         }
