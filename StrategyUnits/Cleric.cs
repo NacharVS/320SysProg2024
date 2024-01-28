@@ -1,38 +1,89 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interfaces;
+
+namespace StrategyUnits
 {
-    internal class Cleric : MagicUnit
+    internal class Cleric : Unit, IMagicPower, IHealerUnit, IMagicBattleUnit
     {
-        public Cleric(string? name, int maxHP, int damage,  int protection, int maxMana) : base(name, maxHP, damage, protection, maxMana) { }
-        public void Heal(Unit unit)
+        private int _energy;
+        public int MaxEnergy { get; set; }
+        public int MagicDamage { get; set; }
+
+        public Cleric(string name, int health, int maxHealth, bool isDead, int energy, int maxEnergy, int magicDamage) : base (name, health, maxHealth, isDead)
         {
-            if (unit.DeadUnit == false)
+            _energy = energy;
+            MaxEnergy = maxEnergy;
+            MagicDamage = magicDamage;
+        }
+        public int Energy
+        {
+            get { return _energy; }
+            set
             {
-                if (Mana > 2)
+                int energyChange = _energy;
+                if (value < 0)
                 {
-                    while (unit.CurrentHP < unit.MaximumHP)
-                    {
-                        unit.CurrentHP++;
-                        Mana -= 2;
-                    }
-                    HealEvent.Invoke(Mana, unit.CurrentHP, Name, unit.Name);
-                    ManaLossEvent.Invoke(Name, Mana);
+                    _energy = 0;
                 }
                 else
                 {
-                    Console.WriteLine($"{this.Name} не хватает маны.\n");
+                    if (value > MaxEnergy)
+                        _energy = MaxEnergy;
+                    else
+                        _energy = value;
+                }
+                if (value < energyChange)
+                {
+                    EnergyDecreasedEvent.Invoke(Name, _energy);
+                }
+                else if (value > energyChange)
+                {
+                    EnergyIncreasedEvent.Invoke(Name, _energy);
+                }
+            }
+        }
+        public event IMagicPower.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagicPower.EnergyChangedDelegate EnergyIncreasedEvent;
+        public void Heal(IHealth unit)
+        {
+            if (unit.IsDead == false)
+            {
+                if (Energy > 2)
+                {
+                    while (unit.Health < unit.MaxHealth)
+                    {
+                        unit.Health++;
+                        Energy -= 2;
+                    }
+                    unit.IncreaseHealth(1);
+                    DecreaseEnergy(2);
+                }
+                else
+                {
+                    Console.WriteLine($"{this.Name} не хватает энергии.\n");
                 }
             }
             else
             {
-                Console.WriteLine($"{unit.Name} мертв. Вы не можете вылечить его.\n");
+                Console.WriteLine($"{Name} мертв. Вы не можете вылечить его.\n");
                 return;
             }
         }
-
-        public delegate void HealDelegate(int mana, int maxHP, string nameHealer, string nameHealing);
-
-        public event HealDelegate HealEvent;
-        public delegate void ManaChangedDelegate(string name, int maxMana);
-        public event ManaChangedDelegate ManaLossEvent;
+        public void MagicAttack(IHealth unit)
+        {
+            DecreaseEnergy(1);
+            unit.DecreaseHealth(MagicDamage);
+        }
+        public void IncreaseEnergy(int energy)
+        {
+            Energy += energy;
+        }
+        public void DecreaseEnergy(int energy)
+        {
+            Energy -= energy;
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($" Персонаж: {Name} Здоровье: {Health}  Энергия: {Energy} Магический урон: {MagicDamage}");
+        }
     }
 }

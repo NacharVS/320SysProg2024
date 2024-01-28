@@ -1,14 +1,38 @@
 ﻿using StrategyUnits.Extra;
+using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Footman : MilitaryUnit
+    internal class Footman : Unit, IBattleUnit
     {
-        public Footman(string? name, int maxHP, int protection, int damage) : base(name, maxHP, protection, damage) { }
+        private int _damage;
+        public Footman(string? name, int health, int maxHealth, bool isDied, int damage) : base(name, health, maxHealth, isDied)
+        {
+            _damage = damage;
+        }
+        public int Damage
+        {
+            get => _damage + 3 * IBattleUnit.WeaponLvl;
+            set => _damage = value;
+        }
 
+        public void Attack(IHealth unit)
+        {
+            unit.DecreaseHealth(Damage);
+        }
+
+        public virtual void DecreaseHealth(int damage)
+        {
+            Health -= damage;
+        }
+
+        public void IncreaseHealth(int heal)
+        {
+            Health += heal;
+        }
         public override void ShowInfo()
         {
-            Console.WriteLine($"{Name} Damage: {Damage} HP: {CurrentHP}/{MaximumHP} Protection {Protection}/{MaximumProtect}\n");
+            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health} Уровень оружия: {IBattleUnit.WeaponLvl} Урон: {Damage}");
         }
     }
 }

@@ -1,42 +1,75 @@
-﻿namespace StrategyUnits
+﻿using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
+using StrategyUnits.Interfaces;
+
+namespace StrategyUnits
 {
-    internal class Paladin : MagicUnit
+    internal class Paladin : ZealotKnight, IMagicBattleUnit, ICapability
     {
         private int _magicDamage;
-        private bool _holyArmor;
+        public bool CapabilityActive { get; set; }
+        public Paladin(string? name, int health, int maxHealth, bool isDied, int defense, int damage, int energy, int maxEnergy, int magicDamage) : base(name, health, maxHealth, isDied, defense, damage, energy, maxEnergy)
+        {
+            MagicDamage = magicDamage;
+            CapabilityActive = false;
+        }
         public int MagicDamage
         {
             get { return _magicDamage; }
             set { _magicDamage = value; }
         }
-        public bool HolyArmor
+        public void MagicAttack(IHealth unit)
         {
-            get { return _holyArmor; }
-            set { _holyArmor = value; }
+            DecreaseEnergy(2);
+            unit.DecreaseHealth(MagicDamage);
         }
-        public Paladin(string? name, int maxHP, int protection, int damage, int maxMana, int magicDamage) : 
-            base(name, maxHP, damage, protection, maxMana)
+        public override int Health
         {
-            _magicDamage = magicDamage;
-        }
-        public void FireAttack(Unit unit)
-        {
-            if (DeadUnit == false)
+            get => base.Health;
+            set
             {
-                if (Mana < 5)
+                int pred_health = base.Health;
+                if (value <= 0)
                 {
-                    Console.WriteLine($"{Name} не хватает маны.\n");
+                    base.Health = 0;
+                    IsDead = true;
+                    Console.WriteLine($"{this.Name} мертв.\n");
                 }
                 else
                 {
-                    if (unit.CurrentHP == 0)
+                    if (value > MaxHealth)
+                        base.Health = MaxHealth;
+                    else
+                        base.Health = value;
+                }
+                if (CapabilityActive == false && base.Health < MaxHealth * 0.5)
+                {
+                    HolyArmor();
+                }
+                else if (CapabilityActive == true && base.Health >= MaxHealth * 0.5)
+                {
+                    HolyArmorDeactivation();
+                }
+            }
+        }
+        public void FireAttack(Unit unit)
+        {
+            if (IsDead == false)
+            {
+                if (Energy < 5)
+                {
+                    Console.WriteLine($"{Name} не хватает энергии.\n");
+                }
+                else
+                {
+                    if (unit.Health == 0)
                     {
                         Console.WriteLine($"{unit.Name} мертв. Невозможно нанести урон.\n");
                     }
                     else
                     {
-                        unit.CurrentHP -= 15;
-                        Mana -= 5;
+                        unit.Health -= 15;
+                        Energy -= 5;
                         Console.WriteLine($"{Name} нанес магичский урон {unit.Name}.\n");
                     }
                 }
@@ -46,37 +79,24 @@
                 Console.WriteLine($"{this.Name} мертв.\n");
             }
         }
-        public void ActivateHolyArmor()
+        public void HolyArmor()
         {
-            if (CurrentHP < MaximumHP / 2)
-            {
-                _holyArmor = true;
-                Protection += Protection / 2;
-                Console.WriteLine($"{Name} активировал святую броню.\n");
-            }
-            else
-            {
-                _holyArmor = false;
-                Protection = Protection;
-                Console.WriteLine();
-            }
+            Defense += Defense / 2;
+            CapabilityActive = true;
+            Console.WriteLine($"{Name} активировал святую защиту!");
         }
-        public void HolyFire(Unit unit)
+
+        public void HolyArmorDeactivation()
         {
-            if (Mana > 0)
-            {
-                unit.CurrentHP -= (_magicDamage - unit.Protection);
-                Mana -= 3;
-            }
-            else
-            {
-                Console.WriteLine($"{Name} не хватает маны. Текущая мана: {Mana}/{MaximumMana}.\n");
-            }
+            CapabilityActive = false;
+            Defense -= Defense / 2;
+            Console.WriteLine($"У {Name} святая защита перестала быть активна!");
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($" Unit: {Name} Health: {CurrentHP}/{MaximumHP} Damage: {Damage} Protection: {Protection}/{MaximumProtect} Energy: {Mana}/{MaximumMana} MagicDamage:{MagicDamage} HolyArmor: {HolyArmor} Weapon Level: {WeaponLvl} Armor Level: {ArmorLvl}\n");
-            Console.WriteLine();
+            Console.WriteLine($" Персонаж: {Name} Здоровье: {Health}  Урон: {Damage} Энергия: {Energy} Магический урон: {MagicDamage} Святая броня: {CapabilityActive}");
         }
+
+        public void CapabilityActivate() { }
     }
 }

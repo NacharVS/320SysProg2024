@@ -1,20 +1,75 @@
-﻿namespace StrategyUnits
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace StrategyUnits
 {
-    internal class Unit : IHealth
+    internal class Unit : IHealth, IMovingUnit
     {
-        public string Name;
-        public int Health { get; set; }
-        public int MaxHealth { get; set; }
-        public Unit (string name, int health, int maxHealth)
+        private string? _name;
+        private int _health { get; set; }
+        public  int MaxHealth { get; set; }
+        private bool _isDead;
+        public Unit(string name, int health, int maxHealth, bool isDead)
         {
-            Name = name;
-            Health = health;
+            _name = name;
+            _health = health;
             MaxHealth = maxHealth;
+            IsDead = isDead;
         }
-        public void TakeDamage(int damage)
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        public bool IsDead
+        {
+            get { return IsDead; }
+            set { IsDead = value; }
+        }
+        public virtual int Health
+        { 
+            get => _health; 
+            set
+            {
+                if (value <= 0)
+                {
+                    _health = 0;
+                    IsDead = true;
+                    Console.WriteLine($"{this.Name} мертв.\n");
+                }
+                else
+                {
+                    if (value > MaxHealth)
+                    {
+                        _health = MaxHealth;
+                        Console.WriteLine($"{this.Name} имеет максимальное HP.\n");;
+                    }
+                    else
+                    {
+                        _health = value;
+                    }
+                }
+            }
+        }
+        public void Move()
+        {
+            Console.WriteLine("Движется");
+        }
+        public virtual void ShowInfo()
+        {
+            Console.WriteLine($"Персонаж: {_name} Здоровье: {_health}");
+        }
+        public virtual void DecreaseHealth(int damage)
         {
             Health -= damage;
         }
+        public void IncreaseHealth(int heal)
+        {
+            Health += heal;
+        }
+        public delegate void HealthChangedDelegate(string? name, int health);
+        public event HealthChangedDelegate HealthIncreasedEvent;
+        public event HealthChangedDelegate HealthDecreasedEvent;
+
         //private string? _name;
         //private int _currentHP;
         //private bool _deadUnit;
