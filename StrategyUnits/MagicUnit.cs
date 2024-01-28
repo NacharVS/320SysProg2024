@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class MagicUnit : MilitaryUnit
+    internal class MagicUnit : MilitaryUnit, IMagicUnit
     {
         private int _damage;
         private string _name;
@@ -43,7 +44,7 @@ namespace StrategyUnits
             _mana = Mana;
             maxMana = _mana;
         }
-        virtual public void ToHeal(Unit unit)
+        public void ToHeal(Unit unit)
         {
             Console.WriteLine("Hilling");
             if (unit.Dead)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class MilitaryUnit : Unit
+    internal class MilitaryUnit : Unit, IBattleUnit
     {
         private int _attack;
         private string _name;
@@ -48,7 +49,7 @@ namespace StrategyUnits
                 }
             }
         }
-        virtual public void InflictDamage(Unit unit)
+        public void InflictDamage(Unit unit)
         {
             unit.PrevHealth = unit.Health;
             if (unit.Suit)

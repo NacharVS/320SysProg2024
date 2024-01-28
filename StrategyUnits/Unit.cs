@@ -1,6 +1,8 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interfaces;
+
+namespace StrategyUnits
 {
-    internal class Unit
+    internal class Unit : IHealth, IArmoredUnit
     {
         private int _health;
         private string? _name;
@@ -11,6 +13,7 @@
         private bool _dead = false;
         public int _maxHealth;
         private int _suitHP;
+        private int _armor;
         private bool _suit = false;
         public bool Suit {  get => _suit; set => _suit = value ; }
         public int SuitHP
@@ -24,7 +27,10 @@
             _name = name;
             _maxHealth = health;
         }
-        
+        public int Armor
+        { get => _armor;
+            set => _armor = value;
+        }
         public int PrevHealth
         {
             get => _prevHealth;
