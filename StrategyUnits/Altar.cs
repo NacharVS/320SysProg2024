@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,87 +8,89 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Altar
+    internal class Altar : IMana, IInfoAboutSmth
     {
-        private int _current_energy;
-        public int _max_energy { get; private set; }
-
-        private string? _name_altar;
-
-        public string NameAltar
+        private string? _name;
+        public string Name
         {
-            get { return _name_altar; }
-            set { _name_altar = value; }
+            get { return _name; }
+            set { _name = value; }
         }
 
-
-        public int Energy
+        private int _current_mana;
+        public int _max_mana { get; set; }
+        public int Mana
         {
-            get => _current_energy;
+            get => _current_mana;
             set
             {
                 if (value < 0)
-                    _current_energy = 0;
+                    _current_mana = 0;
                 else
-                    if (value > _max_energy)
-                    _current_energy = _max_energy;
+                    if (value > _max_mana)
+                    _current_mana = _max_mana;
                 else
-                    _current_energy = value;
+                    _current_mana = value;
             }
         }
 
         public Altar()
         {
-            _name_altar = "Altar";
-            _current_energy = 5000;
-            _max_energy = _current_energy;
+            _name = "Altar";
+            _current_mana = 5000;
+            _max_mana = _current_mana;
         }
 
-        public void RestoreMana(MagicUnit MagicUnit) 
+        public void RestoreMana(IMana MagicUnit)
         {
-            if(MagicUnit.Alive == false) 
+
+            if (MagicUnit.Mana == MagicUnit._max_mana)
             {
-                Console.WriteLine($"{MagicUnit.Name} не может восстановить ману, он уже мертв");
+                Console.WriteLine($"Персонаж с полной маной");
                 return;
             }
-            if (MagicUnit.Alive) 
+            else if (Mana < 1)
             {
-                if (MagicUnit.Mana == MagicUnit._max_mana)
-                {
-                    Console.WriteLine($"{MagicUnit.Name} с полной маной");
-                    return;
-                }
-                else if (Energy < 1)
-                {
-                    Console.WriteLine($"Алтарь не имеет достаточно маны для восстановления ману у {MagicUnit.Name}");
-                    return;
-                }
-                else 
-                {
-                    while (Energy > 0 && MagicUnit.Mana < MagicUnit._max_mana)
-                    {
-                        MagicUnit.Mana += 10;
-                        Energy -= 1;
-                    }
-                    Console.WriteLine($"{NameAltar} восстановил ману {MagicUnit.Name}");
-                } 
+                Console.WriteLine($"Алтарь не имеет достаточно маны для восстановления маны");
+                return;
             }
             else
-                Console.WriteLine($"Алтарь не может восстановить ману у {MagicUnit.Name}, его с нами больше нет (╥_╥)");
+            {
+                while (Mana > 0 && MagicUnit.Mana < MagicUnit._max_mana)
+                {
+                    MagicUnit.RegenerationMana(10);
+                    SpendMana(1);
+                }
+                Console.WriteLine($"{Name} восстановил ману верующему ");
+            }
         }
 
         public Cleric CreateCleric()
         {
-            return new Cleric(50, "Cleric", 4, 0,50,1,1);
+            return new Cleric(50, "Cleric", 50, 4, 8, 1, 1);
         }
         public ZealotKnight CreateZealotKnight()
         {
-            return new ZealotKnight(80, "ZealotKnight", 7, 12, 30,1, 1);
+            return new ZealotKnight(80, "ZealotKnight", 7, 12, 30, 1, 1);
         }
         public Paladin CreatePaladin()
         {
-            return new Paladin(100, "Paladin", 7, 15,30,1,1);
+            return new Paladin(100, "Paladin", 7, 15, 30, 1, 1);
         }
 
+        public void ShowInfo()
+        {
+            Console.WriteLine($"Название алтаря: {Name}, Состояние энергии: {Mana}/{_max_mana}");
+        }
+
+        public void RegenerationMana(int mana)
+        {
+            Mana += mana;
+        }
+
+        public void SpendMana(int mana)
+        {
+            Mana -= mana;
+        }
     }
 }

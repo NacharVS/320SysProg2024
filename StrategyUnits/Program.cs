@@ -16,9 +16,7 @@ cleric.RegenerateHealthChangeEvent += Cleric_RegenerateHealthChangeEvent;
 berserker.DecreasedHealthChangeEvent += Berserker_DecreasedHealthChangeEvent;
 berserker.RegenerateHealthChangeEvent += Berserker_RegenerateHealthChangeEvent;
 
-paladin.FireAttack(berserker);
-paladin.FireAttack(berserker);
-paladin.FireAttack(berserker);
+
 berserker.InflictDamage(paladin);
 berserker.InflictDamage(paladin);
 berserker.InflictDamage(paladin);
@@ -65,31 +63,31 @@ reforge.UpdateWeapon(berserker2);
 reforge.UpdateArmor(berserker2);
 
 
-void Berserker_RegenerateHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+void Berserker_RegenerateHealthChangeEvent(string? Name, int _health, int _current_health, int MaxHealth)
 {
-    Console.WriteLine($"Здоровье восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+    Console.WriteLine($"Здоровье {Name} восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
 }
 
-void Berserker_DecreasedHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+void Berserker_DecreasedHealthChangeEvent(string? Name, int _health, int _current_health, int MaxHealth)
 {
-    Console.WriteLine($"Здоровье упало на {_health - _current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+    Console.WriteLine($"Здоровье {Name} упало на {_health - _current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
 }
-void Cleric_RegenerateHealthChangeEvent(int _health,int _current_health, int MaxHealth)
+void Cleric_RegenerateHealthChangeEvent(string? Name, int _health,int _current_health, int MaxHealth)
 {
-    Console.WriteLine($"Здоровье восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
-}
-
-void Cleric_DecreasedHealthChangeEvent(int _health, int _current_health, int MaxHealth)
-{
-    Console.WriteLine($"Здоровье упало на {_health-_current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+    Console.WriteLine($"Здоровье {Name} восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
 }
 
-void Paladin_RegenerateHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+void Cleric_DecreasedHealthChangeEvent(string? Name, int _health, int _current_health, int MaxHealth)
 {
-    Console.WriteLine($"Здоровье восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+    Console.WriteLine($"Здоровье {Name} упало на {_health-_current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
 }
 
-void Paladin_DecreasedHealthChangeEvent(int _health, int _current_health, int MaxHealth)
+void Paladin_RegenerateHealthChangeEvent(string? Name, int _health, int _current_health, int MaxHealth)
 {
-    Console.WriteLine($"Здоровье упало на {_health - _current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+    Console.WriteLine($"Здоровье  {Name}  восстановилось на {_current_health - _health}. Текущее здоровье: {_current_health}/{MaxHealth}");
+}
+
+void Paladin_DecreasedHealthChangeEvent(string? Name, int _health, int _current_health, int MaxHealth)
+{
+    Console.WriteLine($"Здоровье  {Name}  упало на {_health - _current_health}. Текущее здоровье: {_current_health}/{MaxHealth}");
 }

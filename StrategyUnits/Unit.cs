@@ -1,25 +1,25 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interfase;
+
+namespace StrategyUnits
 {
-    internal class Unit
+    internal class Unit : IHealth, IInfoAboutSmth
     {
-        private int _health;
+        public int _health { get; set; }
+
         private string? _name;
-        public int MaxHealth { get; private set; }
+        public int MaxHealth { get; set; }
         public bool Alive { get; set; }
 
-        private int _defense;
-
-        public delegate void RegenerateHealthChange(int _health,int _current_health, int MaxHealth);
-        public delegate void DecreasedHealthChange(int _health,int _current_health, int MaxHealth);
+        public delegate void RegenerateHealthChange(string? Name, int _health, int _current_health, int MaxHealth);
+        public delegate void DecreasedHealthChange(string? Name, int _health, int _current_health, int MaxHealth);
         public event RegenerateHealthChange RegenerateHealthChangeEvent;
         public event DecreasedHealthChange DecreasedHealthChangeEvent;
-        public Unit(int health, string? name, int defense)
+        public Unit(int health, string? name)
         {
             _health = health;
             _name = name;
             MaxHealth = health;
             Alive = true;
-            _defense = defense;
         }
 
         public string Name
@@ -28,9 +28,9 @@
             set { _name = value; }
         }
 
-        public virtual int Health 
-        { 
-            get => _health; 
+        public virtual int Health
+        {
+            get => _health;
             set
             {
                 if (value <= 0)
@@ -45,21 +45,15 @@
                 {
                     if (_health < value)
                     {
-                        RegenerateHealthChangeEvent.Invoke(_health, value, MaxHealth);
+                        RegenerateHealthChangeEvent.Invoke(Name,_health, value, MaxHealth);
                     }
                     else
                     {
-                        DecreasedHealthChangeEvent.Invoke(_health, value, MaxHealth);
+                        DecreasedHealthChangeEvent.Invoke(Name, _health, value, MaxHealth);
                     }
-                    _health = value;                    
-                }  
-            } 
-        }
-
-        public int Defense
-        {
-            get { return _defense; }
-            set { _defense = value; }
+                    _health = value;
+                }
+            }
         }
 
         public void Move()
@@ -73,6 +67,16 @@
                 Console.WriteLine($"Персонаж: {_name} Здоровье: {_health}");
             else
                 Console.WriteLine($"{Name} мертв");
+        }
+
+        public virtual void TakeDamage(int damage)
+        {
+            Health -= damage;
+        }
+
+        public void RestoreHealth(int health)
+        {
+            Health += health;
         }
     }
 }
