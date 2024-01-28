@@ -43,15 +43,6 @@ paladin.ShowInfo();
 
 zealotKnight.Prayer();
 
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-
-berserker.InflictDamage(recruit);
-
 void HealthIncrease(string name, int health, int newHealth)
 {
     Console.WriteLine($"Здоровье {name} увеличилось на {newHealth - health}. Текущее здоровье - {newHealth}");

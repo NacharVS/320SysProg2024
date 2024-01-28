@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits.Interfaces
+namespace StrategyUnits
 {
     internal interface IArmoredUnit
     {
-        public int Defense { get; set; }
+        public int Armor { get; set; }
+        public static int ExtraArmor { get; set; }
+        public static int LevelExtraArmor { get; set; }
     }
 }

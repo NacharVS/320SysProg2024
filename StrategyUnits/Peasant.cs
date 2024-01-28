@@ -1,21 +1,9 @@
-﻿using StrategyUnits.Interfaces;
-
-namespace StrategyUnits
+﻿namespace StrategyUnits
 {
-    internal class Peasant : IHealth
+    internal class Peasant : Unit
     {
-        public string Name { get; set; }
-        public int Health { get; set; }
-
-        public Peasant()
+        public Peasant() : base("Peasant", 50)
         {
-            Name = "Peasant";
-            Health = 30;
-        }
-
-        public void TakeDamage(int damage)
-        {
-            Health -= damage;
         }
     }
 }

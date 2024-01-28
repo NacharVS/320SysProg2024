@@ -9,6 +9,8 @@ namespace StrategyUnits
     internal class Berserker : Footman
     {
         internal bool _rage = false;
+        private int _minDamage;
+        private int _maxDamage;
 
         public Berserker(string? name, int health, int minDamage, int maxDamage, int shield) : base(name, health, minDamage, maxDamage, shield)
         {

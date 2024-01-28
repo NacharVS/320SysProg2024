@@ -37,8 +37,8 @@ namespace StrategyUnits
             }
             else
             {
-                Shield += Shield / 2;
-                Console.WriteLine($"{Name} активировал магическую защиту. Текущая броня - {Shield}");
+                Armor += Armor / 2;
+                Console.WriteLine($"{Name} активировал магическую защиту. Текущая броня - {Armor + IArmoredUnit.ExtraArmor}");
                 _holyArmorActive = true;
                 Mana -= 3;
             }
