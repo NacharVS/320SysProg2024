@@ -3,12 +3,14 @@ using StrategyUnits.Units;
 
 var barrack = new Barrack();
 var altar = new Altar();
+var forge = new Forge();
 
 var footman = barrack.CreateFootman();
 var recruit = barrack.CreateRecruit();
 
 var paladin = altar.CreatePaladin();
 var cleric = altar.CreateCleric();
+
 
 cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
 cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
@@ -24,9 +26,14 @@ footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 recruit.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 recruit.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
-recruit.Attack(paladin);
-recruit.Attack(paladin);
-recruit.Attack(paladin);
+footman.Attack(paladin);
+forge.UpdateWeapons();
+footman.Attack(paladin);
+footman.Attack(paladin);
+footman.Attack(paladin);
+footman.Attack(paladin);
+footman.Attack(paladin);
+footman.Attack(paladin);
 cleric.HealSomebody(paladin);
 
 

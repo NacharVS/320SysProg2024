@@ -13,7 +13,7 @@ namespace StrategyUnits.Units
         private bool _holyArmorActive = false;
         private double _magicDamage;
 
-        public Paladin(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double protection, double magicDamage) : base(name, isDied, currentHealth, maxHealth, energy, maxEnergy, protection)
+        public Paladin(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double protection, double magicDamage, double damage) : base(name, isDied, currentHealth, maxHealth, energy, maxEnergy, protection, damage)
         {
             MagicDamage = magicDamage;
             PassiveSkillActivate = false;

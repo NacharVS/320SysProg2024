@@ -34,6 +34,7 @@ namespace StrategyUnits.Units
                 {
                     _currentHealth = 0;
                     IsDied = true;
+                    Console.WriteLine($"{Name} умер");
                 }
                 else
                 {
@@ -64,7 +65,7 @@ namespace StrategyUnits.Units
             Console.WriteLine($"Персонаж: {_name}");
         }
 
-        public void DecreaseHealth(double damage)
+        public virtual void DecreaseHealth(double damage)
         {
             CurrentHealth -= damage;
         }

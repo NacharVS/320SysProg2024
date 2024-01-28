@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace StrategyUnits.Units
 {
-    internal class ZealotKnight : Unit, IMagicAbilities, IArmoredUnit
+    internal class ZealotKnight : Unit, IMagicAbilities, IArmoredUnit, IAttack
     {
         private int _currentEnergy;
         public int CurrentEnergy
@@ -39,12 +39,25 @@ namespace StrategyUnits.Units
             }
         }
         public int MaxEnergy { get; set; }
-        public double Protection { get; set; }
-        public ZealotKnight(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double protection) : base(name, isDied, currentHealth, maxHealth)
+        private double _protection;
+        public double Protection
+        {
+            get => IArmoredUnit.LvlArmor * 2 + _protection;
+            set => _protection = value;
+        }
+        private double _damage;
+        public double Damage
+        {
+            get => IAttack.LvlWeapon * 2 + _damage;
+            set => _damage = value;
+        }
+
+        public ZealotKnight(string? name, bool isDied, double currentHealth, double maxHealth, int energy, int maxEnergy, double protection, double damage) : base(name, isDied, currentHealth, maxHealth)
         {
             _currentEnergy = energy;
             MaxEnergy = maxEnergy;
-            Protection = protection;
+            _damage = damage;
+            _protection = protection;
         }
 
         public event IMagicAbilities.EnergyChangedDelegate EnergyDecreasedEvent;
@@ -58,6 +71,18 @@ namespace StrategyUnits.Units
         public void IncreaseEnergy(int energy)
         {
             CurrentEnergy += energy;
+        }
+        public override void DecreaseHealth(double damage)
+        {
+            if (Protection > 0)
+            {
+                double actualDamage = damage - Protection;
+                base.DecreaseHealth(actualDamage);
+            }
+            else
+            {
+                base.DecreaseHealth(damage);
+            }
         }
         public void Player()
         {
@@ -75,6 +100,11 @@ namespace StrategyUnits.Units
             {
                 Console.WriteLine($"Персонаж {Name} мертв, действие невозможно");
             }
+        }
+
+        public void Attack(IHealth unit)
+        {
+            unit.DecreaseHealth(Damage);
         }
     }
 }

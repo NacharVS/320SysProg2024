@@ -12,11 +12,11 @@ namespace StrategyUnits.Units
         //Magic units
         public ZealotKnight CreateZealotKnight()
         {
-            return new ZealotKnight("Zealot knight", false, 12, 12, 20, 20, 3);
+            return new ZealotKnight("Zealot knight", false, 12, 12, 20, 20, 3, 6);
         }
         public Paladin CreatePaladin()
         {
-            return new Paladin("Paladin", false, 18, 18, 30, 30, 6, 22);
+            return new Paladin("Paladin", false, 18, 18, 30, 30, 6, 22,17);
         }
         public Cleric CreateCleric()
         {

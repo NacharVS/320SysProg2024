@@ -53,7 +53,7 @@ namespace StrategyUnits.Units
 
         public void HealSomebody(IHealth unit)
         {
-            if (IsDied)
+            if (unit.IsDied)
             {
                 return;
             }
