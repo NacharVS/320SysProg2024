@@ -43,21 +43,21 @@ namespace StrategyUnits
                 Console.WriteLine($"Алтарь имеет энергию {Energy}/{MaxEnergy}. Для восстановаления маны нужно минимум 1 очко энергии алтаря");
             }
             Console.WriteLine($"{((Unit)unit).Name} восстанавливает ману в алтаре");
-            int needRestore = unit.MaxMana - unit.Mana;
-            while (needRestore % 10 != 0)
+            int needRM = unit.MaxMana - unit.Mana;
+            while (needRM % 10 != 0)
             {
-                needRestore++;
+                needRM++;
             }
-            int possibleRestore = Energy * 10;
-            if (needRestore <= possibleRestore)
+            int possibleRM = Energy * 10;
+            if (needRM <= possibleRM)
             {
                 unit.Mana = unit.MaxMana;
-                Energy -= needRestore / 10;
+                Energy -= needRM / 10;
             }
             else
             {
-                unit.Mana += possibleRestore;
-                Energy -= possibleRestore / 10;
+                unit.Mana += possibleRM;
+                Energy -= possibleRM / 10;
             }
         }
 
