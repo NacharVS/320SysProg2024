@@ -20,12 +20,12 @@ namespace MongoDBCRUD
             collection.InsertOne(user);
         }
 
-        static List<User> CreateUsers(Team team)
+        public static void CreateTeam(Team team)
         {
-            List<User> users = new List<User>();
-            users.Add(new User("Vovan", "dssd", 44));
-            users.Add(new User("Semen", "dssd", 44));
-            return users;
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("CRUD");
+            var collection = database.GetCollection<Team>("TeamCollections");
+            collection.InsertOne(team);
         }
         public static User GetUser(string name)
         {
