@@ -4,17 +4,17 @@
     {
         public Footman CreateRecruit() //Рекрут
         {
-            return new Footman(45, "Recruit", 1, 5);
+            return new Footman("Recruit", 45, 5);
         }
 
         public Footman CreateFootman() //Пехотинец
         {
-            return new Footman(60, "Footman", 3, 7);
+            return new Footman("Footman", 60, 7);
         }
 
         public Berserker CreateBerserker() //Берсекер
         {
-            return new Berserker(120, "Berserker", 5, 15);
+            return new Berserker("Berserker", 120, 15, 7);
         }
     }
 }

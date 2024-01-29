@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal interface IMilitaryUnit
+    internal interface IArmor //ЗАЩИТА
     {
+        public int Armor { get; set; }
+        public static int LevelArmor { get; set; }
     }
 }

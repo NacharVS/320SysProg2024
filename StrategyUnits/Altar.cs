@@ -1,9 +1,13 @@
 ﻿namespace StrategyUnits
 {
-    internal class Altar
+    internal class Altar : IMagicUnit
     {
         private string? _nameA;
         private int _Energy;
+
+        public event IMagicUnit.MannaChangedDelegate MannaDecreasedEvent;
+        public event IMagicUnit.MannaChangedDelegate MannaIncreasedEvent;
+
         public int MaxEnergy { get; private set; }
 
         public Altar()
@@ -34,11 +38,14 @@
             }
         }
 
+        public int Manna { get; set ; }
+        public int MaxManna { get; set; }
+
         //Метод регенарции манны
-        public void RegenerationManna(MagicUnit magicUnit)
+        public void RegenerationManna(IMagicUnit magicUnit)
         {
             if (magicUnit.Manna == magicUnit.MaxManna)
-                Console.WriteLine($"У {magicUnit.Name} максимальное значение манны.");
+                Console.WriteLine($"Максимальное значение манны.");
             else
             {
                 Console.WriteLine($"{NameA} восстанавливает манну...");
@@ -69,18 +76,27 @@
         //СОЗДАНИЕ ЮНИТОВ С МАГИЕЙ----------------------------------------------------------------------------
         public Cleric CreateCleric() //Создание клериков
         {
-            return new Cleric(45, "Cleric", 3, 5, 20);
+            return new Cleric( "Cleric", 45, 3, 5, 20); //Имя, здоровье, урон, магич урон, манна
         }
 
         public Palladin CreatePalladin()
         {
-            return new Palladin(95, "Palladin", 10, 10, 35);
+            return new Palladin("Palladin", 95, 10, 7, 10, 35);
         }
 
         public ZeelotKnight CreateZeelotKnight()
         {
-            return new ZeelotKnight(70, "Zeelot Knight", 3, 5, 15);
+            return new ZeelotKnight( "Zeelot Knight", 70, 3, 5, 15); //Имя, здоровье, урон, защита, манна
         }
 
+        public void DecreaseManna(int manna)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IncreaseManna(int manna)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
