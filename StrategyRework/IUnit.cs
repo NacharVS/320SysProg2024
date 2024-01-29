@@ -8,6 +8,8 @@
         public int Health { get; set; }
         public string Name { get; set; }
         public void TakeDamage(int damage);
+        public int _health { get; set; }
+        public bool Active { get; set; }
         public void ShowInfo();
     }
 }

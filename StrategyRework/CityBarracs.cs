@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StrategyRework
+﻿namespace StrategyRework
 {
     internal class CityBarracs
     {
@@ -22,11 +16,11 @@ namespace StrategyRework
         }
         public ZeelotKnight CreateZeelotKnight()
         {
-            return new ZeelotKnight("Хилир", 140, 60,6,9, 4, 0,0);
+            return new ZeelotKnight("Магический фанатик", 140, 60,3,9, 4, 0,0);
         }
         public Paladin CreatePaladin()
         {
-            return new Paladin("Хилир", 110, 70, 4, 5,11,0,0);
+            return new Paladin("Паладиин", 110, 70, 4, 9,11,0,0);
         }
     }
 }

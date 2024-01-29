@@ -8,9 +8,10 @@ namespace StrategyRework
 {
     internal interface IMilitryUnit : IWarrior
     {
+        public int DamageTest {  get; set; }
         public int Damage { get; set; }
         public int MaxDamage { get; set; }
         public int LvlUpDamage { get; set; }
-        public void Attack(IUnit unit);
+        public void Attack(IWarrior unit);
     }
 }

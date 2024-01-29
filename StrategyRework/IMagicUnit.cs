@@ -8,6 +8,7 @@ namespace StrategyRework
 {
     internal interface IMagicUnit
     {
+        public int ManaStart {  get; set; }
         public int Mana {  get; set; }
         public int MaxMana { get; set; }
     }
