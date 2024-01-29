@@ -13,6 +13,11 @@ namespace StrategyUnits.Interfase
         public int Health { get; set; }
         public bool Alive { get; set; }
 
+        public delegate void RegenerateHealthChange(string? Name, int _health, int _current_health, int MaxHealth);
+        public delegate void DecreasedHealthChange(string? Name, int _health, int _current_health, int MaxHealth);
+        public event RegenerateHealthChange RegenerateHealthChangeEvent;
+        public event DecreasedHealthChange DecreasedHealthChangeEvent;
+
         void TakeDamage (int damage);
         void RestoreHealth (int health);
     }

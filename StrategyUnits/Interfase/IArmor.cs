@@ -9,6 +9,6 @@ namespace StrategyUnits.Interfase
     internal interface IArmor
     {
         public int Defense { get; set; }
-        public int ArmorLvl { get; set; }
+        public static int ArmorLvl { get; set; }
     }
 }

@@ -10,8 +10,10 @@ namespace StrategyUnits.Interfase
     internal interface IAttack
     {
         public int Damage { get; set; }
-        public int WeaponLvl { get; set; }
+        public static int WeaponLvl { get; set; }
         void InflictDamage(IHealth unit);
 
+        public delegate void InflictDamageSmbd(string? Name, int damage);
+        public event InflictDamageSmbd InflictDamageSmbdEvent;
     }
 }

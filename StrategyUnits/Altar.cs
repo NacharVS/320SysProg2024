@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static StrategyUnits.Interfase.IMana;
 
 namespace StrategyUnits
 {
@@ -17,7 +18,10 @@ namespace StrategyUnits
             set { _name = value; }
         }
 
-        private int _current_mana;
+        public event RegenerateMana RegenerateManaEvent;
+        public event DecreasedMana DecreasedManaEvent;
+
+        public int _current_mana { get; set; }
         public int _max_mana { get; set; }
         public int Mana
         {
@@ -30,7 +34,15 @@ namespace StrategyUnits
                     if (value > _max_mana)
                     _current_mana = _max_mana;
                 else
-                    _current_mana = value;
+                if (_current_mana < value)
+                {
+                    RegenerateManaEvent.Invoke(Name, _current_mana, value, _max_mana);
+                }
+                else
+                {
+                    DecreasedManaEvent.Invoke(Name, _current_mana, value, _max_mana);
+                }
+                _current_mana = value;
             }
         }
 

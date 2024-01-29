@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static StrategyUnits.Interfase.IAttack;
+using static StrategyUnits.Interfase.IMana;
 
 namespace StrategyUnits
 {
@@ -27,8 +29,8 @@ namespace StrategyUnits
         private int _defense;
         public int Defense
         {
-            get { return _defense; }
-            set { _defense = value; }
+            get => IArmor.ArmorLvl * 2 + _defense;
+            set => _defense = value;
         }
 
         private int _ArmorLvl = 1;
@@ -47,12 +49,15 @@ namespace StrategyUnits
         private int _damage;
         public int Damage
         {
-            get { return _damage; }
-            set { _damage = value; }
+            get => IAttack.WeaponLvl * 2 + _damage;
+            set => _damage = value;
         }
 
-        private int _current_mana;
+        public int _current_mana { get; set; }
         public int _max_mana { get; set; }
+
+        public event RegenerateMana RegenerateManaEvent;
+        public event DecreasedMana DecreasedManaEvent;
 
         public int Mana
         {
@@ -65,13 +70,25 @@ namespace StrategyUnits
                     if (value > _max_mana)
                     _current_mana = _max_mana;
                 else
-                    _current_mana = value;
+                    if (value > _max_mana)
+                    _current_mana = _max_mana;
+                else
+                if (_current_mana < value)
+                {
+                    RegenerateManaEvent.Invoke(Name, _current_mana, value, _max_mana);
+                }
+                else
+                {
+                    DecreasedManaEvent.Invoke(Name, _current_mana, value, _max_mana);
+                }
+                _current_mana = value;
             }
         }
         public override void TakeDamage(int damage)
         {
             Health -= damage - Defense;
         }
+        public event InflictDamageSmbd InflictDamageSmbdEvent;
         public void InflictDamage(IHealth unit)
         {
             if (Alive == false)
@@ -82,6 +99,7 @@ namespace StrategyUnits
             if (unit.Alive)
             {
                 unit.TakeDamage(Damage);
+                InflictDamageSmbdEvent.Invoke(Name, Damage);
             }
             else
                 Console.WriteLine($"{Name} не может атаковать противника. Противник уже мертв.");

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static StrategyUnits.Interfase.IAttack;
 
 namespace StrategyUnits
 {
@@ -67,7 +68,7 @@ namespace StrategyUnits
             else
                 Console.WriteLine($"{Name} мертв");
         }
-
+        public event InflictDamageSmbd InflictDamageSmbdEvent;
         public void InflictMagicDamage(IHealth unit)
         {
             if (Alive == false)
@@ -89,6 +90,7 @@ namespace StrategyUnits
             Console.WriteLine($"{Name} атаковал огненным шаром");
             unit.TakeDamage(MagicDamage);
             SpendMana(8);
+            InflictDamageSmbdEvent.Invoke(Name, Damage);
         }
     }
 }

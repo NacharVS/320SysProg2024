@@ -10,10 +10,8 @@ namespace StrategyUnits
         public int MaxHealth { get; set; }
         public bool Alive { get; set; }
 
-        public delegate void RegenerateHealthChange(string? Name, int _health, int _current_health, int MaxHealth);
-        public delegate void DecreasedHealthChange(string? Name, int _health, int _current_health, int MaxHealth);
-        public event RegenerateHealthChange RegenerateHealthChangeEvent;
-        public event DecreasedHealthChange DecreasedHealthChangeEvent;
+        public event IHealth.RegenerateHealthChange RegenerateHealthChangeEvent;
+        public event IHealth.DecreasedHealthChange DecreasedHealthChangeEvent;
         public Unit(int health, string? name)
         {
             _health = health;

@@ -1,12 +1,12 @@
 ﻿using StrategyUnits.Interfase;
 using System.Xml.Linq;
+using static StrategyUnits.Interfase.IAttack;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace StrategyUnits
 {
     internal class Footman : Unit, IArmor, IAttack
     {
-
         public Footman(int health, string? name, int defense, int damage, int ArmorLvl, int WeaponLvl) : base(health, name)
         {
             _defense = defense;
@@ -18,8 +18,8 @@ namespace StrategyUnits
         private int _defense;
         public int Defense
         {
-            get { return _defense; }
-            set { _defense = value; }
+            get => IArmor.ArmorLvl * 2 + _defense;
+            set => _defense = value;
         }
 
         private int _ArmorLvl = 1;
@@ -38,13 +38,15 @@ namespace StrategyUnits
         private int _damage;
         public int Damage
         {
-            get { return _damage; }
-            set { _damage = value; }
+            get => IAttack.WeaponLvl * 2 + _damage;
+            set => _damage = value;
         }
         public override void TakeDamage(int damage)
         {
             Health -= damage - Defense;
         }
+
+        public event InflictDamageSmbd InflictDamageSmbdEvent;
         public void InflictDamage(IHealth unit)
         {
             if (Alive == false)
@@ -55,6 +57,7 @@ namespace StrategyUnits
             if (unit.Alive)
             {
                 unit.TakeDamage(Damage);
+                InflictDamageSmbdEvent.Invoke(Name, Damage);
             }
             else
                 Console.WriteLine($"{Name} не может атаковать противника. Противник уже мертв.");
