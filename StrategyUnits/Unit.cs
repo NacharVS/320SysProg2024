@@ -2,34 +2,81 @@
 {
     internal class Unit : IHealth, IMovihgUnit
     {
-        private string? _name;
+        private string? _name; //Имя
+        private int _health;  //Здоровье
+
+        public int MaxHealth { get; set; } //Максимальное Здоровье
+        public bool IsDead { get; set; } //Статуст персонажа
+
+        public Unit(string? name, int health)
+        {
+            _name = name;
+            _health = health;
+            MaxHealth = _health;
+            IsDead = false;
+        }
+
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
-        public int Health { get; set; }
-        public int MaxHealth { get; set ; }
-        public bool IsDead { get; set; } = false;
 
-        public void DecreaseHealth()
+        public int Health
         {
-            throw new NotImplementedException();
+            get => _health;
+            set
+            {
+                int begin_health = _health;
+
+                if (value < 0)
+                {
+                    _health = 0;
+                    IsDead = true;
+                    Console.WriteLine($"{Name} мёртв. Нанесения урона невозможно.");
+                }
+                else
+                   if (value > MaxHealth)
+                    _health = MaxHealth;
+                else
+                    _health = value;
+
+                if (value <= begin_health)
+                {
+                    HealthDecreasedEvent.Invoke(_health, Name, (begin_health - value), MaxHealth);
+                }
+                else if (value > begin_health)
+                {
+                    HealthIncreasedEvent.Invoke(_health, Name, (value - begin_health), MaxHealth);
+                }
+            }
+        }//Здоровье
+
+        public event IHealth.HealthChangeDelegate HealthDecreasedEvent;
+        public event IHealth.HealthChangeDelegate HealthIncreasedEvent;
+
+        public void DecreaseHealth(int damage)
+        {
+            Health -= damage;
         }
 
-        public void IncreseHealth()
+        public void IncreseHealth(int health)
         {
-            throw new NotImplementedException();
+            Health += health;
         }
 
-        public void Move()
+        public void Move() //Передвижение
         {
             Console.WriteLine("Передвижение.");
         }
+
         public virtual void ShowInfo()
         {
             Console.WriteLine($"Unit: {Name}\t Здоровье: {Health} Состоние жизни: {IsDead}");
         }
+
+
+
         //private int _health;                                              //Здоровье
         //private string? _name;                                            //Наименование
         //private int _armor;                                               //Защита (броня).

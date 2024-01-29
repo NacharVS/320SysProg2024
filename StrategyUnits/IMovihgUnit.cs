@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal interface IMovihgUnit
+    internal interface IMovihgUnit //ПЕРЕДВИЖЕНИЕ
     {
         public void Move();
     }
