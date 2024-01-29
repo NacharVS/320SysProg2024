@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyUnits", "StrategyUn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceBaseTest", "InterfaceBaseTest\InterfaceBaseTest.csproj", "{53755FFB-5653-43D7-BFD0-ADED4CC64517}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDatabase", "MongoDatabase\MongoDatabase.csproj", "{D9EA207C-916B-49EB-8D16-A85DE1D2E786}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{53755FFB-5653-43D7-BFD0-ADED4CC64517}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53755FFB-5653-43D7-BFD0-ADED4CC64517}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53755FFB-5653-43D7-BFD0-ADED4CC64517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9EA207C-916B-49EB-8D16-A85DE1D2E786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9EA207C-916B-49EB-8D16-A85DE1D2E786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9EA207C-916B-49EB-8D16-A85DE1D2E786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9EA207C-916B-49EB-8D16-A85DE1D2E786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
