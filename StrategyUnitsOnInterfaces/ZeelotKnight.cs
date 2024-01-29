@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnitsOnInterfaces
 {
-    internal interface IMagicUnit
+    internal class ZeelotKnights
     {
-        public int Mana { get; set; }
-
-        public int MaxMana { get; set; }
-
     }
 }
