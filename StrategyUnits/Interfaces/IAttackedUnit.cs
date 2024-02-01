@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Interfaces
 {
-    internal interface IArmoredUnit
+    internal interface IAttackedUnit : IHealth, IDefense
     {
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace StrategyUnits.Units
 {
 
-    internal class MagicUnit : MilitaryUnit
+    internal class MagicUnit : MilitaryUnit, IMagicUnit
     {
         private int _manaPoints;
         private int _maxManaPoints;
@@ -42,6 +43,21 @@ namespace StrategyUnits.Units
         public virtual void AttackMagically(Unit unit)
         {
 
+        }
+
+        public void MagicAttack(IAttackedUnit unit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TakeMana(int manaPoints)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddMana(int manaPoints)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Units
 {
-    internal class MilitaryUnit : Unit
+    internal class MilitaryUnit : Unit,IMilitaryUnit,IAttackedUnit
     {
         private int _minDamage;
         public int MinDamage
@@ -46,6 +47,9 @@ namespace StrategyUnits.Units
             set { _maxDamage = value; }
         }
 
+        double IMilitaryUnit.MinDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double IMilitaryUnit.MaxDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public virtual void Attack(Unit attackedUnit)
         {
             Random rnd = new Random();
@@ -76,6 +80,21 @@ namespace StrategyUnits.Units
 
             Console.WriteLine($"Юнит: {NameOfClass} Здоровье: {CurrentHealth} Максимальное здоровье: {MaxHealth} \n" +
                 $"Броня: {Defense} Минимальный урон: {MinDamage} Максимальный урон: {MaxDamage}");
+        }
+
+        public void Attack(IAttackedUnit unit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TakeDamage(int damage)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetHeal(int heal)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Interfaces
 {
-    internal interface IBattleUnitcs
+    internal interface IMagicUnit : IMagical
     {
+        public void MagicAttack(IAttackedUnit unit);
     }
 }

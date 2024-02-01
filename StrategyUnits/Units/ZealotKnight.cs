@@ -37,9 +37,9 @@ namespace StrategyUnits.Units
                 Console.WriteLine($"{NameOfUnit} имеет  ману {ManaPoints}. Для молитвы нужно минимум  10 очка маны");
                 return;
             }
+            TakeMana(10);
             Console.WriteLine($"{NameOfUnit} молитва была прочтена.");
-            CurrentHealth += 20;
-            ManaPoints -= 10;
+            GetHeal(20);
         }
     }
 }
