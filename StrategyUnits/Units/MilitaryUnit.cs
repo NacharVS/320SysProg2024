@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    public class MilitaryUnit : Unit
+    public class MilitaryUnit : Unit, IMilitaryUnit, IAttackedUnit
     {
         private int _minDamage;
         public int MinDamage
@@ -17,7 +18,7 @@ namespace StrategyUnits
 
         private int _maxDamage;
 
-        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage) : base(currentHealth, nameOfClass, defense)
+        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense, int minDamage, int maxDamage) : base(currentHealth, nameOfClass)
         {
             MinDamage = minDamage;
             MaxDamage = maxDamage;
@@ -28,20 +29,33 @@ namespace StrategyUnits
             get { return _maxDamage; }
             set { _maxDamage = value; }
         }
+        private int _defense;
 
-        public virtual void Attack(Unit attackedUnit)
+        public int Defense {
+            get { return _defense; }
+            set { _defense = value; }
+        }
+
+        public override void ShowInfo()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Unit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage}");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public void Attack(IAttackedUnit unit)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Random rnd = new Random();
-            int appliedDamage = rnd.Next(MinDamage, MaxDamage) - attackedUnit.Defense;
-            if (!attackedUnit.IsDead)
+            int appliedDamage = rnd.Next(MinDamage, MaxDamage) - unit.Defense;
+            if (!unit.IsDead)
             {
                 if (appliedDamage >= 0)
                 {
                     Console.WriteLine(
-                        $">> Attack successful. You've applied {appliedDamage} ({appliedDamage+attackedUnit.Defense}-{attackedUnit.Defense}) DP.\n"
+                        $">> Attack successful. You've applied {appliedDamage} ({appliedDamage + unit.Defense}-{unit.Defense}) DP.\n"
                         );
-                    attackedUnit.CurrentHealth -= appliedDamage;
+                    unit.TakeDamage(appliedDamage);
                 }
                 else
                 {
@@ -54,13 +68,5 @@ namespace StrategyUnits
             }
             Console.ForegroundColor = ConsoleColor.White;
         }
-
-        public override void ShowInfo()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Unit: {this.NameOfClass} Health: {this.CurrentHealth} MaxHealth: {this.MaxHealth} \nDefense: {this.Defense} MinDamage: {this.MinDamage} MaxDamage: {this.MaxDamage}");
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
     }
 }

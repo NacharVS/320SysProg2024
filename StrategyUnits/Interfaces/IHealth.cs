@@ -12,5 +12,6 @@ namespace StrategyUnits
         public int MaxHealth { get; set; }
         public bool IsDead { get; set; }
         public void TakeDamage(int damage);
+        public void GetHeal(int heal);
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Units;
+
+namespace StrategyUnits
 {
-    public class Unit
+    public class Unit : IHealth
     {
         public delegate void HealthIncreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void HealthDecreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
@@ -14,13 +16,13 @@
         private int _maxHealth;
         private string? _nameOfClass;
         private bool _isDead = false;
-        private int _defense;
+        /*private int _defense;
 
         public int Defense
         {
             get { return _defense; }
             set { _defense = value; }
-        }
+        }*/
         public string NameOfClass
         {
             get { return _nameOfClass; }
@@ -75,12 +77,11 @@
             set => _maxHealth = value;
         }
         public bool IsDead {get; set;}
-        public Unit(int currentHealth, string? nameOfClass, int defense)
+        public Unit(int currentHealth, string? nameOfClass)
         {
             _currentHealth = currentHealth;
             _nameOfClass = nameOfClass;
             _maxHealth = currentHealth;
-            _defense = defense;
         }
 
         public void Move()
@@ -90,7 +91,17 @@
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Unit: {_nameOfClass} Health: {_currentHealth} MaxHealth: {_maxHealth} Defense: {_defense}");
+            Console.WriteLine($"Unit: {_nameOfClass} Health: {_currentHealth} MaxHealth: {_maxHealth}");
+        }
+
+        public void TakeDamage(int damage)
+        {
+            CurrentHealth -= damage;
+        }
+
+        public void GetHeal(int heal)
+        {
+            CurrentHealth += heal;
         }
 
         public event HealthIncreasedDelegate HealthIncreasedEvent;

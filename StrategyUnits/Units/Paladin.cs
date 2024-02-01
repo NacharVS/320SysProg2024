@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace StrategyUnits
             set { _nameOfUnit = value; }
         }
 
-         public override void AttackMagically(Unit attackedUnit)
+         public void AttackMagically(IAttackedUnit attackedUnit)
         {
             Random rnd = new Random();
             int appliedDamage = rnd.Next(this.MinDamage*2, this.MaxDamage*2) - attackedUnit.Defense/2;

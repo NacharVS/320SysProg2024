@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Units;
+
+namespace StrategyUnits
 {
     internal class Barracks
     {
