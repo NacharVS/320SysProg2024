@@ -9,17 +9,17 @@ namespace StrategyUnits
 {
     internal class Forge
     {
-        public void WeaponUpgrade(MilitaryUnit unit)
+        public void WeaponUpgrade()
         {
-            if (unit.WeaponLvl < 2)
+            if (IBattleUnit.WeaponLvl < 2)
             {
-                unit.WeaponLvl += 1;
-                unit.Damage += 3;
-                Console.WriteLine($"{unit.Name} повысил уровень меча на 1. Текущий урон: {unit.Damage}, текущий уровень меча: {unit.WeaponLvl}.\n");
+                IBattleUnit.WeaponLvl += 1;
+                footman.Damage += 3;
+                Console.WriteLine($"{footman.Name} повысил уровень меча на 1. Текущий урон: {footman.Damage}, текущий уровень меча: {footman.WeaponLvl}.\n");
             }
             else
             {
-                Console.WriteLine($"{unit.Name} имеет максимальный уровень меча: {unit.WeaponLvl}.\n");
+                Console.WriteLine($"{footman.Name} имеет максимальный уровень меча: {footman.WeaponLvl}.\n");
             }
         }
         public void ArmorUpgrade(Unit unit)

@@ -44,7 +44,7 @@ namespace StrategyUnits
             {
                 CapabilityActive = false;
                 Damage = Damage;
-                Console.WriteLine();
+                Console.WriteLine($"{Name} деактивировал ярость.");
             }
         }
         

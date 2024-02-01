@@ -15,20 +15,9 @@ namespace StrategyUnits
             get => _damage + 3 * IBattleUnit.WeaponLvl;
             set => _damage = value;
         }
-
         public void Attack(IHealth unit)
         {
             unit.DecreaseHealth(Damage);
-        }
-
-        public virtual void DecreaseHealth(int damage)
-        {
-            Health -= damage;
-        }
-
-        public void IncreaseHealth(int heal)
-        {
-            Health += heal;
         }
         public override void ShowInfo()
         {
