@@ -103,9 +103,9 @@ Footman footman = barrack.CreateFootman();
 Paladin paladin = altar.CreatePaladin();
 ZealotKnight zealotKnight = altar.CreateZealotKnight();
 
-static void MethodDamage(string? name, int health, int maxHealth, int damage, string nameDamaging, string nameDamaged)
+static void MethodDamage(string? name, int health, int health1, int maxHealth, int damage)
 {
-    Console.WriteLine($"{nameDamaging} аттаковал {nameDamaged}.\n{nameDamaged} получил урон {damage}. Текущий HP {nameDamaged}: {health}/{maxHealth}. Текущая защита: {maxProtect}.\n");
+    Console.WriteLine($"{name} аттаковал. {name} получил урон {damage}. Текущий HP {name}: {health}/{maxHealth}.\n");
 }
 
 footman.HealthIncreasedEvent += ;

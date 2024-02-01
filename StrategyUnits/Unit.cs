@@ -71,9 +71,7 @@ namespace StrategyUnits
         {
             Health += heal;
         }
-        public delegate void HealthChangedDelegate(string? name, int health, int health1, int maxHealth);
-        public event HealthChangedDelegate HealthIncreasedEvent;
-        public event HealthChangedDelegate HealthDecreasedEvent;
+        
 
         //private string? _name;
         //private int _currentHP;
