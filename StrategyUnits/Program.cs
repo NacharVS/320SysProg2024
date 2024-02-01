@@ -9,7 +9,7 @@ Console.WriteLine("Begin:");
 
 Barracks barrack = new Barracks();
 Forge forge = new Forge();
-Altar altar = new Altar();
+Altar altar = new Altar(1000, "Altar 1", 1010);
 Berserker berserker = barrack.CreateBerserker();
 Footman footman = barrack.CreateFootman();
 Cleric cleric = altar.CreateCleric();
@@ -22,6 +22,8 @@ ZeelotKnight zealotKnight = altar.CreateZeelotKnight();
 //footman.ShowInfo();
 //cleric.ShowInfo();
 //paladin.ShowInfo();
+altar.MannaDecreasedEvent += InfoMannaGrow;
+altar.MannaIncreasedEvent += InfoMannaGrow;
 paladin.HealthDecreasedEvent += InfoHealthIncreased;
 paladin.HealthIncreasedEvent += InfoHealthIncreased;
 
@@ -44,9 +46,9 @@ paladin.HealthIncreasedEvent += InfoHealthIncreased;
 //Console.WriteLine("Hill");
 
 paladin.HealthIncreasedEvent += InfoHealthIncreased;
-paladin.MannaDecreasedEvent += InfoMannaLess;
+paladin.MannaDecreasedEvent += InfoMannaGrow;
 cleric.HealthIncreasedEvent += InfoHealthIncreased;
-cleric.MannaDecreasedEvent += InfoMannaLess;
+cleric.MannaDecreasedEvent += InfoMannaGrow;
 
 
 
@@ -153,7 +155,7 @@ cleric.MannaDecreasedEvent += InfoMannaLess;
 
 
 
-Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+Console.WriteLine("");
 Cleric cleric_v = altar.CreateCleric();
 cleric_v.ShowInfo();
 Console.WriteLine(" ");
@@ -170,28 +172,37 @@ Palladin palladin_v = altar.CreatePalladin();
 palladin_v.ShowInfo();
 Console.WriteLine(" ");
 
-cleric_v.HealthDecreasedEvent += InfoHealthIncreased;
+cleric_v.HealthDecreasedEvent += InfoHealthDecreased;
 cleric_v.HealthIncreasedEvent += InfoHealthIncreased;
-footman_v.HealthDecreasedEvent += InfoHealthIncreased;
+footman_v.HealthDecreasedEvent += InfoHealthDecreased;
 footman_v.HealthIncreasedEvent += InfoHealthIncreased;
-berserker_v.HealthDecreasedEvent += InfoHealthIncreased;
+berserker_v.HealthDecreasedEvent += InfoHealthDecreased;
 berserker_v.HealthIncreasedEvent += InfoHealthIncreased;
-palladin_v.HealthDecreasedEvent += InfoHealthIncreased;
+palladin_v.HealthDecreasedEvent += InfoHealthDecreased;
 palladin_v.HealthIncreasedEvent += InfoHealthIncreased;
-//cleric_v.MannaDecreasedEvent += ;
-cleric_v.MannaIncreasedEvent += InfoMannaLess;
 
-void InfoMannaLess(int manna, string? name, int change, int maxManna)
+
+//cleric_v.MannaDecreasedEvent += ;
+cleric_v.MannaIncreasedEvent += InfoMannaGrow;
+palladin_v.MannaIncreasedEvent += InfoMannaGrow;
+cleric_v.MannaDecreasedEvent += InfoMannaGrow;
+palladin_v.MannaDecreasedEvent += InfoMannaGrow;
+
+void InfoMannaGrow(int manna, string? name, int change, int maxManna)
 {
-    Console.WriteLine($"Manna: {manna}\n Name: {name} Change: {change}\n MaxManna: {maxManna}");
+    Console.WriteLine($"About unit: \n Manna: {manna}\n Name: {name}\n Change: {change}\n MaxManna: {maxManna}");
 }
 
-
+Console.WriteLine(" ");
+Console.WriteLine("Berserker attack Footman ");
 berserker_v.InflictDamage(footman_v);
 berserker_v.InflictDamage(footman_v);
+Console.WriteLine("Footman attack Berserker ");
 footman_v.InflictDamage(berserker_v);
 footman_v.ShowInfo();
 
+
+Console.WriteLine(" ");
 Console.WriteLine("\nПРОБА ХИЛЛА");
 cleric_v.HillOthers(footman_v);
 footman_v.ShowInfo();
@@ -203,16 +214,27 @@ forge_v.UpdateLevelWeapon();
 berserker_v.ShowInfo();
 paladin.HollyArmorAttack(berserker_v);
 berserker_v.ShowInfo();
-Console.WriteLine(" ");
-cleric_v.ShowInfo();
-altar.RegenerationManna(cleric_v);
+
 
 Console.WriteLine(" ");
+
+Console.WriteLine(" Begin hill. Info about character. ");
 cleric_v.ShowInfo();
-altar.ShowInfoAboutAltar();
-Console.WriteLine("Cleric hill Berserker");
-//cleric_v.HillOthers(berserker_v);
 berserker_v.ShowInfo();
+altar.ShowInfoAboutAltar();
+Console.WriteLine("Cleric hill Berserker: ");
+cleric_v.HillOthers(berserker_v);
+berserker_v.ShowInfo();
+cleric_v.ShowInfo();
+
+Console.WriteLine(" ");
+Console.WriteLine("About Altar. ");
+cleric_v.ShowInfo();
+altar.RegenerationManna(cleric_v);
+//altar.DoManna();
+altar.ShowInfoAboutAltar();
+Console.WriteLine("After Altar. ");
+cleric_v.ShowInfo();
 
 
 forge_v.UpdateLevelWeapon();
@@ -235,7 +257,6 @@ forge_v.UpdateLevelWeapon();
 //cleric_v.ShowInfo();
 Console.WriteLine("Hill himself");
 cleric_v.HillMyself();
-//cleric_v.GetInfoManna();
 cleric_v.ShowInfo();
 
 berserker_v.ShowInfo();
@@ -247,7 +268,7 @@ footman_v.InflictDamage(berserker_v);
 footman_v.InflictDamage(berserker_v);
 //footman_v.InflictDamage(berserker_v);
 //footman_v.InflictDamage(berserker_v);
-
+Console.WriteLine(" ");
 //berserker_v.Rage(footman_v);
 berserker_v.ShowInfo();
 
@@ -256,20 +277,12 @@ footman_v.InflictDamage(palladin_v);
 footman_v.InflictDamage(palladin_v);
 footman_v.InflictDamage(palladin_v);
 footman_v.InflictDamage(palladin_v);
-footman_v.InflictDamage(palladin_v);
+footman_v.InflictDamage(cleric_v);
 palladin_v.ShowInfo();
 
-
-//static void InfoMannaLess (int health, string name, int manna)
-//{
-//    Console.WriteLine($"Health: {health} Name: {name} Manna: {manna}");
-//}
-
-static void InfoMannaGrow(int health, string name, int manna)
-{
-    Console.WriteLine($"Health: {health} Name: {name} Manna: {manna}");
-}
-
+cleric_v.ShowInfo();
+cleric_v.HillMyself();
+cleric_v.ShowInfo();
 static void InfoHealthIncreased (int health, string name, int manna, int guard)
 {
     Console.WriteLine($"Name: {name} Health: {health} Manna: {manna} Guard: {guard}");

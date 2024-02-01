@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal interface IHill
+    internal interface ISwitchs
     {
-        public void HillOthers(IHealth change_health);
+        public bool Switch { get; set; }
     }
 }

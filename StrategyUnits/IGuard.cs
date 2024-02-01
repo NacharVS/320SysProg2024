@@ -8,5 +8,6 @@ namespace StrategyUnits
 {
     internal interface IGuard
     {
+      
     }
 }

@@ -59,23 +59,20 @@ namespace StrategyUnits
                     if (unit.MaxHealth <= unit.Change_Health)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"You hill {Name}.");
                         Console.ResetColor();
                         return;
                     }
-                    else if (Change_manna < 2)
+                    if (Change_manna < 2)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Not enough manna.");
+                        Console.ResetColor();
 
-                    }
-                    else
-                    {
-                        while (Change_manna >= 2)
-                        {
-                            unit.IncreaseHealth(1);
-                            unit.DecreaseHealth(2);
-                        }
-                    }
+                    }                                  
+                    unit.IncreaseHealth(1);
+                    DecreaseManna(2);
+                                            
                 }
             }
         }
@@ -84,44 +81,44 @@ namespace StrategyUnits
             if (DeadPerson)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"{Name} died, You can't hill dead characters.");
+                Console.WriteLine("Unit died, you can't hill dead characters.");
                 Console.ResetColor();
                 return;
             }
-            while (Manna > 0)
+            else
             {
-                if (MaxHealth <= Change_Health)
+                while (Change_manna >= 2)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"{Name} hill");
-                    Console.ResetColor();
-                    return;
-                }
-                else if (Change_manna < 1)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Not enough manna.");
-                    Console.ResetColor();
-                }
-                else
-                    while (Change_manna >= 1)
+                    if (MaxHealth <= Change_Health)
                     {
-                        Change_Health += 2;
-                        Change_manna -= 1;
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"You hill {Name}.");
+                        Console.ResetColor();
+                        return;
                     }
-                Console.WriteLine($"Character {Name} hill himself");
+                    if (Change_manna < 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Not enough manna.");
+                        Console.ResetColor();
+
+                    }
+                    IncreaseHealth(2);
+                    DecreaseManna(1);
+
+                }
             }
         }
 
 
         public void IncreaseManna(int manna)
         {
-            Change_Health += manna;
+             Change_manna += manna;
         }
 
         public void DecreaseManna(int manna)
         {
-            Change_Health -= 2;
+            Change_manna -= 2;
         }
 
         public void MagicAttack(IHealth unit)
