@@ -1,4 +1,4 @@
-﻿namespace StrategyUnits
+﻿namespace StrategyUnits.Units
 {
     internal class Footman : MilitaryUnit
     {
@@ -6,14 +6,11 @@
         {
 
         }
-<<<<<<< Updated upstream
 
         public void Attack(Unit unit)
         {
-            unit.CurrentHealth -= (this.Damage - unit.Protection);
+            unit.CurrentHealth -= Damage - unit.Protection;
         }
-=======
->>>>>>> Stashed changes
-       
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class ZealotKnight : MagicUnit
     {
@@ -16,7 +16,7 @@ namespace StrategyUnits
 
         public void Prayer()
         {
-            if(CurrentEnergy >= 10)
+            if (CurrentEnergy >= 10)
             {
                 CurrentHealth += 20;
                 CurrentEnergy -= 10;

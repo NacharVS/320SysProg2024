@@ -1,4 +1,4 @@
-﻿namespace StrategyUnits
+﻿namespace StrategyUnits.Units
 {
     internal class Unit
     {
@@ -8,11 +8,9 @@
         private double _maxHealth;
         private bool _isDied;
         private double _protection;
-<<<<<<< Updated upstream
 
         public virtual double Protection
         {
-=======
         private int _lvlWeapon;
 
         public int LvlWeapon
@@ -30,7 +28,6 @@
 
         public virtual double Protection
         {
->>>>>>> Stashed changes
             get { return _protection; }
             set { _protection = value; }
         }
@@ -64,18 +61,15 @@
                     else
                         _currentHealth = value;
                 }
-<<<<<<< Updated upstream
                 if (value < previousHealth)
-=======
-                if (value <= previousHealth)
->>>>>>> Stashed changes
-                {
-                    HealthDecreasedEvent.Invoke(_name, _currentHealth, (previousHealth - value), _protection, _maxHealth);
-                }
-                else if (value > previousHealth)
-                {
-                    HealthIncreasedEvent.Invoke(_name, _currentHealth, value - previousHealth, _protection, _maxHealth);
-                }
+                    if (value <= previousHealth)
+                    {
+                        HealthDecreasedEvent.Invoke(_name, _currentHealth, previousHealth - value, _protection, _maxHealth);
+                    }
+                    else if (value > previousHealth)
+                    {
+                        HealthIncreasedEvent.Invoke(_name, _currentHealth, value - previousHealth, _protection, _maxHealth);
+                    }
             }
         }
 
@@ -86,11 +80,8 @@
             _maxHealth = health;
             _protection = protection;
             _isDied = false;
-<<<<<<< Updated upstream
-=======
             _lvlArmor = 0;
             _lvlWeapon = 0;
->>>>>>> Stashed changes
         }
 
         public string Name
@@ -108,12 +99,9 @@
 
         public virtual void ShowInfo()
         {
-<<<<<<< Updated upstream
             Console.WriteLine($"Unit: {_name} Health: {_currentHealth}");
-=======
             Console.WriteLine($" Unit: {_name}\n Health: {_currentHealth}\n LvlWeapon: {_lvlWeapon}\n LvlArmor: {_lvlArmor}");
             Console.WriteLine();
->>>>>>> Stashed changes
         }
 
         public event HealthChangedDelegate HealthIncreasedEvent;

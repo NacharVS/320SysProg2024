@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class MagicUnit : MilitaryUnit
     {
@@ -29,13 +29,13 @@ namespace StrategyUnits
                     else
                         _currentEnergy = value;
                 }
-                if(value < previousEnergy)
+                if (value < previousEnergy)
                 {
-                    EnergyDecreasedEvent.Invoke(this.Name, CurrentEnergy, previousEnergy - value, _maxEnergy);
+                    EnergyDecreasedEvent.Invoke(Name, CurrentEnergy, previousEnergy - value, _maxEnergy);
                 }
-                else if(value > previousEnergy)
+                else if (value > previousEnergy)
                 {
-                    EnergyIncreasedEvent.Invoke(this.Name, CurrentEnergy, value - previousEnergy, _maxEnergy);
+                    EnergyIncreasedEvent.Invoke(Name, CurrentEnergy, value - previousEnergy, _maxEnergy);
                 }
             }
         }
@@ -44,14 +44,14 @@ namespace StrategyUnits
             get { return _maxEnergy; }
             set { _maxEnergy = value; }
         }
-        public MagicUnit(double health, string? name, double damage, double maxEnergy, double protection): base (health, name, damage, protection)
+        public MagicUnit(double health, string? name, double damage, double maxEnergy, double protection) : base(health, name, damage, protection)
         {
             _maxEnergy = maxEnergy;
             _currentEnergy = maxEnergy;
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {this.Name} Health: {this.CurrentHealth} Energy: {this.CurrentEnergy}");
+            Console.WriteLine($"Unit: {Name} Health: {CurrentHealth} Energy: {CurrentEnergy}");
         }
         public event EnergyChangedDelegate EnergyDecreasedEvent;
         public event EnergyChangedDelegate EnergyIncreasedEvent;

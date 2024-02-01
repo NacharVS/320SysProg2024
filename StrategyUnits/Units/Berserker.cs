@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Berserker : Footman
     {
@@ -15,7 +15,7 @@ namespace StrategyUnits
             get { return isRage; }
             set
             {
-                if(isRage == false && CurrentHealth == CurrentHealth / 2)
+                if (isRage == false && CurrentHealth == CurrentHealth / 2)
                 {
                     Damage *= 1.5;
                     isRage = true;

@@ -1,6 +1,8 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interfaces;
+
+namespace StrategyUnits.Units
 {
-    internal class Peasant : Unit
+    internal class Peasant : Unit, IMainInformation
     {
         public bool IsWorking { get; set; }
 
@@ -33,6 +35,11 @@
             {
                 Console.WriteLine("Крестьянин не работает сейчас.");
             }
+        }
+
+        public void ShowInformation()
+        {
+            Console.WriteLine($"Unit: {Name} Health: {CurrentHealth}");
         }
     }
 }

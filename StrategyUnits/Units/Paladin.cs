@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Paladin : ZealotKnight
     {
@@ -37,22 +37,22 @@ namespace StrategyUnits
 
         public void HolyFire(Unit unit)
         {
-            if (this.CurrentEnergy > 0)
+            if (CurrentEnergy > 0)
             {
-                unit.CurrentHealth -= (_magicDamage - unit.Protection);
+                unit.CurrentHealth -= _magicDamage - unit.Protection;
                 CurrentEnergy -= 1;
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"{this.Name} нет энергии. Текущая энергия {this.CurrentEnergy}");
+                Console.WriteLine($"{Name} нет энергии. Текущая энергия {CurrentEnergy}");
                 Console.ForegroundColor = ConsoleColor.White;
 
             }
         }
         public void Attack(Unit unit)
         {
-            unit.CurrentHealth -= (Damage - this.Protection);
+            unit.CurrentHealth -= Damage - this.Protection;
         }
         public override void ShowInfo()
         {
