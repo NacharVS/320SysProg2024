@@ -1,6 +1,6 @@
-﻿using static StrategyUnits.Unit;
+﻿using static StrategyUnits.Units.Unit;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Unit
     {

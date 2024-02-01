@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units.Buildings
 {
     internal class Barracks // фабрика
     {
-      
+
         public Footman CreateFootman(string nameOfUnit)
         {
             return new Footman(60, "Рекрут", 2, 5, 20, 50, nameOfUnit, 1, 1);
@@ -16,7 +16,7 @@ namespace StrategyUnits
         }
         public Footman CreateBersekr(string nameOfUnit)
         {
-            return new Berserk(100, "Берсерк", 2, 5, 20, 200, nameOfUnit,1,1);
+            return new Berserk(100, "Берсерк", 2, 5, 20, 200, nameOfUnit, 1, 1);
 
         }
 

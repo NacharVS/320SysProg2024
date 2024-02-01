@@ -1,4 +1,5 @@
-﻿using StrategyUnits;
+﻿using StrategyUnits.Units;
+using StrategyUnits.Units.Buildings;
 using System;
 Altar altar = new Altar();
 Barracks barracks = new Barracks();

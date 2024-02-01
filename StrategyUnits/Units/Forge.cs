@@ -5,12 +5,12 @@ using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Forge
     {
         private int _armorlevel = 1;
-       
+
         public int Armorlevel
         {
             get { return _armorlevel; }
@@ -43,7 +43,7 @@ namespace StrategyUnits
                     Console.WriteLine($"Уровень оружия достиг максимального.");
                 }
             }
-            else 
+            else
             {
                 Console.WriteLine($"{unit.NameOfClass} мертв. Он не может прокачаться");
             }

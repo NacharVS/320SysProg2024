@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class MilitaryUnit : Unit
     {
@@ -34,7 +34,7 @@ namespace StrategyUnits
             set { _weaponlevel = value; }
         }
 
-        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense,int ArmorLevel, int WeaponLevel, int minDamage, int maxDamage) : base(currentHealth, nameOfClass, defense)
+        public MilitaryUnit(int currentHealth, string? nameOfClass, int defense, int ArmorLevel, int WeaponLevel, int minDamage, int maxDamage) : base(currentHealth, nameOfClass, defense)
         {
             MinDamage = minDamage;
             MaxDamage = maxDamage;

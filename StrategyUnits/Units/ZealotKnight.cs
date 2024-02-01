@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class ZealotKnight : MagicUnit
     {
@@ -24,7 +24,7 @@ namespace StrategyUnits
         {
             if (!IsDead)
             {
-                Console.WriteLine($"{NameOfUnit} мертв. Он не может восстановиться с помощью молитвы") ;
+                Console.WriteLine($"{NameOfUnit} мертв. Он не может восстановиться с помощью молитвы");
                 return;
             }
             if (CurrentHealth == MaxHealth)

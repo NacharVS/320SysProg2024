@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units.Buildings
 {
     internal class Altar // фабрика
     {
@@ -51,7 +51,7 @@ namespace StrategyUnits
 
         public Healer CreateHealer(string nameOfUnit)
         {
-            return new Healer (60, "Лекарь", 2, 7, 9, 70,  1, 1);
+            return new Healer(60, "Лекарь", 2, 7, 9, 70, 1, 1);
 
         }
         public ZealotKnight CreateZealotKnight(string nameOfUnit)

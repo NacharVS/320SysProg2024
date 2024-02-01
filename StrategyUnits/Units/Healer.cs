@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Healer : MagicUnit
     {
@@ -21,7 +21,7 @@ namespace StrategyUnits
             set { _nameOfUnit = value; }
         }
 
-        
+
         public void HealSomebody(Unit unit)
         {
             if (unit.IsDead)
@@ -29,11 +29,11 @@ namespace StrategyUnits
                 Console.WriteLine("Вы не можете вылечить мертвого юнита\n");
                 return;
             }
-            while (this.ManaPoints > 0)
+            while (ManaPoints > 0)
             {
                 if (unit.CurrentHealth < unit.MaxHealth)
                 {
-                    this.ManaPoints -= 2;
+                    ManaPoints -= 2;
                     Console.WriteLine($"Вылечили с {unit.CurrentHealth} до {unit.CurrentHealth + 1}. Мана: {ManaPoints} MP.\n");
                     unit.CurrentHealth++;
                 }
@@ -44,7 +44,7 @@ namespace StrategyUnits
                 }
 
             }
-            if (this.ManaPoints == 0)
+            if (ManaPoints == 0)
             {
                 Console.WriteLine(" Маны нет!!\n");
             }
@@ -52,7 +52,7 @@ namespace StrategyUnits
 
 
         public override void ShowInfo()
-        { 
+        {
 
         }
     }

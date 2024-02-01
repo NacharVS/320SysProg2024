@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Units
 {
     internal class Berserk : Footman
     {
@@ -23,7 +23,7 @@ namespace StrategyUnits
                 return _rage;
             }
         }
-     
+
 
         public override void ShowInfo()
         {
