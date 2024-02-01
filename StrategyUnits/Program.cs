@@ -292,10 +292,26 @@ palladin_1.HealthIncreasedEvent += MethodHealthIncreased;
 cleric_1.HealthIncreasedEvent += MethodHealthIncreased;
 
 footman_1.InflictDamage(peasant_1);
-berserker_1.InflictDamage(peasant_1);
+
 cleric_1.InflictDamage(peasant_1);
 
+berserker_1.InflictDamage(peasant_1);
 footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+footman_1.InflictDamage(berserker_1);
+berserker_1.InflictDamage(peasant_1);
+berserker_1.InflictDamage(cleric_1);
 ////Проверка методов и ивентов КАЖДОГО.
 //footman_1.InflictDamageEvent += MethodYron;
 //footman_2.InflictDamageEvent += MethodYron;

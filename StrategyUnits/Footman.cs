@@ -10,7 +10,7 @@ namespace StrategyUnits
             _damage = damage;
         }
 
-        public virtual int Damage
+        public int Damage
         {
             get => IInflictDamage.LevelWeapon * 2 + _damage;
             set => _damage = value;

@@ -24,7 +24,7 @@ namespace StrategyUnits
             set { _name = value; }
         }
 
-        public int Health
+        public virtual int Health
         {
             get => _health;
             set

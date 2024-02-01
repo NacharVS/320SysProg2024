@@ -2,13 +2,15 @@
 
 namespace StrategyUnits
 {
-    internal class Berserker : Footman, IArmor
+    internal class Berserker : Unit, IInflictDamage, IArmor
     {
         private int _armor; //Защита
+        private int _damage;
         private bool _rage;
-        public Berserker(string? name, int health, int damage, int armor ) : base (name, health, damage)
+        public Berserker(string? name, int health, int damage, int armor ) : base (name, health)
         {
             _armor = armor;
+            _damage = damage;
             _rage = true;
 
         }
@@ -16,31 +18,69 @@ namespace StrategyUnits
         public int Armor
         {
             get => IArmor.LevelArmor * 2 + _armor;
-            set => IArmor.LevelArmor = value;
+            set => _armor = value;
         }
 
-        public override int Damage
+        public override int Health
         {
-            get => IInflictDamage.LevelWeapon * 2 + base.Damage;
-            set /*base.Damage = value;*/
+            get => base.Health;
+            set
             {
+                int begin_health = base.Health;
 
-                if (Health >= (MaxHealth / 2))
+                if (value < 0)
                 {
-                    base.Damage += 2;
+                    base.Health = 0;
+                    IsDead = true;
+                    Console.WriteLine($"{Name} мёртв. Нанесения урона невозможно.");
                 }
-                else if (Health <= (MaxHealth / 2))
+                else
+                   if (value > MaxHealth)
+                    base.Health = MaxHealth;
+                else
+                    base.Health = value;
+
+
+                if (base.Health >= (MaxHealth / 2) && !_rage)
                 {
-                    base.Damage = value;
+                    _rage = true;
+                    _damage += 2;
+                }
+                else if(base.Health < (MaxHealth / 2) && _rage)
+                {
                     _rage = false;
+                    _damage -= 2;
                 }
+                    
+
+            }
+        }//Здоровье
+
+
+        public int Damage
+        {
+            get
+            {
+                return _damage + 2;
+
+            }
+            set
+            {
+                _damage = value;
+
             }
         }
 
-        public override void DecreaseHealth(IHealth health)
+        public void DecreaseHealth(IHealth health)
         {
             Console.WriteLine($"{Name} атаковал.");
             health.DecreaseHealth(Damage - Armor);
+        }
+
+        public void InflictDamage(IHealth unit)
+        {
+            Console.WriteLine($"{Name} атаковал.");
+            unit.DecreaseHealth(Damage);
         }
 
         //public void Rage(IHealth unit) //Ярость Если здоровье больше 50% - Урон + 2
