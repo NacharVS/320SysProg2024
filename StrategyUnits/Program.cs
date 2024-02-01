@@ -298,6 +298,7 @@ cleric_1.InflictDamage(peasant_1);
 berserker_1.InflictDamage(peasant_1);
 footman_1.InflictDamage(berserker_1);
 footman_1.InflictDamage(berserker_1);
+berserker_1.InflictDamage(cleric_1);
 footman_1.InflictDamage(berserker_1);
 footman_1.InflictDamage(berserker_1);
 footman_1.InflictDamage(berserker_1);
@@ -422,10 +423,10 @@ berserker_1.InflictDamage(cleric_1);
 
 static void MethodHealthDecreased(int _health, string? name, int change, int maxHealth) //Метод ПОТЕРИ
 {
-    Console.WriteLine($"{name} было потеряно здоровье {change}. Текущее здоровье {_health}/{maxHealth}");
+    Console.WriteLine($"{name} было потеряно здоровье {change}. Текущее здоровье {_health}/{maxHealth}\n");
 }
 
 static void MethodHealthIncreased(int _health, string? name, int change, int maxHealth) //Метод ПОТЕРИ
 {
-    Console.WriteLine($"{name} было восстановлено здоровье {change}. Текущее здоровье {_health}/{maxHealth}");
+    Console.WriteLine($"{name} было восстановлено здоровье {change}. Текущее здоровье {_health}/{maxHealth}\n");
 }

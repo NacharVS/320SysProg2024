@@ -43,7 +43,7 @@ namespace StrategyUnits
                 else
                     _health = value;
 
-                if (value <= begin_health)
+                if (value <= begin_health && value > 0)
                 {
                     HealthDecreasedEvent.Invoke(_health, Name, (begin_health - value), MaxHealth); //ТекЗдоровье, Имя, Потреря, Максимальное
                 }

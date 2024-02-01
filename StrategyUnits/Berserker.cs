@@ -11,7 +11,7 @@ namespace StrategyUnits
         {
             _armor = armor;
             _damage = damage;
-            _rage = true;
+            _rage = false;
 
         }
 
@@ -61,7 +61,7 @@ namespace StrategyUnits
         {
             get
             {
-                return _damage + 2;
+                return _damage;
 
             }
             set
