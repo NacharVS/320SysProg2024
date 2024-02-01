@@ -22,6 +22,7 @@ namespace StrategyUnits
         {
             MinDamage = minDamage;
             MaxDamage = maxDamage;
+            Defense = defense;
         }
 
         public int MaxDamage

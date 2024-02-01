@@ -43,7 +43,7 @@ namespace StrategyUnits
                     {
                         this.ManaPoints -= appliedDamage * 3;
                         Console.WriteLine($">> Magic attack successful. You've applied {appliedDamage} MDP.\n");
-                        attackedUnit.CurrentHealth -= appliedDamage;
+                        attackedUnit.TakeDamage(appliedDamage);
                     }
                     else
                     {

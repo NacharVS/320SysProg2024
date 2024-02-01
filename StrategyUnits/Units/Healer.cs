@@ -37,7 +37,7 @@ namespace StrategyUnits
                     Console.WriteLine($">> Healed from {healthBeforeHeal} to {unit.CurrentHealth + healthToHeal}. Mana left: {this.ManaPoints - manaToSpend} MP.\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     unit.CurrentHealth += healthToHeal;
-                    ManaPoints -= manaToSpend;
+                    TakeMana(manaToSpend);
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace StrategyUnits
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine($">> Healed from {healthBeforeHeal} to {unit.CurrentHealth + (manaToSpend - lackOfMana) / 2}. Mana left: {0} MP.\n");
                     Console.ForegroundColor = ConsoleColor.White;
-                    unit.CurrentHealth += (manaToSpend - lackOfMana) / 2;
+                    unit.GetHeal((manaToSpend - lackOfMana) / 2);
                     ManaPoints = 0;
                 }  
             }
@@ -81,7 +81,7 @@ namespace StrategyUnits
                     Console.WriteLine(
                         $">> Healed from {CurrentHealth} to {finalHealth}. Mana left: {this.ManaPoints}.\n"
                         );
-                    CurrentHealth += 2;
+                    GetHeal(2);
                 }
                 if (CurrentHealth >= MaxHealth)
                 {

@@ -48,11 +48,11 @@ namespace StrategyUnits
             {
                 if (CurrentHealth + 20 <= MaxHealth)
                 {
-                    ManaPoints -= 10;
+                    TakeMana(10);
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine($">> Healed from {healthBeforeHeal} to {CurrentHealth + 20}. Mana left: {ManaPoints} MP.\n");
                     Console.ForegroundColor = ConsoleColor.White;
-                    CurrentHealth += 20;
+                    GetHeal(20);
                 }
                 else
                 {

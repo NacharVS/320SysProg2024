@@ -11,7 +11,3 @@ Paladin paladin = barracks.CreatePaladin("Almir");
 Forge forge = new Forge();
 
 List<MilitaryUnit> warriors = barracks.warriors;
-
-footman.ShowInfo();
-footman.Attack(footman1);
-
