@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace ConsoleApp1
 {
-    internal interface IMovihgUnit //ПЕРЕДВИЖЕНИЕ
+    internal interface Interface1
     {
-        public void Move();
     }
 }

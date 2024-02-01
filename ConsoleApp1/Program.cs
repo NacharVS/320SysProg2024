@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace ConsoleApp1
 {
-    internal interface IHill //Хилл
+    internal class Program
     {
-        public void HillOthers(IHealth health);
+        static void Main(string[] args)
+        {
+        }
     }
 }

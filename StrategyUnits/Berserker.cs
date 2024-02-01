@@ -1,11 +1,16 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interface;
+
+namespace StrategyUnits
 {
     internal class Berserker : Footman, IArmor
     {
-        private int _armor;
+        private int _armor; //Защита
+        private bool _rage;
         public Berserker(string? name, int health, int damage, int armor ) : base (name, health, damage)
         {
             _armor = armor;
+            _rage = true;
+
         }
 
         public int Armor
@@ -14,18 +19,42 @@
             set => IArmor.LevelArmor = value;
         }
 
-        public void Rage(IHealth unit) //Ярость
+        public override int Damage
         {
-            if (!IsDead)
-                Console.WriteLine($"{Name} мёртв.");
-            else
+            get => IInflictDamage.LevelWeapon * 2 + base.Damage;
+            set /*base.Damage = value;*/
             {
-                if (Health <= (MaxHealth / 2)) //(120 > 60)
+
+                if (Health >= (MaxHealth / 2))
                 {
-                    Damage += Damage + 2;
+                    base.Damage += 2;
+                }
+                else if (Health <= (MaxHealth / 2))
+                {
+                    base.Damage = value;
+                    _rage = false;
                 }
             }
         }
+
+        public override void DecreaseHealth(IHealth health)
+        {
+            Console.WriteLine($"{Name} атаковал.");
+            health.DecreaseHealth(Damage - Armor);
+        }
+
+        //public void Rage(IHealth unit) //Ярость Если здоровье больше 50% - Урон + 2
+        //{
+        //    if (!IsDead)
+        //        Console.WriteLine($"{Name} мёртв.");
+        //    else
+        //    {
+        //        if (Health >= (MaxHealth / 2))
+        //        {
+        //            Damage = Damage + 2;
+        //        }
+        //    }
+        //}
 
         public override void ShowInfo()
         {

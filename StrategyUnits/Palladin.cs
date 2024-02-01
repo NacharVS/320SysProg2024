@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interface;
+
+namespace StrategyUnits
 {
     internal class Palladin : ZeelotKnight, IMagicAttack
     {

@@ -1,12 +1,12 @@
 ﻿using System.Xml.Linq;
 
-namespace StrategyUnits
+namespace StrategyUnits.Neispl
 {
     internal class MagicUnit
     {
         //private int _manna;
         //private int _MaxManna;
-        
+
         //public int MaxManna
         //{
         //    get { return _MaxManna; }

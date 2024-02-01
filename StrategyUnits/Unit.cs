@@ -1,6 +1,8 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interface;
+
+namespace StrategyUnits
 {
-    internal class Unit : IHealth, IMovihgUnit
+    internal class Unit : IHealth, IMovihgUnit //Здоровье, Передвижение
     {
         private string? _name; //Имя
         private int _health;  //Здоровье
@@ -43,11 +45,11 @@
 
                 if (value <= begin_health)
                 {
-                    HealthDecreasedEvent.Invoke(_health, Name, (begin_health - value), MaxHealth);
+                    HealthDecreasedEvent.Invoke(_health, Name, (begin_health - value), MaxHealth); //ТекЗдоровье, Имя, Потреря, Максимальное
                 }
                 else if (value > begin_health)
                 {
-                    HealthIncreasedEvent.Invoke(_health, Name, (value - begin_health), MaxHealth);
+                    HealthIncreasedEvent.Invoke(_health, Name, (value - begin_health), MaxHealth); // //ТекЗдоровье, Имя, Пополнение, Максимальное
                 }
             }
         }//Здоровье
@@ -55,12 +57,12 @@
         public event IHealth.HealthChangeDelegate HealthDecreasedEvent;
         public event IHealth.HealthChangeDelegate HealthIncreasedEvent;
 
-        public void DecreaseHealth(int damage)
+        public void DecreaseHealth(int damage) //Потеря
         {
             Health -= damage;
         }
 
-        public void IncreseHealth(int health)
+        public void IncreseHealth(int health) //Пополнение
         {
             Health += health;
         }
@@ -70,9 +72,15 @@
             Console.WriteLine("Передвижение.");
         }
 
-        public virtual void ShowInfo()
+        public virtual void ShowInfo() //Показать инфу
         {
-            Console.WriteLine($"Unit: {Name}\t Здоровье: {Health} Состоние жизни: {IsDead}");
+            //string sost;
+            //if (!IsDead)
+            //    sost = "жив.";
+            //else
+            //    sost = "мёртв";
+
+            Console.WriteLine($"Unit: {Name}\t Здоровье: {Health}\n");
         }
 
 

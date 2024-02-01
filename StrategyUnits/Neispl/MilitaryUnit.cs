@@ -1,6 +1,6 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 
-namespace StrategyUnits
+namespace StrategyUnits.Neispl
 {
     internal class MilitaryUnit
     {

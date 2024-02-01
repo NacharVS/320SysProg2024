@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Interface
 {
     internal interface IArmor //ЗАЩИТА
     {
-        public int Armor { get; set; }
-        public static int LevelArmor { get; set; }
+        public int Armor { get; set; } //Защита
+        public static int LevelArmor { get; set; } //Уровень защиты
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Interface
 {
     internal interface IHealth //ЗДОРОВЬЕ
     {
@@ -16,7 +16,7 @@ namespace StrategyUnits
 
 
         //Делегат и ивент
-        public delegate void HealthChangeDelegate(int _health, string? name, int change, int maxHealth);  
+        public delegate void HealthChangeDelegate(int _health, string? name, int change, int maxHealth);
         public event HealthChangeDelegate HealthDecreasedEvent;  //Уменьшение
         public event HealthChangeDelegate HealthIncreasedEvent;  // Увеличение
     }

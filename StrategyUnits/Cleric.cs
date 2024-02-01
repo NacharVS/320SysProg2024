@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interface;
+
+namespace StrategyUnits
 {
     internal class Cleric : Unit, IMagicUnit, IInflictDamage, IHill
     {
@@ -111,6 +113,7 @@
 
         public void InflictDamage(IHealth health)
         {
+            Console.WriteLine($"{Name} атаковал.");
             health.DecreaseHealth(Damage);
         }
 

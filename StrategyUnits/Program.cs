@@ -263,129 +263,153 @@ Altar altar = new Altar();
 Forge forge = new Forge();
 
 Peasant peasant_1 = new Peasant(); //Нет метода
-Peasant peasant_2 = new Peasant(); //Нет метода
-Peasant peasant_3 = new Peasant(); //Нет метода
-Peasant peasant_4 = new Peasant(); //Нет метода
 Footman footman_1 = barracs.CreateRecruit(); //Атака
-Footman footman_2 = barracs.CreateFootman(); //Атака
 Berserker berserker_1 = barracs.CreateBerserker(); //Атака, ярость
 ZeelotKnight zeelotKnight_1 = altar.CreateZeelotKnight(); //Атака, Магический урон
 Palladin palladin_1 = altar.CreatePalladin(); // Атака, СвятойОгонь, СвятаяЗащита
 Cleric cleric_1 = altar.CreateCleric(); //Атака, ХиллСебя, ХиллДругого
-Cleric cleric_2 = altar.CreateCleric(); //Атака, ХиллСебя, ХиллДругого
 
 peasant_1.ShowInfo();
-peasant_2.ShowInfo();
 footman_1.ShowInfo();
-footman_2.ShowInfo();
 berserker_1.ShowInfo();
 zeelotKnight_1.ShowInfo();
 palladin_1.ShowInfo();
 cleric_1.ShowInfo();
 
-//Проверка методов и ивентов КАЖДОГО.
-footman_1.InflictDamageEvent += MethodYron;
-footman_2.InflictDamageEvent += MethodYron;
-berserker_1.InflictDamageEvent += MethodYron;
-zeelotKnight_1.InflictDamageEvent += MethodYron;
-palladin_1.InflictDamageEvent += MethodYron;
-cleric_1.InflictDamageEvent += MethodYron;
-cleric_1.HillEvent += MethodHill;
-cleric_2.HillEvent += MethodHill;
+//Присвоение ивентов:
+peasant_1.HealthDecreasedEvent += MethodHealthDecreased;
+footman_1.HealthDecreasedEvent += MethodHealthDecreased;
+berserker_1.HealthDecreasedEvent += MethodHealthDecreased;
+zeelotKnight_1.HealthDecreasedEvent += MethodHealthDecreased;
+palladin_1.HealthDecreasedEvent += MethodHealthDecreased;
+cleric_1.HealthDecreasedEvent += MethodHealthDecreased;
 
-Console.WriteLine("\nПроверка методов и ивентов АТАК.\n"); //Успешно
+peasant_1.HealthIncreasedEvent += MethodHealthIncreased;
+footman_1.HealthIncreasedEvent += MethodHealthIncreased;
+berserker_1.HealthIncreasedEvent += MethodHealthIncreased;
+zeelotKnight_1.HealthIncreasedEvent += MethodHealthIncreased;
+palladin_1.HealthIncreasedEvent += MethodHealthIncreased;
+cleric_1.HealthIncreasedEvent += MethodHealthIncreased;
+
 footman_1.InflictDamage(peasant_1);
-footman_2.InflictDamage(peasant_1);
 berserker_1.InflictDamage(peasant_1);
-zeelotKnight_1.InflictDamage(peasant_2);
-palladin_1.InflictDamage(peasant_2);
-cleric_1.InflictDamage(peasant_2);
+cleric_1.InflictDamage(peasant_1);
 
-Console.WriteLine("\n");
+footman_1.InflictDamage(berserker_1);
+////Проверка методов и ивентов КАЖДОГО.
+//footman_1.InflictDamageEvent += MethodYron;
+//footman_2.InflictDamageEvent += MethodYron;
+//berserker_1.InflictDamageEvent += MethodYron;
+//zeelotKnight_1.InflictDamageEvent += MethodYron;
+//palladin_1.InflictDamageEvent += MethodYron;
+//cleric_1.InflictDamageEvent += MethodYron;
+//cleric_1.HillEvent += MethodHill;
+//cleric_2.HillEvent += MethodHill;
 
-berserker_1.Rage(peasant_3);
-peasant_3.ShowInfo();
-Console.WriteLine("\n");
-zeelotKnight_1.MagicAttack(peasant_3);
-peasant_3.ShowInfo();
-Console.WriteLine("\n");
-palladin_1.MagicAttack(peasant_4);
-peasant_4.ShowInfo();
+//Console.WriteLine("\nПроверка методов и ивентов АТАК.\n"); //Успешно
+//footman_1.InflictDamage(peasant_1);
+//footman_2.InflictDamage(peasant_1);
+//berserker_1.InflictDamage(peasant_1);
+//zeelotKnight_1.InflictDamage(peasant_2);
+//palladin_1.InflictDamage(peasant_2);
+//cleric_1.InflictDamage(peasant_2);
 
-Console.WriteLine("\nПроверка методов и ивентов ХИЛЛА.\n"); //Успешно
-cleric_1.HillOthers(peasant_4);
-Console.WriteLine("\n");
-palladin_1.InflictDamage(cleric_2);
-Console.WriteLine("\n");
-cleric_2.HillMyself();
+//Console.WriteLine("\n");
 
-Console.WriteLine("\nПроверка методов и ивентов Клерика, Рыцаря, Палладина, Берсерка.\n");
-Console.WriteLine("\nБерсерка: при здоровье меньше 50% - не совершает метод Ярость\n"); //Успешно
-berserker_1.ShowInfo();
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
-palladin_1.InflictDamage(berserker_1);
+//berserker_1.Rage(peasant_3);
+//peasant_3.ShowInfo();
+//Console.WriteLine("\n");
+//zeelotKnight_1.MagicAttack(peasant_3);
+//peasant_3.ShowInfo();
+//Console.WriteLine("\n");
+//palladin_1.MagicAttack(peasant_4);
+//peasant_4.ShowInfo();
 
-berserker_1.Rage(cleric_1);
+//Console.WriteLine("\nПроверка методов и ивентов ХИЛЛА.\n"); //Успешно
+//cleric_1.HillOthers(peasant_4);
+//Console.WriteLine("\n");
+//palladin_1.InflictDamage(cleric_2);
+//Console.WriteLine("\n");
+//cleric_2.HillMyself();
 
-Console.WriteLine("\nПроверка Рыцаря на моливу.\n");
-berserker_1.InflictDamage(zeelotKnight_1);
-berserker_1.InflictDamage(zeelotKnight_1);
-berserker_1.InflictDamage(zeelotKnight_1);
-zeelotKnight_1.Prayer();
-////Проверка восстановления манны.
-//Console.WriteLine("\nПроверка восстановления манны через Алтарь.\n");
-//altar.RegenerationManna(cleric_1);
-//cleric_1.ShowInfo();
+//Console.WriteLine("\nПроверка методов и ивентов Клерика, Рыцаря, Палладина, Берсерка.\n");
+//Console.WriteLine("\nБерсерка: при здоровье меньше 50% - не совершает метод Ярость\n"); //Успешно
+//berserker_1.ShowInfo();
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
+//palladin_1.InflictDamage(berserker_1);
 
-//Console.WriteLine("\nПроверка восстановления манны через Алтарь (манна макисмальная).\n");
-//altar.RegenerationManna(cleric_2);
+//berserker_1.Rage(cleric_1);
 
+//Console.WriteLine("\nПроверка Рыцаря на моливу.\n");
+//berserker_1.InflictDamage(zeelotKnight_1);
+//berserker_1.InflictDamage(zeelotKnight_1);
+//berserker_1.InflictDamage(zeelotKnight_1);
+//zeelotKnight_1.Prayer();
+//////Проверка восстановления манны.
+////Console.WriteLine("\nПроверка восстановления манны через Алтарь.\n");
+////altar.RegenerationManna(cleric_1);
+////cleric_1.ShowInfo();
 
-//Проверка кузницы.
-Console.WriteLine("\nПроверка Кузницы. ОРУЖИЕ.\n");
-footman_1.ShowInfo();
-forge.UpgradeDamage(footman_1);
-forge.UpgradeDamage(footman_1);
-forge.UpgradeDamage(footman_1);
-
-Console.WriteLine("\nПроверка Кузницы. ЗАЩИТА.\n");
-footman_1.ShowInfo();
-forge.UpgradeArmor(footman_1);
-forge.UpgradeArmor(footman_1);
-forge.UpgradeArmor(footman_1);
-
-//zeelotKnight_1.ShowInfo();
-//palladin_1.ShowInfo();
-//cleric_1.ShowInfo();
+////Console.WriteLine("\nПроверка восстановления манны через Алтарь (манна макисмальная).\n");
+////altar.RegenerationManna(cleric_2);
 
 
-static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)
+////Проверка кузницы.
+//Console.WriteLine("\nПроверка Кузницы. ОРУЖИЕ.\n");
+//footman_1.ShowInfo();
+//forge.UpgradeDamage(footman_1);
+//forge.UpgradeDamage(footman_1);
+//forge.UpgradeDamage(footman_1);
+
+//Console.WriteLine("\nПроверка Кузницы. ЗАЩИТА.\n");
+//footman_1.ShowInfo();
+//forge.UpgradeArmor(footman_1);
+//forge.UpgradeArmor(footman_1);
+//forge.UpgradeArmor(footman_1);
+
+////zeelotKnight_1.ShowInfo();
+////palladin_1.ShowInfo();
+////cleric_1.ShowInfo();
+
+
+//static void MethodYron(int damage, int health, string nameDealtDamage, string nameReceivedDamage)
+//{
+//    Console.WriteLine($"{nameDealtDamage} совершил атаку на {nameReceivedDamage}.\n{nameReceivedDamage} получил урон {damage}. Текущее здоровье {nameReceivedDamage}: {health}.");
+
+//}
+
+//static void MethodHill(int manna, int health, string nameHiller, string nameHill)
+//{
+//    Console.WriteLine($"{nameHiller} восстановил здоровье {nameHill} до {health}.\nТекущая манна {nameHiller}: {manna}");
+
+//}
+
+//static void MethodUpgradeDamage (string? name, int lever, int damage)
+//{
+//    Console.WriteLine($"{name} улучшил уровень атаки. \tТекущая атака: {damage} уровня {lever}");
+//}
+
+//static void MethodUpgradeArmor(string? name, int lever, int armor)
+//{
+//    Console.WriteLine($"{name} улучшил уровень защиты. \tТекущая защита: {armor} уровня {lever}");
+//}
+
+
+static void MethodHealthDecreased(int _health, string? name, int change, int maxHealth) //Метод ПОТЕРИ
 {
-    Console.WriteLine($"{nameDealtDamage} совершил атаку на {nameReceivedDamage}.\n{nameReceivedDamage} получил урон {damage}. Текущее здоровье {nameReceivedDamage}: {health}.");
-
+    Console.WriteLine($"{name} было потеряно здоровье {change}. Текущее здоровье {_health}/{maxHealth}");
 }
 
-static void MethodHill(int manna, int health, string nameHiller, string nameHill)
+static void MethodHealthIncreased(int _health, string? name, int change, int maxHealth) //Метод ПОТЕРИ
 {
-    Console.WriteLine($"{nameHiller} восстановил здоровье {nameHill} до {health}.\nТекущая манна {nameHiller}: {manna}");
-
-}
-
-static void MethodUpgradeDamage (string? name, int lever, int damage)
-{
-    Console.WriteLine($"{name} улучшил уровень атаки. \tТекущая атака: {damage} уровня {lever}");
-}
-
-static void MethodUpgradeArmor(string? name, int lever, int armor)
-{
-    Console.WriteLine($"{name} улучшил уровень защиты. \tТекущая защита: {armor} уровня {lever}");
+    Console.WriteLine($"{name} было восстановлено здоровье {change}. Текущее здоровье {_health}/{maxHealth}");
 }
