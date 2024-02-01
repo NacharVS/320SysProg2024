@@ -43,8 +43,10 @@ namespace StrategyUnits
 
                 if (base.Health >= (MaxHealth / 2) && !_rage)
                 {
+
                     _rage = true;
                     _damage += 2;
+                    Console.WriteLine("Ярость активирована.");
                 }
                 else if(base.Health < (MaxHealth / 2) && _rage)
                 {
@@ -59,16 +61,9 @@ namespace StrategyUnits
 
         public int Damage
         {
-            get
-            {
-                return _damage;
+            get => IInflictDamage.LevelWeapon * 2 + _damage;
+            set =>  _damage = value;
 
-            }
-            set
-            {
-                _damage = value;
-
-            }
         }
 
         public void DecreaseHealth(IHealth health)

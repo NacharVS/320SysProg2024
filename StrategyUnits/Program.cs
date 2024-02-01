@@ -1,4 +1,5 @@
 ﻿using StrategyUnits;
+using static StrategyUnits.Interface.IMagicUnit;
 
 //Footman footman = new Footman();
 //Footman footman2 = new Footman();
@@ -291,28 +292,43 @@ zeelotKnight_1.HealthIncreasedEvent += MethodHealthIncreased;
 palladin_1.HealthIncreasedEvent += MethodHealthIncreased;
 cleric_1.HealthIncreasedEvent += MethodHealthIncreased;
 
-footman_1.InflictDamage(peasant_1);
+zeelotKnight_1.MannaDecreasedEvent += MethodMannaDecreased;
+zeelotKnight_1.MannaIncreasedEvent += MethodMannaIncreased;
+palladin_1.MannaDecreasedEvent += MethodMannaDecreased;
+palladin_1.MannaIncreasedEvent += MethodMannaIncreased;
+cleric_1.MannaDecreasedEvent += MethodMannaDecreased;
+cleric_1.MannaIncreasedEvent += MethodMannaIncreased;
 
-cleric_1.InflictDamage(peasant_1);
+//footman_1.InflictDamage(peasant_1);
 
-berserker_1.InflictDamage(peasant_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-berserker_1.InflictDamage(cleric_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-footman_1.InflictDamage(berserker_1);
-berserker_1.InflictDamage(peasant_1);
-berserker_1.InflictDamage(cleric_1);
+//cleric_1.InflictDamage(peasant_1);
+
+//berserker_1.InflictDamage(peasant_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//berserker_1.InflictDamage(cleric_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//footman_1.InflictDamage(berserker_1);
+//berserker_1.InflictDamage(peasant_1);
+//berserker_1.InflictDamage(cleric_1);
+
+berserker_1.InflictDamage(zeelotKnight_1);
+berserker_1.InflictDamage(zeelotKnight_1);
+berserker_1.InflictDamage(zeelotKnight_1);
+zeelotKnight_1.MagicAttack(footman_1);
+zeelotKnight_1.Prayer();
+
+
 ////Проверка методов и ивентов КАЖДОГО.
 //footman_1.InflictDamageEvent += MethodYron;
 //footman_2.InflictDamageEvent += MethodYron;
@@ -420,13 +436,22 @@ berserker_1.InflictDamage(cleric_1);
 //    Console.WriteLine($"{name} улучшил уровень защиты. \tТекущая защита: {armor} уровня {lever}");
 //}
 
-
 static void MethodHealthDecreased(int _health, string? name, int change, int maxHealth) //Метод ПОТЕРИ
 {
     Console.WriteLine($"{name} было потеряно здоровье {change}. Текущее здоровье {_health}/{maxHealth}\n");
 }
 
-static void MethodHealthIncreased(int _health, string? name, int change, int maxHealth) //Метод ПОТЕРИ
+static void MethodHealthIncreased(int _health, string? name, int change, int maxHealth) //Метод +
 {
     Console.WriteLine($"{name} было восстановлено здоровье {change}. Текущее здоровье {_health}/{maxHealth}\n");
+}
+
+static void MethodMannaDecreased(string? name, int change_manna, int manna, int maxManna) //-
+{
+    Console.WriteLine($"{name} использовал манну {change_manna}\tТекущая манна: {manna}/{maxManna}");
+}
+
+static void MethodMannaIncreased(string? name, int change_manna, int manna, int maxManna) //+
+{
+    Console.WriteLine($"{name} пополнил манну на{change_manna} до максимальной {maxManna}");
 }

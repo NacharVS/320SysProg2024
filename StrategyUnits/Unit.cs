@@ -57,7 +57,7 @@ namespace StrategyUnits
         public event IHealth.HealthChangeDelegate HealthDecreasedEvent;
         public event IHealth.HealthChangeDelegate HealthIncreasedEvent;
 
-        public void DecreaseHealth(int damage) //Потеря
+        public virtual void DecreaseHealth(int damage) //Потеря
         {
             Health -= damage;
         }

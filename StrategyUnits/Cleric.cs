@@ -32,11 +32,11 @@ namespace StrategyUnits
                 }
                 if (value < beginManna)
                 {
-                    MannaDecreasedEvent.Invoke( this.Name, _manna, beginManna - value, MaxManna);
+                    MannaDecreasedEvent.Invoke( this.Name, beginManna - value, Manna, MaxManna);
                 }
                 else if (value > beginManna)
                 {
-                    MannaIncreasedEvent.Invoke( this.Name, _manna, value - beginManna, MaxManna);
+                    MannaIncreasedEvent.Invoke( this.Name, value - beginManna, Manna, MaxManna);
                 }
             }
         }
