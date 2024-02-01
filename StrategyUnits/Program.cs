@@ -293,4 +293,5 @@ static void InfoHealthDecreased(int health, string name, int manna, int guard)
     Console.WriteLine($"Name: {name} Health: {health} Manna: {manna} Guard: {guard}");
 }
 
+//hello
 

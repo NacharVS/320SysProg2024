@@ -14,27 +14,19 @@ namespace StrategyUnits
             if (IInflictDamage.LevelWeapon < 2)
             {
                 IInflictDamage.LevelWeapon++;
+                Console.WriteLine("Unit make his guard better on 1 level. ");
             }
             else
             { 
                 Console.WriteLine("That's maximum.");               
             }
-            //if (unit.LevelWeapon < 2)
-            //{
-            //    unit.LevelWeapon += 1;
-            //    unit.Damage += 2;
-            //    Console.WriteLine($"{unit.Name} make better his weapon on 1 level. Damage became: {unit.Damage}, Weapon level right now: {unit.LevelWeapon}");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"{unit.Name} max level weapon: {unit.LevelWeapon}");
-            //}
         }
         public void UpdateLevelArmor()
         {
             if (IArmor.LevelArmor < 2)
             {
                 IArmor.LevelArmor ++;
+                Console.WriteLine("Unit make his guard better on 1 level. ");
             }
             else
             {
