@@ -9,19 +9,23 @@ namespace StrategyUnitsOnInterfaces
 {
     internal class Unit
     {
+        
+        public virtual int Health { get; set; }
+
+        public int MaxHealth { get; set; }
+        public bool IsAlive { get; set; }
+        public int Gold { get; set; }
+        public int MaxGold { get; set; }
         public Unit(int health)
         {
             IsAlive = true;
             Health = health;
             MaxHealth = Health;
+            Gold = 30;
+            MaxGold = Gold;
         }
-        public int Health { get; set; }
 
-        public int MaxHealth { get; set; }
-
-        public bool IsAlive { get; set; }
-
-        public virtual void TakeDamage(int damage)
+        public virtual async void TakeDamage(int damage)
         {
             if (!IsAlive)
             {
@@ -36,7 +40,27 @@ namespace StrategyUnitsOnInterfaces
                 IsAlive = false;
                 Health = 0;
             }
+            Task task = StartGoldRecovery();
+            await task;
         }
+        public async Task StartGoldRecovery()
+        {
+            await Task.Run(async () =>
+            {
+                    Console.WriteLine($"Золото отсутствует. Начинаем восстановление...");
+                    RecoverGold();
+                    Console.WriteLine($"Золото восстановлено. Текущее количество золота: {Gold}");
+                    await Task.Delay(10000);
+            });
+        }
+
+
+        private void RecoverGold()
+        {
+            Gold += 1; 
+        }
+        
+
         public void Move()
         {
             Console.WriteLine("Unit is moving");

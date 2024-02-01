@@ -19,10 +19,14 @@ namespace StrategyUnitsOnInterfaces
         public int MinDamage { get; set; }
         public int MaxDamage { get; set; }
         public int Protection { get; set; }
+        public int LevelArmor { get; set; }
+        public int LevelWeapon { get; set; }
 
         public void Attack(Unit unit)
         {
             Random rnd = new Random();
+            unit.Gold -= 5;
+            Gold += 5;
             unit.TakeDamage(rnd.Next(MinDamage, MaxDamage));
         }
 

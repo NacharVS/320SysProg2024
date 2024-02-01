@@ -10,6 +10,7 @@ namespace StrategyUnitsOnInterfaces
     {
         public Berserker(int health) : base(health)
         {
+            Gold = 100;
         }
 
         public int MinDamage { get ; set ; }
@@ -27,9 +28,14 @@ namespace StrategyUnitsOnInterfaces
             set { _maxDamage = value; }
         }
 
+        public int LevelArmor { get; set; }
+        public int LevelWeapon { get; set; }
+
         public void Attack(Unit unit)
         {
             Random rnd = new Random();
+            unit.Gold -= 5;
+            Gold += 5;
             unit.TakeDamage(rnd.Next(MinDamage, MaxDamage));
         }
 

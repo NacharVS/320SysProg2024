@@ -8,5 +8,6 @@ namespace StrategyUnitsOnInterfaces
 {
     internal interface IHolyUnit
     {
+        public abstract void Pray();
     }
 }

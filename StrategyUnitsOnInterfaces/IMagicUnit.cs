@@ -8,9 +8,9 @@ namespace StrategyUnitsOnInterfaces
 {
     internal interface IMagicUnit
     {
-        public int Mana { get; set; }
+        public uint Mana { get; set; }
 
-        public int MaxMana { get; set; }
+        public uint MaxMana { get; set; }
 
     }
 }

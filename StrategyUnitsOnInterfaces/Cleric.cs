@@ -9,12 +9,15 @@ namespace StrategyUnitsOnInterfaces
 {
     internal class Cleric : Unit, IMagicUnit
     {
-        public Cleric(int health) : base(health)
+        public Cleric(int health, uint mana) : base(health)
         {
+            Gold = 50;
+            Mana = mana;
+            MaxMana = Mana;
         }
 
-        public int Mana { get; set; }
-        public int MaxMana { get; set; }
+        public uint Mana { get; set; }
+        public uint MaxMana { get; set; }
         public void Heal(Unit unit)
         {
             if (unit.IsAlive)

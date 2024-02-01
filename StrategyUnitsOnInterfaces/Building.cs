@@ -8,6 +8,12 @@ namespace StrategyUnitsOnInterfaces
 {
     internal class Building
     {
-        public Building() { }
+        public uint MaxEnergy { get; private set; }
+        public uint Energy { get; set; }
+        public Building()
+        {
+            Energy = 500;
+            MaxEnergy = Energy;
+        }
     }
 }

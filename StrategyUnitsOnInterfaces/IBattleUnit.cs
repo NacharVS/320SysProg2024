@@ -13,7 +13,10 @@ namespace StrategyUnitsOnInterfaces
         public int MaxDamage { get; set; }
 
         public int Protection { get; set; }
+        public int LevelWeapon { get; set; }
+        public int LevelArmor { get; set; }
 
-        public void Attack(Unit unit);
+
+        public abstract void Attack(Unit unit);
     }
 }

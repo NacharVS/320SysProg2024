@@ -1,6 +1,6 @@
 ﻿namespace StrategyUnits
 {
-    internal class Peasant : IHealth
+    internal class Peasant 
     {
         private int _health;
 
