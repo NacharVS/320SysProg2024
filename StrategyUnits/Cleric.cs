@@ -52,7 +52,7 @@ namespace StrategyUnits
 
         public void DecreaseManna(int manna)
         {
-            Manna -= 2;
+            Manna -= manna;
         }
 
         public void HillOthers(IHealth health)
@@ -98,8 +98,9 @@ namespace StrategyUnits
                 {
                     while (Manna >= 1 && Health != MaxHealth)
                     {
-                        Health += 2;
-                        Manna -= 1;
+                        IncreseHealth(2);
+                        DecreaseManna(1);
+
                     }
                 }
 

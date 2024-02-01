@@ -269,6 +269,7 @@ Berserker berserker_1 = barracs.CreateBerserker(); //Атака, ярость
 ZeelotKnight zeelotKnight_1 = altar.CreateZeelotKnight(); //Атака, Магический урон
 Palladin palladin_1 = altar.CreatePalladin(); // Атака, СвятойОгонь, СвятаяЗащита
 Cleric cleric_1 = altar.CreateCleric(); //Атака, ХиллСебя, ХиллДругого
+Cleric cleric_2 = altar.CreateCleric(); //Атака, ХиллСебя, ХиллДругого
 
 peasant_1.ShowInfo();
 footman_1.ShowInfo();
@@ -284,6 +285,7 @@ berserker_1.HealthDecreasedEvent += MethodHealthDecreased;
 zeelotKnight_1.HealthDecreasedEvent += MethodHealthDecreased;
 palladin_1.HealthDecreasedEvent += MethodHealthDecreased;
 cleric_1.HealthDecreasedEvent += MethodHealthDecreased;
+cleric_2.HealthDecreasedEvent += MethodHealthDecreased;
 
 peasant_1.HealthIncreasedEvent += MethodHealthIncreased;
 footman_1.HealthIncreasedEvent += MethodHealthIncreased;
@@ -291,6 +293,7 @@ berserker_1.HealthIncreasedEvent += MethodHealthIncreased;
 zeelotKnight_1.HealthIncreasedEvent += MethodHealthIncreased;
 palladin_1.HealthIncreasedEvent += MethodHealthIncreased;
 cleric_1.HealthIncreasedEvent += MethodHealthIncreased;
+cleric_2.HealthIncreasedEvent += MethodHealthIncreased;
 
 zeelotKnight_1.MannaDecreasedEvent += MethodMannaDecreased;
 zeelotKnight_1.MannaIncreasedEvent += MethodMannaIncreased;
@@ -298,6 +301,8 @@ palladin_1.MannaDecreasedEvent += MethodMannaDecreased;
 palladin_1.MannaIncreasedEvent += MethodMannaIncreased;
 cleric_1.MannaDecreasedEvent += MethodMannaDecreased;
 cleric_1.MannaIncreasedEvent += MethodMannaIncreased;
+cleric_2.MannaDecreasedEvent += MethodMannaDecreased;
+cleric_2.MannaIncreasedEvent += MethodMannaIncreased;
 
 //footman_1.InflictDamage(peasant_1);
 
@@ -327,6 +332,12 @@ berserker_1.InflictDamage(zeelotKnight_1);
 berserker_1.InflictDamage(zeelotKnight_1);
 zeelotKnight_1.MagicAttack(footman_1);
 zeelotKnight_1.Prayer();
+zeelotKnight_1.MagicAttack(cleric_1);
+
+Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+cleric_2.HillOthers(zeelotKnight_1);
+cleric_1.HillMyself();
+cleric_1.InflictDamage(peasant_1);
 
 
 ////Проверка методов и ивентов КАЖДОГО.
