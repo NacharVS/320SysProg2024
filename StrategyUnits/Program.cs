@@ -1,4 +1,5 @@
-﻿using StrategyUnits.Example;
+﻿using StrategyUnits;
+using StrategyUnits.Extra;
 using System.Text;
 using System.Xml.Linq;
 
@@ -93,11 +94,40 @@ using System.Xml.Linq;
 //zealotKnight.InflictDamage(berserker);
 //zealotKnight.InflictDamage(berserker);
 
-Throll throll = new Throll();
-Giant giant = new Giant();
 
-throll.Attack(giant);
-giant.Attack(throll);
+Barracks barrack = new Barracks();
+Forge forge = new Forge();
+Altar altar = new Altar();
+Berserker berserker = barrack.CreateBerserker();
+Footman footman = barrack.CreateFootman();
+Paladin paladin = altar.CreatePaladin();
+ZealotKnight zealotKnight = altar.CreateZealotKnight();
 
-Console.WriteLine(throll.Health);
-Console.WriteLine(giant.Health);
+static void MethodDamage(string? name, int health, int maxHealth, int damage, string nameDamaging, string nameDamaged)
+{
+    Console.WriteLine($"{nameDamaging} аттаковал {nameDamaged}.\n{nameDamaged} получил урон {damage}. Текущий HP {nameDamaged}: {health}/{maxHealth}. Текущая защита: {maxProtect}.\n");
+}
+
+footman.HealthIncreasedEvent += ;
+footman.HealthDecreasedEvent += MethodDamage;
+footman.inflictDamageToProtectEvent += MethodDamage;
+berserker.inflictDamageEvent += MethodDamage;
+berserker.inflictDamageToProtectEvent += MethodDamage;
+cleric.HealEvent += MethodHeal;
+zealotKnight.inflictDamageToProtectEvent += MethodDamage;
+zealotKnight.inflictDamageEvent += MethodDamage;
+zealotKnight.ManaLossEvent += MethodLossMana;
+zealotKnight.ManaGetEvent += MethodGetMana;
+
+Console.WriteLine(" "); Console.WriteLine("Begin 2");
+Console.WriteLine(" ");
+zealotKnight.ShowInfo();
+Console.WriteLine(" ");
+footman.ShowInfo(); zealotKnight.Attack(footman);
+Console.WriteLine(" ");
+footman.ShowInfo(); Console.WriteLine(" ");
+
+footman.Attack(zealotKnight); zealotKnight.ShowInfo();
+Console.WriteLine(" ");
+zealotKnight.Prayer(); Console.WriteLine(" ");
+zealotKnight.ShowInfo();

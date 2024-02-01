@@ -1,4 +1,4 @@
-﻿using StrategyUnits.Example;
+﻿using StrategyUnits.Extra;
 using static System.Net.Mime.MediaTypeNames;
 namespace StrategyUnits.Extra
 {

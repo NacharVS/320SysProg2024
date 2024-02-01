@@ -2,6 +2,6 @@
 {
     internal class Peasant : Unit
     {
-        public Peasant() : base("Peasant", 30, 10) { }
+        public Peasant() : base("Peasant", 30, 30, false) { }
     }
 }

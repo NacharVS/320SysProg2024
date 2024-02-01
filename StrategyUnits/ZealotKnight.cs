@@ -119,7 +119,7 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {Name} Здоровье = {Health} Урон = {Damage} Энергия = {Energy}");
+            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health} Урон: {Damage} Энергия: {Energy}");
         }
         public void Attack(IHealth unit)
         {

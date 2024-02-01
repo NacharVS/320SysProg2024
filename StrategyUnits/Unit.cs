@@ -7,7 +7,7 @@ namespace StrategyUnits
         private string? _name;
         private int _health { get; set; }
         public  int MaxHealth { get; set; }
-        private bool _isDead;
+        public bool _isDead;
         public Unit(string name, int health, int maxHealth, bool isDead)
         {
             _name = name;
@@ -20,16 +20,13 @@ namespace StrategyUnits
             get { return _name; }
             set { _name = value; }
         }
-        public bool IsDead
-        {
-            get { return IsDead; }
-            set { IsDead = value; }
-        }
+        public bool IsDead { get; set; }
         public virtual int Health
         { 
             get => _health; 
             set
             {
+                int health1 = _health;
                 if (value <= 0)
                 {
                     _health = 0;
@@ -47,6 +44,14 @@ namespace StrategyUnits
                     {
                         _health = value;
                     }
+                }
+                if (value <= health1)
+                {
+                    HealthDecreasedEvent.Invoke(_name, _health, (_health - value), MaxHealth);
+                }
+                else if (value > health1)
+                {
+                    HealthIncreasedEvent.Invoke(_name, _health, (_health - value), MaxHealth);
                 }
             }
         }
@@ -66,7 +71,7 @@ namespace StrategyUnits
         {
             Health += heal;
         }
-        public delegate void HealthChangedDelegate(string? name, int health);
+        public delegate void HealthChangedDelegate(string? name, int health, int health1, int maxHealth);
         public event HealthChangedDelegate HealthIncreasedEvent;
         public event HealthChangedDelegate HealthDecreasedEvent;
 
