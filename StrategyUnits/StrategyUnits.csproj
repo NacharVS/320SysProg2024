@@ -13,4 +13,8 @@
     <None Remove="Новая папка\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.23.1" />
+  </ItemGroup>
+
 </Project>
