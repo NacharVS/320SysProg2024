@@ -13,7 +13,7 @@ namespace StrategyUnits.Interfaces
 
         public bool IsDead { get; set; }
 
-        public void TakeDamage(int damage);
+        public void InflictkDamage(int damage);
 
         public void GetHeal(int heal);
     }

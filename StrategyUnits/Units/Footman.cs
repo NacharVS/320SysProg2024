@@ -1,4 +1,6 @@
-﻿namespace StrategyUnits.Units
+﻿using StrategyUnits.Interfaces;
+
+namespace StrategyUnits.Units
 {
     internal class Footman : MilitaryUnit
     {
@@ -14,13 +16,6 @@
             set { _nameOfUnit = value; }
         }
 
-        public override void ShowInfo()
-        {
-            Console.WriteLine($"{NameOfUnit} - юнит" +
-               $"Здоровье: {CurrentHealth}/{MaxHealth}\n" +
-               $"Броня: {Defense}\n" +
-               $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n");
-
-        }
+        
     }
 }

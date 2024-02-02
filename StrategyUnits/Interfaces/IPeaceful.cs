@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Interfaces
 {
-    internal interface IBattleUnitcs
+    internal interface IPeaceful 
     {
+        public bool IsWorking { get; set; }
+        public void EndWork();
+        public void StartWork();
     }
 }

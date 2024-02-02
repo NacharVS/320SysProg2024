@@ -10,7 +10,12 @@ namespace StrategyUnits.Interfaces
     {
         public int ManaPoints { get; set; }
         public int MaxManaPoints { get; set; }
-        public void TakeMana(int manaPoints);
-        public void AddMana(int manaPoints);
+        public void DecreaseEnergy(int manaPoints);
+        public void IncreaseEnergy(int manaPoints);
+
+        public delegate void EnergyChangedDelegate(string name, int manaPoints, int MaxManaPoints);
+        public event EnergyChangedDelegate EnergyDecreasedEvent;
+        public event EnergyChangedDelegate EnergyIncreasedEvent;
     }
+
 }

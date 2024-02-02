@@ -13,6 +13,9 @@ namespace StrategyUnits.Units
         private int _manaPoints;
         private int _maxManaPoints;
 
+        public event IMagical.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagical.EnergyChangedDelegate EnergyIncreasedEvent;
+
         public int MaxManaPoints
         {
             get { return _maxManaPoints; }
@@ -33,12 +36,7 @@ namespace StrategyUnits.Units
         }
 
 
-        public override void ShowInfo()
-        {
-            Console.WriteLine($"Юнит: {NameOfClass} Здоровье: {CurrentHealth} Максимальное Здорвье: {MaxHealth} \n" +
-                $"Броня: {Defense} Минимальный урон: {MinDamage} Максимальный урон: {MaxDamage} \n" +
-                $"Мана: {ManaPoints}");
-        }
+      
 
         public virtual void AttackMagically(Unit unit)
         {
@@ -55,7 +53,12 @@ namespace StrategyUnits.Units
             throw new NotImplementedException();
         }
 
-        public void AddMana(int manaPoints)
+        public void IncreaseEnergy(int manaPoints)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DecreaseEnergy(int manaPoints)
         {
             throw new NotImplementedException();
         }

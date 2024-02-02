@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Units.Buildings
 {
-    internal class Barracks // фабрика
+    internal class Barracks : ICommonInformation
     {
+        public string? Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public Barracks()
+        {
+            
+        }
 
         public Footman CreateFootman(string nameOfUnit)
         {
@@ -25,5 +32,9 @@ namespace StrategyUnits.Units.Buildings
             return new Footman(90, "Пехотинец", 2, 5, 20, 100, nameOfUnit, 1, 1);
         }
 
+        public void ShowInformation()
+        {
+            Console.WriteLine($" Персонаж: {Name}\n");
+        }
     }
 }

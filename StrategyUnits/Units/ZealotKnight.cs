@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace StrategyUnits.Units
 {
@@ -40,6 +41,12 @@ namespace StrategyUnits.Units
             TakeMana(10);
             Console.WriteLine($"{NameOfUnit} молитва была прочтена.");
             GetHeal(20);
+        }
+
+
+        public void ShowInformation()
+        {
+            Console.WriteLine($"Персонаж: {NameOfClass}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Урон: {MinDamage} Мана: {ManaPoints}/{MaxManaPoints} \n Живой: {!IsDead}");
         }
     }
 }

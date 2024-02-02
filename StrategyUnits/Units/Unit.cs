@@ -1,8 +1,9 @@
-﻿using static StrategyUnits.Units.Unit;
+﻿using StrategyUnits.Interfaces;
+using static StrategyUnits.Units.Unit;
 
 namespace StrategyUnits.Units
 {
-    internal class Unit
+    internal class Unit : ICommonInformation
     {
         public delegate void HealthIncreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void HealthDecreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
@@ -77,6 +78,8 @@ namespace StrategyUnits.Units
             set => _maxHealth = value;
         }
         public bool IsDead { get; set; }
+        public string? Name { get ; set ; }
+
         public Unit(int currentHealth, string? nameOfClass, int defense)
         {
             _currentHealth = currentHealth;
@@ -90,9 +93,10 @@ namespace StrategyUnits.Units
             Console.WriteLine("Is moving");
         }
 
-        public virtual void ShowInfo()
+
+        public void ShowInformation()
         {
-            Console.WriteLine($"Юнит: {_nameOfClass} Здоровье: {_currentHealth} Макс здоровье: {_maxHealth} Защита: {_defense}");
+            Console.WriteLine($"Юнит {NameOfClass}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Живой: {IsDead}");
         }
 
         public event HealthIncreasedDelegate HealthIncreasedEvent;

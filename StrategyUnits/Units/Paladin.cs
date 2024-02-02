@@ -80,17 +80,6 @@ namespace StrategyUnits.Units
             }
         }
 
-        public override void ShowInfo()
-        {
-
-            Console.WriteLine(
-                $"{NameOfUnit} - юнит" +
-               $"Здоровье: {CurrentHealth}/{MaxHealth}\n" +
-               $"Броня: {Defense}\n" +
-               $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n" +
-               $"Мана: {ManaPoints}\n");
-
-        }
     }
 }
 

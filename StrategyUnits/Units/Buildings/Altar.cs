@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Units.Buildings
 {
-    internal class Altar // фабрика
+    internal class Altar : ICommonInformation
     {
         private string _altarName;
 
@@ -23,6 +24,8 @@ namespace StrategyUnits.Units.Buildings
             get { return _capability; }
             set { _capability = value; }
         }
+
+        public string? Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Altar(string altarName)
         {
@@ -41,14 +44,6 @@ namespace StrategyUnits.Units.Buildings
             }
         }
 
-        public void ShowInfo()
-        {
-
-            Console.WriteLine($"{AltarName} - Алтарь \n" +
-                $"У алтаря осталось {Capacity} EP\n");
-        }
-
-
         public Healer CreateHealer(string nameOfUnit)
         {
             return new Healer(60, "Лекарь", 2, 7, 9, 70, 1, 1);
@@ -66,5 +61,10 @@ namespace StrategyUnits.Units.Buildings
 
         }
 
+        public void ShowInformation()
+        {
+            Console.WriteLine($"{AltarName} - Алтарь \n" +
+               $"У алтаря осталось {Capacity} EP\n");
+        }
     }
 }

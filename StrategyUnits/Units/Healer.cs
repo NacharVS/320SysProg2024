@@ -51,9 +51,9 @@ namespace StrategyUnits.Units
         }
 
 
-        public override void ShowInfo()
+        public void ShowInformation()
         {
-
+            Console.WriteLine($" Персонаж: {Name}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Мана: {ManaPoints}/{MaxManaPoints} \n Магический урон: {MaxDamage} \n Живой: {!IsDead}");
         }
     }
 }

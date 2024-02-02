@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Units
 {
-    internal class Berserk : Footman
+    internal class Berserk : Footman 
     {
 
         private bool _rage;
@@ -24,12 +25,6 @@ namespace StrategyUnits.Units
             }
         }
 
-
-        public override void ShowInfo()
-        {
-
-            Console.WriteLine($"{NameOfUnit} - юнит {NameOfClass} класса \n" + $"Здоровье: {CurrentHealth}/{MaxHealth}\n" + $"Броня: {Defense}\n" + $"Состояние рейдж: {Rage}\n" + $"Урон (Мин - Макс): {MinDamage} - {MaxDamage}\n");
-        }
 
         public void RageOn()
         {

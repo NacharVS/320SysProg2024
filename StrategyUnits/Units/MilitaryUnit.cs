@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits.Units
 {
-    internal class MilitaryUnit : Unit,IMilitaryUnit,IAttackedUnit
+    internal class MilitaryUnit : Unit, IMilitaryUnit, IAttackedUnit
     {
         private int _minDamage;
         public int MinDamage
@@ -75,10 +75,10 @@ namespace StrategyUnits.Units
 
         }
 
-        public override void ShowInfo()
+        public void ShowInformation()
         {
 
-            Console.WriteLine($"Юнит: {NameOfClass} Здоровье: {CurrentHealth} Максимальное здоровье: {MaxHealth} \n" +
+            Console.WriteLine($"Юнит: {NameOfClass} \nЗдоровье: {CurrentHealth} Максимальное здоровье: {MaxHealth} \n" +
                 $"Броня: {Defense} Минимальный урон: {MinDamage} Максимальный урон: {MaxDamage}");
         }
 
@@ -93,6 +93,11 @@ namespace StrategyUnits.Units
         }
 
         public void GetHeal(int heal)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InflictkDamage(int damage)
         {
             throw new NotImplementedException();
         }
