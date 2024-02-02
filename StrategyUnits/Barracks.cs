@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Barracks
+    internal class Barracks : ICreating
     {
         private int _damage;
         
@@ -29,7 +30,6 @@ namespace StrategyUnits
         }
         public Paladin CreatePaladin(string nameOfUnit)
         {
-
             return new Paladin(); 
         }
     }

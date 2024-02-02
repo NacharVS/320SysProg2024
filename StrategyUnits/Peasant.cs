@@ -2,7 +2,7 @@
 {
     internal class Peasant : Unit
     {
-        public int quantityResources;
+        private int quantityResources;
         public int QuanRecources
         { get { return quantityResources;  } 
           set { quantityResources = value; } }

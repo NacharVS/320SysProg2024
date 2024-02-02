@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class ZealotKnight : MagicUnit
+    internal class ZealotKnight : MagicUnit, IZealotKnight
     {
         public string? _Name;
         public int _damage;
