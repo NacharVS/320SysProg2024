@@ -2,43 +2,48 @@
 {
     internal class Unit
     {
-        public delegate void HealthChangedDelegate(int health);
-
         private int _health;
         private string? _name;
+        private int _protection;        
         public bool isAlive { get; private set; }
         public int MaxHealth { get; private set; }
-        public Unit(int health, string? name)
+
+        public Unit(int health, string? name, int protection)
         {
             _health = health;
             _name = name;
             MaxHealth = health;
             isAlive = true;
+            _protection = protection;
         }
 
-        public string Name
+        public int Protection
+        {
+            get { return _protection; }
+            set { _protection = value; }
+        }
+
+        public string? Name
         {
             get { return _name; }
             set { _name = value; }
         }
-
 
         public int Health
         {
             get => _health;
             set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
-                    _health = 0;
                     isAlive = false;
+                    _health = 0;
                 }
-                else
-                    if (value > MaxHealth)
+                else if (value > MaxHealth)
                     _health = MaxHealth;
                 else
                     _health = value;
-                HealthChangedEvent.Invoke(_health);
+                
             }
         }
 
@@ -51,9 +56,5 @@
         {
             Console.WriteLine($"Unit: {_name} Health: {_health}");
         }
-
-        public event HealthChangedDelegate HealthIncreasedEvent;
-        public event HealthChangedDelegate HealthDecreasedEvent;
-        public event HealthChangedDelegate HealthChangedEvent;
     }
 }

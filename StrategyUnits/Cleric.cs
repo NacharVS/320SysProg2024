@@ -7,47 +7,39 @@ using System.Xml.Linq;
 
 namespace StrategyUnits
 {
-    internal class Cleric : Unit
+    internal class Cleric : MagicUnit
     {
-        private int _manna;
-        public Cleric() : base(30, "Cleric")
+        public Cleric(int minDamage, int maxDamage, string? name, int Health, int protection) : base(minDamage, maxDamage, name, Health, protection)
         {
-            _manna = 40;
-        }
-        public int Manna
-        {
-            get { return _manna; }
-            set { _manna = value; }
-        }
-
-        public void selfHeal()
-        {
-            while (Manna >= 1)
-            {
-                Health += 2;
-                Manna -= 1;
-            }
         }
 
         public void Heal(Unit unit)
         {
             if (unit.isAlive)
             {
-                while (Manna >= 2)
+                if (unit.Health == unit.MaxHealth)
                 {
-                    unit.Health += 1;
-                    Manna -= 2;
+                    Console.WriteLine($"{Name} can't heal {unit.Name}, because health is full");
+                }
+                else
+                {
+                    Console.WriteLine($"{Name} heal {unit.Name}");
+                    while (Manna >= 2 && (unit.Health < unit.MaxHealth))
+                    {
+                        unit.Health += 1;
+                        Manna -= 2;
+                    }
                 }
             }
             else
             {
-                Console.WriteLine("Unit is dead");
+                Console.WriteLine($"{Name} can't heal {unit.Name}");
             }
         }
 
-        public void ShowInfo()
+        public override void ShowInfo()
         {
-            Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}" );
+            Console.WriteLine($"Unit: {Name} Health: {Health} Manna: {Manna}");
         }
     }
 }
