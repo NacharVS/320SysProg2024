@@ -20,7 +20,7 @@ namespace StrategyUnits
         }
         public void MagicAttack(IHealth unit)
         {
-            DecreaseEnergy(2);
+            DecreaseEnergy(5);
             unit.DecreaseHealth(MagicDamage);
         }
         public override int Health
@@ -28,7 +28,7 @@ namespace StrategyUnits
             get => base.Health;
             set
             {
-                int pred_health = base.Health;
+                int health1 = base.Health;
                 if (value <= 0)
                 {
                     base.Health = 0;
@@ -40,6 +40,7 @@ namespace StrategyUnits
                     if (value > MaxHealth)
                     {
                         base.Health = MaxHealth;
+                        Console.WriteLine($"{this.Name} имеет максимальное HP.\n");
                     }
                     else
                     {
@@ -60,6 +61,8 @@ namespace StrategyUnits
         {
             if (IsDead == false)
             {
+                int fireAttack = 12;
+                int difference = fireAttack - Defense;
                 if (Energy < 5)
                 {
                     Console.WriteLine($"{Name} не хватает энергии.\n");
@@ -72,9 +75,18 @@ namespace StrategyUnits
                     }
                     else
                     {
-                        unit.Health -= 15;
-                        Energy -= 5;
-                        Console.WriteLine($"{Name} нанес магичский урон {unit.Name}.\n");
+                        if (Defense > fireAttack)
+                        {
+                            Defense = Defense - fireAttack;
+                            Health = Health - 0;
+                        }
+                        else if (Defense < fireAttack)
+                        {
+                            unit.Health = unit.Health - difference;
+                            unit.DecreaseHealth(difference);
+                            Console.WriteLine($"{Name} нанес магичский урон {unit.Name}.\n");
+                            DecreaseEnergy(5);
+                        }
                     }
                 }
             }
@@ -89,7 +101,6 @@ namespace StrategyUnits
             CapabilityActive = true;
             Console.WriteLine($"{Name} активировал святую защиту!");
         }
-
         public void HolyArmorDeactivation()
         {
             CapabilityActive = false;
@@ -100,7 +111,6 @@ namespace StrategyUnits
         {
             Console.WriteLine($"Персонаж: {Name} Здоровье: {Health}/{MaxHealth} Защита: {Defense} Урон: {Damage} Энергия: {Energy}/{MaxEnergy} Магический урон: {MagicDamage} Святая броня: {CapabilityActive}");
         }
-
         public void CapabilityActivate() { }
     }
 }

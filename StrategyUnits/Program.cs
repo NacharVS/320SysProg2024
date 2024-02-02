@@ -25,7 +25,7 @@ static void MethodGetHealth(string? name, int health, int health1, int maxHealth
 
 static void MethodLossEnergy(string? name, int energy, int energy1, int maxEnergy)
 {
-    Console.WriteLine($"{name} потратил энергию вылечен. Текущая энергия: {energy}/{maxEnergy}.");
+    Console.WriteLine($"{name} потратил энергию. Текущая энергия: {energy}/{maxEnergy}.");
 }
 
 static void MethodGetEnergy(string? name, int energy, int energy1, int maxEnergy)
@@ -62,18 +62,22 @@ berserker.HealthIncreasedEvent += MethodGetHealth;
 berserker.HealthDecreasedEvent += MethodLossHealth;
 paladin.HealthIncreasedEvent += MethodGetHealth;
 paladin.HealthDecreasedEvent += MethodLossHealth;
-
 zealotKnight.HealthIncreasedEvent += MethodGetHealth;
 zealotKnight.HealthDecreasedEvent += MethodLossHealth;
 
 zealotKnight.EnergyDecreasedEvent += MethodLossEnergy;
 zealotKnight.EnergyIncreasedEvent += MethodGetEnergy;
-
+cleric.EnergyDecreasedEvent += MethodLossEnergy;
+cleric.EnergyIncreasedEvent += MethodGetEnergy;
+paladin.EnergyDecreasedEvent += MethodLossEnergy;
+paladin.EnergyIncreasedEvent += MethodGetEnergy;
 Console.WriteLine();
+Console.WriteLine("НАЧАЛО. ЗИЛОТ АТАКОВАЛ ФУТМАНА.");
 zealotKnight.Attack(footman);
 Console.WriteLine();
+Console.WriteLine("ИНФОРМАЦИЯ О ФУТМАНЕ.");
 footman.ShowInfo();
-Console.WriteLine();
+Console.WriteLine("НАЧАЛО.");
 footman.Attack(zealotKnight);
 footman.Attack(zealotKnight);
 footman.Attack(zealotKnight);
@@ -88,7 +92,16 @@ zealotKnight.ShowInfo();
 zealotKnight.Prayer();
 zealotKnight.ShowInfo();
 Console.WriteLine();
+paladin.FireAttack(zealotKnight);
+zealotKnight.ShowInfo();
+Console.WriteLine();
+Console.WriteLine("МАГИЧЕСКАЯ АТАКА.");
 paladin.ShowInfo();
+zealotKnight.ShowInfo();
+paladin.MagicAttack(zealotKnight);
+paladin.ShowInfo();
+zealotKnight.ShowInfo();
+Console.WriteLine();
 zealotKnight.Attack(paladin);
 paladin.ShowInfo();
 zealotKnight.Attack(paladin);
@@ -105,3 +118,6 @@ zealotKnight.Attack(paladin);
 paladin.ShowInfo();
 zealotKnight.Attack(paladin);
 paladin.ShowInfo();
+Console.WriteLine();
+forge.WeaponUpgrade();
+forge.ArmorUpgrade();
