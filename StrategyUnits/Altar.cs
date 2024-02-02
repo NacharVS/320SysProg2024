@@ -2,13 +2,10 @@
 
 namespace StrategyUnits
 {
-    internal class Altar : IMagicUnit
+    internal class Altar
     {
         private string? _nameA;
         private int _Energy;
-
-        public event IMagicUnit.MannaChangedDelegate MannaDecreasedEvent;
-        public event IMagicUnit.MannaChangedDelegate MannaIncreasedEvent;
 
         public int MaxEnergy { get; private set; }
 
@@ -39,9 +36,6 @@ namespace StrategyUnits
                         _Energy = value;
             }
         }
-
-        public int Manna { get; set ; }
-        public int MaxManna { get; set; }
 
         //Метод регенарции манны
         public void RegenerationManna(IMagicUnit magicUnit)
@@ -89,16 +83,6 @@ namespace StrategyUnits
         public ZeelotKnight CreateZeelotKnight()
         {
             return new ZeelotKnight( "Zeelot Knight", 70, 3, 5, 15); //Имя, здоровье, урон, защита, манна
-        }
-
-        public void DecreaseManna(int manna)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void IncreaseManna(int manna)
-        {
-            throw new NotImplementedException();
         }
     }
 }

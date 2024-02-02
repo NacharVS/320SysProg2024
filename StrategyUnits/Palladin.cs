@@ -11,11 +11,7 @@ namespace StrategyUnits
 
         public override void MagicAttack(IHealth unit) //Метод НанесенияМагическогоУрона(СвятойОгонь) (5 манны = 15)
         {
-            //if (IsDead)
-            //{
-            //    Console.WriteLine($"{Name} мёртв.");
-            //}
-            /*else */if (Manna < 5)
+            if (Manna < 5)
             {
                 Console.WriteLine("Недостаточно манны.");
             }
@@ -34,7 +30,7 @@ namespace StrategyUnits
 
         public void HillyArmor() //Метод СвятаяБроня - Увеличивает защиту: 1 защита = 3 манны
         {
-            if (IsDead == true)
+            if (IsDead)
             {
                 Console.WriteLine($"{Name} мёртв.");
             }

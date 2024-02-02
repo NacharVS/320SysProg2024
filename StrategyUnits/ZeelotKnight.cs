@@ -105,8 +105,11 @@ namespace StrategyUnits
         }
         public override void DecreaseHealth(int damage)
         {
-            //Console.WriteLine($"{base.Name} атаковал.");
-            base.Health -= (damage - Armor);
+            if (Armor <= damage)
+                base.Health -= (damage - Armor);
+            else
+                base.Health -= -1 * (damage - Armor);
+
         }
 
         //public virtual void MagicAttack(Unit unit) //Метод НанесенияМагическогоУрона (2 манны = 8 урона)

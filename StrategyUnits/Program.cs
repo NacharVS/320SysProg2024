@@ -353,15 +353,17 @@ berserker_1.InflictDamage(palladin_1);
 Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 footman_1.ShowInfo();
 berserker_1.ShowInfo();
-forge.UpgradeDamage();
 footman_1.ShowInfo();
 berserker_1.ShowInfo();
-forge.UpgradeDamage();
 footman_1.ShowInfo();
 berserker_1.ShowInfo();
-forge.UpgradeDamage();
 footman_1.ShowInfo();
 berserker_1.ShowInfo();
+
+Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+footman_1.ShowInfo();
+palladin_1.ShowInfo();
+footman_1.InflictDamage(palladin_1);
 ////Проверка методов и ивентов КАЖДОГО.
 //footman_1.InflictDamageEvent += MethodYron;
 //footman_2.InflictDamageEvent += MethodYron;

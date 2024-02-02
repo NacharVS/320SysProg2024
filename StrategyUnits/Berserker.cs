@@ -1,4 +1,5 @@
 ﻿using StrategyUnits.Interface;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace StrategyUnits
 {
@@ -66,10 +67,13 @@ namespace StrategyUnits
 
         }
 
-        public void DecreaseHealth(IHealth health)
+        public void DecreaseHealth(IHealth unit)
         {
-            Console.WriteLine($"{Name} атаковал.");
-            health.DecreaseHealth(Damage - Armor);
+
+            if (Armor <= Damage)
+                Health -= (Damage - Armor);
+            else
+                Health -= -1 * (Damage - Armor);
         }
 
         public void InflictDamage(IHealth unit)
