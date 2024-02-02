@@ -8,7 +8,7 @@ namespace StrategyUnits.Interfaces
 {
     internal interface IPeasant
     {
-        public int QuanRecources { get; set; }
+        public int QuanResources { get; set; }
         public void Collecting();
     }
 }

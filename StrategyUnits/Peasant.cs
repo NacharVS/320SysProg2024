@@ -1,9 +1,11 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.Interfaces;
+
+namespace StrategyUnits
 {
-    internal class Peasant : Unit
+    internal class Peasant : Unit, IPeasant
     {
         private int quantityResources;
-        public int QuanRecources
+        public int QuanResources
         { get { return quantityResources;  } 
           set { quantityResources = value; } }
         public Peasant() : base(30, "Peasant")

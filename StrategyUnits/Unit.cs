@@ -2,7 +2,7 @@
 
 namespace StrategyUnits
 {
-    internal class Unit : IHealth, IArmoredUnit
+    internal class Unit : IHealth, IArmoredUnit, IActions
     {
         private int _health;
         private string? _name;
