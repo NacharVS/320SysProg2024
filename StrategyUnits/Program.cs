@@ -3,131 +3,105 @@ using StrategyUnits.Extra;
 using System.Text;
 using System.Xml.Linq;
 
-//Barracks barrack = new Barracks();
-//Forge forge = new Forge();
-//Altar altar = new Altar();
-//Berserker berserker = barrack.CreateBerserker();
-//Footman footman = barrack.CreateFootman();
-//Cleric cleric = altar.CreateCleric();
-//Paladin paladin = altar.CreatePaladin();
-//ZealotKnight zealotKnight = altar.CreateZealotKnight();
-
-//static void MethodDamage(int damage, int maxHP, int maxProtect, string nameDamaging, string nameDamaged)
+//static void MethodDamage(string? name, int health, int health1, int maxHealth, int damage)
 //{
-//    Console.WriteLine($"{nameDamaging} аттаковал {nameDamaged}.\n{nameDamaged} получил урон {damage}. Текущий HP {nameDamaged}: {maxHP}. Текущая защита: {maxProtect}.\n");
+//    Console.WriteLine($"{name} аттаковал. Урон противнику составил {damage}.\n");
 //}
 
-//static void MethodHeal(int mana, int maxHP, string nameHealer, string nameHealing)
+//static void MethodHeal(string? name, int health, int health1, int maxHealth, int damage)
 //{
-//    Console.WriteLine($"{nameHealer} вылечил {nameHealing} до {maxHP}.\nТекущая мана {nameHealer}: {mana}.\n" +
-//        $"{nameHealing} был вылечен. Текущий HP: {maxHP}.\n");
+//    Console.WriteLine($"{name} получил урон {damage}. Текущее здоровье: {health}/{maxHealth}.\n");
 //}
-//static void MethodLossMana(string name, int maxMana)
-//{
-//    Console.WriteLine($"{name} потратил ману. Текущая мана: {maxMana}.\n");
-//}
-//static void MethodGetMana(string name, int maxMana)
-//{
-//    Console.WriteLine($"{name} восстановил манну. Текущая мана: {maxMana}.\n");
-//}
-//berserker.ShowInfo();
-//footman.ShowInfo();
-//footman.inflictDamageEvent += MethodDamage;
-//footman.inflictDamageToProtectEvent += MethodDamage;
-//berserker.inflictDamageEvent += MethodDamage;
-//berserker.inflictDamageToProtectEvent += MethodDamage;
-//cleric.HealEvent += MethodHeal;
-//zealotKnight.inflictDamageToProtectEvent += MethodDamage;
-//zealotKnight.inflictDamageEvent += MethodDamage;
-//zealotKnight.ManaLossEvent += MethodLossMana;
-//zealotKnight.ManaGetEvent += MethodGetMana;
-//cleric.ManaLossEvent += MethodLossMana;
-//cleric.ManaGetEvent += MethodGetMana;
-//berserker.InflictDamage(footman);
-//footman.ShowInfo();
-//cleric.ShowInfo();
-//berserker.InflictDamage(footman);
-//footman.ShowInfo();
-//cleric.Heal(footman);
-//cleric.ShowInfo();
-//cleric.Heal(footman);
-//altar.CreatePaladin();
-//paladin.ShowInfo();
 
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//footman.InflictDamage(zealotKnight);
-//zealotKnight.InflictDamage(footman);
-
-//berserker.ShowInfo();
-//berserker.ActivateRage();
-//berserker.InflictDamage(zealotKnight);
-//berserker.InflictDamage(zealotKnight);
-//berserker.InflictDamage(zealotKnight);
-//zealotKnight.ShowInfo();
-//zealotKnight.Prayer();
-//zealotKnight.Prayer();
-//zealotKnight.Prayer();
-//zealotKnight.Prayer();
-//zealotKnight.ShowInfo();
-//altar.RecoverMP(zealotKnight);
-//altar.RecoverMP(zealotKnight);
-//altar.RecoverMP(zealotKnight);
-//zealotKnight.ShowInfo();
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-//zealotKnight.InflictDamage(berserker);
-
-
-Barracks barrack = new Barracks();
-Forge forge = new Forge();
-Altar altar = new Altar();
-Berserker berserker = barrack.CreateBerserker();
-Footman footman = barrack.CreateFootman();
-Paladin paladin = altar.CreatePaladin();
-ZealotKnight zealotKnight = altar.CreateZealotKnight();
-
-static void MethodDamage(string? name, int health, int health1, int maxHealth, int damage)
+static void MethodLossHealth(string? name, int health, int health1, int maxHealth)
 {
-    Console.WriteLine($"{name} аттаковал. {name} получил урон {damage}. Текущий HP {name}: {health}/{maxHealth}.\n");
+    Console.WriteLine($"{name} получил урон. Текущее здоровье: {health}/{maxHealth}.");
 }
 
-footman.HealthIncreasedEvent += ;
-footman.HealthDecreasedEvent += MethodDamage;
-footman.inflictDamageToProtectEvent += MethodDamage;
-berserker.inflictDamageEvent += MethodDamage;
-berserker.inflictDamageToProtectEvent += MethodDamage;
-cleric.HealEvent += MethodHeal;
-zealotKnight.inflictDamageToProtectEvent += MethodDamage;
-zealotKnight.inflictDamageEvent += MethodDamage;
-zealotKnight.ManaLossEvent += MethodLossMana;
-zealotKnight.ManaGetEvent += MethodGetMana;
+static void MethodGetHealth(string? name, int health, int health1, int maxHealth)
+{
+    Console.WriteLine($"{name} был вылечен. Текущее здоровье: {health}/{maxHealth}.");
+}
 
-Console.WriteLine(" "); Console.WriteLine("Begin 2");
-Console.WriteLine(" ");
-zealotKnight.ShowInfo();
-Console.WriteLine(" ");
-footman.ShowInfo(); zealotKnight.Attack(footman);
-Console.WriteLine(" ");
-footman.ShowInfo(); Console.WriteLine(" ");
+static void MethodLossEnergy(string? name, int energy, int energy1, int maxEnergy)
+{
+    Console.WriteLine($"{name} потратил энергию вылечен. Текущая энергия: {energy}/{maxEnergy}.");
+}
 
-footman.Attack(zealotKnight); zealotKnight.ShowInfo();
-Console.WriteLine(" ");
-zealotKnight.Prayer(); Console.WriteLine(" ");
+static void MethodGetEnergy(string? name, int energy, int energy1, int maxEnergy)
+{
+    Console.WriteLine($"{name} получил энергию. Текущая энергия: {energy}/{maxEnergy}.");
+}
+
+Barracks barrack = new Barracks();
+Console.WriteLine("Был создан барак.");
+Forge forge = new Forge();
+Console.WriteLine("Была создана кузница.");
+Altar altar = new Altar("Алтарь", 100, 100);
+Console.WriteLine("Был создан алтарь.");
+Berserker berserker = barrack.CreateBerserker();
+Console.WriteLine("Был создан Берсерк.");
+berserker.ShowInfo();
+Footman footman = barrack.CreateFootman();
+Console.WriteLine("Был создан Футман.");
+footman.ShowInfo();
+Paladin paladin = altar.CreatePaladin();
+Console.WriteLine("Был создан Паладин.");
+paladin.ShowInfo();
+Cleric cleric = altar.CreateCleric();
+Console.WriteLine("Был создан Клерик.");
+cleric.ShowInfo();
+ZealotKnight zealotKnight = altar.CreateZealotKnight();
+Console.WriteLine("Был создан ЗилотНайт.");
 zealotKnight.ShowInfo();
+
+
+footman.HealthIncreasedEvent += MethodGetHealth;
+footman.HealthDecreasedEvent += MethodLossHealth;
+berserker.HealthIncreasedEvent += MethodGetHealth;
+berserker.HealthDecreasedEvent += MethodLossHealth;
+paladin.HealthIncreasedEvent += MethodGetHealth;
+paladin.HealthDecreasedEvent += MethodLossHealth;
+
+zealotKnight.HealthIncreasedEvent += MethodGetHealth;
+zealotKnight.HealthDecreasedEvent += MethodLossHealth;
+
+zealotKnight.EnergyDecreasedEvent += MethodLossEnergy;
+zealotKnight.EnergyIncreasedEvent += MethodGetEnergy;
+
+Console.WriteLine();
+zealotKnight.Attack(footman);
+Console.WriteLine();
+footman.ShowInfo();
+Console.WriteLine();
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+footman.Attack(zealotKnight);
+zealotKnight.ShowInfo();
+zealotKnight.Prayer();
+zealotKnight.ShowInfo();
+Console.WriteLine();
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();
+zealotKnight.Attack(paladin);
+paladin.ShowInfo();

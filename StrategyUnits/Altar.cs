@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StrategyUnits.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,67 +7,88 @@ using System.Threading.Tasks;
 
 namespace StrategyUnits
 {
-    internal class Altar
+    internal class Altar : IMagicPower
     {
-        //    public Altar() 
-        //    {
-        //        MaxEnergy = 100;
-        //    }
-        //    private int _currentEnergy;
-        //    public int MaxEnergy { get; private set; }
+        public string Name { get; set; }
+        private int _energy;
+        public int MaxEnergy { get; set; }
+        public int Energy
+        {
+            get { return _energy; }
+            set
+            {
+                int energy1 = _energy;
+                if (value < 0)
+                {
+                    _energy = 0;
+                }
+                else
+                {
+                    if (value > _energy)
+                    {
+                        _energy = MaxEnergy;
+                        Console.WriteLine($"{this.Name} имеет максимальную энергию.\n"); ;
+                    }
+                    else
+                    {
+                        _energy = value;
+                    }
+                }
+                if (value < energy1)
+                {
+                    EnergyDecreasedEvent.Invoke(Name, _energy, energy1 - value, MaxEnergy);
+                }
+                else if (value > energy1)
+                {
+                    EnergyIncreasedEvent.Invoke(Name, _energy, energy1 - value, MaxEnergy);
+                }
+            }
+        }
+        public Altar(string name, int energy, int maxEnergy)
+        {
+            Name = name;
+            _energy = energy;
+            MaxEnergy = maxEnergy;
+        }
+        public void RegenerationEnergy(IMagicPower magiUnit)
+        {
+            while (Energy > 0)
+            {
+                if (magiUnit.MaxEnergy <= magiUnit.Energy)
+                {
+                    return;
+                }
+                if (Energy < 2)
+                {
+                    break;
+                }
+                magiUnit.IncreaseEnergy(1);
+                DecreaseEnergy(2);
+            }
+        }
+        public void DoEnergy()
+        {
+            while (Energy != MaxEnergy)
+            {
+                IncreaseEnergy(2);
+            }
+        }
+        public void ShowInfoAboutAltar()
+        {
+            Console.WriteLine($"Энергия алтаря: {Energy}/{MaxEnergy}.");
+        }
+        public void DecreaseEnergy(int energy)
+        {
+            Energy -= 2;
+        }
+        public void IncreaseEnergy(int energy)
+        {
+            Energy += energy;
+        }
 
-        //    public Altar(int maxEnergy)
-        //    {
-        //        _currentEnergy = MaxEnergy;
-        //        MaxEnergy = maxEnergy;
-        //    }
+        public event IMagicPower.EnergyChangedDelegate EnergyDecreasedEvent;
+        public event IMagicPower.EnergyChangedDelegate EnergyIncreasedEvent;
 
-        //    public int CurrentEnergy
-        //    {
-        //        get => _currentEnergy;
-        //        set
-        //        {
-        //            if (value < 0)
-        //            {
-        //                _currentEnergy = 0;
-        //            }
-        //            else
-        //            {
-        //                if (value > MaxEnergy)
-        //                {
-        //                    _currentEnergy = MaxEnergy;
-        //                }
-        //                else
-        //                {
-        //                    _currentEnergy = value;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    public void ShowInfoAboutAltar()
-        //    {
-        //        Console.WriteLine($"Текущая мана: {_currentEnergy}/{MaxEnergy}.\n");
-        //    }
-        //    public void RecoverMP(MagicUnit magicUnit)
-        //    {
-        //        if (_currentEnergy > 0)
-        //        {
-        //            if (magicUnit.Mana < magicUnit.MaximumMana)
-        //            {
-        //                magicUnit.Mana += 10;
-        //                _currentEnergy -= 10;
-        //                ManaGetEvent.Invoke(magicUnit.Name, magicUnit.Mana);
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("Максимальное количество маны.");
-        //            };
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Нет энергии в алтаре.");
-        //        }
-        //    }
         public ZealotKnight CreateZealotKnight()
         {
             return new ZealotKnight("Zealot knight", 120, 120, false, 50, 12, 70, 70);
@@ -75,11 +97,9 @@ namespace StrategyUnits
         {
             return new Paladin("Paladin", 100, 100, false, 40, 8, 60, 60, 10);
         }
-        //public Cleric CreateCleric()
-        //{
-        //    return new Cleric("Cleric", 55, 30, 6, 40);
-        //}
-        //public delegate void ManaChangedDelegate(string name, int maxMana);
-        //public event ManaChangedDelegate ManaGetEvent;
+        public Cleric CreateCleric()
+        {
+            return new Cleric("Cleric", 30, 30, false, 15, 15, 5);
+        }
     }
 }

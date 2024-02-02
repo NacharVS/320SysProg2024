@@ -21,7 +21,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health} Уровень оружия: {IBattleUnit.WeaponLvl} Урон: {Damage}");
+            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health}/{MaxHealth} Уровень оружия: {IBattleUnit.WeaponLvl} Урон: {Damage}");
         }
     }
 }

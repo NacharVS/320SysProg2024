@@ -27,7 +27,7 @@ namespace StrategyUnits
             get { return _energy; }
             set
             {
-                int energyChange = _energy;
+                int energy1 = _energy;
                 if (value < 0)
                 {
                     _energy = 0;
@@ -35,17 +35,21 @@ namespace StrategyUnits
                 else
                 {
                     if (value > MaxEnergy)
+                    {
                         _energy = MaxEnergy;
+                    }
                     else
+                    {
                         _energy = value;
+                    }
                 }
-                if (value < energyChange)
+                if (value < energy1)
                 {
-                    EnergyDecreasedEvent.Invoke(Name, _energy);
+                    EnergyDecreasedEvent.Invoke(Name, _energy, energy1 - value, MaxEnergy);
                 }
-                else if (value > energyChange)
+                else if (value > energy1)
                 {
-                    EnergyIncreasedEvent.Invoke(Name, _energy);
+                    EnergyIncreasedEvent.Invoke(Name, _energy, energy1 - value, MaxEnergy);
                 }
             }
         }
@@ -76,7 +80,7 @@ namespace StrategyUnits
                 }
                 else
                 {
-                    Console.WriteLine($"{Name} не хватает маны.");
+                    Console.WriteLine($"{Name} не хватает энергии.");
                 }
             }
             else
@@ -119,7 +123,7 @@ namespace StrategyUnits
 
         public override void ShowInfo()
         {
-            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health} Урон: {Damage} Энергия: {Energy}");
+            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health}/{MaxHealth} Защита: {Defense} Урон: {Damage} Энергия: {Energy}/{MaxEnergy}");
         }
         public void Attack(IHealth unit)
         {

@@ -38,9 +38,13 @@ namespace StrategyUnits
                 else
                 {
                     if (value > MaxHealth)
+                    {
                         base.Health = MaxHealth;
+                    }
                     else
+                    {
                         base.Health = value;
+                    }
                 }
                 if (CapabilityActive == false && base.Health < MaxHealth * 0.5)
                 {
@@ -94,7 +98,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($" Персонаж: {Name} Здоровье: {Health}  Урон: {Damage} Энергия: {Energy} Магический урон: {MagicDamage} Святая броня: {CapabilityActive}");
+            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health}/{MaxHealth} Защита: {Defense} Урон: {Damage} Энергия: {Energy}/{MaxEnergy} Магический урон: {MagicDamage} Святая броня: {CapabilityActive}");
         }
 
         public void CapabilityActivate() { }

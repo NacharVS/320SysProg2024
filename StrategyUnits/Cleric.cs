@@ -19,7 +19,7 @@ namespace StrategyUnits
             get { return _energy; }
             set
             {
-                int energyChange = _energy;
+                int energy1 = _energy;
                 if (value < 0)
                 {
                     _energy = 0;
@@ -31,18 +31,19 @@ namespace StrategyUnits
                     else
                         _energy = value;
                 }
-                if (value < energyChange)
+                if (value < energy1)
                 {
-                    EnergyDecreasedEvent.Invoke(Name, _energy);
+                    EnergyDecreasedEvent.Invoke(Name, _energy, energy1 - value, MaxEnergy);
                 }
-                else if (value > energyChange)
+                else if (value > energy1)
                 {
-                    EnergyIncreasedEvent.Invoke(Name, _energy);
+                    EnergyIncreasedEvent.Invoke(Name, _energy, energy1 - value, MaxEnergy);
                 }
             }
         }
         public event IMagicPower.EnergyChangedDelegate EnergyDecreasedEvent;
         public event IMagicPower.EnergyChangedDelegate EnergyIncreasedEvent;
+
         public void Heal(IHealth unit)
         {
             if (unit.IsDead == false)
@@ -83,7 +84,7 @@ namespace StrategyUnits
         }
         public override void ShowInfo()
         {
-            Console.WriteLine($" Персонаж: {Name} Здоровье: {Health}  Энергия: {Energy} Магический урон: {MagicDamage}");
+            Console.WriteLine($"Персонаж: {Name} Здоровье: {Health}/{MaxHealth} Энергия: {Energy}/{MaxEnergy} Магический урон: {MagicDamage}");
         }
     }
 }
