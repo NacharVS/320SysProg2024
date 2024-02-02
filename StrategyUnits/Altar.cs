@@ -52,16 +52,16 @@ namespace StrategyUnits
             {
                 Console.WriteLine($"{NameA} восстанавливает манну...");
                 DateTime fixDate = DateTime.Now;
-                DateTime nextMinute = fixDate.AddSeconds(2);
+                DateTime nextMinute = fixDate.AddSeconds(1);
                 while (true)
                 {
                     DateTime now = DateTime.Now;
                     if (now >= nextMinute)
                     {
                         Console.WriteLine($"{NameA} восстановил манну с {magicUnit.Manna} до {magicUnit.MaxManna}");
-                        Energy -= (magicUnit.MaxManna - magicUnit.Manna) / 10; // 1 Энергия = 10 Манны
+                        _Energy -= (magicUnit.MaxManna - magicUnit.Manna) ; // 1 Энергия = 10 Манны
                         magicUnit.Manna = magicUnit.MaxManna;
-                        nextMinute = nextMinute.AddSeconds(2);
+                        nextMinute = nextMinute.AddSeconds(1);
                         break;
                     }
                 }
@@ -83,7 +83,7 @@ namespace StrategyUnits
 
         public Palladin CreatePalladin()
         {
-            return new Palladin("Palladin", 95, 10, 7, 10, 35);
+            return new Palladin("Palladin", 95, 10, 7, 35);
         }
 
         public ZeelotKnight CreateZeelotKnight()

@@ -57,7 +57,7 @@ namespace StrategyUnits
 
         public void DecreaseManna(int manna)
         {
-            DecreaseManna(manna);
+            Manna -= manna;
         }
 
         public void IncreaseManna(int manna)
@@ -86,7 +86,7 @@ namespace StrategyUnits
             }
         }
 
-        public void MagicAttack(IHealth unit)
+        public virtual void MagicAttack(IHealth unit)
         {
             if (IsDead == true)
             {
@@ -105,7 +105,7 @@ namespace StrategyUnits
         }
         public override void DecreaseHealth(int damage)
         {
-            Console.WriteLine($"{base.Name} атаковал.");
+            //Console.WriteLine($"{base.Name} атаковал.");
             base.Health -= (damage - Armor);
         }
 

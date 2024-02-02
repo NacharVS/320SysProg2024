@@ -74,11 +74,6 @@ namespace StrategyUnits
 
         public virtual void ShowInfo() //Показать инфу
         {
-            //string sost;
-            //if (!IsDead)
-            //    sost = "жив.";
-            //else
-            //    sost = "мёртв";
 
             Console.WriteLine($"Unit: {Name}\t Здоровье: {Health}\n");
         }

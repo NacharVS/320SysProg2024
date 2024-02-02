@@ -339,7 +339,29 @@ cleric_2.HillOthers(zeelotKnight_1);
 cleric_1.HillMyself();
 cleric_1.InflictDamage(peasant_1);
 
+altar.RegenerationManna(cleric_1);
+altar.ShowInfoAltar();
 
+Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+palladin_1.ShowInfo();
+palladin_1.HillyArmor();
+palladin_1.ShowInfo();
+berserker_1.ShowInfo();
+palladin_1.MagicAttack(cleric_1);
+berserker_1.InflictDamage(palladin_1);
+
+Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+footman_1.ShowInfo();
+berserker_1.ShowInfo();
+forge.UpgradeDamage();
+footman_1.ShowInfo();
+berserker_1.ShowInfo();
+forge.UpgradeDamage();
+footman_1.ShowInfo();
+berserker_1.ShowInfo();
+forge.UpgradeDamage();
+footman_1.ShowInfo();
+berserker_1.ShowInfo();
 ////Проверка методов и ивентов КАЖДОГО.
 //footman_1.InflictDamageEvent += MethodYron;
 //footman_2.InflictDamageEvent += MethodYron;
