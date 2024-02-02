@@ -18,7 +18,7 @@ peasant.StartWork();
 peasant.ShowInformation();
 peasant.EndWork();
 peasant.ShowInformation();
-paladin.MagicAttack(peasant);
+paladin.MagicAttack(foot);
 peasant.ShowInformation();
 
 
