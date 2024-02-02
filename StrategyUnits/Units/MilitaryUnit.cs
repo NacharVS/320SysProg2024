@@ -50,30 +50,6 @@ namespace StrategyUnits.Units
         double IMilitaryUnit.MinDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         double IMilitaryUnit.MaxDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public virtual void Attack(Unit attackedUnit)
-        {
-            Random rnd = new Random();
-            int appliedDamage = rnd.Next(MinDamage, MaxDamage) - attackedUnit.Defense;
-            if (!attackedUnit.IsDead)
-            {
-                if (appliedDamage >= 0)
-                {
-                    Console.WriteLine(
-                        $" Атака была успешна проведена. Вы нанесли {appliedDamage} ({appliedDamage + attackedUnit.Defense}-{attackedUnit.Defense}) DP.\n"
-                        );
-                    attackedUnit.CurrentHealth -= appliedDamage;
-                }
-                else
-                {
-                    Console.WriteLine(" Атака была провалена!! \n");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Юнита больше нет в живых. Остановитесь!\n");
-            }
-
-        }
 
         public void ShowInformation()
         {
@@ -84,22 +60,26 @@ namespace StrategyUnits.Units
 
         public void Attack(IAttackedUnit unit)
         {
-            throw new NotImplementedException();
-        }
-
-        public void TakeDamage(int damage)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetHeal(int heal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InflictkDamage(int damage)
-        {
-            throw new NotImplementedException();
+            Random rnd = new Random();
+            int appliedDamage = rnd.Next(MinDamage, MaxDamage) - unit.Defense;
+            if (!IsDead)
+            {
+                if (appliedDamage >= 0)
+                {
+                    Console.WriteLine(
+                        $" Атака была успешна проведена. Вы нанесли {appliedDamage} ({appliedDamage + Defense}-{Defense}) DP.\n"
+                        );
+                    CurrentHealth -= appliedDamage;
+                }
+                else
+                {
+                    Console.WriteLine(" Атака была провалена!! \n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Юнита больше нет в живых. Остановитесь!\n");
+            }
         }
     }
 }

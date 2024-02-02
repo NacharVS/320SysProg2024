@@ -3,7 +3,7 @@ using static StrategyUnits.Units.Unit;
 
 namespace StrategyUnits.Units
 {
-    internal class Unit : ICommonInformation
+    internal class Unit : ICommonInformation, IHealth
     {
         public delegate void HealthIncreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
         public delegate void HealthDecreasedDelegate(int previousHealth, int currentHealth, int maxHealth);
@@ -97,6 +97,16 @@ namespace StrategyUnits.Units
         public void ShowInformation()
         {
             Console.WriteLine($"Юнит {NameOfClass}\n Здоровье: {CurrentHealth}/{MaxHealth} \n Живой: {IsDead}");
+        }
+
+        public void InflictkDamage(int damage)
+        {
+            CurrentHealth -= damage;
+        }
+
+        public void GetHeal(int heal)
+        {
+            CurrentHealth += heal;
         }
 
         public event HealthIncreasedDelegate HealthIncreasedEvent;
