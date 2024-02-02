@@ -10,15 +10,36 @@ namespace StrategyUnitsOnInterfaces
     {
         public Footman CreateRecruit()
         {
-            return new Footman(60, 23,44,10);
+            
+            if (Energy >= 10)
+            {
+                Energy -= 10;
+                Console.WriteLine("Призыв рекрута");
+                return new Footman(40, 23, 44, 10);
+            }
+            return null;
+
         }
         public Footman CreateFootman()
         {
-            return new Footman(60, 30, 50, 15);
+            if (Energy >= 20)
+            {
+                Energy -= 20;
+                Console.WriteLine("Призыв пехотинца");
+                return new Footman(60, 30, 50, 15);
+            }
+            return null;
+            
         }
         public Berserker CreateBerserker()
         {
-            return new Berserker(200);
+            if (Energy >= 50)
+            {
+                Energy -= 50;
+                Console.WriteLine("Призыв берсерка");
+                return new Berserker(200);
+            }
+            return null;
         }
     }
 }

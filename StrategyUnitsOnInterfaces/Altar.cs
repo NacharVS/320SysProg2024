@@ -14,11 +14,24 @@ namespace StrategyUnitsOnInterfaces
         }
         public Cleric CreateCleric()
         {
-            return new Cleric(20, 100);
+            if (Energy >= 20)
+            {
+                Energy -= 20;
+                Console.WriteLine("Призыв клерика");
+                return new Cleric(20, 100);
+            }
+            return null;
         }
         public Paladin CreatePaladin()
         {
-            return new Paladin(40, 120);
+            if (Energy >= 30)
+            {
+                Energy -= 30;
+                Console.WriteLine("Призыв паладина");
+                return new Paladin(40, 120);
+            }
+            return null;
+
         }
         public void HealAltar(IMagicUnit unit)
         {

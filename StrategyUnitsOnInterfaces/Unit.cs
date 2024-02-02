@@ -40,24 +40,20 @@ namespace StrategyUnitsOnInterfaces
                 IsAlive = false;
                 Health = 0;
             }
-            Task task = StartGoldRecovery();
-            await task;
+            StartGoldRecovery();
         }
         public async Task StartGoldRecovery()
         {
             await Task.Run(async () =>
             {
+                if (Gold == 0)
+                {
                     Console.WriteLine($"Золото отсутствует. Начинаем восстановление...");
-                    RecoverGold();
+                    Gold += 1;
                     Console.WriteLine($"Золото восстановлено. Текущее количество золота: {Gold}");
                     await Task.Delay(10000);
+                }
             });
-        }
-
-
-        private void RecoverGold()
-        {
-            Gold += 1; 
         }
         
 

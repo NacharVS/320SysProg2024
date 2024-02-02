@@ -4,16 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace StrategyUnitsOnInterfaces
 {
     internal class Building
     {
-        public uint MaxEnergy { get; private set; }
-        public uint Energy { get; set; }
+        public int MaxEnergy { get; private set; }
+        private int _energy;
+        public int Energy
+        {
+            get { return _energy;}
+            set
+            {
+                if (value > MaxEnergy)
+                    _energy = MaxEnergy;
+                else if (value < 0)
+                {
+                    _energy = 0;
+                }
+                else
+                    _energy ++;
+            }
+        }
         public Building()
         {
-            Energy = 500;
-            MaxEnergy = Energy;
+            _energy = 500;
+            MaxEnergy = _energy;
         }
     }
 }

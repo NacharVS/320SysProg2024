@@ -14,3 +14,14 @@ forge.UpgradeArmor(footman, footman2);
 forge.UpgradeArmor(footman, footman2);
 forge.UpgradeArmor(footman, footman2);
 forge.UpgradeArmor(footman, footman2);
+
+
+Barracks barrack1 = new Barracks();
+barrack1.Energy = 70;
+Console.WriteLine(barrack1.Energy);
+barrack1.CreateBerserker();
+Console.WriteLine(barrack1.Energy);
+barrack1.CreateBerserker();
+Console.WriteLine(barrack1.Energy);
+barrack1.CreateBerserker();
+Console.WriteLine(barrack1.Energy);
