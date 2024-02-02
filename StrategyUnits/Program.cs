@@ -2,20 +2,23 @@
 using StrategyUnits.Units.Buildings;
 using System;
 
-var barrcak = new Barracks();
-var altal = new Altar("Священный");
-var recruit = barrcak.CreateRecruit("Helldem");
+var barrack = new Barracks();
+var altar = new Altar("Священный");
 
 
 var peasant = new Peasant(25,"Крестьянин",5);
-var berserk = barrcak.CreateBersekr("Ramil");
+var berserk = barrack.CreateBersekr("Ramil");
 berserk.ShowInformation();
-var foot = barrcak.CreateFootman("Kirill Osipov");
+var foot = barrack.CreateFootman("Kirill Osipov");
 foot.ShowInformation();
 
-var paladin = altal.CreatePaladin("Тот самый");
+var paladin = altar.CreatePaladin("Тот самый");
 paladin.ShowInformation();
 peasant.StartWork();
 peasant.ShowInformation();
 peasant.EndWork();
 peasant.ShowInformation();
+paladin.MagicAttack(peasant);
+peasant.ShowInformation();
+
+

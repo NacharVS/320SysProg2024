@@ -18,23 +18,42 @@ namespace StrategyUnits.Units.Buildings
 
         public Footman CreateFootman(string nameOfUnit)
         {
-            return new Footman(60, "Рекрут", 2, 5, 20, 50, nameOfUnit, 1, 1);
-
+            Footman footman =  new Footman(60, "Рекрут", 2, 5, 20, 50, nameOfUnit, 1, 1);
+            footman.HealthDecreasedEvent += HealthDecreased;
+            footman.HealthIncreasedEvent += HealthIncreased;
+            return footman;
         }
         public Footman CreateBersekr(string nameOfUnit)
         {
-            return new Berserk(100, "Берсерк", 2, 5, 20, 200, nameOfUnit, 1, 1);
-
+           Berserk berserk = new Berserk(100, "Берсерк", 2, 5, 20, 200, nameOfUnit, 1, 1);
+            berserk.HealthDecreasedEvent += HealthDecreased;
+            berserk.HealthIncreasedEvent += HealthIncreased;
+            return berserk;
         }
 
-        public Footman CreateRecruit(string nameOfUnit)
-        {
-            return new Footman(90, "Пехотинец", 2, 5, 20, 100, nameOfUnit, 1, 1);
-        }
+   
 
         public void ShowInformation()
         {
             Console.WriteLine($" Персонаж: {Name}\n");
         }
+
+
+        static void HealthDecreased(int previousHealth, int currentHealth, int maxHealth)
+        {
+            Console.WriteLine(
+                $"Здоровье было снижено на {previousHealth - currentHealth} HP\n" +
+                $"Текущее здоровье: {currentHealth}/{maxHealth}\n");
+        }
+
+        static void HealthIncreased(int previousHealth, int currentHealth, int maxHealth)
+        {
+            Console.WriteLine( 
+                $"Здоровье было повышено {currentHealth - previousHealth} HP\n" +
+                $"Текущее здоровье: {currentHealth}/{maxHealth}\n");
+
+        }
+
+
     }
 }

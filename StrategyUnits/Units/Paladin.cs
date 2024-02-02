@@ -30,7 +30,7 @@ namespace StrategyUnits.Units
             set { _nameOfUnit = value; }
         }
 
-        public override void AttackMagically(Unit attackedUnit)
+        public void MagicAttack(Unit attackedUnit)
         {
             Random rnd = new Random();
             int appliedDamage = rnd.Next(MinDamage * 2, MaxDamage * 2) - attackedUnit.Defense / 2;

@@ -36,31 +36,35 @@ namespace StrategyUnits.Units
         }
 
 
-      
-
-        public virtual void AttackMagically(Unit unit)
+        public  virtual void MagicAttack(IAttackedUnit unit)
         {
+            Random random = new Random();
+            int appliedDamage = random.Next(MinDamage, MaxDamage) - unit.Defense;
+            if (!IsDead)
+            {
+                if (appliedDamage >= 0)
+                {
+                    Console.WriteLine($"Вы нанесли {appliedDamage} ({appliedDamage + Defense}-{Defense}) урона. Вы потеряли {appliedDamage * 2} маны\n");
+                    InflictkDamage(appliedDamage);
+                    IncreaseEnergy(appliedDamage * 2);
 
+                }
+                else
+                {
+                    Console.WriteLine("Атака была провалена!");
+                }
+            }
         }
 
-        public void MagicAttack(IAttackedUnit unit)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TakeMana(int manaPoints)
-        {
-            throw new NotImplementedException();
-        }
 
         public void IncreaseEnergy(int manaPoints)
         {
-            throw new NotImplementedException();
+           ManaPoints += manaPoints;
         }
 
         public void DecreaseEnergy(int manaPoints)
         {
-            throw new NotImplementedException();
+            ManaPoints -= manaPoints;
         }
     }
 }
