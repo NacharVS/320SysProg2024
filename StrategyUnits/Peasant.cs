@@ -1,6 +1,8 @@
-﻿namespace StrategyUnits
+﻿using StrategyUnits.@interface;
+
+namespace StrategyUnits
 {
-    internal class Peasant : Unit
+    internal class Peasant : Unit, IPeasant
     {
         public bool IsWork { get; set; }
         public Peasant() : base(30, "Peasant")
