@@ -10,10 +10,12 @@ namespace StrategyUnits
     internal class Paladin : ZealotKnight
     {
         private bool _holyArmorActive = false;
+
         public Paladin(string? name, int health, int minDamage, int maxDamage, int shield, int maxMana) : base(name, health, minDamage, maxDamage, shield, maxMana)
-        { 
+        {
 
         }
+
         public void HolyFire(Unit unit)
         {
             if (Mana >= 3)
@@ -36,8 +38,8 @@ namespace StrategyUnits
             }
             else
             {
-                Shield += Shield / 2;
-                Console.WriteLine($"{Name} активировал магическую защиту. Текущая броня - {Shield}");
+                Armor += Armor / 2;
+                Console.WriteLine($"{Name} активировал магическую защиту. Текущая броня - {Armor + IArmoredUnit.ExtraArmor}");
                 _holyArmorActive = true;
                 Mana -= 3;
             }

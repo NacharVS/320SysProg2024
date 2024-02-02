@@ -8,11 +8,16 @@ namespace StrategyUnits
 {
     internal class Berserc : Footman
     {
-        internal bool _rage = false;
-        public Berserc(string? name, int health, int minDamage, int maxDamage, int shield) : base(name, health, minDamage, maxDamage, shield) 
-        { 
         
+        internal bool _rage = false;
+        private int _minDamage;
+        private int _maxDamage;
+
+        public Berserc(string? name, int health, int minDamage, int maxDamage, int shield) : base(name, health, minDamage, maxDamage, shield)
+        {
+
         }
+
         public override int MinDamage
         {
             get

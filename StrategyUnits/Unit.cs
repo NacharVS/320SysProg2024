@@ -50,12 +50,12 @@
                     if (Health < MaxHealth / 2 && !bersk._rage)
                     {
                         bersk._rage = true;
-                        Console.WriteLine($"{Name} активировал ярость. Урон увеличился - {bersk.MinDamage}-{bersk.MaxDamage}");
+                        Console.WriteLine($"{Name} активировал ярость. Урон увеличился - {bersk.MinDamage + IBattleUnit.ExtraDamage}-{bersk.MaxDamage + IBattleUnit.ExtraDamage}");
                     }
                     if (Health >= MaxHealth / 2 && bersk._rage)
                     {
                         bersk._rage = false;
-                        Console.WriteLine($"{Name} деактивировал ярость. Урон снова обычный - {bersk.MinDamage}-{bersk.MaxDamage}");
+                        Console.WriteLine($"{Name} деактивировал ярость. Урон снова обычный - {bersk.MinDamage + IBattleUnit.ExtraDamage}-{bersk.MaxDamage + IBattleUnit.ExtraDamage}");
                     }
                 }
             }

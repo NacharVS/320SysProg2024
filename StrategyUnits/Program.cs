@@ -1,6 +1,5 @@
 ﻿using StrategyUnits;
 
-
 Barracs barracs = new Barracs();
 Altar altar = new Altar();
 Forge forge = new Forge();
@@ -44,15 +43,6 @@ paladin.ShowInfo();
 
 zealotKnight.Prayer();
 
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-paladin.HolyFire(berserker);
-
-berserker.InflictDamage(recruit);
-
 void HealthIncrease(string name, int health, int newHealth)
 {
     Console.WriteLine($"Здоровье {name} увеличилось на {newHealth - health}. Текущее здоровье - {newHealth}");
@@ -61,4 +51,3 @@ void HealthDecrease(string name, int health, int newHealth)
 {
     Console.WriteLine($"Здоровье {name} уменьшилось на {health - newHealth}. Текущее здоровье - {newHealth}");
 }
-
