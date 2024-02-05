@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyUnits
+namespace StrategyUnits.Inerfaces
 {
-    internal class Forge
+    internal interface IPassiveSkill
     {
+        public bool PassiveSkillActivate { get; set; }
     }
 }

@@ -1,116 +1,87 @@
 ﻿using StrategyUnits;
-Barrack barrack = new Barrack();
-<<<<<<< Updated upstream
-Altar altar = new Altar();
-Footman recruit = barrack.CreateRecruit();
-=======
-Forge forge = new Forge();
-Altar altar = new Altar();
-Berserker berserker = barrack.CreateBerserker();
->>>>>>> Stashed changes
-Footman footman = barrack.CreateFootman();
-Cleric cleric = altar.CreateCleric();
-Paladin paladin = altar.CreatePaladin();
-ZealotKnight zealotKnight = altar.CreateZealotKnight();
-zealotKnight.ShowInfo();
-<<<<<<< Updated upstream
-=======
-forge.WeaponUpgrade(paladin);
-forge.WeaponUpgrade(zealotKnight);
-forge.WeaponUpgrade(zealotKnight);
-forge.ArmorUpgrade(zealotKnight);
-forge.ArmorUpgrade(paladin);
-forge.ArmorUpgrade(paladin);
-forge.ArmorUpgrade(paladin);
-zealotKnight.ShowInfo();
->>>>>>> Stashed changes
-paladin.ShowInfo();
+using StrategyUnits.Units;
+
+var barrack = new Barrack("Казарма");
+var altar = new Altar(100, 100, "Алтарь");
+var forge = new Forge("Кузница");
+
+var footman = barrack.CreateFootman();
+var recruit = barrack.CreateRecruit();
+var berserker = barrack.CreateBerserker();
+
+var peasant = new Peasant("Крестьянин", false, 5, 5, false);
+
+var paladin = altar.CreatePaladin();
+var cleric = altar.CreateCleric();
+
+
+cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+cleric.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+cleric.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
+peasant.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+peasant.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
+paladin.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+paladin.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+paladin.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+paladin.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
+altar.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+altar.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
+
+berserker.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+berserker.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
+
 footman.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
 footman.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
-cleric.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-cleric.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
-cleric.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
-cleric.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
-<<<<<<< Updated upstream
+recruit.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
+recruit.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 
-paladin.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-paladin.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
-paladin.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
-paladin.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+peasant.PlowField();
+peasant.ShowInformation();
 
-footman.Attack(footman);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-cleric.HealSomebody(footman);
-footman.Attack(cleric);
-cleric.HealSomebody(cleric);
-altar.RestoreEP(cleric);
-cleric.HealSomebody(cleric);
-paladin.HolyFire(footman);
-=======
->>>>>>> Stashed changes
+footman.Attack(peasant);
 
-paladin.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-paladin.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
-paladin.EnergyIncreasedEvent += ShowInformationAfterEnergyIsRestored;
-paladin.EnergyDecreasedEvent += ShowInformationAfterLossOfEnergy;
+peasant.FinishWork();
+peasant.ShowInformation();
 
-<<<<<<< Updated upstream
-=======
-berserker.HealthDecreasedEvent += ShowInformationAfterLossOfHealth;
-berserker.HealthIncreasedEvent += ShowInformationAfterHealthIsRestored;
 footman.Attack(berserker);
 footman.Attack(berserker);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-footman.Attack(paladin);
-berserker.Attack(footman);
-footman.Attack(berserker);
-berserker.Attack(footman);
-cleric.HealSomebody(paladin);
-footman.Attack(berserker);
-footman.Attack(cleric);
-cleric.HealSomebody(cleric);
-altar.RestoreEP(cleric);
-cleric.HealSomebody(cleric);
-cleric.Attack(footman);
-cleric.HealSomebody(footman);
+forge.UpdateWeapons();
+berserker.ShowInformation();
+cleric.HealSomebody(berserker);
+altar.RecoveryEnergy(cleric);
+altar.RestoreEnergy();
 
->>>>>>> Stashed changes
-static void ShowInformationAfterLossOfHealth(string? name, double health, double difference, double protection, double maxHealth)
+altar.ShowInformation();
+cleric.ShowInformation();
+paladin.ShowInformation();
+
+static void ShowInformationAfterLossOfHealth(string? name, double health, double difference, double maxHealth)
 {
-    Console.WriteLine($"\u001b[31m{name} получил урон, здоровье уменьшилось на {difference}\u001b[0m \u001b[36m(поглащено урона: {protection}\u001b[0m),\u001b[31m текущее здоровье: {health}/{maxHealth}\u001b[0m");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"{name} получил урон, здоровье уменьшилось на {difference}, текущее здоровье: {health}/{maxHealth}");
+    Console.ForegroundColor = ConsoleColor.White;
 }
-static void ShowInformationAfterHealthIsRestored(string? name, double health, double difference, double protection, double maxHealth)
+
+static void ShowInformationAfterHealthIsRestored(string? name, double health, double difference, double maxHealth)
 {
     Console.ForegroundColor = ConsoleColor.Green;
-<<<<<<< Updated upstream
-    Console.WriteLine($"{name} был излечн, здоровье увеличилось на {difference}, текущее здоровье: {health}/{maxHealth}, защита: {protection}");
-=======
-    Console.WriteLine($"{name} был излечён, здоровье увеличилось на {difference}, текущее здоровье: {health}/{maxHealth}, защита: {protection}");
->>>>>>> Stashed changes
+    Console.WriteLine($"{name} был излечён, здоровье увеличилось на {difference}, текущее здоровье: {health}/{maxHealth}");
     Console.ForegroundColor = ConsoleColor.White;
-
 }
 
-void ShowInformationAfterLossOfEnergy(string name, double energy, double difference, double maxEnergy)
+void ShowInformationAfterLossOfEnergy(string name, int energy, int difference, int maxEnergy)
 {
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine($"{name} энергия уменьшена на {difference}, текущая энергия: {energy}/{maxEnergy}");
     Console.ForegroundColor = ConsoleColor.White;
 }
 
-void ShowInformationAfterEnergyIsRestored(string name, double energy, double difference, double maxEnergy)
+void ShowInformationAfterEnergyIsRestored(string name, int energy, int difference, int maxEnergy)
 {
     Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine($"{name} энергия увеличена на {difference}, текущая энергия: {energy}/{maxEnergy}");
