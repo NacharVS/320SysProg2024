@@ -14,4 +14,15 @@ m.defense		0.5/int		0.5/int		1/int
 crt.chanse		0.2/dex		0.2/dex		0.2/dex	
 crt.damage	0.1/dex		0.1/dex		0.1/dex
 
-statpoints - textbox	
+
+levelUp scheme
+		
+1 - 0	0
+2 - 1000	1000
+3 - 3000	2000
+4 - 6000	3000
+5 - 10000	4000
+6 - 15000	5000
+7 - 21000	6000
+// max 99 lvl
+
