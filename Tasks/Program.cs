@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 Random random = new Random();
 
-int[] mass1 = new int [5];
+int[] mass1 = new int[5];
 int[] mass2 = new int[5];
 int[] massResult = new int[5];
 
@@ -25,27 +25,14 @@ Task task = Task.Run(() =>
 
 task.Wait();
 
-
-Console.Write("mass1: ");
 for (int i = 0; i < 5; i++)
 {
-    Console.Write($"{mass1[i]} ");
+    Console.WriteLine($"mass1: {mass1[i]}");
+    Thread.Sleep(500);
+    Console.WriteLine($"mass2: {mass2[i]}");
+    Thread.Sleep(500);
+    Console.WriteLine($"massResult{i + 1}: {massResult[i]}");
     Thread.Sleep(500);
 }
-
-Console.Write("\nmass2: ");
-for (int i = 0; i < 5; i++)
-{
-    Console.Write($"{mass2[i]} ");
-    Thread.Sleep(500);
-}
-
-Console.Write("\nResult: ");
-for (int i = 0; i < 5; i++)
-{
-    Console.Write($"{massResult[i]} ");
-    Thread.Sleep(500);
-}
-
 
 Console.ReadKey();
