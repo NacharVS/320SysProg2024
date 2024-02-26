@@ -1,26 +1,17 @@
-﻿Task task1 = new Task(() =>
+﻿async Task FActorialAsync()
 {
-    for (int i = 0; i < 15; i++)
+    await Task.Run(() =>
     {
-        Console.WriteLine($"task {i}");
-        Thread.Sleep(500);
-    }
-});
-Task.WaitAll(
-    Task.Run(() =>
-    {
-        for (int i = 0; i < 15; i++)
+        int res = 1;
+        for (int i = 1; i <= 10; i++)
         {
-            Console.WriteLine($"task {i}");
-            Thread.Sleep(500);
+            res *= i;
+            Console.WriteLine(res);
+            Thread.Sleep(1000);
         }
-    })
-    );
-
-for (int i = 0; i < 10; i++)
-{
-    Console.WriteLine($"main {i}");
-    Thread.Sleep(500);
+    });
 }
-
+FActorialAsync();
+Console.ReadLine();
+Console.ReadLine();
 
