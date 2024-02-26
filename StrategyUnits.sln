@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterfacesBase", "Interface
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDB", "MongoDB\MongoDB.csproj", "{B4BC362C-6368-406A-B9EE-4AE5E63C6954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksExamples", "TasksExamples\TasksExamples.csproj", "{D92BA7D8-7C9B-4327-8832-DC388EB3A8F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TasksExamples", "TasksExamples\TasksExamples.csproj", "{D92BA7D8-7C9B-4327-8832-DC388EB3A8F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitWPFExamples", "AsyncAwaitWPFExamples\AsyncAwaitWPFExamples.csproj", "{251E2005-D7A5-45D5-BDF0-7E87B12B6268}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D92BA7D8-7C9B-4327-8832-DC388EB3A8F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D92BA7D8-7C9B-4327-8832-DC388EB3A8F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D92BA7D8-7C9B-4327-8832-DC388EB3A8F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{251E2005-D7A5-45D5-BDF0-7E87B12B6268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{251E2005-D7A5-45D5-BDF0-7E87B12B6268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{251E2005-D7A5-45D5-BDF0-7E87B12B6268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{251E2005-D7A5-45D5-BDF0-7E87B12B6268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

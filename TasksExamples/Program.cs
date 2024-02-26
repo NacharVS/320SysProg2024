@@ -7,7 +7,7 @@
         {
             res *= i;
             Console.WriteLine(res);
-            Thread.Sleep(1000);
+
         }
     });
 }
