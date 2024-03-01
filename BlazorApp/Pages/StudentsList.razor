@@ -1,0 +1,51 @@
+﻿@page "/studentslist"
+
+<PageTitle>Students list</PageTitle>
+
+@using BlazorApp.Data
+@inject StudentsListService ListService
+
+<h1>Students list</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (lists == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>Patronymic</th>
+                <th>DateOfBirth</th>
+                <th>Group</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var list in lists)
+            {
+                <tr>
+                    <td>@list.Surname</td>
+                    <td>@list.Name</td>
+                    <td>@list.Patronymic</td>
+                    <td>@list.DateOfBirth</td>
+                    <td>@list.Group</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private StudentsList[]? lists;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(5000);
+        lists = await ListService.GetListAsync(DateTime.Now);
+    }
+}
